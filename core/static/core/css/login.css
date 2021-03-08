@@ -1,0 +1,23 @@
+.accountbg {
+  position: relative;
+  height: 100vh;
+  background-color: #262C49;
+  background-size: cover;
+  background-position: center;
+}
+
+.card {
+  background: #10163A;
+  -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+label {
+  font-weight: 600;
+  color: white;
+}
+
+.text-muted {
+  color: white !important;
+}
