@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 from djrichtextfield.models import RichTextField
 from .enquete import Enquete
 
@@ -51,6 +52,6 @@ class RespostaEnquete(models.Model):
         return str(self.id)
 
     class Meta:
-        app_label = "enquete"
+        app_label = "enquetes"
         verbose_name = "Resposta da Enquete"
         verbose_name_plural = "Respostas da Enquete"

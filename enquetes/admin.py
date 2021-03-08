@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Enquete, RespostaEnquete
 
-# Register your models here.
+admin.site.register(Enquete)
+admin.site.register(RespostaEnquete)

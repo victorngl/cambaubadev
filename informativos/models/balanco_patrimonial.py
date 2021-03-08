@@ -1,6 +1,6 @@
 from django.db import models
+from datetime import datetime
 from escolas.models import Escola
-
 
 class BalancoPatrimonial(models.Model):
     """
@@ -34,7 +34,7 @@ class BalancoPatrimonial(models.Model):
         Escola,
         on_delete=models.SET_NULL,
         verbose_name='Escola',
-        blank=True
+        null=True
     )
 
     data_alteracao = models.DateTimeField(

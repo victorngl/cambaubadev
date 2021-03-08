@@ -1,5 +1,6 @@
 from django.db import models
-from .turma import Turma
+from datetime import datetime
+from escolas.models import Turma
 
 class Oficina(models.Model):
     """

@@ -2,9 +2,9 @@ from django.db import models
 from datetime import datetime
 from escolas.models import Turma
 
-class AtividadeNoturna(models.Model):
+class Comunicado(models.Model):
     """
-       Classe AtividadeNoturna implementa as funções relacionadas a uma atividade noturna na plataforma.
+       Classe Comunicado implementa as funções relacionadas a um comunicado na plataforma.
     """
 
     titulo = models.CharField(
@@ -13,18 +13,8 @@ class AtividadeNoturna(models.Model):
 		help_text="Campo Obrigatório*"
 	)
 
-    vagas = models.IntegerField(
-		verbose_name="Vagas",
-		blank=True, null=True
-	)
-
-    data_inicial = models.DateField(
-        verbose_name="Data Inicial",
-		blank=True, null=True
-    )
-
-    data_final = models.DateField(
-        verbose_name="Data Final",
+    data = models.DateField(
+        verbose_name="Data",
 		blank=True, null=True
     )
 
@@ -36,6 +26,12 @@ class AtividadeNoturna(models.Model):
     turmas = models.ManyToManyField(
         Turma,
         verbose_name=("Turmas"),
+        blank=True
+    )
+    
+    anexo = models.FileField(
+        verbose_name="Anexo",
+        upload_to ='uploads/',
         blank=True
     )
 
@@ -53,6 +49,6 @@ class AtividadeNoturna(models.Model):
         return self.titulo
 
     class Meta:
-        app_label = "atividades"
-        verbose_name = "Atividade Noturna"
-        verbose_name_plural = "Atividades Noturnas"
+        app_label = "materiais_didaticos"
+        verbose_name = "Comunicado"
+        verbose_name_plural = "Comunicados"

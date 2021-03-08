@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .oficina import Oficina
+from datetime import datetime
+from atividades.models import Oficina
 from escolas.models import Aluno
 
 class InscricaoOficina(models.Model):

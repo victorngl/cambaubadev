@@ -26,12 +26,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
+    'djrichtextfield',
     'core',
     'emails',
     'atividades',
     'enquetes',
     'escolas',
-    'informativos'
+    'informativos',
+    'atividades_escolares',
+    'materiais_didaticos',
 ]
 
 MIDDLEWARE = [

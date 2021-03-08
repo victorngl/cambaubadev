@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+from djrichtextfield.models import RichTextField
 from django.contrib.auth.models import Group
 
 class Enquete(models.Model):
@@ -30,7 +32,7 @@ class Enquete(models.Model):
 
     mostrar_resultado = models.BooleanField(
         verbose_name="Mostrar Resultado",
-        default=false
+        default=False
     )
 
     grupo_usuarios = models.ManyToManyField(
@@ -71,6 +73,6 @@ class Enquete(models.Model):
         return self.titulo
 
     class Meta:
-        app_label = "enquete"
+        app_label = "enquetes"
         verbose_name = "Enquete"
         verbose_name_plural = "Enquetes"

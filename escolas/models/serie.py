@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from .tipo_serie import TipoSerie
 from .escola import Escola
 

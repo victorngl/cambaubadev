@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from escolas.models import Escola
 
 
@@ -34,7 +35,7 @@ class Balancete(models.Model):
         Escola,
         on_delete=models.SET_NULL,
         verbose_name='Escola',
-        blank=True
+        null=True
     )
 
     data_alteracao = models.DateTimeField(

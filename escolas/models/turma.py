@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from .serie import Serie
 
 class Turma(models.Model):

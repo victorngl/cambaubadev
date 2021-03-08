@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 from .oficina import Oficina
 from escolas.models import Aluno
 
-class InscricaoOAtividadeExtra(models.Model):
+class InscricaoAtividadeExtra(models.Model):
     """
        Classe InscricaoAtividadeExtra implementa as funções relacionadas a inscrição de uma atividade extra na plataforma.
     """
