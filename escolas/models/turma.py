@@ -1,0 +1,38 @@
+from django.db import models
+from datetime import datetime
+from .serie import Serie
+
+class Turma(models.Model):
+    """
+       Classe Turma implementa as funções relacionadas a uma turma na plataforma.
+    """
+
+    nome = models.CharField(
+        verbose_name="Série",
+        max_length=200
+    )
+
+    serie = models.ForeignKey(
+        Serie,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="Série"
+    )
+
+    data_alteracao = models.DateTimeField(
+        verbose_name="Data de Alteração",
+        auto_now=True
+    )
+
+    data_criacao = models.DateTimeField(
+        verbose_name="Data de Criação",
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return self.nome
+
+    class META:
+        app_label="escolas"
+        verbose_name="Turma"
+        verbose_name_plural="Turmas"

@@ -1,0 +1,63 @@
+{% load static %}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>Outbox Sistemas</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Outbox Sistemas" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}"/>
+        <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'core/css/icons.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'core/css/style.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{% static 'area_cliente/app-assets/css/themes/dark-layout.css' %}">
+        <link href="{% static 'core/css/login.css' %}" rel="stylesheet" type="text/css">
+        <script src="https://kit.fontawesome.com/8d83ea68cd.js"></script>
+
+    </head>
+
+    <body class="fixed-left">
+
+        <div class="accountbg">
+            
+            <div class="content-center">
+                <div class="content-desc-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5 col-md-8">
+                                <div class="card">
+                                    <div class="card-body">
+                
+                                        <h3 class="text-center mt-0 m-b-15">
+                                            <a href="" class="logo logo-admin"><img src="{% static 'img/outbox_branco_gelo2.png' %}" height="60" alt="logo"></a>
+                                        </h3>
+                
+                                        <div class="p-2">
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                {{ form|bootstrap }}
+                                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                                            </form>
+                
+                                            <div class="form-group m-t-10 mb-0 row">
+                                                <div class="col-sm-7 m-t-20">
+                                                    <a href="{% url 'password_reset' %}" class="text-muted">Esqueceu sua senha?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

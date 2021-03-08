@@ -25,6 +25,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
+    'djrichtextfield',
+    'core',
+    'emails',
+    'atividades',
+    'enquetes',
+    'escolas',
+    'informativos',
+    'atividades_escolares',
+    'materiais_didaticos',
 ]
 
 MIDDLEWARE = [
@@ -95,3 +105,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
