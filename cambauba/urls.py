@@ -22,6 +22,7 @@ from core import urls as core_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include(core_urls)),
+    path('djrichtextfield/', include('djrichtextfield.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Gestor Cambauba"
