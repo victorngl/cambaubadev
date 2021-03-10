@@ -14,7 +14,7 @@ class TurmaAdmin(admin.ModelAdmin):
 
 @admin.register(Aluno)
 class AlunoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nome', 'pai', 'mae', 'turma']
+    list_display = ['id', 'nome', 'pai', 'mae', 'turma', 'usuario_criacao', 'usuario_atualizacao']
     list_filter = ['pai', 'mae', 'turma', 'turma__serie']
     autocomplete_fields = ['turma', 'pai', 'mae']
     search_fields = ['nome', 'pai__username', 'mae__username']
