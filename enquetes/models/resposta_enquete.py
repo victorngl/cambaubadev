@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from djrichtextfield.models import RichTextField
 from .enquete import Enquete
+from crum import get_current_user
 
 
 class RespostaEnquete(models.Model):
@@ -18,18 +19,20 @@ class RespostaEnquete(models.Model):
     )
 
     usuario_inscricao = models.ForeignKey(
-		User,
+        User,
+        related_name='%(class)s_requests_created',
         on_delete=models.SET_NULL,
-        null=True,
-		verbose_name="Usuário Inscrição"
-	)
+        blank=True,null=True,
+        default=None,
+        verbose_name="Usuário votante"
+    )
 
     enquete = models.ForeignKey(
-		Enquete,
+        Enquete,
         on_delete=models.SET_NULL,
         null=True,
-		verbose_name="Enquete"
-	)
+        verbose_name="Enquete"
+    )
 
     opcao = models.CharField(
         verbose_name="Opção escolhida:",
@@ -51,6 +54,14 @@ class RespostaEnquete(models.Model):
     def __str__(self):
         return str(self.id)
 
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_inscricao = user
+        super(RespostaEnquete, self).save(*args, **kwargs)
+        
     class Meta:
         app_label = "enquetes"
         verbose_name = "Resposta da Enquete"

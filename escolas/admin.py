@@ -1,14 +1,11 @@
 from django.contrib import admin
 from .models import Aluno, Escola, Serie, TipoSerie, Turma
 
-admin.site.register(Escola)
-admin.site.register(Serie)
-admin.site.register(TipoSerie)
-
 
 @admin.register(Turma)
 class TurmaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nome']
+    list_display = ['id', 'nome', 'serie']
+    autocomplete_fields = ['serie']
     search_fields = ['nome']
 
 
@@ -36,3 +33,20 @@ class AlunoAdmin(admin.ModelAdmin):
 			'observacao',
 		)}),
     )
+
+@admin.register(Escola)
+class EscolaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'nome']
+    search_fields = ['nome']
+    
+@admin.register(Serie)
+class SerieAdmin(admin.ModelAdmin):
+    list_display = ['id', 'nome']
+    list_filter = ['tipo_serie', 'escola']
+    autocomplete_fields = ['tipo_serie', 'escola']
+    search_fields = ['nome']
+
+@admin.register(TipoSerie)
+class TipoSerieAdmin(admin.ModelAdmin):
+    list_display = ['id', 'nome']
+    search_fields = ['nome']

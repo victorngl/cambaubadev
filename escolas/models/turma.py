@@ -8,7 +8,7 @@ class Turma(models.Model):
     """
 
     nome = models.CharField(
-        verbose_name="Série",
+        verbose_name="Título",
         max_length=200
     )
 
