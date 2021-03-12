@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-from .oficina import Oficina
+from .atividade_extra import AtividadeExtra
 from escolas.models import Aluno
 
 class InscricaoAtividadeExtra(models.Model):
@@ -9,11 +9,11 @@ class InscricaoAtividadeExtra(models.Model):
        Classe InscricaoAtividadeExtra implementa as funções relacionadas a inscrição de uma atividade extra na plataforma.
     """
 
-    oficina = models.ForeignKey(
-		Oficina,
+    atividade_extra = models.ForeignKey(
+		AtividadeExtra,
         on_delete=models.SET_NULL,
         null=True,
-		verbose_name="Oficina"
+		verbose_name="Atividade Extra"
 	)
 
     aluno = models.ForeignKey(
@@ -39,6 +39,14 @@ class InscricaoAtividadeExtra(models.Model):
         verbose_name="Data de Criação",
         auto_now_add=True
     )
+
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_inscricao = user
+        super(InscricaoAtividadeExtra, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.id)
