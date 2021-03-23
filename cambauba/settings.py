@@ -31,7 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrapform',
     'djrichtextfield',
+    'avatar',
     'core',
+    'home',
     'emails',
     'atividades',
     'enquetes',
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'cambauba.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

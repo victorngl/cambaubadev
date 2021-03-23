@@ -1,88 +1,106 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-BR" dir="">
-
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Criteria</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon_criteria.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon_criteria.png' %}">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'assets/styles/css/themes/lite-blue.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/styles/vendor/perfect-scrollbar.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/styles/vendor/datatables.min.css' %}">
-    <link rel="stylesheet" href="https://intranet.novadata.com.br/intranets/criteria/bernardo.css">
-    <link rel="stylesheet" href="http://intranet.novadata.com.br/intranets/criteria/admin/admin_bernardo.css">
-    <script src="https://kit.fontawesome.com/8d83ea68cd.js"></script>
+<title>Criteria Invest</title>
+<link rel="stylesheet" type="text/css" href="https://intranet.novadata.com.br/intranets/criteria/admin/base.css">
+<link rel="stylesheet" type="text/css" href="https://intranet.novadata.com.br/intranets/criteria/admin/admin_bernardo.css">
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'dashboard/pwa/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon_criteria.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon_criteria.png' %}">
+<meta name="apple-mobile-web-app-title" content="Criteria Invest">
+<meta name="application-name" content="Criteria Invest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'assets/images/favicons/site.webmanifest' %}">
-    <link rel="mask-icon" href="{% static 'assets/images/favicons/safari-pinned-tab.svg' %}" color="#5bbad5">
-    <meta name="apple-mobile-web-app-title" content="Criteria Invest">
-    <meta name="application-name" content="Criteria Invest">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    {% block extra_style %}
-
-    {% endblock %}
+{% block extrastyle %}{% endblock %}
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
+{% block extrahead %}{% endblock %}
+{% block responsive %}
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive.css" %}">
+    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}
+{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 </head>
+{% load i18n %}
 
-<body class="text-left">
-    <!-- Pre Loader Strat  -->
-    <div class='loadscreen' id="preloader">
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}">
 
-        <div class="loader spinner-bubble spinner-bubble-primary">
+<!-- Container -->
+<div id="container">
 
+    {% if not is_popup %}
+    <!-- Header -->
+    <div id="header" style="height: 60px; background: #000;">
+        <div id="branding">
+        {% block branding %}{% endblock %}
         </div>
-    </div>
-    <!-- Pre Loader end  -->
-
-
-    <div class="app-admin-wrap layout-sidebar-large">
-        {% include 'top_menu.html' %}
-
-        {% include 'sidebar.html' %}
-
-        <!-- ============ Body content start ============= -->
-        <div class="main-content-wrap sidenav-open d-flex flex-column">
-            <div class="main-content">
-                <div class="breadcrumb">
-                    {% block breadcrumb %}
-
-                    {% endblock %}
-                </div>
-
-                <div class="separator-breadcrumb border-top"></div>
-
-                <!-- content goes here -->
-                <div class="container">
-                    {% block content %}
-
-                    {% endblock %}
-                </div>
-
-            </div>
-            <!-- end of main content -->
+        {% block usertools %}
+        {% if has_permission %}
+        <div id="user-tools" style="margin: 10px 0 0 30px;font-weight: 600;font-size: 13px;">
+            {% block welcome-msg %}
+                {% trans 'Welcome,' %}
+                <strong style="color:#fecd2f">{% firstof user.get_short_name user.get_username %}</strong>.
+            {% endblock %}
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="{% url 'home' %}">Site</a> /
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                {% endif %}
+                <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+            {% endblock %}
         </div>
-        <!-- ============ Body content End ============= -->
+        {% endif %}
+        {% endblock %}
+        {% block nav-global %}{% endblock %}
     </div>
-    <!--=============== End app-admin-wrap ================-->
-
-    <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'assets/jquery-ui/jquery-ui.js' %}"></script>
-    <script src="{% static 'assets/js/vendor/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'assets/js/vendor/perfect-scrollbar.min.js' %}"></script>
-    <script src="{% static 'assets/js/es5/script.min.js' %}"></script>
-    <script src="{% static 'assets/js/es5/sidebar.large.script.min.js' %}"></script>
-    <script src="{% static 'assets/js/vendor/datatables.min.js' %}"></script>
-
-    {% block extra_js %}
-
+    <!-- END Header -->
+    {% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
     {% endblock %}
-</body>
+    {% endif %}
 
+    {% block messages %}
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+        {% endfor %}</ul>
+        {% endif %}
+    {% endblock messages %}
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}" style="width: auto;  display: block;
+  margin-left: auto;
+  ">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<!--<h1>Painel Administrativo</h1>-->{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    {% block footer %}<div id="footer"></div>{% endblock %}
+</div>
+</body>
 </html>

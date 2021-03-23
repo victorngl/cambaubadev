@@ -22,6 +22,8 @@ from core import urls as core_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include(core_urls)),
+    path('', include('home.urls')),
+    path('avatar/', include('avatar.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
