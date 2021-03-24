@@ -10,6 +10,8 @@ diff-match-patch==20200713
 dj-database-url==0.5.0
 dj-static==0.0.6
 Django==3.1.7
+django-appconf==1.0.4
+django-avatar==5.0.0
 django-bootstrap==0.2.4
 django-bootstrap-form==3.4
 django-crum==0.7.9
@@ -24,6 +26,7 @@ MarkupPy==1.14
 odfpy==1.4.1
 openpyxl==3.0.6
 packaging==20.9
+Pillow==8.1.2
 pycep-correios==3.2.0
 pyparsing==2.4.7
 python-decouple==3.4
