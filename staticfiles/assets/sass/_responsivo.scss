@@ -1,0 +1,61 @@
+//variaveis do grid
+$device-790: 790px;
+$device-1050: 1050px;
+$ll-device: 1400px; //large
+$l-device: 1366px; //large
+$mm-device: 1200px; //mediums
+$m-device: 992px; //mediums
+$s-device: 540px; //small
+$ss-device: 347px; //small small
+
+//mixin media querie
+
+@mixin d($size) {
+  @if $size== ll {
+    @media screen and (min-width: $ll-device) {
+      //acima do medio
+      @content;
+    }
+  }
+  @else if $size==l {
+    @media screen and (min-width: $l-device) {
+      //acima do medio
+      @content;
+    }
+  } @else if $size==m {
+    @media screen and (max-width: $m-device ) {
+      //abaixo do medio
+      @content;
+    }
+    
+  }
+  @else if $size==1050 {
+    @media screen and (max-width: $device-1050 ) {
+      //abaixo do medio
+      @content;
+    }
+    
+  }
+  @else if $size==m {
+    @media screen and (max-width: $m-device ) {
+      //abaixo do medio
+      @content;
+    }
+  }
+  @else if $size==790 {
+    @media screen and (max-width: $device-790 ) {
+      //abaixo do medio
+      @content;
+    }
+  }
+  
+  @else if $size==s {
+    @media screen and (max-width: $s-device - 1) {
+      @content;
+    }
+  } @else if $size==ss {
+    @media screen and (max-width: $ss-device - 1) {
+      @content;
+    }
+  }
+}
