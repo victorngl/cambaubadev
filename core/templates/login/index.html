@@ -1,63 +1,58 @@
 {% load static %}
 {% load bootstrap %}
+
 <!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Outbox Sistemas</title>
-        <meta content="Admin Dashboard" name="description" />
-        <meta content="Outbox Sistemas" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}"/>
-        <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static 'core/css/icons.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static 'core/css/style.css' %}" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="{% static 'area_cliente/app-assets/css/themes/dark-layout.css' %}">
-        <link href="{% static 'core/css/login.css' %}" rel="stylesheet" type="text/css">
-        <script src="https://kit.fontawesome.com/8d83ea68cd.js"></script>
+<html lang="PT-BR">
 
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon_criteria.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon_criteria.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
+    <link rel="stylesheet" href="https://intranet.novadata.com.br/intranets/criteria/bernardo.css">
+    
+    <title>Criteria Invest</title>
 
-    <body class="fixed-left">
-
-        <div class="accountbg">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'assets/images/favicons/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'assets/images/favicons/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="Criteria Invest">
+    <meta name="application-name" content="Criteria Invest">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body id="page__login">
+    <div class="login__wrapper">
+        <section class="imagem__quebra">
+            <img src="{% static 'login/img.png' %}" alt="instalador">
+        </section>
+        <section class="area__login">
             
-            <div class="content-center">
-                <div class="content-desc-center">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5 col-md-8">
-                                <div class="card">
-                                    <div class="card-body">
-                
-                                        <h3 class="text-center mt-0 m-b-15">
-                                            <a href="" class="logo logo-admin"><img src="{% static 'img/outbox_branco_gelo2.png' %}" height="60" alt="logo"></a>
-                                        </h3>
-                
-                                        <div class="p-2">
-                                            <form method="post">
-                                                {% csrf_token %}
-                                                {{ form|bootstrap }}
-                                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
-                                            </form>
-                
-                                            <div class="form-group m-t-10 mb-0 row">
-                                                <div class="col-sm-7 m-t-20">
-                                                    <a href="{% url 'password_reset' %}" class="text-muted">Esqueceu sua senha?</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                </div>
+            <div id="login">
+                <div class="container">
+                    
+                    <div class="campos">
+                        <h1 class="pl-2"></h1>
+                        <section class="imagem__logo">
+                            <img src="{% static 'login/Grupo 2292.png' %}" alt="instalador">
+                        </section>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form|bootstrap }}
+                            <div class="col px-0 wrapper__button">
+                                <button type="submit" class="entrar">Acessar</button>
+                                <a class="mt-3 col px-0 esqueceu" href="#">Esqueceu a senha?</a>
                             </div>
-                        </div>
-                        <!-- end row -->
+                            <a class="voltar" href="https://www.criteriainvest.com.br/"><span>← </span> Voltar</a>
+                            
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
+        </section>
+    </div>
+</body>
 </html>
