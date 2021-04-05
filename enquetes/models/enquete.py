@@ -73,10 +73,10 @@ class Enquete(models.Model):
 
     def lista_opcoes(self):
         lista_opcoes = [
-            ('1', self.opcao_1),
-            ('2', self.opcao_2),
-            ('3', self.opcao_3),
-            ('4', self.opcao_4),
+            ('1', strip_tags(self.opcao_1)),
+            ('2', strip_tags(self.opcao_2)),
+            ('3', strip_tags(self.opcao_3)),
+            ('4', strip_tags(self.opcao_4)),
         ]
         return lista_opcoes
 
