@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h2>Documentações de Obras</h2>
+        <small>Lista de Documentações de Obras</small>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped" id="documentacoes_obras">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Data</th>
+                        <th>Escola</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for documentacao_obra in documentacoes_obras %}
+                    <tr>
+                        <td>{{documentacao_obra.titulo}}</td>
+                        <td>{{documentacao_obra.data}}</td>
+                        <td>{{documentacao_obra.escola}}</td>
+                        <td><a href="{% url 'documentacao_obra_detail' documentacao_obra.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            $('#documentacoes_obras').DataTable({
+                "language": {
+                    "show": "Visualizar",
+                    "lengthMenu": "Mostrar _MENU_ linhas por página",
+                    "zeroRecords": "Nada encontrado",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nada encontrado",
+                    "infoFiltered": "(filtrado de _MAX_ no total)",
+                    "search": "Pesquisar",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima"
+                    }
+                },
+            });
+        });    
+    </script>
+{% endblock %}
