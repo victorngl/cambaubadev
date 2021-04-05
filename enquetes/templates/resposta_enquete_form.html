@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>Título: {{ enquete.enquete }}</h2>
+                <p>{{ enquete.enquete.descricao }}</p>
+                <small>Informe a opção escolhida abaixo:</small>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{% url 'resposta_enquete_create' enquete.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.opcao }}
+                    <hr>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

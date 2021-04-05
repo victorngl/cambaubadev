@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="card user-profile o-hidden mb-4">
+    <div class="card-body">
+            <h4>{{ object.titulo }}</h4>
+            <hr>
+            <div class="row">
+                <div class="col-md-4 col-6">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Descrição</p>
+                        <span>{{object.descricao}}</span>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-primary mb-1"><i class="i-Edit-Map text-16 mr-1"></i>Data</p>
+                        <span>{{object.data}}</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6">
+                    {% if object.anexo %}
+                    <div class="mb-4">
+                        <p class="text-primary mb-1"><i class="i-MaleFemale text-16 mr-1"></i>Anexo</p>
+                        <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
+                    </div>
+                    {% endif %}
+                    <div class="mb-4">
+                        <p class="text-primary mb-1"><i class="i-Globe text-16 mr-1"></i>Escola</p>
+                        <span>{{object.escola}}</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}

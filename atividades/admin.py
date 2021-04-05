@@ -45,7 +45,7 @@ class AtividadeNoturnaAdmin(admin.ModelAdmin):
 
 @admin.register(InscricaoOficina)
 class InscricaoOficinaAdmin(admin.ModelAdmin):
-    list_display = ['oficina', 'aluno']
+    list_display = ['oficina', 'aluno', 'usuario_inscricao']
     list_filter = ['oficina', 'aluno']
     autocomplete_fields = ['oficina', 'aluno']
     fieldsets = (

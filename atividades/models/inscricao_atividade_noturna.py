@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from .atividade_noturna import AtividadeNoturna
 from escolas.models import Aluno
+from crum import get_current_user
 
 class InscricaoAtividadeNoturna(models.Model):
     """

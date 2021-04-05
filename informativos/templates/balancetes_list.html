@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h2>Balancetes</h2>
+        <small>Lista de Balancetes</small>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped" id="balancetes">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Data</th>
+                        <th>Escola</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for balancete in balancetes %}
+                    <tr>
+                        <td>{{balancete.titulo}}</td>
+                        <td>{{balancete.data}}</td>
+                        <td>{{balancete.escola}}</td>
+                        <td><a href="{% url 'balancete_detail' balancete.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            $('#balancetes').DataTable({
+                "language": {
+                    "show": "Visualizar",
+                    "lengthMenu": "Mostrar _MENU_ linhas por página",
+                    "zeroRecords": "Nada encontrado",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nada encontrado",
+                    "infoFiltered": "(filtrado de _MAX_ no total)",
+                    "search": "Pesquisar",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima"
+                    }
+                },
+            });
+        });    
+    </script>
+{% endblock %}

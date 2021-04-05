@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from djrichtextfield.models import RichTextField
 from django.contrib.auth.models import Group
+from django.utils.html import strip_tags
 
 class Enquete(models.Model):
     """
@@ -40,9 +41,10 @@ class Enquete(models.Model):
         verbose_name='Grupo de Usuários',
         blank=True
     )
-
+    
     opcao_1 = RichTextField(
         verbose_name = "Opção 1",
+        sanitizer = "bleach.clean"
     )
 
     opcao_2 = RichTextField(
@@ -68,6 +70,15 @@ class Enquete(models.Model):
         verbose_name="Data de Criação",
         auto_now_add=True
     )
+
+    def lista_opcoes(self):
+        lista_opcoes = [
+            ('1', self.opcao_1),
+            ('2', self.opcao_2),
+            ('3', self.opcao_3),
+            ('4', self.opcao_4),
+        ]
+        return lista_opcoes
 
     def __str__(self):
         return self.titulo

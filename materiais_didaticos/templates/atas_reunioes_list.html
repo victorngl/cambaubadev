@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h2>Atas de Reuniões</h2>
+        <small>Lista de Atas de Reuniões</small>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped" id="atas_reunioes">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ata_reuniao in atas_reunioes %}
+                    <tr>
+                        <td>{{ata_reuniao.titulo}}</td>
+                        <td>{{ata_reuniao.data}}</td>
+                        <td><a href="{% url 'ata_reuniao_detail' ata_reuniao.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            $('#atas_reunioes').DataTable({
+                "language": {
+                    "show": "Visualizar",
+                    "lengthMenu": "Mostrar _MENU_ linhas por página",
+                    "zeroRecords": "Nada encontrado",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nada encontrado",
+                    "infoFiltered": "(filtrado de _MAX_ no total)",
+                    "search": "Pesquisar",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima"
+                    }
+                },
+            });
+        });    
+    </script>
+{% endblock %}

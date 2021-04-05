@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'informativos',
     'atividades_escolares',
     'materiais_didaticos',
+    'django_bleach'
 ]
 
 MIDDLEWARE = [

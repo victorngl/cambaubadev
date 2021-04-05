@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h2>Atividades Escolares</h2>
+        <small>Lista de Atividades Escolares</small>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped" id="atividades_escolares">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Data inicial</th>
+                        <th>Data final</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for atividade_escolar in atividades_escolares %}
+                    <tr>
+                        <td>{{ atividade_escolar.titulo }}</td>
+                        <td>{{ atividade_escolar.data_inicial }}</td>
+                        <td>{{ atividade_escolar.data_final }}</td>
+                        <td><a href="{% url 'atividade_escolar_detail' atividade_escolar.id %}">Detalhes</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            $('#atividades_escolares').DataTable({
+                "language": {
+                    "show": "Visualizar",
+                    "lengthMenu": "Mostrar _MENU_ linhas por página",
+                    "zeroRecords": "Nada encontrado",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nada encontrado",
+                    "infoFiltered": "(filtrado de _MAX_ no total)",
+                    "search": "Pesquisar",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima"
+                    }
+                },
+            });
+        });    
+    </script>
+{% endblock %}
