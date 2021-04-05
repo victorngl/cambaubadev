@@ -16,3 +16,6 @@ class RespostaEnqueteForm(forms.ModelForm):
             'enquete',
             'opcao'
         ]
+        widgets = {
+            'enquete': forms.HiddenInput()
+        }

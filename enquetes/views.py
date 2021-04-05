@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from .models import Enquete, RespostaEnquete
@@ -19,7 +20,7 @@ class RespostaEnqueteCreateView(CreateView):
     model = RespostaEnquete
     form_class = RespostaEnqueteForm
     template_name = 'resposta_enquete_form.html'
-    success_url = 'enquetes/'
+    success_url = reverse_lazy('enquetes')
 
     def get_initial(self):
         initial = {
