@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import Group
 from datetime import datetime
 from escolas.models import Escola
 
@@ -35,6 +36,12 @@ class DocumentacaoObra(models.Model):
         on_delete=models.SET_NULL,
         verbose_name='Escola',
         null=True
+    )
+
+    grupo_usuarios = models.ManyToManyField(
+        Group,
+        verbose_name='Grupo de Usuários',
+        blank=True
     )
 
     data_alteracao = models.DateTimeField(

@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from escolas.models import Turma
 
 class AtividadeEscolar(models.Model):
     """
@@ -30,6 +31,12 @@ class AtividadeEscolar(models.Model):
     anexo = models.FileField(
         verbose_name="Anexo",
         upload_to ='uploads/',
+        blank=True
+    )
+
+    turmas = models.ManyToManyField(
+        Turma,
+        verbose_name=("Turmas"),
         blank=True
     )
 
