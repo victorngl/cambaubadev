@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Aluno, Escola, Serie, TipoSerie, Turma
+from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia
 
 
 @admin.register(Turma)
@@ -29,6 +29,7 @@ class AlunoAdmin(admin.ModelAdmin):
 			'email',
 		)}),
         ('Dados Adicionais', {'fields': (
+            'qts_atividades_permitidas',
 			'turma',
 			'observacao',
 		)}),
@@ -50,3 +51,8 @@ class SerieAdmin(admin.ModelAdmin):
 class TipoSerieAdmin(admin.ModelAdmin):
     list_display = ['id', 'nome']
     search_fields = ['nome']
+
+@admin.register(Materia)
+class MateriaAdmin(admin.ModelAdmin):
+    list_display = ['titulo']
+    search_fields = ['titulo']

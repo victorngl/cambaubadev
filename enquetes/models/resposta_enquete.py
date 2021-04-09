@@ -18,6 +18,13 @@ class RespostaEnquete(models.Model):
         ('4', '4')
     )
 
+    opcao = models.CharField(
+        verbose_name="Opção escolhida:",
+        max_length=1,
+        choices=OPCOES_ENQUETE,
+        blank=True, null=True
+    )
+
     usuario_inscricao = models.ForeignKey(
         User,
         related_name='%(class)s_requests_created',
@@ -33,14 +40,7 @@ class RespostaEnquete(models.Model):
         null=True,
         verbose_name="Enquete"
     )
-
-    opcao = models.CharField(
-        verbose_name="Opção escolhida:",
-        max_length=1,
-        choices=OPCOES_ENQUETE,
-        blank=True, null=True
-    )
-
+    
     data_alteracao = models.DateTimeField(
         verbose_name="Data de Alteração",
         auto_now=True

@@ -14,7 +14,7 @@
             <div class="card-body">
                 <form method="POST" action="{% url 'resposta_enquete_create' enquete.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form }}
+                    {{ form|safe }}
                     <hr>
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                 </form>

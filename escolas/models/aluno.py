@@ -25,6 +25,12 @@ class Aluno(Pessoa):
         verbose_name="Mãe"
     )
 
+    qtd_atividades_permitidas = models.IntegerField(
+		verbose_name="Quantidade de Atividades Permitidas",
+        default=1,
+		blank=True, null=True
+	)
+
     turma = models.ForeignKey(
         Turma,
         on_delete=models.SET_NULL,

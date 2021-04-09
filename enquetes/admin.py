@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Enquete, RespostaEnquete
+from .models import Enquete, RespostaEnquete, Opcao
+
+class OpcaoInline(admin.TabularInline):
+    model = Opcao
+    extra = 1
 
 
 @admin.register(Enquete)
@@ -8,32 +12,37 @@ class EnqueteAdmin(admin.ModelAdmin):
     search_fields = ['titulo']
     filter_horizontal = ['grupo_usuarios']
     fieldsets = (
-        ('Dados Principais', {'fields': (
+        ('Dados Principais', {'fields': [
 			'titulo',
 			'descricao',
-			'anexo'
-		)}),
-        ('Opções da enquete', {'fields': (
-			'opcao_1',
-			'opcao_2',
-			'opcao_3',
-			'opcao_4',
-		)}),
-        ('Configurações', {'fields': (
+			'anexo',
+        ]}),('Configurações', {'fields': [
 			'mostrar_resultado',
-			'grupo_usuarios'
-		)})
+			'grupo_usuarios',
+        ]}),
     )
+    inlines = [OpcaoInline]
+
+
 
 @admin.register(RespostaEnquete)
 class RespostaEnqueteAdmin(admin.ModelAdmin):
-    list_display = ['id', 'opcao', 'enquete', 'usuario_inscricao']
+    list_display = ['id', 'enquete', 'usuario_inscricao']
     autocomplete_fields = ['enquete', 'usuario_inscricao']
     list_filter = ['enquete']
-    search_fields = ['opcao']
     fieldsets = (
-        (None, {'fields': (
-			'enquete',
-			'opcao'
-		)}),
+        (None, {'fields': [
+			'enquete'
+        ]}),
+    )
+
+@admin.register(Opcao)
+class OpcaoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'titulo', 'enquete']
+    autocomplete_fields = ['enquete']
+    list_filter = ['enquete']
+    fieldsets = (
+        ('Opções', {'fields': [
+			'titulo',
+        ]}),
     )

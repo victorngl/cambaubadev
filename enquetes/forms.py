@@ -1,20 +1,23 @@
 from django import forms
-from .models import Enquete, RespostaEnquete
+from .models import Enquete, RespostaEnquete, Opcao
+from django.utils.safestring import mark_safe
 
 class RespostaEnqueteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RespostaEnqueteForm, self).__init__(*args, **kwargs)
-        opcoes = Enquete.objects.get(id=kwargs['initial']['enquete'])
+        opcoesArray = Opcao.objects.filter(enquete=kwargs['initial']['enquete'])
+        opcoes = list()
+        for idx, opcao in enumerate(opcoesArray):
+            opcoes += [(str(idx + 1), mark_safe(opcao.titulo.html))]
         self.fields['opcao'] = forms.ChoiceField(
-            choices=(opcoes.lista_opcoes),
+            choices=(opcoes),
             widget=forms.RadioSelect
         )
     
     class Meta:
         model = RespostaEnquete
         fields = [
-            'enquete',
-            'opcao'
+            'enquete'
         ]
         widgets = {
             'enquete': forms.HiddenInput()

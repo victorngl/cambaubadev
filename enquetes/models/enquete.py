@@ -1,8 +1,6 @@
 from django.db import models
 from datetime import datetime
-from djrichtextfield.models import RichTextField
 from django.contrib.auth.models import Group
-from django.utils.html import strip_tags
 
 class Enquete(models.Model):
     """
@@ -36,29 +34,16 @@ class Enquete(models.Model):
         default=False
     )
 
+    qtd_votos_permitidos = models.IntegerField(
+		verbose_name="Quantidade de Votos Permitidos",
+        default=1,
+		blank=True, null=True
+	)
+
     grupo_usuarios = models.ManyToManyField(
         Group,
         verbose_name='Grupo de Usuários',
         blank=True
-    )
-    
-    opcao_1 = RichTextField(
-        verbose_name = "Opção 1",
-        sanitizer = "bleach.clean"
-    )
-
-    opcao_2 = RichTextField(
-        verbose_name = "Opção 2"
-    )
-
-    opcao_3 = RichTextField(
-        verbose_name = "Opção 3",
-        blank=True, null=True
-    )
-
-    opcao_4 = RichTextField(
-        verbose_name = "Opção 4",
-        blank=True, null=True
     )
 
     data_alteracao = models.DateTimeField(
@@ -70,15 +55,6 @@ class Enquete(models.Model):
         verbose_name="Data de Criação",
         auto_now_add=True
     )
-
-    def lista_opcoes(self):
-        lista_opcoes = [
-            ('1', strip_tags(self.opcao_1)),
-            ('2', strip_tags(self.opcao_2)),
-            ('3', strip_tags(self.opcao_3)),
-            ('4', strip_tags(self.opcao_4)),
-        ]
-        return lista_opcoes
 
     def __str__(self):
         return self.titulo
