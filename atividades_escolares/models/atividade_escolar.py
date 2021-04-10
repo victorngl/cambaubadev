@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from escolas.models import Turma
+from escolas.models import Turma, Materia
 
 class AtividadeEscolar(models.Model):
     """
@@ -38,6 +38,13 @@ class AtividadeEscolar(models.Model):
         Turma,
         verbose_name=("Turmas"),
         blank=True
+    )
+
+    materia = models.ForeignKey(
+        Materia,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="Matéria"
     )
 
     data_alteracao = models.DateTimeField(
