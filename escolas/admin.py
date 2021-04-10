@@ -11,17 +11,18 @@ class TurmaAdmin(admin.ModelAdmin):
 
 @admin.register(Aluno)
 class AlunoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nome', 'pai', 'mae', 'turma', 'usuario_criacao', 'usuario_atualizacao']
-    list_filter = ['pai', 'mae', 'turma', 'turma__serie']
-    autocomplete_fields = ['turma', 'pai', 'mae']
-    search_fields = ['nome', 'pai__username', 'mae__username']
+    list_display = ['id', 'nome', 'responsavel1', 'responsavel2', 'responsavel3', 'turma']
+    list_filter = ['responsavel1', 'responsavel2', 'responsavel3', 'turma', 'turma__serie']
+    autocomplete_fields = ['turma', 'responsavel1', 'responsavel2', 'responsavel3']
+    search_fields = ['nome', 'responsavel1__username', 'responsavel2__username', 'responsavel3__username']
     fieldsets = (
         ('Dados Principais', {'fields': (
 			'nome',
 			'cpf_cnpj',
 			'rg',
-			'pai',
-            'mae'
+			'responsavel1',
+			'responsavel2',
+			'responsavel3'
 		)}),
         ('Contatos', {'fields': (
 			'telefone',
