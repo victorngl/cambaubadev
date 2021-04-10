@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django_quill.fields import QuillField
 from django.contrib.auth.models import Group
 
 class Enquete(models.Model):
@@ -13,9 +14,10 @@ class Enquete(models.Model):
 		help_text="Campo Obrigatório*"
 	)
 
-    descricao = models.TextField(
+    descricao = QuillField(
 		verbose_name="Descrição",
-		blank=True, null=True
+        null=True,
+        blank=True
 	)
     
     anexo = models.FileField(

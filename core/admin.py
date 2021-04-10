@@ -2,18 +2,22 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from import_export.admin import ImportExportModelAdmin
-from .models import Cidade
-from .models import Endereco
-from .models import Estado
-from .models import Pais
+from .models import Cidade, Endereco, Estado, Pais, Profile
 from .forms import UserCreateForm
 
 admin.site.unregister(User)
 
+
+class ProfileAdminInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+    verbose_name_plural = 'Profiles'
+    extra = 1
+
 @admin.register(User)
 class UserAdmin(UserAdmin):
     add_form = UserCreateForm
-    
+    inlines = [ProfileAdminInline]
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
