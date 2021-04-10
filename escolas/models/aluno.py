@@ -9,22 +9,6 @@ class Aluno(Pessoa):
        Classe Aluno implementa as funções relacionadas a um aluno na plataforma.
     """
 
-    pai = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        related_name='pai_aluno',
-        null=True,
-        verbose_name="Pai"
-    )
-
-    mae = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        related_name='mae_aluno',
-        null=True,
-        verbose_name="Mãe"
-    )
-
     qtd_atividades_permitidas = models.IntegerField(
 		verbose_name="Quantidade de Atividades Permitidas",
         default=1,
@@ -36,6 +20,33 @@ class Aluno(Pessoa):
         on_delete=models.SET_NULL,
         null=True,
         verbose_name="Turma"
+    )
+
+    responsavel1 = models.ForeignKey(
+        User,
+        verbose_name="Responsável 1",
+        related_name="responsavel1_aluno",
+        on_delete=models.SET_NULL,
+        blank=False,
+        null=True
+    )
+
+    responsavel2 = models.ForeignKey(
+        User,
+        verbose_name="Responsável 2",
+        related_name="responsavel2_aluno",
+        on_delete=models.SET_NULL,
+        blank=False,
+        null=True
+    )
+
+    responsavel3 = models.ForeignKey(
+        User,
+        verbose_name="Responsável 3",
+        related_name="responsavel3_aluno",
+        on_delete=models.SET_NULL,
+        blank=False,
+        null=True
     )
 
     observacao = models.TextField(
