@@ -17,6 +17,7 @@ class EnqueteAdmin(admin.ModelAdmin):
 			'descricao',
 			'anexo',
         ]}),('Configurações', {'fields': [
+            'qtd_votos_permitidos',
 			'mostrar_resultado',
 			'grupo_usuarios',
         ]}),

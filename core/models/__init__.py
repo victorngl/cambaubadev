@@ -6,6 +6,7 @@ from .pais import Pais
 from .pessoa import Pessoa
 from .registro_interno import RegistroInterno
 from .dados_bancarios import DadosBancarios
+from .profile import Profile
 
 __all__ = [
     Cidade,
@@ -15,5 +16,6 @@ __all__ = [
     Estado,
     Pais,
     Pessoa,
-    RegistroInterno
+    RegistroInterno,
+    Profile
 ]
