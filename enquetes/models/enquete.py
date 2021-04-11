@@ -32,14 +32,13 @@ class Enquete(models.Model):
     )
 
     mostrar_resultado = models.BooleanField(
-        verbose_name="Mostrar Resultado",
+        verbose_name="Mostrar Resultado?",
         default=False
     )
 
-    qtd_votos_permitidos = models.IntegerField(
-		verbose_name="Quantidade de Votos Permitidos",
-        default=1,
-		blank=True, null=True
+    voto_unico = models.BooleanField(
+		verbose_name="Voto Único Por Usuário?",
+        default=True
 	)
 
     grupo_usuarios = models.ManyToManyField(

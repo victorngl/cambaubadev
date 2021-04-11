@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load enquetes_tags %}
+
+{% block content %}
+<div class="enquetes-details card user-profile o-hidden mb-4">
+    <div class="card-body">
+        <h4>{{ object.titulo }}</h4>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 col-6">
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Information text-16 mr-1"></i>Descrição</p>
+                    <span>{{object.descricao.html|safe}}</span>
+                </div>
+                {% if object.anexo %}
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Library text-16 mr-1"></i>Anexo</p>
+                    <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-6 col-6">
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data da Expiração</p>
+                    <span>{{object.data_expiracao}}</span>
+                </div>
+            </div>
+        </div>
+        {% bloquear_enquete object as bloquear %}
+        {% if bloquear %}
+        <div class="row justify-content-center">
+            <a class="btn btn-primary text-white" href="{% url 'resposta_enquete_create' object.id %}"><i class="i-Yes-4"></i> Responder</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

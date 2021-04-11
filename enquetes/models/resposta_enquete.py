@@ -25,7 +25,7 @@ class RespostaEnquete(models.Model):
         blank=True, null=True
     )
 
-    usuario_inscricao = models.ForeignKey(
+    usuario_votante = models.ForeignKey(
         User,
         related_name='%(class)s_requests_created',
         on_delete=models.SET_NULL,
@@ -59,7 +59,7 @@ class RespostaEnquete(models.Model):
         if user and not user.pk:
             user = None
         if not self.pk:
-            self.usuario_inscricao = user
+            self.usuario_votante = user
         super(RespostaEnquete, self).save(*args, **kwargs)
         
     class Meta:
