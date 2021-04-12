@@ -15,9 +15,10 @@ class EnqueteAdmin(admin.ModelAdmin):
         ('Dados Principais', {'fields': [
 			'titulo',
 			'descricao',
+            'data_expiracao',
 			'anexo',
         ]}),('Configurações', {'fields': [
-            'qtd_votos_permitidos',
+            'voto_unico',
 			'mostrar_resultado',
 			'grupo_usuarios',
         ]}),
@@ -28,8 +29,8 @@ class EnqueteAdmin(admin.ModelAdmin):
 
 @admin.register(RespostaEnquete)
 class RespostaEnqueteAdmin(admin.ModelAdmin):
-    list_display = ['id', 'enquete', 'usuario_inscricao']
-    autocomplete_fields = ['enquete', 'usuario_inscricao']
+    list_display = ['id', 'enquete', 'usuario_votante']
+    autocomplete_fields = ['enquete', 'usuario_votante']
     list_filter = ['enquete']
     fieldsets = (
         (None, {'fields': [

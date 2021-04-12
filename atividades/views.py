@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from atividades.models import Oficina, AtividadeExtra, AtividadeNoturna, InscricaoOficina, InscricaoAtividadeExtra, InscricaoAtividadeNoturna
 from .forms import InscricaoOficinaForm, InscricaoAtividadeExtraForm, InscricaoAtividadeNoturnaForm
 from django.urls import reverse, reverse_lazy
@@ -115,3 +115,12 @@ class InscricaoAtividadeNoturnaCreateView(CreateView):
             }
         )
         return context
+
+class OficinaDetailView(DetailView):
+    model = Oficina
+
+class AtividadeNoturnaDetailView(DetailView):
+    model = AtividadeNoturna
+
+class AtividadeExtraDetailView(DetailView):
+    model = AtividadeExtra

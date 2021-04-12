@@ -18,6 +18,12 @@ class Oficina(models.Model):
 		blank=True, null=True
 	)
 
+    horario = models.CharField(
+		max_length=250,
+		verbose_name="Horário",
+        blank=True
+	)
+
     data_inicial = models.DateField(
         verbose_name="Data Inicial",
 		blank=True, null=True
@@ -37,6 +43,26 @@ class Oficina(models.Model):
         Turma,
         verbose_name=("Turmas"),
         blank=True
+    )
+
+    retrato = models.ImageField(
+        verbose_name='Retrato',  
+        null=True, blank=True
+    ) 
+
+    foto_capa = models.ImageField(
+        verbose_name='Foto de Capa',  
+        null=True, blank=True
+    )
+
+    data_alteracao = models.DateTimeField(
+        verbose_name="Data de Alteração",
+        auto_now=True
+    )
+
+    data_criacao = models.DateTimeField(
+        verbose_name="Data de Criação",
+        auto_now_add=True
     )
 
     def __str__(self):

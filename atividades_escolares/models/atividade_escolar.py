@@ -18,6 +18,18 @@ class AtividadeEscolar(models.Model):
         blank=True, null=True
     )
 
+    horario_inicio = models.CharField(
+		max_length=250,
+		verbose_name="Horário de Início",
+        blank=True
+	)
+
+    horario_fim = models.CharField(
+		max_length=250,
+		verbose_name="Horário de Fim",
+        blank=True
+	)
+
     data_inicial = models.DateField(
         verbose_name="Data Inicial",
 		blank=True, null=True
