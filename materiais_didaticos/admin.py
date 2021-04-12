@@ -1,12 +1,5 @@
 from django.contrib import admin
-from .models import AtaReuniao, CalendarioAtividade, Comunicado, MaterialDidatico
-
-
-@admin.register(AtaReuniao)
-class AtaReuniaoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'data']
-    filter_horizontal = ['turmas']
-    search_fields = ['titulo', 'data']
+from .models import CalendarioAtividade, Comunicado, MaterialDidatico
 
 @admin.register(CalendarioAtividade)
 class CalendarioAtividadeAdmin(admin.ModelAdmin):

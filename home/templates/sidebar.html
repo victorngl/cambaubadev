@@ -13,7 +13,7 @@
             </li>
             <li class="nav-item" data-item="enquetes">
                 <a class="nav-item-hold" href="{% url 'enquetes' %}">
-                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <img src="{% static 'assets/images/enquetes.png' %}" alt="">
                     <br>
                     <span class="nav-text">Enquetes</span>
                 </a>
@@ -21,7 +21,7 @@
             </li>
             <li class="nav-item" data-item="atividades">
                 <a class="nav-item-hold" href="#">
-                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <img src="{% static 'assets/images/atividades.png' %}" alt="">
                     <br>
                     <span class="nav-text">Atividades</span>
                 </a>
@@ -29,7 +29,7 @@
             </li>
             <li class="nav-item" data-item="atividades_escolares">
                 <a class="nav-item-hold" href="#">
-                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <img src="{% static 'assets/images/atividades_escolares.png' %}" alt="">
                     <br>
                     <span class="nav-text">Atividades Escolares</span>
                 </a>
@@ -37,7 +37,7 @@
             </li>
             <li class="nav-item" data-item="informativos">
                 <a class="nav-item-hold" href="#">
-                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <img src="{% static 'assets/images/informativos.png' %}" alt="">
                     <br>
                     <span class="nav-text">Informativos</span>
                 </a>
@@ -108,6 +108,11 @@
                 <span class="item-name">Todas as Documentações de Obras</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{% url 'atas_reunioes' %}" class="item-name">
+                <span class="item-name">Todas as Atas de Reuniões</span>
+            </a>
+        </li>
     </ul>
     <ul class="childNav" data-parent="materiais_didaticos">
         <p class="titulo_produto"><i class="text-20 i-Clock"></i>Materiais Didáticos</p>
@@ -124,11 +129,6 @@
         <li class="nav-item">
             <a href="{% url 'comunicados' %}" class="item-name">
                 <span class="item-name">Todos os Comunicados</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{% url 'atas_reunioes' %}" class="item-name">
-                <span class="item-name">Todas as Atas de Reuniões</span>
             </a>
         </li>
     </ul>

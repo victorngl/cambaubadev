@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView
-from .models import Balancete, BalancoPatrimonial, DocumentacaoObra
+from .models import Balancete, BalancoPatrimonial, DocumentacaoObra, AtaReuniao
 
 @login_required
 def balancetes(request):
@@ -35,6 +35,16 @@ def documentacoes_obras(request):
             'documentacoes_obras': documentacoes_obras
         }
     )
+@login_required
+def atas_reunioes(request):
+    atas_reunioes = AtaReuniao.objects.all()
+    return render(
+        request,
+        'atas_reunioes_list.html',
+        {
+            'atas_reunioes': atas_reunioes
+        }
+    )
 
 class BalancetesDetailView(DetailView):
     model = Balancete
@@ -44,3 +54,6 @@ class BalancoPatrimonialDetailView(DetailView):
 
 class DocumentacaoObraDetailView(DetailView):
     model = DocumentacaoObra
+
+class AtaReuniaoDetailView(DetailView):
+    model = AtaReuniao

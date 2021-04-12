@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Oficina, AtividadeExtra, AtividadeNoturna, InscricaoOficina, InscricaoAtividadeExtra, InscricaoAtividadeNoturna
+from .models import Oficina, AtividadeExtra, AtividadeNoturna, InscricaoOficina, Olimpiada, InscricaoAtividadeExtra, InscricaoAtividadeNoturna
 
 class InscricaoOficinaInline(admin.TabularInline):
     model = InscricaoOficina
@@ -24,24 +24,29 @@ class InscricaoAtividadeNoturnaInline(admin.TabularInline):
 
 @admin.register(Oficina)
 class OficinaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'vagas', 'data_inicial', 'data_final']
+    list_display = ['id', 'titulo', 'vagas', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoOficinaInline] 
 
 @admin.register(AtividadeExtra)
 class AtividadeExtraAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'vagas', 'data_inicial', 'data_final']
+    list_display = ['id', 'titulo', 'vagas', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoAtividadeExtraInline]
 
 @admin.register(AtividadeNoturna)
 class AtividadeNoturnaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'vagas', 'data_inicial', 'data_final']
+    list_display = ['id', 'titulo', 'vagas', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoAtividadeNoturnaInline]
+
+@admin.register(Olimpiada)
+class OlimpiadaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'titulo', 'data_inicial', 'data_final']
+    search_fields = ['titulo', 'data_inicial', 'data_final']
 
 @admin.register(InscricaoOficina)
 class InscricaoOficinaAdmin(admin.ModelAdmin):

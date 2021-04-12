@@ -1,18 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView
-from .models import AtaReuniao, CalendarioAtividade, Comunicado, MaterialDidatico
-
-@login_required
-def atas_reunioes(request):
-    atas_reunioes = AtaReuniao.objects.all()
-    return render(
-        request,
-        'atas_reunioes_list.html',
-        {
-            'atas_reunioes': atas_reunioes
-        }
-    )
+from .models import CalendarioAtividade, Comunicado, MaterialDidatico
 
 @login_required
 def calendarios_atividades(request):
@@ -47,8 +36,6 @@ def materiais_didaticos(request):
         }
     )
 
-class AtasReunioesDetailView(DetailView):
-    model = AtaReuniao
 
 class CalendariosAtividadesDetailView(DetailView):
     model = CalendarioAtividade
