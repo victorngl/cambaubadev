@@ -29,7 +29,7 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return self.nome
+        return self.user.username
 
     class Meta:
         app_label = "core"

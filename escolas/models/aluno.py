@@ -22,12 +22,21 @@ class Aluno(Pessoa):
         verbose_name="Turma"
     )
 
+    usuario = models.ForeignKey(
+        User,
+        verbose_name="Usuário do Aluno",
+        related_name="usuario_aluno",
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+    )
+
     responsavel1 = models.ForeignKey(
         User,
         verbose_name="Responsável 1",
         related_name="responsavel1_aluno",
         on_delete=models.SET_NULL,
-        blank=False,
+        blank=True,
         null=True
     )
 
@@ -36,7 +45,7 @@ class Aluno(Pessoa):
         verbose_name="Responsável 2",
         related_name="responsavel2_aluno",
         on_delete=models.SET_NULL,
-        blank=False,
+        blank=True,
         null=True
     )
 
@@ -45,7 +54,7 @@ class Aluno(Pessoa):
         verbose_name="Responsável 3",
         related_name="responsavel3_aluno",
         on_delete=models.SET_NULL,
-        blank=False,
+        blank=True,
         null=True
     )
 

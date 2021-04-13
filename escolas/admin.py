@@ -13,13 +13,14 @@ class TurmaAdmin(admin.ModelAdmin):
 class AlunoAdmin(admin.ModelAdmin):
     list_display = ['id', 'nome', 'responsavel1', 'responsavel2', 'responsavel3', 'turma']
     list_filter = ['responsavel1', 'responsavel2', 'responsavel3', 'turma', 'turma__serie']
-    autocomplete_fields = ['turma', 'responsavel1', 'responsavel2', 'responsavel3']
+    autocomplete_fields = ['turma', 'usuario', 'responsavel1', 'responsavel2', 'responsavel3']
     search_fields = ['nome', 'responsavel1__username', 'responsavel2__username', 'responsavel3__username']
     fieldsets = (
         ('Dados Principais', {'fields': (
 			'nome',
 			'cpf_cnpj',
 			'rg',
+			'usuario',
 			'responsavel1',
 			'responsavel2',
 			'responsavel3'
@@ -30,7 +31,6 @@ class AlunoAdmin(admin.ModelAdmin):
 			'email',
 		)}),
         ('Dados Adicionais', {'fields': (
-            'qts_atividades_permitidas',
 			'turma',
 			'observacao',
 		)}),
