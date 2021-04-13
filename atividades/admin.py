@@ -3,22 +3,22 @@ from .models import Oficina, AtividadeExtra, AtividadeNoturna, InscricaoOficina,
 
 class InscricaoOficinaInline(admin.TabularInline):
     model = InscricaoOficina
-    fields = ['aluno', 'usuario_inscricao']
-    readonly_fields = ['aluno', 'usuario_inscricao']
+    fields = ['aluno', 'usuario_inscricao', 'data_criacao']
+    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao']
     can_delete = False
     extra = 0
 
 class InscricaoAtividadeExtraInline(admin.TabularInline):
     model = InscricaoAtividadeExtra
-    fields = ['aluno', 'usuario_inscricao']
-    readonly_fields = ['aluno', 'usuario_inscricao']
+    fields = ['aluno', 'usuario_inscricao', 'data_criacao']
+    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao']
     can_delete = False
     extra = 0
 
 class InscricaoAtividadeNoturnaInline(admin.TabularInline):
     model = InscricaoAtividadeNoturna
-    fields = ['aluno', 'usuario_inscricao']
-    readonly_fields = ['aluno', 'usuario_inscricao']
+    fields = ['aluno', 'usuario_inscricao', 'data_criacao']
+    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao']
     can_delete = False
     extra = 0
 
@@ -50,7 +50,7 @@ class OlimpiadaAdmin(admin.ModelAdmin):
 
 @admin.register(InscricaoOficina)
 class InscricaoOficinaAdmin(admin.ModelAdmin):
-    list_display = ['oficina', 'aluno', 'usuario_inscricao']
+    list_display = ['oficina', 'aluno', 'usuario_inscricao', 'data_criacao']
     list_filter = ['oficina', 'aluno']
     autocomplete_fields = ['oficina', 'aluno']
     fieldsets = (
@@ -62,7 +62,7 @@ class InscricaoOficinaAdmin(admin.ModelAdmin):
 
 @admin.register(InscricaoAtividadeExtra)
 class InscricaoAtividadeExtraAdmin(admin.ModelAdmin):
-    list_display = ['atividade_extra', 'aluno']
+    list_display = ['atividade_extra', 'aluno', 'data_criacao']
     list_filter = ['atividade_extra', 'aluno']
     autocomplete_fields = ['atividade_extra', 'aluno']
     fieldsets = (
@@ -74,7 +74,7 @@ class InscricaoAtividadeExtraAdmin(admin.ModelAdmin):
 
 @admin.register(InscricaoAtividadeNoturna)
 class InscricaoAtividadeNoturnaAdmin(admin.ModelAdmin):
-    list_display = ['atividade_noturna', 'aluno']
+    list_display = ['atividade_noturna', 'aluno', 'data_criacao']
     list_filter = ['atividade_noturna', 'aluno']
     autocomplete_fields = ['atividade_noturna', 'aluno']
     fieldsets = (

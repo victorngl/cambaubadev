@@ -3,7 +3,7 @@ from .models import Enquete, RespostaEnquete, Opcao
 
 class OpcaoInline(admin.TabularInline):
     model = Opcao
-    extra = 1
+    extra = 5
 
 
 @admin.register(Enquete)
