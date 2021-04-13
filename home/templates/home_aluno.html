@@ -3,10 +3,52 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="row">
-    <div class="col-12">
-        <h1>Bem-vindo ao Cambauba Sr Aluno</h2>
-        <small>{{perfil}}</small>
+    <!-- Titulo - Aluno -->
+    <div class="card mb-4">
+        <div class="card-header" style="background-color: blue;">
+            <h2>Bem-vindo ao Cambauba 'incluir O nome do aluno'</h2>
+            <small>'incluir O nome da turma'</small>
+        </div>
     </div>
-</div>
+    <!-- Opções -->
+    <div class="d-flex justify-content-around row">
+        <div class="col-8">
+            <div class="card mb-4 text-center container-fluid">
+                <div class="card-header">Agenda</div>
+                <div class="card-body">'incluir A agenda'</div>
+            </div>
+            <div class="card mb-4 text-center container-fluid">
+                <div class="card-header">Comunicados</div>
+                <div class="card-body">'incluir Os comunicados'</div>
+            </div>
+        </div>
+        <div class="card mb-4 text-center col-4">
+            <div class="card-header">Atividades</div>
+            <div class="card-body">'incluir As atividades'</div>
+        </div>
+    </div>
+    <div class="card mb-4 text-center">
+        <div class="card-header">Material Didático</div>
+        <div class="card-body">
+                'incluir DATATABLE'
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card mb-4 text-center">
+                <div class="card-header">Atividades Extras</div>
+                <div class="card-body">
+                    'incluir As atividades extras'
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card mb-4 text-center">
+                <div class="card-header">Calendário</div>
+                <div class="card-body">
+                    'incluir Calendário'
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
