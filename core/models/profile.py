@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.db.models import Q
+from escolas.models import Aluno
 
 
 class Profile(models.Model):
@@ -27,6 +29,23 @@ class Profile(models.Model):
         verbose_name="Data de Atualização",
         auto_now=True
     )
+
+    @property
+    def perfil(self):
+        if Aluno.objects.filter(usuario=self.user).exists():
+            return 'Aluno'
+        else:
+            alunos_responsaveis = Aluno.objects.filter(
+                Q(responsavel1=self.user) | 
+                Q(responsavel2=self.user) | 
+                Q(responsavel3=self.user)
+            ).exists()
+
+            if alunos_responsaveis:
+                return "Responsável"
+            else:
+                return "Sem vínculo"
+
 
     def __str__(self):
         return self.user.username
