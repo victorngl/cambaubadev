@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.conf import settings
 from .models import Enquete, RespostaEnquete, Opcao
 
 class OpcaoInline(admin.TabularInline):
     model = Opcao
-    extra = 5
+    extra = 1
 
 
 @admin.register(Enquete)
@@ -23,6 +24,7 @@ class EnqueteAdmin(admin.ModelAdmin):
 			'grupo_usuarios',
         ]}),
     )
+    change_form_template = "admin/enquete_change_form.html"
     inlines = [OpcaoInline]
 
 
