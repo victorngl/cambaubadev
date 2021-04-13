@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 @login_required
 def home(request):
@@ -20,3 +21,14 @@ def home(request):
             'perfil': perfil
         }
     )
+
+@login_required
+def gerar_boletos_boletins(request):
+    try:
+        return render(
+            request,
+            'boletos_boletins.html',
+            {}
+        )
+    except:
+        return HttpResponseForbidden()
