@@ -7,35 +7,56 @@
 <div class="card mb-4">
     <div class="card-header" style="background-color: blue;">
         <h2>Bem-vindo ao Cambauba Sr {{user.first_name}} {{user.last_name}}</h2>
-        <small>Responsável por 'incluir Alunos sob resposabilidade'</small>
+        <small>Responsável por </small>
+        {% for aluno in alunos %}
+        <small>{{aluno}}</small>
+        {% endfor %}
     </div>
 </div>
 <!-- Alunos -->
 <div class="d-flex justify-content-around row">
+    {% for aluno in alunos %}
     <div class="card mb-4 text-center col-3">
-        <div class="card-header">Header aluno A</div>
-        <div class="card-body">Body aluno A</div>
+        <div class="card-header"><h4>{{aluno.nome}}</h4></div>
+        <div class="card-body">{{aluno.turma}}</div>
     </div>
-    <div class="card mb-4 text-center col-3">
-        <div class="card-header">Header aluno B</div>
-        <div class="card-body">Body aluno B</div>
-    </div>
-    <div class="card mb-4 text-center col-3">
-        <div class="card-header">Header aluno C</div>
-        <div class="card-body">Body aluno C</div>
-    </div>
+    {% endfor %}
 </div>
 <hr>
 <!-- Atividades e ultimas enquetes -->
 <div class="d-flex justify-content-around row">
+
     <div class="card mb-4 text-center col-5">
-        <div class="card-header">Atividades</div>
-        <div class="card-body">'incluir Atividades'</div>
+        <div class="card-header">
+            <h4>Atividades</h4>
+        </div>
+        <div class="card-body">
+            {% for aluno in alunos %}
+            {% for atividade in aluno.turma.atividadeescolar_set.all %}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    
+                    <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade}} </a> - {{aluno.nome}}
+                    
+                </li>
+            </ul>
+            {% endfor %}
+            {% endfor %}
+        </div>
     </div>
+    {% for enquete in enquetes %}
     <div class="card mb-4 text-center col-5">
-        <div class="card-header">Ultimas Enquetes</div>
-        <div class="card-body">'incluir Enquentes'</div>
+        <div class="card-header"><h4>Ultimas Enquetes</h4></div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    
+                    <a href="{% url 'enquete_detail' enquete.id %}">{{enquete}}</a>
+                </li>
+        </div>
     </div>
+    {% endfor %}
+
 </div>
 <!-- Comunicados e Calendário -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -52,43 +73,45 @@
 
     <div class="tab-pane fade show active d-flex row" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-        <div class="nav nav-pills flex-column col-3 order-last" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <div class="nav nav-pills flex-column col-3 order-last" id="v-pills-tab" role="tablist"
+            aria-orientation="vertical">
 
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
                 aria-controls="v-pills-home" aria-selected="true">Todos</a>
+            {% for aluno in alunos %}
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
+                aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
 
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                aria-controls="v-pills-profile" aria-selected="false">Aluno A</a>
 
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-                aria-controls="v-pills-messages" aria-selected="false">Aluno B</a>
-
-            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-                aria-controls="v-pills-settings" aria-selected="false">Aluno C</a>
-
+            {% endfor %}
         </div>
         <div class="tab-content col-8 order-first" id="v-pills-tabContent">
-            
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><div class="">
-                <h4>tittle comunicado</h4>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptate veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptatem veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis!
-            </div>
-            </div>
-            <div class="tab-pane fade col-5" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                <h4>tittle comunicado</h4>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptate veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptatem veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis!
-            </div>
-
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                <h4>tittle comunicado</h4>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptate veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptatem veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis!
+            <div class="tab-pane fade show active" id="todos_comunicados" role="tabpanel"
+                aria-labelledby="v-pills-home">
+                {% for aluno in alunos %}
+                <h4>{{aluno}}</h4>
+                {% for comunicado in aluno.turma.comunicado_set.all %}
+                <h6>{{comunicado.titulo}}</h6>
+                <p>{{comunicado.descricao}}</p>
+                <br>
+                <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
+                    Detalhes</a></a>
+                {% endfor %}
+                {% endfor %}
             </div>
 
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <h4>tittle comunicado</h4>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptate veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique voluptatem veritatis eum laudantium adipisci iure iusto praesentium, aspernatur, illum expedita eius quo at. Doloribus dolorem dicta laborum consequuntur corporis!
+            {% for aluno in alunos %}
+            <div class="tab-pane fade col-8 order-first" id="aluno-{{aluno.id}}" role="tabpanel"
+                aria-labelledby="v-pills-profile-tab">
+                {% for comunicado in aluno.turma.comunicado_set.all %}
+                <h4>{{comunicado.titulo}}</h4>
+                {{comunicado.descricao}}
+                <br>
+                <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
+                    Detalhes</a></a>
+                {% endfor %}
             </div>
-
+            {% endfor %}
         </div>
     </div>
     <!-- Calendário -->
