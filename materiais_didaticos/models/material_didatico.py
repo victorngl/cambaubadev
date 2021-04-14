@@ -43,6 +43,14 @@ class MaterialDidatico(models.Model):
     def __str__(self):
         return self.titulo
 
+    @property
+    def turmas_vinculadas(self):
+        turmas_formatadas=""
+        for turma in self.turmas.all():
+            turmas_formatadas+="{} ".format(turma)
+            
+        return (turmas_formatadas)
+        
     class Meta:
         app_label = "materiais_didaticos"
         verbose_name = "Material Didático"

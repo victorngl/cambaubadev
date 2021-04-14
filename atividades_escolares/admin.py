@@ -6,3 +6,4 @@ from .models import AtividadeEscolar
 class AtividadeEscolarAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'data_inicial', 'data_final']
     search_fields = ['titulo', 'data_inicial', 'data_final']
+    filter_horizontal = ['turmas']
