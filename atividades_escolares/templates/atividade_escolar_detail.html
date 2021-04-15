@@ -17,17 +17,19 @@
                         </div>
                         <div class="mb-4">
                             <p class="text-primary mb-1"><i class="i-Edit-Map text-16 mr-1"></i>Data inicial</p>
-                            <span>{{object.data_inicial}}</span>
+                            <span>{{object.data_inicial|default_if_none:'-'}}</span>
                         </div>
                         <div class="mb-4">
                             <p class="text-primary mb-1"><i class="i-Globe text-16 mr-1"></i>Data final</p>
-                            <span>{{object.data_final}}</span>
+                            <span>{{object.data_final|default_if_none:'-'}}</span>
                         </div>
                     </div>
                     <div class="col-md-4 col-6">
                         <div class="mb-4">
                             <p class="text-primary mb-1"><i class="i-MaleFemale text-16 mr-1"></i>Anexo</p>
-                            <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
+                            {% if object.anexo %}
+                                <span><a href="{{object.anexo.url}}">{{object.anexo|default_if_none:'-'}}</a></span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
