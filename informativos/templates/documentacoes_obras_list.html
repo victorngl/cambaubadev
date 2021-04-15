@@ -23,7 +23,7 @@
                     {% for documentacao_obra in documentacoes_obras %}
                     <tr>
                         <td>{{documentacao_obra.titulo}}</td>
-                        <td>{{documentacao_obra.data}}</td>
+                        <td>{{documentacao_obra.data|default_if_none:'-'}}</td>
                         <td>{{documentacao_obra.escola}}</td>
                         <td><a href="{% url 'documentacao_obra_detail' documentacao_obra.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
                     </tr>

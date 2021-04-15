@@ -49,6 +49,6 @@ class AtaReuniao(models.Model):
         return self.titulo
 
     class Meta:
-        app_label = "materiais_didaticos"
+        app_label = "informativos"
         verbose_name = "Ata de Reunião"
         verbose_name_plural = "Atas de Reuniões"

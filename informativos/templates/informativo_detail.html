@@ -15,7 +15,7 @@
                     </div>
                     <div class="mb-4">
                         <p class="text-primary mb-1"><i class="i-Edit-Map text-16 mr-1"></i>Data</p>
-                        <span>{{object.data}}</span>
+                        <span>{{object.data|default_if_none:'-'}}</span>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
