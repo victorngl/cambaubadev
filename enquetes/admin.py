@@ -18,10 +18,13 @@ class EnqueteAdmin(admin.ModelAdmin):
 			'descricao',
             'data_expiracao',
 			'anexo',
-        ]}),('Configurações', {'fields': [
+        ]}),
+        ('Configurações', {'fields': [
             'voto_unico',
 			'mostrar_resultado',
 			'grupo_usuarios',
+            'retrato',
+            'foto_capa',
         ]}),
     )
     change_form_template = "admin/enquete_change_form.html"

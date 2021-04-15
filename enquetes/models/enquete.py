@@ -56,6 +56,16 @@ class Enquete(models.Model):
         verbose_name="Data de Criação",
         auto_now_add=True
     )
+    
+    retrato = models.ImageField(
+        verbose_name='Retrato',  
+        null=True, blank=True
+    ) 
+
+    foto_capa = models.ImageField(
+        verbose_name='Foto de Capa',  
+        null=True, blank=True
+    )
 
     def __str__(self):
         return self.titulo
