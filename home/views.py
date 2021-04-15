@@ -27,7 +27,7 @@ def home(request):
                 enquetes = Enquete.objects.all()
                 template_name = 'home_responsavel.html'
             else:
-                aluno=Aluno.objects.filtar(
+                aluno=Aluno.objects.filter(
                     Q(nome=request.user)  
                 )
                 template_name = 'home.html'
