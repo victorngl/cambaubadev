@@ -6,7 +6,7 @@ from datetime import date
  
 register = template.Library()
 
-@register.simple_tag()
+""" @register.simple_tag()
 def bloquear_enquete(enquete):
     user = get_current_user()
     enquetes_respondidas = RespostaEnquete.objects.filter(usuario_votante=user, enquete=enquete)
@@ -15,4 +15,22 @@ def bloquear_enquete(enquete):
             return True
         else:
             return False
-    else: return False
+    else: return False """
+
+@register.simple_tag()
+def bloquear_enquete(enquete):
+    user = get_current_user()
+    enquetes_respondidas = RespostaEnquete.objects.filter(
+        usuario_votante=user, 
+        enquete=enquete 
+    ).exists()
+
+    if enquetes_respondidas and enquete.voto_unico:
+        return False # Se respondeu a enquete && se o voto é unico
+    else: 
+        if enquete.data_expiracao < date.today(): 
+            return False # Se a data foi inspirada
+        else:
+            return True # Se não respondeu a enquete
+        
+        
