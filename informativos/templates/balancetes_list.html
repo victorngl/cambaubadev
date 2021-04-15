@@ -23,7 +23,7 @@
                     {% for balancete in balancetes %}
                     <tr>
                         <td>{{balancete.titulo}}</td>
-                        <td>{{balancete.data}}</td>
+                        <td>{{balancete.data|default_if_none:'-'}}</td>
                         <td>{{balancete.escola}}</td>
                         <td><a href="{% url 'balancete_detail' balancete.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
                     </tr>

@@ -23,7 +23,7 @@
                     {% for balanco_patrimonial in balancos_patrimoniais %}
                     <tr>
                         <td>{{balanco_patrimonial.titulo}}</td>
-                        <td>{{balanco_patrimonial.data}}</td>
+                        <td>{{balanco_patrimonial.data|default_if_none:'-'}}</td>
                         <td>{{balanco_patrimonial.escola}}</td>
                         <td><a href="{% url 'balanco_patrimonial_detail' balanco_patrimonial.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
                     </tr>
