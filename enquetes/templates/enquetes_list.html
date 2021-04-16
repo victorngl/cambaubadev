@@ -25,7 +25,9 @@
                         <td>{{enquete.data_expiracao}}</td>
                         <td>
                             <a href="{% url 'enquete_detail' enquete.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></a>
+                            <a href="{% url 'enquete_resultados_detail' enquete.id %}"><i class="fas fa-superpowers" aria-hidden="true"></i> Resultados</a></a>
                         </td>
+                        
                     </tr>
                     {% endfor %}
                 </tbody>

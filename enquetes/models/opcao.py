@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django_quill.fields import QuillField
 from .enquete import Enquete
+from .resposta_enquete import RespostaEnquete
 
 class Opcao(models.Model):
     """
@@ -29,9 +30,18 @@ class Opcao(models.Model):
         auto_now_add=True
     )
 
+    @property
+    def quantidade_resposta_opcao(self):
+        quantidade=0
+        quantidade= RespostaEnquete.objects.filter(
+            enquete=self.enquete
+        ).count()
+
+        return quantidade
+
     def __str__(self):
         return str(self.titulo)
-
+    
     class Meta:
         app_label = "enquetes"
         verbose_name = "Opção"
