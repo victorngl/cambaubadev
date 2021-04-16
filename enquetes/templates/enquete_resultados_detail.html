@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="enquetes-details card user-profile o-hidden mb-4">
+    {% if object.foto_capa %}
+        <div class="header-cover" style="background-image: url({{object.foto_capa.url}})"></div>
+    {% else %}
+        <div class="header-cover" style="background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
+    {% endif %}
+    <div class="user-info">
+        <img class="profile-picture avatar-lg mb-2" src="{% static 'assets/images/faces/1.jpg' %}" alt="">
+    </div>
+    <div class="card-body">
+        <h4>{{ object.titulo }}</h4>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 col-6">
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Information text-16 mr-1"></i>Descrição</p>
+                    <span>{{object.descricao.html|safe}}</span>
+                </div>
+                {% if object.anexo %}
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Library text-16 mr-1"></i>Anexo</p>
+                    <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-6 col-6">
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data da Expiração</p>
+                    <span>{{object.data_expiracao}}</span>
+                </div>
+            </div> 
+            
+            <div class="col-6">
+                <hr>
+                <h4>Resposta(s) (3):</h4>  
+                <table class="table table-striped" id="enquetes">
+                    <thead>
+                        <tr>
+                            <th>Numero da questão</th>
+                            <th>Resposta</th>
+                            <th>Autor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                'id'
+                            </td>
+                            <td>
+                                'resposta'
+                            </td>
+                            <td>
+                                'user.first_name' 'user.last_name'
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <hr>
+                <h4>incluir 'Gráfico'</h4> </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

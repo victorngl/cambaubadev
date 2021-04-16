@@ -23,8 +23,8 @@
                     {% for atividade_escolar in atividades_escolares %}
                     <tr>
                         <td>{{ atividade_escolar.titulo }}</td>
-                        <td>{{ atividade_escolar.data_inicial }}</td>
-                        <td>{{ atividade_escolar.data_final }}</td>
+                        <td>{{ atividade_escolar.data_inicial|default_if_none:'-' }}</td>
+                        <td>{{ atividade_escolar.data_final|default_if_none:'-' }}</td>
                         <td><a href="{% url 'atividade_escolar_detail' atividade_escolar.id %}">Detalhes</a></td>
                     </tr>
                     {% endfor %}
