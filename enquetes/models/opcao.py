@@ -32,11 +32,11 @@ class Opcao(models.Model):
 
     @property
     def quantidade_resposta_opcao(self):
-        quantidade=0
-        quantidade= RespostaEnquete.objects.filter(
-            enquete=self.enquete
+        quantidade = RespostaEnquete.objects.filter(
+            enquete=self.enquete,
+            opcao=self.id
         ).count()
-
+        
         return quantidade
 
     def __str__(self):

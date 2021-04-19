@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DetailView
 from django.http import HttpResponseForbidden
-from .models import Enquete, RespostaEnquete
+from .models import Enquete, RespostaEnquete, Opcao
 from .forms import RespostaEnqueteForm
 from crum import get_current_user
 from datetime import date
