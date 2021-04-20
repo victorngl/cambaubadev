@@ -32,30 +32,28 @@
         </div>
         <div class="card-body">
             {% for aluno in alunos %}
-            {% for atividade in aluno.turma.atividadeescolar_set.all %}
             <ul class="list-group">
+            {% for atividade in aluno.turma.atividadeescolar_set.all %}
                 <li class="list-group-item">
-                    
-                    <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade}} </a> - {{aluno.nome}}
-                    
+                    <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> - {{aluno.nome}}
                 </li>
-            </ul>
             {% endfor %}
+            </ul>
             {% endfor %}
         </div>
     </div>
-    {% for enquete in enquetes %}
     <div class="card mb-4 text-center col-5">
         <div class="card-header"><h4>Ultimas Enquetes</h4></div>
         <div class="card-body">
             <ul class="list-group">
+                {% for enquete in enquetes %}
                 <li class="list-group-item">
                     
                     <a href="{% url 'enquete_detail' enquete.id %}">{{enquete}}</a>
                 </li>
+                {% endfor %}
         </div>
     </div>
-    {% endfor %}
 
 </div>
 <!-- Comunicados e Calendário -->
@@ -92,7 +90,7 @@
                 <h4>{{aluno}}</h4>
                 {% for comunicado in aluno.turma.comunicado_set.all %}
                 <h6>{{comunicado.titulo}}</h6>
-                <p>{{comunicado.descricao}}</p>
+                <p>{{comunicado.descricao.html|safe}}</p>
                 <br>
                 <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
                     Detalhes</a></a>
@@ -105,7 +103,7 @@
                 aria-labelledby="v-pills-profile-tab">
                 {% for comunicado in aluno.turma.comunicado_set.all %}
                 <h4>{{comunicado.titulo}}</h4>
-                {{comunicado.descricao}}
+                {{comunicado.descricao.html|safe}}
                 <br>
                 <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
                     Detalhes</a></a>
