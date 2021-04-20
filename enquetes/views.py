@@ -26,8 +26,7 @@ class RespostaEnqueteCreateView(CreateView):
     model = RespostaEnquete
     form_class = RespostaEnqueteForm
     template_name = 'resposta_enquete_form.html'
-    success_url = reverse_lazy('enquetes')
-
+    
     def get_initial(self):
         initial = {
             'enquete': self.kwargs['id']
@@ -52,3 +51,11 @@ class RespostaEnqueteCreateView(CreateView):
             return super(RespostaEnqueteCreateView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
+
+    def get_success_url(self): 
+        enquete = Enquete.objects.get(id=self.kwargs['id'])
+
+        if  enquete.mostrar_resultado:
+            return reverse_lazy('enquete_resultados_detail', kwargs = {'pk': self.kwargs['id']})
+        else:
+            return reverse_lazy('enquetes')
