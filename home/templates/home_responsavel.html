@@ -90,7 +90,7 @@
                 <h4>{{aluno}}</h4>
                 {% for comunicado in aluno.turma.comunicado_set.all %}
                 <h6>{{comunicado.titulo}}</h6>
-                <p>{{comunicado.descricao}}</p>
+                <p>{{comunicado.descricao.html|safe}}</p>
                 <br>
                 <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
                     Detalhes</a></a>
@@ -103,7 +103,7 @@
                 aria-labelledby="v-pills-profile-tab">
                 {% for comunicado in aluno.turma.comunicado_set.all %}
                 <h4>{{comunicado.titulo}}</h4>
-                {{comunicado.descricao}}
+                {{comunicado.descricao.html|safe}}
                 <br>
                 <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
                     Detalhes</a></a>

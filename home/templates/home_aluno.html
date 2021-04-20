@@ -23,7 +23,7 @@
             <div class="card-body">
                 {% for comunicado in aluno.turma.comunicado_set.all %}
                 <h6>{{comunicado.titulo}}</h6>
-                {{comunicado.descricao}}
+                {{comunicado.descricao.html|safe}}
                 <br>
                 <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></a>
                 {% endfor %}

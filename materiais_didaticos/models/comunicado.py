@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from escolas.models import Turma
+from django_quill.fields import QuillField
 
 class Comunicado(models.Model):
     """
@@ -18,7 +19,7 @@ class Comunicado(models.Model):
 		blank=True, null=True
     )
 
-    descricao = models.TextField(
+    descricao = QuillField(
         verbose_name="Descrição",
         blank=True, null=True
     )
