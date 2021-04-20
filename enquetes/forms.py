@@ -8,7 +8,7 @@ class RespostaEnqueteForm(forms.ModelForm):
         opcoesArray = Opcao.objects.filter(enquete=kwargs['initial']['enquete'])
         opcoes = list()
         for idx, opcao in enumerate(opcoesArray):
-            opcoes += [(str(idx + 1), mark_safe(opcao.titulo.html))]
+            opcoes += [(str(opcao.id), mark_safe(opcao.titulo.html))]
         self.fields['opcao'] = forms.ChoiceField(
             choices=(opcoes),
             widget=forms.RadioSelect
@@ -17,7 +17,8 @@ class RespostaEnqueteForm(forms.ModelForm):
     class Meta:
         model = RespostaEnquete
         fields = [
-            'enquete'
+            'enquete',
+            'opcao'
         ]
         widgets = {
             'enquete': forms.HiddenInput()

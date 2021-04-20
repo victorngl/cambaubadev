@@ -39,7 +39,9 @@ class RespostaEnqueteAdmin(admin.ModelAdmin):
     list_filter = ['enquete']
     fieldsets = (
         (None, {'fields': [
-			'enquete'
+			'enquete',
+            'opcao',
+            'usuario_votante'
         ]}),
     )
 

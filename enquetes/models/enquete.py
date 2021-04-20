@@ -67,6 +67,16 @@ class Enquete(models.Model):
         null=True, blank=True
     )
 
+    @property
+    def quantidade_respostas(self):
+        from .resposta_enquete import RespostaEnquete
+        
+        quantidade = RespostaEnquete.objects.filter(
+            enquete=self,
+        ).count()
+        
+        return quantidade
+
     def __str__(self):
         return self.titulo
 

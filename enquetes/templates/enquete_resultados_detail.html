@@ -2,12 +2,57 @@
 {% load static %}
 {% load bootstrap %}
 
+{% block extra_style %}
+<!--Load the AJAX API-->
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+
+        data.addRows([
+            {% for opcao in object.opcao_set.all %}
+    ['{{opcao.titulo.html|safe}}', {{ opcao.quantidade_resposta_opcao }}],
+        {% endfor %}
+     ]);
+
+
+    // Set chart options
+    var options = {
+        'title': 'Gráfico de respostas',
+        'width': 600,
+        'is3D': true,
+        'height': 500,
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+   }
+</script>
+
+{% endblock %}
+
 {% block content %}
 <div class="enquetes-details card user-profile o-hidden mb-4">
     {% if object.foto_capa %}
-        <div class="header-cover" style="background-image: url({{object.foto_capa.url}})"></div>
+    <div class="header-cover" style="background-image: url({{object.foto_capa.url}})"></div>
     {% else %}
-        <div class="header-cover" style="background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
+    <div class="header-cover" style="background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
     {% endif %}
     <div class="user-info">
         <img class="profile-picture avatar-lg mb-2" src="{% static 'assets/images/faces/1.jpg' %}" alt="">
@@ -21,7 +66,7 @@
                     <p class="text-primary mb-1"><i class="i-Information text-16 mr-1"></i>Descrição</p>
                     <span>{{object.descricao.html|safe}}</span>
                 </div>
-                {% if object.anexo %}
+                {% if objectanexo %}
                 <div class="mb-4">
                     <p class="text-primary mb-1"><i class="i-Library text-16 mr-1"></i>Anexo</p>
                     <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
@@ -33,37 +78,34 @@
                     <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data da Expiração</p>
                     <span>{{object.data_expiracao}}</span>
                 </div>
-            </div> 
-            
+            </div>
             <div class="col-6">
                 <hr>
-                <h4>Resposta(s) (3):</h4>  
+                <h4>Resposta(s) ({{object.quantidade_respostas}}):</h4>
                 <table class="table table-striped" id="enquetes">
                     <thead>
                         <tr>
-                            <th>Numero da questão</th>
-                            <th>Resposta</th>
-                            <th>Autor</th>
+                            <th>Opção</th>
+                            <th>Quantidade de votos</th>
+                            <th>Porcentagem</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for opcao in object.opcao_set.all %}
                         <tr>
-                            <td>
-                                'id'
-                            </td>
-                            <td>
-                                'resposta'
-                            </td>
-                            <td>
-                                'user.first_name' 'user.last_name'
-                            </td>
+                            <td id='questao'>{{opcao.titulo.html|safe}}</td>
+                            <td id='quantidade_questao'>{{opcao.quantidade_resposta_opcao}}</td>
+                            <td>{% widthratio opcao.quantidade_resposta_opcao object.quantidade_respostas 100 %}%</td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
             <div class="col-6">
                 <hr>
-                <h4>incluir 'Gráfico'</h4> </div>
+                <h4>Gráfico de respostas</h4>
+                <div id="chart_div" class=></div>
+            </div>
         </div>
     </div>
 </div>

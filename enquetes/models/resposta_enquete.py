@@ -20,8 +20,7 @@ class RespostaEnquete(models.Model):
 
     opcao = models.CharField(
         verbose_name="Opção escolhida:",
-        max_length=1,
-        choices=OPCOES_ENQUETE,
+        max_length=300,
         blank=True, null=True
     )
 
