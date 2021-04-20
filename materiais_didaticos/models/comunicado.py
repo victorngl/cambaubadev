@@ -18,7 +18,11 @@ class Comunicado(models.Model):
         verbose_name="Data",
 		blank=True, null=True
     )
-
+    
+    resumo = QuillField(
+        verbose_name='Resumo',
+        blank=False, null=True
+    )
     descricao = QuillField(
         verbose_name="Descrição",
         blank=True, null=True
