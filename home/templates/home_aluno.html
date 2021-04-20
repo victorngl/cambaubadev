@@ -34,17 +34,18 @@
     <div class="card mb-4 text-center col-4">
         <div class="card-header"><h4>Atividades</h4></div>
         <div class="card-body">
-            {% for atividade in aluno.turma.atividadeescolar_set.all %}
             <ul class="list-group">
+            {% for atividade in aluno.turma.atividadeescolar_set.all %}
+
                 <li class="list-group-item">
                     <a href="{% url 'atividade_escolar_detail' atividade.id %}">
                     {{atividade}} </a>- {{aluno.nome}}
                     
                 </li>
+                {% endfor %}
 
             </ul>
 
-            {% endfor %}
         </div>
     </div>
 </div>
@@ -79,15 +80,17 @@
         <div class="card mb-4 text-center">
             <div class="card-header"><h4>Atividades Extras</h4></div>
             <div class="card-body">
-                {% for atividade_extra in aluno.turma.atividadeextra_set.all %}
                 <ul class="list-group">
+                {% for atividade_extra in aluno.turma.atividadeextra_set.all %}
+
                     <li class="list-group-item">
                         <a href="{% url 'atividade_extra_detail' atividade_extra.id %}">
                         {{atividade_extra}}
                         </a>
                     </li>
-                </ul>
                 {% endfor %}
+                    
+                </ul>
             </div>
         </div>
     </div>
