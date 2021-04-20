@@ -44,6 +44,16 @@ class DocumentacaoObra(models.Model):
         blank=True
     )
 
+    retrato = models.ImageField(
+        verbose_name='Retrato',  
+        null=True, blank=True
+    ) 
+
+    foto_capa = models.ImageField(
+        verbose_name='Foto de Capa',  
+        null=True, blank=True
+    )
+
     data_alteracao = models.DateTimeField(
         verbose_name="Data de Alteração",
         auto_now=True

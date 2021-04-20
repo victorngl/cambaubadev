@@ -141,7 +141,7 @@ input:-internal-autofill-selected {
 }
 #page__login .campos::after {
   content: "";
-  background-image: url("/grupo 2292.png");
+  background-image: url("/favicon_cambauba.png");
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;

@@ -15,6 +15,6 @@ class ComunicadoAdmin(admin.ModelAdmin):
 
 @admin.register(MaterialDidatico)
 class MaterialDidaticoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo']
+    list_display = ['id', 'titulo', 'data']
     filter_horizontal = ['turmas']
     search_fields = ['titulo']
