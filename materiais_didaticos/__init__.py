@@ -1,0 +1,1 @@
+default_app_config='materiais_didaticos.apps.MateriaisDidaticosConfig'

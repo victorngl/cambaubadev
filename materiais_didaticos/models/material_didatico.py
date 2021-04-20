@@ -13,6 +13,11 @@ class MaterialDidatico(models.Model):
 		help_text="Campo Obrigatório*"
 	)
 
+    data = models.DateField(
+        verbose_name='Data',
+        blank=True, null=True
+    )
+
     descricao = models.TextField(
         verbose_name="Descrição",
         blank=True, null=True
@@ -28,6 +33,16 @@ class MaterialDidatico(models.Model):
         verbose_name="Anexo",
         upload_to ='uploads/',
         blank=True
+    )
+
+    retrato = models.ImageField(
+        verbose_name='Retrato',  
+        null=True, blank=True
+    ) 
+
+    foto_capa = models.ImageField(
+        verbose_name='Foto de Capa',  
+        null=True, blank=True
     )
 
     data_alteracao = models.DateTimeField(

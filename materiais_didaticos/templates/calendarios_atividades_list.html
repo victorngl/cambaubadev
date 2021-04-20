@@ -14,7 +14,8 @@
                 <thead>
                     <tr>
                         <th>Título</th>
-                        <th>Data</th>
+                        <th>Data inicial</th>
+                        <th>Data final</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
@@ -22,7 +23,8 @@
                     {% for calendario_atividade in calendarios_atividades %}
                     <tr>
                         <td>{{calendario_atividade.titulo}}</td>
-                        <td>{{calendario_atividade.data}}</td>
+                        <td>{{calendario_atividade.data_inicial}}</td>
+                        <td>{{calendario_atividade.data_final}}</td>
                         <td><a href="{% url 'calendario_atividade_detail' calendario_atividade.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
                     </tr>
                     {% endfor %}
