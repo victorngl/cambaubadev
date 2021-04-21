@@ -42,12 +42,12 @@ class Comunicado(models.Model):
 
     retrato = models.ImageField(
         verbose_name='Retrato',  
-        null=True, blank=True
+        null=True
     ) 
 
     foto_capa = models.ImageField(
         verbose_name='Foto de Capa',  
-        null=True, blank=True
+        null=True
     )
 
     data_alteracao = models.DateTimeField(

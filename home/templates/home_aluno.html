@@ -31,7 +31,11 @@
                     <div class="card card-ecommerce-3 o-hidden mb-4">
                         <div class="d-flex flex-column flex-sm-row">
                             <div class="row">
-                                <img class="card-img-left col-12" src="{{comunicado.foto_capa.url}}" alt="">
+                                {% if comunicado.foto_capa %}
+                                    <img class="card-img-left col-12" src="{{comunicado.foto_capa.url}}" alt="">
+                                {% else %}
+                                    <img class="card-img-left col-12" src="{% static 'assets/images/fundo_padrao.jpg' %}">
+                                {% endif %}
                             </div>
                             <div class="col-6">
                                 <h5 class="m-3">{{comunicado.titulo}}</h5>

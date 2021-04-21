@@ -1,0 +1,1 @@
+default_app_config='atividades_escolares.apps.AtividadesEscolaresConfig'
