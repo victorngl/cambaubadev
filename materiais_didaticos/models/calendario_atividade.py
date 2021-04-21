@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from escolas.models import Turma
+from escolas.models import Turma, Materia
 
 class CalendarioAtividade(models.Model):
     """
@@ -18,12 +18,12 @@ class CalendarioAtividade(models.Model):
         blank=True, null=True
     )
 
-    data_inicial = models.DateField(
+    data_inicial = models.DateTimeField(
         verbose_name="Data Inicial",
 		blank=True, null=True
     )
 
-    data_final = models.DateField(
+    data_final = models.DateTimeField(
         verbose_name="Data Final",
 		blank=True, null=True
     )
@@ -32,6 +32,15 @@ class CalendarioAtividade(models.Model):
         Turma,
         verbose_name=("Turmas"),
         blank=True
+    )
+
+    materia = models.ForeignKey(
+        Materia,
+        verbose_name="Matéria",
+		help_text="Somente se for relacionado a uma matéria",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
 
     retrato = models.ImageField(

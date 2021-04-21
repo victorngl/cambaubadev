@@ -16,6 +16,7 @@ django-avatar==5.0.0
 django-bleach==0.6.1
 django-bootstrap==0.2.4
 django-bootstrap-form==3.4
+django-colorfield==0.4.1
 django-crum==0.7.9
 django-import-export==2.5.0
 django-quill-editor==0.1.22
