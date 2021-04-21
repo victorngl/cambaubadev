@@ -34,8 +34,8 @@ class CalendarioAtividade(models.Model):
         blank=True
     )
 
-    retrato = models.ImageField(
-        verbose_name='Retrato',  
+    foto = models.ImageField(
+        verbose_name='Foto',  
         null=True, blank=True
     ) 
 
