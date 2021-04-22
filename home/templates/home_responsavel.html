@@ -9,7 +9,10 @@
         <h2>Bem-vindo à Intranet, Sr(a) {{user.first_name}} {{user.last_name}}</h2>
         <small>Responsável por </small>
         {% for aluno in alunos %}
-        <small>{{aluno}}</small>
+            <a href="{% url 'aluno_detail' aluno.id %}"> 
+                <small>{{aluno}} </small>
+            </a>
+            
         {% endfor %}
     </div>
 </div>
