@@ -33,6 +33,7 @@ class AlunoAdmin(admin.ModelAdmin):
         ('Dados Adicionais', {'fields': (
 			'turma',
 			'observacao',
+            'foto',
 		)}),
     )
 

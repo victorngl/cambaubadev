@@ -15,6 +15,11 @@ class Aluno(Pessoa):
 		blank=True, null=True
 	)
 
+    foto = models.ImageField(
+        verbose_name='Foto',  
+        null=True,  blank=True
+    )
+
     turma = models.ForeignKey(
         Turma,
         on_delete=models.SET_NULL,

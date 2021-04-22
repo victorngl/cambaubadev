@@ -3,31 +3,57 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="card mb-4">
-    <div class="card-header">
-        <h2>Comunicados</h2>
-        <small>Lista de Comunicados</small>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped" id="comunicados">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Data</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for comunicado in comunicados %}
-                    <tr>
-                        <td>{{comunicado.titulo}}</td>
-                        <td>{{comunicado.data}}</td>
-                        <td><a href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>Comunicados</h2>
+                <small>Últimas Notícias.</small>
+            </div>
+            <div class="card-body">
+                {% for comunicado in object_list %}
+                    <div class="card card-ecommerce-3 o-hidden mb-4">
+                        <div class="d-flex flex-column flex-sm-row">
+                            <div class="foto_noticia">
+                                <div class="row">
+                                    {% if comunicado.foto_capa %}
+                                        <img class="card-img-left col-12" src="{{comunicado.foto_capa.url}}" alt="">
+                                    {% else %}
+                                        <img class="card-img-left col-12" src="{% static 'assets/images/fundo_padrao.jpg' %}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 p-4 bloco_conteudo_comunicado">
+                                <h5 class="m-0">{{comunicado.titulo}}</h5>
+                                <small>{{comunicado.data_criacao}}</small>
+                                <p class="text-muted mt-3">
+                                    {{comunicado.resumo.html|safe}}
+                                    <a href="{% url 'comunicado_detail' comunicado.pk %}">Leia mais</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if is_paginated %}
+                    <div class="row">
+                        <div class="col-4 text-left">
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{page_obj.previous_page_number}}" class="ml-2" style="text-decoration: none;"><i class="i-Arrow-Left"></i></a>
+                            {% endif %}
+                        </div>
+                        <div class="col-4 text-center">
+                            <span class="current">
+                                {{page_obj.number}} de {{page_obj.paginator.num_pages}}
+                            </span>
+                        </div>
+                        <div class="col-4 text-right">
+                            {% if page_obj.has_next %}
+                                <a href="?page={{page_obj.next_page_number}}" class="mr-2" style="text-decoration: none;"><i class="i-Arrow-Right"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>

@@ -18,7 +18,12 @@
     {% for aluno in alunos %}
     <div class="card mb-4 text-center col-3">
         <div class="card-header"><h4>{{aluno.nome}}</h4></div>
-        <div class="card-body">{{aluno.turma}}</div>
+        <div class="card-body">
+            <p>{{aluno.turma}}</p>
+            <a href="{% url 'aluno_detail' aluno.id %}">
+                Verificar perfil
+            </a>
+            </div>
     </div>
     {% endfor %}
 </div>
