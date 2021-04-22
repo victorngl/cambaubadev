@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from escolas.models import Turma
+from escolas.models import Turma, Materia
 from .tipo_material_didatico import TipoMaterialDidatico
 class MaterialDidatico(models.Model):
     """
@@ -16,6 +16,13 @@ class MaterialDidatico(models.Model):
     tipo = models.ForeignKey(
         TipoMaterialDidatico,
         verbose_name="Tipo",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+
+    materia = models.ForeignKey(
+        Materia,
+        verbose_name="Materia",
         on_delete=models.SET_NULL,
         null=True,
     )
