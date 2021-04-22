@@ -3,48 +3,165 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="card user-profile o-hidden mb-4">
-        <div class="header-cover" style=" background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
-    <div class="user-info">
-        {% if object.foto %}
-            <img class="profile-picture avatar-lg mb-2" src="{{object.foto.url}}" alt="">
-        {% else %}
-            <img class="profile-picture avatar-lg mb-2" src="{% static 'assets/images/faces/1.jpg' %}" alt="">
-        {% endif %}
+<!-- Titulo - Aluno -->
+<div class="card mb-4">
+    <div class="card-header" style="background-color: blue;">
+        <h2>Perfil do aluno {{aluno.nome}}</h2>
+        <small>{{perfil}} {{aluno.turma}}</small>
     </div>
-    <div class="card-body">
-        <h4>{{ object }}</h4>
-        <hr>
-        <div class="row container">
-            <div class="col-6">
-                <div class="">
-                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Descrição</p>
-                    <span>{{object.turma}}</span>
-                </div>
+</div>
+<!-- Opções -->
+<div class="d-flex justify-content-around row">
+    <div class="col-12">
+        <div class="card mb-4 text-center container-fluid">
+            <div class="card-header"><h4>Agenda</h4></div>
+            <div class="card-body">'incluir A agenda'</div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="card ultimas_noticias">
+            <div class="card-header">
+                <h2>Comunicados</h2>
+                <small>Últimas Notícias.</small>
             </div>
-            <div class="col-6">
-                {% if object.observacao %}
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Edit-Map text-16 mr-1"></i>Observação</p>
-                    <span>{{object.observacao}}</span>
-                </div>
-            </div>
-            <div class="col-6">
+            <div class="card-body">
+                {% for comunicado in aluno.turma.comunicado_set.all %}
+                    <div class="card card-ecommerce-3 o-hidden mb-4">
+                        <div class="d-flex flex-column flex-sm-row">
+                            <div class="row">
+                                {% if comunicado.foto_capa %}
+                                    <img class="card-img-left col-12" src="{{comunicado.foto_capa.url}}" alt="">
+                                {% else %}
+                                    <img class="card-img-left col-12" src="{% static 'assets/images/fundo_padrao.jpg' %}">
+                                {% endif %}
+                            </div>
+                            <div class="col-6">
+                                <h5 class="m-3">{{comunicado.titulo}}</h5>
+                                <small>{{comunicado.data_criacao}}</small>
+                                <p class="text-muted mt-3">
+                                {{comunicado.resumo.html|safe}}
+                                </p>
+                                <div class="btn btn-primary btn-sm">
+                                    <a class="text-white" href="{% url 'comunicado_detail' comunicado.pk %}">Leia mais</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if is_paginated %}
+                    <div class="row">
+                        <div class="col-4 text-left">
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{page_obj.previous_page_number}}" class="ml-2" style="text-decoration: none;"><i class="i-Arrow-Left"></i></a>
+                            {% endif %}
+                        </div>
+                        <div class="col-4 text-center">
+                            <span class="current">
+                                {{page_obj.number}} de {{page_obj.paginator.num_pages}}
+                            </span>
+                        </div>
+                        <div class="col-4 text-right">
+                            {% if page_obj.has_next %}
+                                <a href="?page={{page_obj.next_page_number}}" class="mr-2" style="text-decoration: none;"><i class="i-Arrow-Right"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
                 {% endif %}
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Edit-Map text-16 mr-1"></i>Responsáveis</p>
-                    {% if object.responsavel1 %}
-                        <span>{{object.responsavel1}}</span>
-                    {% endif %}
-                    {% if object.responsavel2 %}
-                        <span>{{object.responsavel2}}</span>
-                    {% endif %}
-                    {% if object.responsavel3 %}
-                        <span>{{object.responsavel3}}</span>
-                    {% endif %}
+                <div class="row">
+                    <div class="col-12">
+                        <a href="materiais_didaticos/comunicados/" class="ml-2 btn-visualizar-todos" style="text-decoration: none;">Visualizar Todos</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="card mb-4 text-center col-4">
+        <div class="card-header"><h4>Atividades</h4></div>
+        <div class="card-body">
+            <ul class="list-group">
+            {% for atividade in aluno.turma.atividadeescolar_set.all %}
+                <li class="list-group-item">
+                    <a href="{% url 'atividade_escolar_detail' atividade.id %}">
+                    {{atividade}} </a>- {{aluno.nome}}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
+<div class="card mb-4 text-center">
+    <div class="card-header"><h4>Material Didático</h4></div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped" id="material_didatico">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Turmas</th>
+                        <th>Anexo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for material_didatico in aluno.turma.materialdidatico_set.all %}
+                    <tr>
+                        <td>{{material_didatico.titulo}}</td>
+                        <td>{{material_didatico.turmas_vinculadas}}</td>
+                        <td><a href="{% url 'material_didatico_detail' material_didatico.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="card mb-4 text-center">
+            <div class="card-header"><h4>Atividades Extras</h4></div>
+            <div class="card-body">
+                <ul class="list-group">
+                {% for atividade_extra in aluno.turma.atividadeextra_set.all %}
+
+                    <li class="list-group-item">
+                        <a href="{% url 'atividade_extra_detail' atividade_extra.id %}">
+                        {{atividade_extra}}
+                        </a>
+                    </li>
+                {% endfor %}
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card mb-4 text-center">
+            <div class="card-header"><h4>Calendário</h4></div>
+            <div class="card-body">
+                'incluir Calendário'
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function () {
+        $('#material_didatico').DataTable({
+            "language": {
+                "show": "Visualizar",
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nada encontrado",
+                "infoFiltered": "(filtrado de _MAX_ no total)",
+                "search": "Pesquisar",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Próxima"
+                }
+            },
+        });
+    });
+</script>
 {% endblock %}
