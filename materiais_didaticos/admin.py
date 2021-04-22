@@ -6,6 +6,7 @@ class CalendarioAtividadeAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
+    autocomplete_fields = ['materia']
 
 @admin.register(Comunicado)
 class ComunicadoAdmin(admin.ModelAdmin):

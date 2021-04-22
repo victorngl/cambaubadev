@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from colorfield.fields import ColorField
 
 class Materia(models.Model):
     """
@@ -9,6 +10,11 @@ class Materia(models.Model):
     titulo = models.CharField(
         verbose_name="Título",
         max_length=200
+    )
+
+    hexadecimal = ColorField(
+        default='#FF0000', 
+        format='hexa'
     )
 
     data_alteracao = models.DateTimeField(
