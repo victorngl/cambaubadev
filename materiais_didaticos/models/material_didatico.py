@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from escolas.models import Turma
+from escolas.models import Turma, Materia
 from .tipo_material_didatico import TipoMaterialDidatico
 class MaterialDidatico(models.Model):
     """

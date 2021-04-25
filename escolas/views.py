@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Turma
+from .models import Turma, Aluno
 from materiais_didaticos.models import Comunicado
 from atividades_escolares.models import AtividadeEscolar
 from materiais_didaticos.models import MaterialDidatico
 from django.views.generic import DetailView
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from datetime import date
 
