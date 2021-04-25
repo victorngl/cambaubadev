@@ -9,7 +9,10 @@
         <h2>Bem-vindo à Intranet, Sr(a) {{user.first_name}} {{user.last_name}}</h2>
         <small>Responsável por </small>
         {% for aluno in alunos %}
-        <small>{{aluno}}</small>
+            <a href="{% url 'aluno_detail' aluno.id %}"> 
+                <small>{{aluno}} </small>
+            </a>
+            
         {% endfor %}
     </div>
 </div>
@@ -18,7 +21,12 @@
     {% for aluno in alunos %}
     <div class="card mb-4 text-center col-3">
         <div class="card-header"><h4>{{aluno.nome}}</h4></div>
-        <div class="card-body"><a href="{% url 'turma_detail' aluno.turma.id %}">{{aluno.turma}}</a></div>
+        <div class="card-body">
+            <p><a href="{% url 'turma_detail' aluno.turma.id %}">{{aluno.turma}}</a></p>
+            <a href="{% url 'aluno_detail' aluno.id %}">
+                Verificar perfil
+            </a>
+            </div>
     </div>
     {% endfor %}
 </div>

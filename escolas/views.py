@@ -7,6 +7,13 @@ from django.views.generic import DetailView
 from django.db.models import Q
 from datetime import date
 
+@login_required
+def escolas(request):
+    return render(request)
+
+class AlunoDetailView(DetailView):
+    model = Aluno
+
 class TurmaDetailView(DetailView):
     model = Turma
 

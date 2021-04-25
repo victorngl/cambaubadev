@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CalendarioAtividade, Comunicado, MaterialDidatico
+from .models import CalendarioAtividade, Comunicado, MaterialDidatico, TipoMaterialDidatico
 
 @admin.register(CalendarioAtividade)
 class CalendarioAtividadeAdmin(admin.ModelAdmin):
@@ -19,5 +19,10 @@ class ComunicadoAdmin(admin.ModelAdmin):
 class MaterialDidaticoAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'data']
     filter_horizontal = ['turmas']
-    search_fields = ['titulo']
-    autocomplete_fields = ['materia']
+    autocomplete_fields = ['materia', 'tipo']
+    search_fields = ['titulo', 'tipo']
+
+@admin.register(TipoMaterialDidatico)
+class TipoMaterialDidaticoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'tipo']
+    search_fields = ['tipo']

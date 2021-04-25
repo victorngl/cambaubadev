@@ -30,6 +30,7 @@ urlpatterns = [
     path('atividades/', include('atividades.urls')),
     path('atividades_escolares/', include('atividades_escolares.urls')),
     path('informativos/', include('informativos.urls')),
+    path('escolas/', include('escolas.urls')),
     path('materiais_didaticos/', include('materiais_didaticos.urls')),
     path('turmas/', include('escolas.urls')),
     path('avatar/', include('avatar.urls')),

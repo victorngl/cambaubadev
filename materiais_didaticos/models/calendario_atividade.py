@@ -33,18 +33,18 @@ class CalendarioAtividade(models.Model):
         verbose_name=("Turmas"),
         blank=True
     )
-
+    
     materia = models.ForeignKey(
         Materia,
         verbose_name="Matéria",
-		help_text="Somente se for relacionado a uma matéria",
+		    help_text="Somente se for relacionado a uma matéria",
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
     )
 
-    retrato = models.ImageField(
-        verbose_name='Retrato',  
+    foto = models.ImageField(
+        verbose_name='Foto',   
         null=True, blank=True
     ) 
 

@@ -1,8 +1,7 @@
 from django.db import models
 from datetime import datetime
-from escolas.models import Turma, Materia
+from escolas.models import Turma
 from .tipo_material_didatico import TipoMaterialDidatico
-
 class MaterialDidatico(models.Model):
     """
        Classe MaterialDidatico implementa as funções relacionadas a um material didático na plataforma.
@@ -12,6 +11,13 @@ class MaterialDidatico(models.Model):
         max_length=250,
         verbose_name="Título",
         help_text="Campo Obrigatório*"
+    )
+
+    tipo = models.ForeignKey(
+        TipoMaterialDidatico,
+        verbose_name="Tipo",
+        on_delete=models.SET_NULL,
+        null=True,
     )
 
     data = models.DateField(
@@ -43,8 +49,8 @@ class MaterialDidatico(models.Model):
         blank=True
     )
 
-    retrato = models.ImageField(
-        verbose_name='Retrato',  
+    foto = models.ImageField(
+        verbose_name='Foto',  
         null=True, blank=True
     ) 
 

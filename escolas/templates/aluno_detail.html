@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="card user-profile o-hidden mb-4">
+        <div class="header-cover" style=" background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
+    <div class="user-info">
+        {% if object.foto %}
+            <img class="profile-picture avatar-lg mb-2" src="{{object.foto.url}}" alt="">
+        {% else %}
+            <img class="profile-picture avatar-lg mb-2" src="{% static 'assets/images/faces/1.jpg' %}" alt="">
+        {% endif %}
+    </div>
+    <div class="card-body">
+        <h4>{{ object }}</h4>
+        <hr>
+        <div class="row container">
+            <div class="col-6">
+                <div class="">
+                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Descrição</p>
+                    <span>{{object.turma}}</span>
+                </div>
+            </div>
+            <div class="col-6">
+                {% if object.observacao %}
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Edit-Map text-16 mr-1"></i>Observação</p>
+                    <span>{{object.observacao}}</span>
+                </div>
+            </div>
+            <div class="col-6">
+                {% endif %}
+                <div class="mb-4">
+                    <p class="text-primary mb-1"><i class="i-Edit-Map text-16 mr-1"></i>Responsáveis</p>
+                    {% if object.responsavel1 %}
+                        <span>{{object.responsavel1}}</span>
+                    {% endif %}
+                    {% if object.responsavel2 %}
+                        <span>{{object.responsavel2}}</span>
+                    {% endif %}
+                    {% if object.responsavel3 %}
+                        <span>{{object.responsavel3}}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
