@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
-from escolas.models import Turma
+from escolas.models import Turma, Materia
+from .tipo_material_didatico import TipoMaterialDidatico
 
 class MaterialDidatico(models.Model):
     """
@@ -8,10 +9,10 @@ class MaterialDidatico(models.Model):
     """
 
     titulo = models.CharField(
-		max_length=250,
-		verbose_name="Título",
-		help_text="Campo Obrigatório*"
-	)
+        max_length=250,
+        verbose_name="Título",
+        help_text="Campo Obrigatório*"
+    )
 
     data = models.DateField(
         verbose_name='Data',
@@ -27,6 +28,13 @@ class MaterialDidatico(models.Model):
         Turma,
         verbose_name=("Turmas"),
         blank=True
+    )
+
+    materia = models.ForeignKey(
+        Materia,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="Matéria"
     )
     
     anexo = models.FileField(

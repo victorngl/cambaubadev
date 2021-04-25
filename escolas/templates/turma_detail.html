@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+<!-- Titulo - Aluno -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h2>{{ object.nome }}</h2>
+    </div>
+</div>
+<div class="itens-row row justify-content-between">
+    <section class="comunicados box col-sm-12 col-md-7 col-lg-7">
+        <h2 class="comunicados-titulo">Comunicados</h2>
+        {% for comunicado in comunicados %}
+        <div class="comunicado">
+            <div class="comunicado-thumb col-sm-12 col-md-3 col-lg-3" style="background-image: url({{comunicado.retrato.url}})"></div>
+            <div class="comunicado-header">
+                <h3 class="comunicado-header-titulo">{{comunicado.titulo}}</h3>
+                <div class="comunicado-header-meta">
+                    <span class="comunicado-header-meta-autor">{{comunicado.usuario_criacao.first_name}} {{comunicado.usuario_criacao.last_name}} </span>
+                    <span class="comunicado-header-meta-data float-right">{{comunicado.data}}</span>
+                </div>
+            </div>
+            <div class="comunicado-resumo">{{comunicado.resumo.html|safe}}</div>
+            <span class="comunicado-link float-right font-weight-bold"><a href="{% url 'comunicado_detail' comunicado.id %}" class="text-dark">Ler Mais</a></span>
+        </div>
+        {% endfor %}
+    </section>
+    <section class="ativ-escolares box col-sm-12 col-md-4 col-lg-4">
+        <h2 class="ativ-escolares-titulo">Atividades Escolares</h2>
+        {% for atividade_escolar in atividades_escolares %}
+        <div class="sidebar" style="border-left: 10px solid {{atividade_escolar.materia.hexadecimal}}">
+            <a href="{% url 'atividade_escolar_detail' atividade_escolar.id %}" class="link-area"></a>
+            <h3 class="sidebar-titulo mt-0">{{atividade_escolar.titulo}}</h3>
+            <span class="sidebar-materia float-left">{{atividade_escolar.materia}}</span>
+            <span class="sidebar-data float-right">{{atividade_escolar.data_inicial}}</span>
+        </div>
+        {% endfor %}
+    </section>
+</div>
+<div class="itens-row row justify-content-between">
+    <section class="calendario box col-sm-12 col-md-7 col-lg-7">
+    </section>
+    <section class="materiais-didaticos box col-sm-12 col-md-4 col-lg-4">
+        <h2 class="ativ-escolares-titulo">Materiais Didáticos</h2>
+        {% for material_didatico in materiais_didaticos %}
+        <div class="sidebar" style="border-left: 10px solid {{material_didatico.materia.hexadecimal}}">
+            <a href="{% url 'material_didatico_detail' material_didatico.id %}" class="link-area"></a>
+            <h3 class="sidebar-titulo mt-0">{{material_didatico.titulo}}</h3>
+            <span class="sidebar-materia float-left">{{material_didatico.materia}}</span>
+            <span class="sidebar-data float-right">{{material_didatico.data}}</span>
+        </div>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}
+
+<!-- {% block extra_js %}
+<script>
+    $(document).ready(function () {
+        $('#material_didatico').DataTable({
+            "language": {
+                "show": "Visualizar",
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nada encontrado",
+                "infoFiltered": "(filtrado de _MAX_ no total)",
+                "search": "Pesquisar",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Próxima"
+                }
+            },
+        });
+    });
+</script>
+{% endblock %} -->
