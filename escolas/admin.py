@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia
+from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia, Professor
 
 
 @admin.register(Turma)
 class TurmaAdmin(admin.ModelAdmin):
     list_display = ['id', 'nome', 'serie']
     autocomplete_fields = ['serie']
+    filter_horizontal = ['professores']
     search_fields = ['nome']
 
 
@@ -58,3 +59,21 @@ class TipoSerieAdmin(admin.ModelAdmin):
 class MateriaAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo']
     search_fields = ['titulo']
+
+@admin.register(Professor)
+class ProfessorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'nome']
+    search_fields = ['nome']
+    fieldsets = (
+        ('Dados Principais', {'fields': (
+			'nome',
+			'cpf_cnpj',
+			'rg',
+			'usuario',
+		)}),
+        ('Contatos', {'fields': (
+			'telefone',
+			'celular',
+			'email',
+		)})
+    )

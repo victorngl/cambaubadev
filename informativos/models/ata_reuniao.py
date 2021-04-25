@@ -38,11 +38,6 @@ class AtaReuniao(models.Model):
     foto = models.ImageField(
         verbose_name='Foto',  
         null=True, blank=True
-    ) 
-
-    foto_capa = models.ImageField(
-        verbose_name='Foto de Capa',  
-        null=True, blank=True
     )
 
     data_alteracao = models.DateTimeField(
