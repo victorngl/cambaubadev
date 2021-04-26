@@ -57,7 +57,7 @@ class TipoSerieAdmin(admin.ModelAdmin):
 
 @admin.register(Materia)
 class MateriaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo']
+    list_display = ['id', 'titulo', 'foto_capa']
     search_fields = ['titulo']
 
 @admin.register(Professor)
