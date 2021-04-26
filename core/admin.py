@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from import_export.admin import ImportExportModelAdmin
 from .models import Cidade, Endereco, Estado, Pais, Profile
 from .forms import UserCreateForm
+from import_export import resources
 
 admin.site.unregister(User)
 

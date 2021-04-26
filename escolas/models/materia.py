@@ -27,6 +27,11 @@ class Materia(models.Model):
         auto_now_add=True
     )
 
+    foto_capa = models.ImageField(
+        verbose_name='Foto de Capa',  
+        null=True
+    )
+    
     def __str__(self):
         return self.titulo
 

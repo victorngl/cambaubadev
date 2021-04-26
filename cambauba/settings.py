@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'materiais_didaticos',
     'django_bleach',
     'django_quill',
-    'colorfield' 
+    'colorfield',
+    'import_export',
 ]
 
 MIDDLEWARE = [
