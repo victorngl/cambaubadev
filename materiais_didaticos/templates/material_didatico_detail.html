@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="card user-profile o-hidden mb-4">
-    {% if object.foto_capa %}
-        <div class="header-cover" style="background-image: url({{object.foto_capa.url}})"></div>
+    {% if object.materia.foto_capa %}
+        <div class="header-cover" style="background-image: url({{object.materia.foto_capa.url}})"></div>
     {% else %}
         <div class="header-cover" style="background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
     {% endif %}
