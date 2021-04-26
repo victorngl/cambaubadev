@@ -3,11 +3,10 @@
 {% load bootstrap %}
 
 {% block content %}
-<!-- Titulo - Responsável -->
 <main class="page_home">
-
+<!-- container responsável -->
     <div class="card mb-4">
-        <div class="card-header" style="background-color: blue;">
+        <div class="card-header card__container" style="background-color: blue;">
             <h2>Bem-vindo à Intranet, Sr(a) {{user.first_name}} {{user.last_name}}</h2>
             <small>Responsável por </small>
             {% for aluno in alunos %}
@@ -19,7 +18,7 @@
         </div>
     </div>
     <!-- Alunos -->
-    <div class="d-flex justify-content-around row">
+    <div class="d-flex justify-content-around row card__alunos">
         {% for aluno in alunos %}
         <div class="card mb-4 text-center col-3">
             <div class="card-header"><h4>{{aluno.nome}}</h4></div>
@@ -36,7 +35,7 @@
     <!-- Atividades e ultimas enquetes -->
     <div class="d-flex justify-content-around row">
 
-        <div class="card mb-4 text-center col-5">
+        <div class="card mb-4 text-center col-5 card__atividades">
             <div class="card-header">
                 <h4>Atividades</h4>
             </div>
@@ -52,7 +51,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="card mb-4 text-center col-5">
+        <div class="card mb-4 text-center col-5 card__enquetes">
             <div class="card-header"><h4>Ultimas Enquetes</h4></div>
             <div class="card-body">
                 <ul class="list-group">

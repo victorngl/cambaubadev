@@ -3,23 +3,23 @@
 {% load bootstrap %}
 
 {% block content %}
-<!-- Titulo - Aluno -->
 <main class="page_home">
+<!-- container Aluno-->
     <div class="card mb-4">
-        <div class="card-header" style="background-color: blue;">
+        <div class="card-header card__container" style="background-color: blue;">
             <h2>Bem-vindo à Intranet, {{user.first_name}} {{user.last_name}}</h2>
             <small>{{perfil}} {{aluno.turma}}</small>
         </div>
     </div>
-    <!-- Opções -->
-    <div class="d-flex justify-content-around row">
+    <!-- Agenda -->
+    <div class="d-flex justify-content-around row card__agenda">
         <div class="col-12">
             <div class="card mb-4 text-center container-fluid">
                 <div class="card-body">'incluir A agenda'</div>
             </div>
         </div>
-        <!---->
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <!-- Comunicados -->
+        <div class="col-sm-12 col-md-6 col-lg-6 card__comunicados">
             <div class="card ultimas_noticias">
                 <div class="card-body">
                     {% for comunicado in aluno.turma.comunicado_set.all %}
@@ -73,6 +73,7 @@
                 </div>
             </div>
         </div>
+        <!-- Atividade escolar -->
         <div class="card mb-4 text-center col-4">
             <div class="card-body">
                 <ul class="list-group">
@@ -90,7 +91,8 @@
             </div>
         </div>
     </div>
-    <div class="card mb-4 text-center">
+    <!--Materiais didáticos-->
+    <div class="card mb-4 text-center card__materia_didatico">
         <div class="card-header"><h4>Material Didático</h4></div>
         <div class="card-body">
             <div class="table-responsive">
@@ -117,7 +119,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <!--Atividades extras-->
+        <div class="col-6 card__atividades extras">
             <div class="card mb-4 text-center">
                 <div class="card-header"><h4>Atividades Extras</h4></div>
                 <div class="card-body">
@@ -135,7 +138,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <!-- Calendário -->
+        <div class="col-6 card__calendario">
             <div class="card mb-4 text-center">
                 <div class="card-header"><h4>Calendário</h4></div>
                 <div class="card-body">
