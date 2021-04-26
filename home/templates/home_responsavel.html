@@ -176,51 +176,78 @@
     </ul>
     <div class="tab-content" id="myTabContent">
 
-        <div class="tab-pane fade show active d-flex row" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                  <div class="tab-content order-first" id="v-pills-tabContent">
+                      <div class="tab-pane fade show active" id="todos_comunicados" role="tabpanel"
+                          aria-labelledby="v-pills-home">
+                          {% for aluno in alunos %}
+                              <h4>{{aluno}}</h4>
+                              {% for comunicado in aluno.turma.comunicado_set.all %}
+                                  <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                                    <div class="d-flex flex-column flex-sm-row">
+                                        <div class="">
+                                            <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
+                                        </div>
+                                        <div class="flex-grow-1 p-4">
+                                            <h5 class="m-0">{{comunicado.titulo}}</h5>
+                                            <p class="text-muted mt-3">
+                                                {{comunicado.resumo.html|safe}}
+                                            </p>
+                                        </div>
+                                        <div class="leia-mais">
+                                            <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
+                                        </div>
+                                    </div>
+                                  </div>
+                              {% endfor %}
+                          {% endfor %}
+                      </div>
 
-            <div class="nav nav-pills flex-column col-3 order-last" id="v-pills-tab" role="tablist"
-                aria-orientation="vertical">
-
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
-                    aria-controls="v-pills-home" aria-selected="true">Todos</a>
-                {% for aluno in alunos %}
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
-                    aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
-
-
-                {% endfor %}
-            </div>
-            <div class="tab-content col-8 order-first" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="todos_comunicados" role="tabpanel"
-                    aria-labelledby="v-pills-home">
-                    {% for aluno in alunos %}
-                    <h4>{{aluno}}</h4>
-                    {% for comunicado in aluno.turma.comunicado_set.all %}
-                    <h6>{{comunicado.titulo}}</h6>
-                    <p>{{comunicado.descricao.html|safe}}</p>
-                    <br>
-                    <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
-                        Detalhes</a></a>
-                    {% endfor %}
-                    {% endfor %}
+                      {% for aluno in alunos %}
+                        <div class="tab-pane fade" id="aluno-{{aluno.id}}" role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab">
+                            <h4>{{aluno}}</h4>
+                            {% for comunicado in aluno.turma.comunicado_set.all %}
+                              <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                                <div class="d-flex flex-column flex-sm-row">
+                                    <div class="">
+                                        <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
+                                    </div>
+                                    <div class="flex-grow-1 p-4">
+                                        <h5 class="m-0">{{comunicado.titulo}}</h5>
+                                        <p class="text-muted mt-3">
+                                            {{comunicado.resumo.html|safe}}
+                                        </p>
+                                    </div>
+                                    <div class="leia-mais">
+                                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
+                                    </div>
+                                </div>
+                              </div>
+                            {% endfor %}
+                        </div>
+                      {% endfor %}
+                  </div>
                 </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                  <div class="nav nav-pills flex-column col-3 order-last" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-                {% for aluno in alunos %}
-                <div class="tab-pane fade col-8 order-first" id="aluno-{{aluno.id}}" role="tabpanel"
-                    aria-labelledby="v-pills-profile-tab">
-                    {% for comunicado in aluno.turma.comunicado_set.all %}
-                    <h4>{{comunicado.titulo}}</h4>
-                    {{comunicado.descricao.html|safe}}
-                    <br>
-                    <a class="float-right" href="{% url 'comunicado_detail' comunicado.id %}"><i class="fas fa-search-plus"></i>
-                        Detalhes</a></a>
-                    {% endfor %}
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
+                          aria-controls="v-pills-home" aria-selected="true">Todos</a>
+                      {% for aluno in alunos %}
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
+                          aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
+
+
+                      {% endfor %}
+                  </div>
                 </div>
-                {% endfor %}
             </div>
         </div>
         <!-- Calendário -->
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="card">
                 <div class="card-body">
                     <div id='script-warning'>
