@@ -1,0 +1,56 @@
+.itens-row {
+    margin-bottom: 100px;
+}
+.link-area {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+.box {
+    border: 1px solid;
+    height: 60vh;
+    overflow-y: scroll;
+}
+.comunicado {
+    border: 1px solid;
+    float: left;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+}
+.comunicado-thumb {
+    float: left;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 10px 10px 0;
+    min-height: 200px;
+}
+.comunicado-header-titulo {
+    margin: 5px 0;
+}
+.comunicado-resumo {
+    margin-top: 15px;
+}
+.comunicado-link {
+    font-size: 20px;
+}
+.sidebar {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    float: left;
+    margin-bottom: 20px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+@media screen and (max-width: 600px) {
+    .box {
+        margin-bottom: 30px;
+    }
+}
