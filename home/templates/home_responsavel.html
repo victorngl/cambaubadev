@@ -3,29 +3,30 @@
 {% load bootstrap %}
 
 {% block content %}
+<div class="boasvindas">
+    <div class="card-header card__container" style="background-color: blue;">
+        <h2>Bem vindo(a) à Intranet, Sr(a) {{user.first_name}} {{user.last_name}}</h2>
+        <small>Responsável por </small>
+        {% for aluno in alunos %}
+            <a href="{% url 'aluno_detail' aluno.id %}"> 
+                <small>{{aluno}} </small>
+            </a>
+            
+        {% endfor %}
+    </div>
+</div>
 <main class="page_home">
 <!-- container responsável -->
-    <div class="card mb-4">
-        <div class="card-header card__container" style="background-color: blue;">
-            <h2>Bem-vindo à Intranet, Sr(a) {{user.first_name}} {{user.last_name}}</h2>
-            <small>Responsável por </small>
-            {% for aluno in alunos %}
-                <a href="{% url 'aluno_detail' aluno.id %}"> 
-                    <small>{{aluno}} </small>
-                </a>
-                
-            {% endfor %}
-        </div>
-    </div>
+
     <!-- Alunos -->
     <div class="d-flex justify-content-around row card__alunos">
         {% for aluno in alunos %}
         <div class="card mb-4 text-center col-3">
             <div class="card-header"><h4>{{aluno.nome}}</h4></div>
             <div class="card-body">
-                <p><a href="{% url 'turma_detail' aluno.turma.id %}">{{aluno.turma}}</a></p>
-                <a href="{% url 'aluno_detail' aluno.id %}">
-                    Verificar perfil
+                <p><a href="{% url 'turma_detail' aluno.turma.id %}">Turma {{aluno.turma}}</a></p>
+                <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
+                    Ver Mais
                 </a>
                 </div>
         </div>
@@ -34,10 +35,11 @@
     <hr>
     <!-- Atividades e ultimas enquetes -->
     <div class="d-flex justify-content-around row">
-
-        <div class="card mb-4 text-center col-5 card__atividades">
+      
+        <div class="mb-4 text-center col-6 card__atividades">
+            <div class="atividades">
             <div class="card-header">
-                <h4>Atividades</h4>
+                <h1 class="titulosecoes">Atividades</h1>
             </div>
             <div class="card-body">
                 {% for aluno in alunos %}
@@ -51,8 +53,12 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="card mb-4 text-center col-5 card__enquetes">
-            <div class="card-header"><h4>Ultimas Enquetes</h4></div>
+    </div>
+
+      
+        <div class="mb-4 text-center col-6 card__enquetes">
+            <div class="enquetes">
+            <div class="card-header"><h1 class="titulosecoes">Enquetes</h1></div>
             <div class="card-body">
                 <ul class="list-group">
                     {% for enquete in enquetes %}
@@ -63,6 +69,7 @@
                     {% endfor %}
             </div>
         </div>
+    </div>
 
     </div>
     <!-- Comunicados e Calendário -->

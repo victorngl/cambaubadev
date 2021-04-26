@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon_cambauba.png' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
-    <link rel="stylesheet" href="https://intranet.novadata.com.br/intranets/criteria/bernardo.css">
+    <link rel="stylesheet" href="https://intranet.novadata.com.br/intranets/cambauba/bernardo.css">
     
     <title>EMC - Escola Modular Cambauba</title>
 
@@ -27,7 +27,7 @@
 <body id="page__login">
     <div class="login__wrapper">
         <section class="imagem__quebra">
-            <img src="{% static 'login/img.png' %}" alt="instalador">
+            <img src="" alt="instalador" id="myPicture">
         </section>
         <section class="area__login">
             <div id="login">
@@ -36,7 +36,7 @@
                     <div class="campos">
                         <h1 class="pl-2"></h1>
                         <section class="imagem__logo">
-                            <img src="https://cambauba.datacartes.com.br/wp-content/themes/cambauba/img/logo-color.png" alt="instalador">
+                            <img src="https://cambauba.datacartes.com.br/wp-content/themes/cambauba/img/logo-color.png" alt="capa">
                         </section>
                         <form method="post">
                             {% csrf_token %}
@@ -54,3 +54,16 @@
     </div>
 </body>
 </html>
+
+
+<script>
+    window.onload = choosePic;
+
+var myPix = new Array("https://novadata.com.br/intranet/intranets/cambauba/loginpics/1.JPG","https://novadata.com.br/intranet/intranets/cambauba/loginpics/2.JPG","https://novadata.com.br/intranet/intranets/cambauba/loginpics/3.JPG","https://novadata.com.br/intranet/intranets/cambauba/loginpics/4.JPG","https://novadata.com.br/intranet/intranets/cambauba/loginpics/5.JPG","https://novadata.com.br/intranet/intranets/cambauba/loginpics/6.jpg","https://novadata.com.br/intranet/intranets/cambauba/loginpics/7.JPG","https://novadata.com.br/intranet/intranets/cambauba/loginpics/8.JPG","https://novadata.com.br/intranet/intranets/cambauba/loginpics/9.JPG");
+
+function choosePic() {
+     var randomNum = Math.floor(Math.random() * myPix.length);
+     document.getElementById("myPicture").src = myPix[randomNum];
+}
+
+</script>

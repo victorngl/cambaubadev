@@ -3,14 +3,17 @@
 {% load bootstrap %}
 
 {% block content %}
+<div class="card mb-4">
+    <div class="card-header card__container" style="background-color: blue;">
+        <h2>Bem vindo(a) à Intranet, {{user.first_name}} {{user.last_name}}</h2>
+        <small>{{perfil}} {{aluno.turma}}</small>
+    </div>
+</div>
+
+
 <main class="page_home">
 <!-- container Aluno-->
-    <div class="card mb-4">
-        <div class="card-header card__container" style="background-color: blue;">
-            <h2>Bem-vindo à Intranet, {{user.first_name}} {{user.last_name}}</h2>
-            <small>{{perfil}} {{aluno.turma}}</small>
-        </div>
-    </div>
+
     <!-- Agenda -->
     <div class="d-flex justify-content-around row card__agenda">
         <div class="col-12">
