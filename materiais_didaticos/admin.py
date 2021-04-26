@@ -12,6 +12,7 @@ class CalendarioAtividadeAdmin(admin.ModelAdmin):
 class ComunicadoAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'data']
     filter_horizontal = ['turmas']
+    exclude = ['usuario_criacao']
     search_fields = ['titulo', 'data']
 
 @admin.register(MaterialDidatico)

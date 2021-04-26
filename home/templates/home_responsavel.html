@@ -22,7 +22,7 @@
     <div class="card mb-4 text-center col-3">
         <div class="card-header"><h4>{{aluno.nome}}</h4></div>
         <div class="card-body">
-            <p>{{aluno.turma}}</p>
+            <p><a href="{% url 'turma_detail' aluno.turma.id %}">{{aluno.turma}}</a></p>
             <a href="{% url 'aluno_detail' aluno.id %}">
                 Verificar perfil
             </a>

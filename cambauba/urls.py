@@ -32,6 +32,7 @@ urlpatterns = [
     path('informativos/', include('informativos.urls')),
     path('escolas/', include('escolas.urls')),
     path('materiais_didaticos/', include('materiais_didaticos.urls')),
+    path('turmas/', include('escolas.urls')),
     path('avatar/', include('avatar.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

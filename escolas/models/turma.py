@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from .serie import Serie
+from .professor import Professor
 
 class Turma(models.Model):
     """
@@ -17,6 +18,12 @@ class Turma(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         verbose_name="Série"
+    )
+
+    professores = models.ManyToManyField(
+        Professor,
+        verbose_name=("Professor"),
+        blank=True
     )
 
     data_alteracao = models.DateTimeField(
