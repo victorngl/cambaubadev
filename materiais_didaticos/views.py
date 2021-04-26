@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView, ListView
+from django.http import JsonResponse
 from escolas.models import Materia
 from .models import CalendarioAtividade, Comunicado, MaterialDidatico
 
@@ -14,6 +15,23 @@ def calendarios_atividades(request):
             'calendarios_atividades': calendarios_atividades
         }
     )
+
+@login_required
+def get_calendarios_atividades(request):
+    calendarios_atividades = CalendarioAtividade.objects.all()
+
+    list_eventos = [
+        {
+            'id': evento.id, 
+            'title': evento.nome,
+            #'start': '{}T{}'.format(evento.data_inicial, evento.hora_inicio),
+            'start': evento.data_inicial,
+            #'end': '{}T{}'.format(evento.data_final, evento.hora_termino)
+            'end': evento.data_final
+        } for evento in calendarios_atividades
+    ]
+    
+    return JsonResponse(list_eventos, safe=False)
 
 @login_required
 def materiais_didaticos(request):

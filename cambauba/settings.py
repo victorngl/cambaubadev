@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'informativos',
     'atividades_escolares',
     'materiais_didaticos',
+    'calendario',
     'django_bleach',
     'django_quill',
     'colorfield',

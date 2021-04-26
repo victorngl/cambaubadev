@@ -4,6 +4,10 @@ from django.http import HttpResponseForbidden
 from escolas.models import Aluno, Turma
 from enquetes.models import Enquete
 from django.db.models import Q
+from django.http import JsonResponse
+from datetime import datetime, date
+from materiais_didaticos.models import CalendarioAtividade
+from atividades_escolares.models import AtividadeEscolar
 
 @login_required
 def home(request):
@@ -42,7 +46,8 @@ def home(request):
             'aluno': aluno,
             'enquetes': enquetes,
             'perfil': perfil,
-            'alunos': alunos
+            'alunos': alunos,
+            'hoje': date.today()
         }
     )
 
@@ -57,3 +62,35 @@ def gerar_boletos_boletins(request):
         )
     except:
         return HttpResponseForbidden()
+
+
+@login_required
+def get_calendario(request):
+    calendarios_atividades = CalendarioAtividade.objects.all()
+    atividades_escolares = AtividadeEscolar.objects.all()
+
+    list_eventos = [
+        {
+            'id': evento.id, 
+            'title': evento.titulo,
+            'start': evento.data_inicial,
+            'end': evento.data_final,
+            'materia': evento.materia.titulo,
+            'descricao': evento.descricao
+        } for evento in calendarios_atividades
+    ]
+    '''
+    list_eventos_atividades_escolares = [
+        {
+            'id': evento.id, 
+            'title': evento.titulo,
+            #'start': '{}T{}'.format(evento.data_inicial, evento.hora_inicio),
+            'start': evento.data_inicial,
+            #'end': '{}T{}'.format(evento.data_final, evento.hora_termino)
+            'end': evento.data_final
+        } for evento in atividades_escolares
+    ]
+
+    list_eventos = list_eventos_calendario_atividades + list_eventos_atividades_escolares
+    '''
+    return JsonResponse(list_eventos, safe=False)
