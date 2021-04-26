@@ -10,7 +10,11 @@ class TipoMaterialDidatico(models.Model):
         max_length=250,
 		help_text="Campo Obrigatório*"
 	)
-
+    icone = models.ImageField(
+        verbose_name="Ícone",
+        upload_to="tipos_arquivo/"
+    )
+    
     def __str__(self):
         return self.tipo
     

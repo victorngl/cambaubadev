@@ -19,8 +19,8 @@ class ComunicadoAdmin(admin.ModelAdmin):
 class MaterialDidaticoAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'data']
     filter_horizontal = ['turmas']
-    autocomplete_fields = ['materia', 'tipo']
-    search_fields = ['titulo', 'tipo']
+    search_fields = ['titulo', 'tipo', 'materia']
+    autocomplete_fields = ['tipo', 'materia']
 
 @admin.register(TipoMaterialDidatico)
 class TipoMaterialDidaticoAdmin(admin.ModelAdmin):

@@ -3,39 +3,82 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="card mb-4">
-    <div class="card-header">
-        <h2>Materiais Didáticos</h2>
-        <small>Lista de Materiais Didáticos</small>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped" id="materiais_didaticos">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Data</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for material_didatico in materiais_didaticos %}
-                    <tr>
-                        <td>{{material_didatico.titulo}}</td>
-                        <td>{{material_didatico.data}}</td>
-                        <td><a href="{% url 'material_didatico_detail' material_didatico.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+<div class="repositorio">
+    <div class="row">
+        <div class="arquivos">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card mt-16 p-16">
+                    <div class="card-header">
+                            <h3 class="titulo-card">Todos os Materiais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="arquivos">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nome</th>
+                                        <th>Download</th>
+                                        <th>Tipo</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for material_didatico in materiais_didaticos %}
+                                        <tr>
+                                            <td>{% if material_didatico.tipo.icone %}
+                                                <img src="{{material_didatico.tipo.icone.url}}" alt="icone">
+                                               
+                                               {% endif %}
+                                            </td>
+                                            <td>{{material_didatico.titulo}}</td>
+                                            <td>
+                                                {% if material_didatico.anexo %}
+                                                    <a class="download_arquivo" href="{{material_didatico.anexo.url}}" target="_blank">Clique Aqui</a>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{material_didatico.tipo}}</td>
+                                            <td>{{material_didatico.data|date:'d/m/Y'}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pastas">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card mt-16 p-16">
+                    <div class="card-header">
+                        <h3 class="titulo-card">Materiais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                    {% for materia in materias %}
+                                        <tr>
+                                            <td><a href="{% url 'materiais_didaticos' %}?materia={{materia.id}}"><i class="fas fa-folder fa-5x" style="color: {{materia.hexadecimal}};"></i> {{materia.titulo}}</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
+
 {% block extra_js %}
     <script>
         $(document).ready(function () {
-            $('#materiais_didaticos').DataTable({
+            $('#arquivos').DataTable({
                 "language": {
                     "show": "Visualizar",
                     "lengthMenu": "Mostrar _MENU_ linhas por página",

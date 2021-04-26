@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView, ListView
+from escolas.models import Materia
 from .models import CalendarioAtividade, Comunicado, MaterialDidatico
 
 @login_required
@@ -17,10 +18,15 @@ def calendarios_atividades(request):
 @login_required
 def materiais_didaticos(request):
     materiais_didaticos = MaterialDidatico.objects.all()
+    materias = Materia.objects.all()
+    materia = request.GET.get('materia', '')
+    materiais_didaticos = materiais_didaticos.filter(materia__id=materia) if materia else materiais_didaticos
+    
     return render(
         request,
         'materiais_didaticos_list.html',
         {
+            'materias': materias,
             'materiais_didaticos': materiais_didaticos
         }
     )

@@ -20,6 +20,13 @@ class MaterialDidatico(models.Model):
         null=True,
     )
 
+    materia = models.ForeignKey(
+        Materia,
+        verbose_name="Materia",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+
     data = models.DateField(
         verbose_name='Data',
         blank=True, null=True
