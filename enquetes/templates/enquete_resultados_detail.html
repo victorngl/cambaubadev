@@ -26,9 +26,9 @@
 
         data.addRows([
             {% for opcao in object.opcao_set.all %}
-    ['{{opcao.titulo.html|safe}}', {{ opcao.quantidade_resposta_opcao }}],
-        {% endfor %}
-     ]);
+                ['{{opcao.titulo.html|safe}}', {{ opcao.quantidade_resposta_opcao }}],
+            {% endfor %}
+        ]);
 
 
     // Set chart options
