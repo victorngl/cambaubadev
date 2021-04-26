@@ -13,6 +13,8 @@
     </div>
     <div class="itens-row row justify-content-between">
         <section class="comunicados box col-sm-12 col-md-8 col-lg-8">
+            <h1 class="titulosecoes">Comunicados</h1>
+            <div class="conteudo-comunicados">
             {% for comunicado in comunicados %}
             <div class="comunicado">
                 <div class="comunicado-thumb col-sm-12 col-md-3 col-lg-3" style="background-image: url({{comunicado.foto.url}})"></div>
@@ -27,22 +29,33 @@
                 <span class="comunicado-link float-right font-weight-bold"><a href="{% url 'comunicado_detail' comunicado.id %}" class="text-dark">Ler Mais</a></span>
             </div>
             {% endfor %}
+            </div>
         </section>
         <section class="ativ-escolares box col-sm-12 col-md-4 col-lg-4">
-            {% for atividade_escolar in atividades_escolares %}
-            <div class="sidebar" style="border-left: 10px solid {{atividade_escolar.materia.hexadecimal}}">
-                <a href="{% url 'atividade_escolar_detail' atividade_escolar.id %}" class="link-area"></a>
-                <h3 class="sidebar-titulo mt-0">{{atividade_escolar.titulo}}</h3>
-                <span class="sidebar-materia float-left">{{atividade_escolar.materia}}</span>
-                <span class="sidebar-data float-right">{{atividade_escolar.data_final}}</span>
+            <h1 class="titulosecoes">Atividades Escolares</h1>
+            <div class="conteudo-ativ-escolares">
+                {% for atividade_escolar in atividades_escolares %}
+                <div class="sidebar" style="border-left: 10px solid {{atividade_escolar.materia.hexadecimal}}">
+                    <a href="{% url 'atividade_escolar_detail' atividade_escolar.id %}" class="link-area"></a>
+                    <h3 class="sidebar-titulo mt-0">{{atividade_escolar.titulo}}</h3>
+                    <span class="sidebar-materia float-left">{{atividade_escolar.materia}}</span>
+                    <span class="sidebar-data float-right">{{atividade_escolar.data_inicial}}</span>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </section>
     </div>
     <div class="itens-row row justify-content-between">
+     
         <section class="calendario box col-sm-12 col-md-8 col-lg-8">
+            <h1 class="titulosecoes">Calendário</h1>
+            <div class="conteudo-calendario">
+                </div>
         </section>
+
         <section class="materiais-didaticos box col-sm-12 col-md-4 col-lg-4">
+            <h1 class="titulosecoes">Material Didático</h1>
+            <div class="conteudo-materialdidatico">
             {% for material_didatico in materiais_didaticos %}
             <div class="sidebar" style="border-left: 10px solid {{material_didatico.materia.hexadecimal}}">
                 <a href="{% url 'material_didatico_detail' material_didatico.id %}" class="link-area"></a>
@@ -51,6 +64,8 @@
                 <span class="sidebar-data float-right">{{material_didatico.data}}</span>
             </div>
             {% endfor %}
+
+        </div>
         </section>
     </div>
 </main>
