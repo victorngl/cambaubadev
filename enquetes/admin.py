@@ -23,7 +23,7 @@ class EnqueteAdmin(admin.ModelAdmin):
             'voto_unico',
 			'mostrar_resultado',
 			'grupo_usuarios',
-            'retrato',
+            'foto',
             'foto_capa',
         ]}),
     )
