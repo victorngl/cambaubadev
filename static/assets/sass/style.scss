@@ -681,37 +681,12 @@ nav[aria-label="Navegação"] {
         }
     }
 
-    .visualizar__wrapper {
-        .col-12 {
-            display: flex;
-            justify-content: flex-end;
-            font-size: 18px;
-            font-family: $font-gilroy;
-            border-bottom: $borda-sm;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-
-            a {
-                display: inline-flex;
-                align-items: center;
-
-                ion-icon {
-                    margin-left: 5px;
-                }
-            }
-        }
-    }
-
-
-
-
 
 }
 
 
 
-//home aluno 
-
+//home aluno  =========================
 .body__aluno {
 
     .boasvindas {
@@ -876,6 +851,14 @@ nav[aria-label="Navegação"] {
         }
 
         #material_didatico_wrapper {
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+
+            div.row:nth-child(3) {
+                margin-top: auto;
+            }
+
             .dataTables_length {
                 display: flex;
                 align-items: center;
@@ -898,6 +881,47 @@ nav[aria-label="Navegação"] {
 
         .row {
             align-items: center;
+        }
+    }
+
+    .visualizar__wrapper {
+        margin-bottom: 60px;
+
+        .col-12 {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 18px;
+            font-family: $font-gilroy;
+            border-bottom: $borda-sm;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+
+            a {
+                display: inline-flex;
+                align-items: center;
+
+                ion-icon {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
+    .pagination {
+        .page-item {
+            a {
+                border: initial;
+                color: $cor-azul-1;
+            }
+
+            &.active {
+                a {
+                    background: initial !important;
+                    color: $cor-azul-2;
+                    border: initial;
+                    border-bottom: 2px solid $cor-azul-1;
+                }
+            }
         }
     }
 
