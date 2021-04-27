@@ -760,6 +760,7 @@ nav[aria-label="Navegação"] {
 
     .calendar {
         margin-top: 30px;
+        margin-bottom: 25px;
     }
 
     .calendar.fechado {
@@ -834,7 +835,7 @@ nav[aria-label="Navegação"] {
         }
     }
 
-    h1.titulossecoes {
+    h1.titulosecoes {
         display: inline-flex;
         flex-direction: row-reverse;
         justify-content: space-between;
