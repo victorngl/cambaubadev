@@ -64,9 +64,17 @@ h4 {
     a {
         color: $cor-azul-1;
         font-size: 14px;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
+
+.container {
+    max-width: 100% !important;
+}
 
 //COMUNICADO SINGLE ★★★★★
 .body__comunicado__single {
@@ -140,9 +148,29 @@ h4 {
 }
 
 
-
 .body__home {
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    //card alunos 
+
     .card__alunos {
+        margin-bottom: 60px;
+        padding-bottom: 60px;
+        border-bottom: initial;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+
+        .card__alunos-element {
+            max-width: 320px;
+            margin-top: 0px;
+            height: max-content;
+        }
+
         .card {
             padding: 0;
             border-radius: $border-radius;
@@ -154,7 +182,7 @@ h4 {
             }
 
             &-body {
-                padding: 20px 0 0;
+                padding: 10px 0 0;
 
                 p {
                     a {
@@ -162,19 +190,19 @@ h4 {
                         font-weight: 700;
                         color: $cor-azul-1 !important;
                         transition: 0.3s ease;
-                        padding: 8px;
+                        padding: 10px 20px;
                         border-radius: $border-radius;
+
                         display: inline-flex;
                         align-items: center;
 
-                        ion-icon {
-                            margin-right: 5px;
-                            --ionicon-stroke-width: 45px;
-                            font-size: 18px;
-                        }
-
                         &:hover {
                             background: $cor-cinza-1;
+                        }
+
+                        ion-icon {
+                            margin-right: 5px;
+                            font-size: 20px;
                         }
                     }
                 }
@@ -202,8 +230,227 @@ h4 {
         border-bottom: $borda-sm !important;
     }
 
+    .atividades__container {
+        width: calc(100% - 400px);
+        min-width: 500px;
+
+    }
+
+    /* fim card alunos */
+    .card__atividades,
+    .card__enquetes {
+        border: $borda-sm;
+        border-radius: $border-radius;
+        box-shadow: $shadow-sm;
+        overflow: hidden;
+        min-height: 140px;
+        overflow-y: auto;
+        max-height: 200px;
+
+        .card-body {
+            padding: 0;
+        }
+
+        ul {
+            li {
+                border-radius: initial;
+                border: initial;
+                transition: .3s ease;
+                color: rgba(0, 0, 0, 0.79);
+
+                a {
+                    color: $cor-azul-1;
+                    font-size: 14px;
+                    font-weight: 600;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                &:hover {
+                    background: $cor-cinza-1;
+                }
+
+            }
+
+            li:not(li:last-child) {
+                border-bottom: 1px solid #dadce0 !important;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .card__atividades {
+
+        h1 {
+            i {
+
+
+                @include iconTitulos("/static/assets/images/icons/book.svg")
+            }
+        }
+    }
+
+    .card__enquetes {
+        margin-top: 30px;
+
+        h1 {
+            i {
+
+
+                @include iconTitulos("/static/assets/images/icons/enquete.svg")
+            }
+        }
+    }
+
     .card-header:first-child {
-        border-radius: initial;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .atividades__container {
+        margin-left: 60px;
+
+
+
+        @include d(m) {
+            margin-left: initial;
+            min-width: 290px;
+            font-size: 12px;
+            width: 100%;
+        }
+
+        .card-header {
+            padding: 0;
+        }
+
+        .titulosecoes {
+            padding: 0;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            padding-left: 20px;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            padding-right: 10px;
+            margin: 15px 0;
+            width: 100%;
+        }
+    }
+
+    .list-group-item {
+        @include d(m) {
+            padding: 12px;
+        }
+    }
+
+    #myTab {
+        border-bottom: $borda-sm !important;
+
+        .nav-link {
+            font-family: $font-gilroy !important;
+            font-size: 18px;
+
+            &.active {
+                border: initial !important;
+                border-bottom: 3px solid $cor-azul-1 !important;
+                background: initial !important;
+                color: $cor-azul-1 !important;
+                border-color: #003473 #003473 #fff;
+            }
+
+        }
+
+        .nav-item {
+            border-radius: $border-radius;
+        }
+    }
+
+    #myTabContent {
+        h4 {
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+        .tab-content {
+            padding-left: 0 !important;
+        }
+    }
+
+    .card__img {
+        height: 113px;
+        border-radius: 8px 0 8px 0;
+        width: 221px !important;
+        position: relative;
+        overflow: hidden;
+        background: #0000000a;
+    }
+
+    .card__titulo {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        margin-top: 20px;
+
+        h5 {
+            font-family: $font-gilroy;
+            margin: 10px 0;
+            display: inline-block;
+            font-size: 20px;
+        }
+    }
+
+
+    .top-division {
+        display: flex;
+    }
+
+    .card__texto {
+        height: 100%;
+        padding-bottom: 0px;
+        margin-left: 0;
+
+        p {
+            margin-top: 10px;
+            font-size: 14px;
+            display: block;
+            max-width: 700px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            color: #3f4449;
+            padding: 0 20px;
+        }
+
+        .leia-mais {
+            border-top: $borda-sm;
+
+            display: inline-flex;
+            justify-content: flex-end;
+            width: 100%;
+
+            a {
+                padding: 12px 20px;
+                width: 100%;
+                margin-left: auto;
+                font-family: $font-gilroy;
+                transition: 0.3s ease;
+                cursor: pointer;
+                display: inline-flex;
+                justify-content: flex-end;
+                font-size: 16px;
+                z-index: 2;
+
+                &:hover {
+                    background: $cor-cinza-1;
+                }
+            }
+
+        }
     }
 
 }
+
+
+@media (max-width:1200px) {}

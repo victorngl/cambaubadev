@@ -116,29 +116,31 @@
   <!-- Alunos -->
   <div class="card__alunos">
 
+    <div class="card__alunos-wrapper">
 
-    {% for aluno in alunos %}
-    <div class="card mb-4 text-center col-lg-6 card__alunos-element">
-      <div class="card-header">
-        <h4>{{aluno.nome}}</h4>
+      {% for aluno in alunos %}
+      <div class="card mb-4 text-center col-lg-6 card__alunos-element">
+        <div class="card-header">
+          <h4>{{aluno.nome}}</h4>
+        </div>
+        <div class="card-body">
+          <p><a href="{% url 'turma_detail' aluno.turma.id %}">
+              <ion-icon name="school-outline"></ion-icon> Turma {{aluno.turma}}
+            </a></p>
+          <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
+            Ver Mais
+          </a>
+        </div>
       </div>
-      <div class="card-body">
-        <p><a href="{% url 'turma_detail' aluno.turma.id %}">
-            <ion-icon name="school-outline"></ion-icon> Turma {{aluno.turma}}
-          </a></p>
-        <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
-          Ver Mais
-        </a>
-      </div>
+      {% endfor %}
+
     </div>
-    {% endfor %}
-
     <!-- Atividades e ultimas enquetes -->
-    <div class="atividades__container col-lg-6">
+    <div class="atividades__container">
       <div class="card__atividades">
         <div class="atividades">
           <div class="card-header">
-            <h1 class="titulosecoes">Atividades</h1>
+            <h1 class="titulosecoes"> <i></i> Atividades</h1>
           </div>
           <div class="card-body">
             {% for aluno in alunos %}
@@ -158,7 +160,7 @@
       <div class="card__enquetes">
         <div class="enquetes">
           <div class="card-header">
-            <h1 class="titulosecoes">Enquetes</h1>
+            <h1 class="titulosecoes"><i></i> Enquetes</h1>
           </div>
           <div class="card-body">
             <ul class="list-group">
@@ -199,22 +201,34 @@
               {% for aluno in alunos %}
               <h4>{{aluno}}</h4>
               {% for comunicado in aluno.turma.comunicado_set.all %}
+
               <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
-                <div class="d-flex flex-column flex-sm-row">
-                  <div class="">
-                    <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
+
+                <div class="notica__wrapper">
+
+                  <div class="top__division">
+                    <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
+                    <div class="card__titulo">
+                      <h5 class="m-0">{{comunicado.titulo}}</h5>
+                    </div>
                   </div>
-                  <div class="flex-grow-1 p-4">
-                    <h5 class="m-0">{{comunicado.titulo}}</h5>
-                    <p class="text-muted mt-3">
+
+                  <div class="card__texto">
+                    <p>
                       {{comunicado.resumo.html|safe}}
                     </p>
+                    <div class="leia-mais">
+                      <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                    </div>
                   </div>
-                  <div class="leia-mais">
-                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
-                  </div>
+
                 </div>
+
+
+
               </div>
+
+
               {% endfor %}
               {% endfor %}
             </div>
