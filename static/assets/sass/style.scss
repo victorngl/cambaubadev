@@ -149,7 +149,7 @@ h4 {
     .card__alunos {
         margin-bottom: 60px;
         padding-bottom: 60px;
-        border-bottom: $borda-sm;
+        border-bottom: initial;
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
@@ -259,10 +259,11 @@ h4 {
             }
         }
     }
-    .card_-atividades{
+
+    .card_-atividades {
         h1 {
             i {
-            
+
 
                 @include iconTitulos("/static/assets/images/icons/book.svg")
             }
@@ -271,9 +272,10 @@ h4 {
 
     .card__enquetes {
         margin-top: 30px;
+
         h1 {
             i {
-            
+
 
                 @include iconTitulos("/static/assets/images/icons/enquete.svg")
             }
@@ -287,12 +289,13 @@ h4 {
     .atividades__container {
         margin-left: 60px;
 
-      
+
 
         @include d(m) {
             margin-left: initial;
             min-width: 290px;
             font-size: 12px;
+            width: 100%;
         }
 
         .card-header {
@@ -305,7 +308,9 @@ h4 {
             display: inline-flex;
             align-items: center;
             padding-left: 20px;
-
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            padding-right: 10px;
             margin: 15px 0;
         }
     }
@@ -316,6 +321,41 @@ h4 {
         }
     }
 
+}
+
+//comunicados e tabs
+#myTab {
+    border-bottom: $borda-sm !important;
+    border-top: $borda-sm !important;
+
+    .nav-link {
+        font-family: $font-gilroy !important;
+        font-size: 18px;
+
+        &.active {
+            border: initial !important;
+            border-bottom: 3px solid $cor-azul-1 !important;
+            background: initial !important;
+            color: $cor-azul-1 !important;
+            border-color: #003473 #003473 #fff;
+        }
+
+    }
+
+    .nav-item {
+        border-radius: $border-radius;
+    }
+}
+
+#myTabContent {
+    h4 {
+        margin-bottom: 30px;
+        font-size: 20px;
+    }
+
+    .tab-content {
+        padding-left: 0 !important;
+    }
 }
 
 
