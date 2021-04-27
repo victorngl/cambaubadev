@@ -55,11 +55,16 @@ function Dom(seletor) {
 //escopo
 const pageHome = new Dom().el(".page_home")
 const pageComunicadoSingle = new Dom().el("#page_comunicado-single")
+const HomeAluno = new Dom().el(".page_aluno");
 
 function escopo() {
 
     if (pageHome) { // ★ HOME  
         new Dom().bodyClass("body__home")
+        if (HomeAluno) {
+            new Dom().bodyClass("body__aluno")
+
+        }
 
     } else if (pageComunicadoSingle) { // ★ Single COMUNICADO  
         new Dom().bodyClass("body__comunicado__single")

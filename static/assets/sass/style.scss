@@ -585,7 +585,7 @@ h4 {
                 gap: 20px;
                 justify-items: center;
                 width: 100%;
-                 justify-content: center;
+                justify-content: center;
             }
         }
     }
@@ -656,5 +656,24 @@ nav[aria-label="Navegação"] {
 }
 
 
+
+//home aluno 
+.body__aluno {
+
+    .boasvindas {
+        border: initial !important;
+        box-shadow: initial !important;
+
+        .card-header {
+            padding: 10px 0;
+
+            small {
+                font-size: 14px;
+                color: $cor-azul-3;
+            }
+        }
+
+    }
+}
 
 @media (max-width:1200px) {}
