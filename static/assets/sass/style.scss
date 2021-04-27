@@ -559,6 +559,15 @@ h4 {
                 background: #003473 !important;
             }
         }
+
+        .fc-toolbar {
+            @include d(m) {
+                display: grid;
+                gap: 20px;
+                justify-items: center;
+                width: 100%
+            }
+        }
     }
 }
 
