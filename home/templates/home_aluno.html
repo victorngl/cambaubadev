@@ -106,6 +106,68 @@
 
 
 <main class="page_home page_aluno">
+
+    <!-- Atividade escolar -->
+    <div class="atividade__escolar-container">
+
+
+        <div class="card__atividades">
+            <div class="atividades">
+                <div class="card-header">
+                    <h1 class="titulosecoes"> <i></i> Atividades</h1>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for atividade in aluno.turma.atividadeescolar_set.all %}
+
+                        <li class="list-group-item">
+                            <a href="{% url 'atividade_escolar_detail' atividade.id %}">
+                                {{atividade}} </a>- {{aluno.nome}}
+
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!--Atividades extras-->
+        <div class="col-6 card__atividades extras">
+            <div class="card mb-4 text-center">
+                <div class="card-header">
+                    <h4>Atividades Extras</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for atividade_extra in aluno.turma.atividadeextra_set.all %}
+
+                        <li class="list-group-item">
+                            <a href="{% url 'atividade_extra_detail' atividade_extra.id %}">
+                                {{atividade_extra}}
+                            </a>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Calendário -->
+        <!-- <div class="col-6 card__calendario">
+                <div class="card mb-4 text-center">
+                    <div class="card-header">
+                        <h4>Calendário</h4>
+                    </div>
+                    <div class="card-body">
+                        'incluir Calendário'
+                    </div>
+                </div>
+            </div> -->
+
+
+    </div>
     <!-- container Aluno-->
     <!-- Agenda -->
     <div class="d-flex justify-content-around row card__agenda">
@@ -130,33 +192,7 @@
 
     </div>
 
-    <!-- Atividade escolar -->
-    <div class="atividade__escolar-container">
 
-
-        <div class="card__atividades mb-4 text-center col-4">
-            <div class="atividades">
-                <div class="card-header">
-                    <h1 class="titulosecoes"> <i></i> Atividades</h1>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        {% for atividade in aluno.turma.atividadeescolar_set.all %}
-
-                        <li class="list-group-item">
-                            <a href="{% url 'atividade_escolar_detail' atividade.id %}">
-                                {{atividade}} </a>- {{aluno.nome}}
-
-                        </li>
-                        {% endfor %}
-
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
 
 
     <div class="">
@@ -329,40 +365,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <!--Atividades extras-->
-        <div class="col-6 card__atividades extras">
-            <div class="card mb-4 text-center">
-                <div class="card-header">
-                    <h4>Atividades Extras</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        {% for atividade_extra in aluno.turma.atividadeextra_set.all %}
 
-                        <li class="list-group-item">
-                            <a href="{% url 'atividade_extra_detail' atividade_extra.id %}">
-                                {{atividade_extra}}
-                            </a>
-                        </li>
-                        {% endfor %}
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- Calendário -->
-        <div class="col-6 card__calendario">
-            <div class="card mb-4 text-center">
-                <div class="card-header">
-                    <h4>Calendário</h4>
-                </div>
-                <div class="card-body">
-                    'incluir Calendário'
-                </div>
-            </div>
-        </div>
-    </div>
 </main>
 
 <div class="modal fade" id="dados_evento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

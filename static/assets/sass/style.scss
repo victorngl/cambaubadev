@@ -804,7 +804,7 @@ nav[aria-label="Navegação"] {
 
 
     .calendar:not(.fechado) {
-        max-height: 490px;
+        max-height: 100%;
 
         .show__calendar {
             z-index: -2;
