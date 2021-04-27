@@ -14,10 +14,10 @@
     /*  "liveSassCompile.settings.excludeList": [
          "/"
      ], */
- /*    "liveSassCompile.settings.includeItems": [
-        "/static/assets/sass/style.scss",
+    "liveSassCompile.settings.includeItems": [
+        "static/assets/sass/style.scss",
 
-    ], */
+    ],
 
     //config que gera .map 
     "liveSassCompile.settings.generateMap": false,
