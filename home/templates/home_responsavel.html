@@ -197,8 +197,10 @@
   <div class="tab-content" id="myTabContent">
 
     <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <div class="nav__alunos-container">
 
+
+      <!-- todos e alunos -->
+      <div class="nav__alunos-container">
         <div class="nav nav-pills  order-last" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
           <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
@@ -207,23 +209,22 @@
           <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
             aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
 
-
           {% endfor %}
         </div>
       </div>
+
+
       <div class="tab__panel-container">
         <div class="tab-content order-first" id="v-pills-tabContent">
-
           {% for aluno in alunos %}
           <h4>{{aluno}}</h4>
           {% for comunicado in aluno.turma.comunicado_set.all %}
 
-          <div class="tab-pane fade show active" id="todos_comunicados" role="tabpanel" aria-labelledby="v-pills-home">
-            
+          <div class="tab-pane fade show active comunicados__wrapper" id="todos_comunicados" role="tabpanel"
+            aria-labelledby="v-pills-home">
+
             <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
-
               <div class="notica__wrapper">
-
                 <div class="top__division">
                   <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
                   <div class="card__titulo">
@@ -242,16 +243,117 @@
                 </div>
 
               </div>
+              <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                <div class="notica__wrapper">
+                  <div class="top__division">
+                    <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
+                    <div class="card__titulo">
+                      <h5 class="m-0">{{comunicado.titulo}}</h5>
+                    </div>
+                  </div>
+
+                  <div class="card__texto">
+                    <p>
+                      {{comunicado.resumo.html|safe}}
+                    </p>
+                    <div class="leia-mais">
+                      <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                          name="arrow-forward-outline"></ion-icon></a>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                  <div class="notica__wrapper">
+                    <div class="top__division">
+                      <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
+                      <div class="card__titulo">
+                        <h5 class="m-0">{{comunicado.titulo}}</h5>
+                      </div>
+                    </div>
+
+                    <div class="card__texto">
+                      <p>
+                        {{comunicado.resumo.html|safe}}
+                      </p>
+                      <div class="leia-mais">
+                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                            name="arrow-forward-outline"></ion-icon></a>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                    <div class="notica__wrapper">
+                      <div class="top__division">
+                        <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
+                        <div class="card__titulo">
+                          <h5 class="m-0">{{comunicado.titulo}}</h5>
+                        </div>
+                      </div>
+
+                      <div class="card__texto">
+                        <p>
+                          {{comunicado.resumo.html|safe}}
+                        </p>
+                        <div class="leia-mais">
+                          <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                              name="arrow-forward-outline"></ion-icon></a>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                      <div class="notica__wrapper">
+                        <div class="top__division">
+                          <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
+                          <div class="card__titulo">
+                            <h5 class="m-0">{{comunicado.titulo}}</h5>
+                          </div>
+                        </div>
+
+                        <div class="card__texto">
+                          <p>
+                            {{comunicado.resumo.html|safe}}
+                          </p>
+                          <div class="leia-mais">
+                            <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                name="arrow-forward-outline"></ion-icon></a>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                        <div class="notica__wrapper">
+                          <div class="top__division">
+                            <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
+                            <div class="card__titulo">
+                              <h5 class="m-0">{{comunicado.titulo}}</h5>
+                            </div>
+                          </div>
+
+                          <div class="card__texto">
+                            <p>
+                              {{comunicado.resumo.html|safe}}
+                            </p>
+                            <div class="leia-mais">
+                              <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                  name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
 
 
-
-            </div>
-
-
-            {% endfor %}
-            {% endfor %}
-          </div>
-
+                      {% endfor %}
+                      {% endfor %}
+                    </div>
+                    <!-- 
           {% for aluno in alunos %}
           <div class="tab-pane fade" id="aluno-{{aluno.id}}" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <h4>{{aluno}}</h4>
@@ -274,27 +376,27 @@
             </div>
             {% endfor %}
           </div>
-          {% endfor %}
-        </div>
-      </div>
+          {% endfor %} -->
+                  </div>
+                </div>
 
 
 
-    </div>
-    <!-- Calendário -->
-    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="card">
-        <div class="card-body">
-          <div id='script-warning'>
-            Erro ao carregar eventos.
-          </div>
+              </div>
+              <!-- Calendário -->
+              <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card">
+                  <div class="card-body">
+                    <div id='script-warning'>
+                      Erro ao carregar eventos.
+                    </div>
 
-          <div id='loading'>loading...</div>
-          <div id='calendar'></div>
-        </div>
-      </div>
-    </div>
-  </div>
+                    <div id='loading'>loading...</div>
+                    <div id='calendar'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 </main>
 
 <div class="modal fade" id="dados_evento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
