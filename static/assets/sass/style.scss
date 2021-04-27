@@ -162,8 +162,16 @@ h4 {
                         font-weight: 700;
                         color: $cor-azul-1 !important;
                         transition: 0.3s ease;
-                        padding: 10px 20px;
+                        padding: 8px;
                         border-radius: $border-radius;
+                        display: inline-flex;
+                        align-items: center;
+
+                        ion-icon {
+                            margin-right: 5px;
+                            --ionicon-stroke-width: 45px;
+                            font-size: 18px;
+                        }
 
                         &:hover {
                             background: $cor-cinza-1;

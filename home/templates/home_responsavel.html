@@ -3,300 +3,307 @@
 {% load bootstrap %}
 
 {% block extra_style %}
-    <link href='{% static "calendar/packages/core/main.css" %}' rel='stylesheet' />
-    <link href='{% static "calendar/packages/daygrid/main.css" %}' rel='stylesheet' />
-    <link href='{% static "calendar/packages/timegrid/main.css" %}' rel='stylesheet' />
-    <link href='{% static "calendar/packages/list/main.css" %}' rel='stylesheet' />
+<link href='{% static "calendar/packages/core/main.css" %}' rel='stylesheet' />
+<link href='{% static "calendar/packages/daygrid/main.css" %}' rel='stylesheet' />
+<link href='{% static "calendar/packages/timegrid/main.css" %}' rel='stylesheet' />
+<link href='{% static "calendar/packages/list/main.css" %}' rel='stylesheet' />
 
-    <script src='{% static "calendar/packages/core/main.js" %}'></script>
-    <script src='{% static "calendar/packages/interaction/main.js" %}'></script>
-    <script src='{% static "calendar/packages/daygrid/main.js" %}'></script>
-    <script src='{% static "calendar/packages/timegrid/main.js" %}'></script>
-    <script src='{% static "calendar/packages/list/main.js" %}'></script>
-    <script src='{% static "calendar/packages/core/locales/pt-br.js" %}'></script>
+<script src='{% static "calendar/packages/core/main.js" %}'></script>
+<script src='{% static "calendar/packages/interaction/main.js" %}'></script>
+<script src='{% static "calendar/packages/daygrid/main.js" %}'></script>
+<script src='{% static "calendar/packages/timegrid/main.js" %}'></script>
+<script src='{% static "calendar/packages/list/main.js" %}'></script>
+<script src='{% static "calendar/packages/core/locales/pt-br.js" %}'></script>
 
-    <script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-        
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-              locale: 'pt-br',
-              plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
-              header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-              },
-              defaultDate: '{{hoje|date:"Y-m-d"}}',
-              navLinks: true, // can click day/week names to navigate views
-              select: function(arg) {
-                var title = prompt('Event Title:');
-                if (title) {
-                  calendar.addEvent({
-                    title: title,
-                    start: arg.start,
-                    end: arg.end,
-                    allDay: arg.allDay
-                  })
-                }
-                calendar.unselect()
-              },
-              editable: false,
-              eventLimit: true, // allow "more" link when too many events
-              events: {
-                url: 'get_calendario/',
-                failure: function() {
-                  document.getElementById('script-warning').style.display = 'block'
-                }
-              },
-              loading: function(bool) {
-                document.getElementById('loading').style.display =
-                  bool ? 'block' : 'none';
-              },
-              eventClick: function (info) {
-                info.jsEvent.preventDefault();
-                $('#dados_evento #modal_titulo').text(info.event.title)
-                $('#dados_evento #modal_materia').text(info.event._def.extendedProps.materia)
-                $('#dados_evento #modal_descricao').text(info.event._def.extendedProps.descricao)
-                $('#dados_evento #modal_data_inicial').text(info.event.start.toLocaleString())
-                $('#dados_evento #modal_data_final').text(info.event.end.toLocaleString())
-        
-                $('#dados_evento').modal('show')
-              },
-            });
-        
-            calendar.render();
-          });
-  
-      </script>
-      <style>
-
-        #script-warning {
-          display: none;
-          background: #eee;
-          border-bottom: 1px solid #ddd;
-          padding: 0 10px;
-          line-height: 40px;
-          text-align: center;
-          font-weight: bold;
-          font-size: 12px;
-          color: red;
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      locale: 'pt-br',
+      plugins: ['interaction', 'dayGrid', 'timeGrid'],
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      defaultDate: '{{hoje|date:"Y-m-d"}}',
+      navLinks: true, // can click day/week names to navigate views
+      select: function (arg) {
+        var title = prompt('Event Title:');
+        if (title) {
+          calendar.addEvent({
+            title: title,
+            start: arg.start,
+            end: arg.end,
+            allDay: arg.allDay
+          })
         }
-      
-        #loading {
-          display: none;
-          position: absolute;
-          top: 10px;
-          right: 10px;
+        calendar.unselect()
+      },
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events
+      events: {
+        url: 'get_calendario/',
+        failure: function () {
+          document.getElementById('script-warning').style.display = 'block'
         }
-      
-        #calendar {
-          max-width: 900px;
-          margin: 40px auto;
-          padding: 0 10px;
-        }
-      
-      </style>
+      },
+      loading: function (bool) {
+        document.getElementById('loading').style.display =
+          bool ? 'block' : 'none';
+      },
+      eventClick: function (info) {
+        info.jsEvent.preventDefault();
+        $('#dados_evento #modal_titulo').text(info.event.title)
+        $('#dados_evento #modal_materia').text(info.event._def.extendedProps.materia)
+        $('#dados_evento #modal_descricao').text(info.event._def.extendedProps.descricao)
+        $('#dados_evento #modal_data_inicial').text(info.event.start.toLocaleString())
+        $('#dados_evento #modal_data_final').text(info.event.end.toLocaleString())
+
+        $('#dados_evento').modal('show')
+      },
+    });
+
+    calendar.render();
+  });
+</script>
+<style>
+  #script-warning {
+    display: none;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: red;
+  }
+
+  #loading {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  #calendar {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 10px;
+  }
+</style>
 {% endblock %}
 
 {% block content %}
 <div class="boasvindas">
-    <div class="card-header card__container" style="background-color: blue;">
-        <h2>Bem vindo(a) à Intranet, Sr(a) {{user.first_name}} {{user.last_name}}</h2>
-        <small>Responsável por </small>
-        {% for aluno in alunos %}
-            <a href="{% url 'aluno_detail' aluno.id %}"> 
-                <small>{{aluno}} </small>
-            </a>
-            
-        {% endfor %}
-    </div>
+  <div class="card-header card__container" style="background-color: blue;">
+    <h2>Bem vindo(a) à Intranet, Sr(a) {{user.first_name}} {{user.last_name}}</h2>
+    <small>Responsável por </small>
+    {% for aluno in alunos %}
+    <a href="{% url 'aluno_detail' aluno.id %}">
+      <small>{{aluno}} </small>
+    </a>
+
+    {% endfor %}
+  </div>
 </div>
 <main class="page_home">
-<!-- container responsável -->
 
-    <!-- Alunos -->
-    <div class="d-flex justify-content-around row card__alunos">
-        {% for aluno in alunos %}
-        <div class="card mb-4 text-center col-3">
-            <div class="card-header"><h4>{{aluno.nome}}</h4></div>
-            <div class="card-body">
-                <p><a href="{% url 'turma_detail' aluno.turma.id %}"><ion-icon name="school-outline"></ion-icon> Turma {{aluno.turma}}</a></p>
-                <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
-                    Ver Mais
-                </a>
-                </div>
-        </div>
-        {% endfor %}
+  <!-- container responsável -->
+
+  <!-- Alunos -->
+  <div class="card__alunos">
+
+
+    {% for aluno in alunos %}
+    <div class="card mb-4 text-center col-lg-6 card__alunos-element">
+      <div class="card-header">
+        <h4>{{aluno.nome}}</h4>
+      </div>
+      <div class="card-body">
+        <p><a href="{% url 'turma_detail' aluno.turma.id %}">
+            <ion-icon name="school-outline"></ion-icon> Turma {{aluno.turma}}
+          </a></p>
+        <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
+          Ver Mais
+        </a>
+      </div>
     </div>
-    <hr>
+    {% endfor %}
+
     <!-- Atividades e ultimas enquetes -->
-    <div class="d-flex justify-content-around row">
-      
-        <div class="mb-4 text-center col-6 card__atividades">
-            <div class="atividades">
-            <div class="card-header">
-                <h1 class="titulosecoes">Atividades</h1>
-            </div>
-            <div class="card-body">
-                {% for aluno in alunos %}
-                <ul class="list-group">
-                {% for atividade in aluno.turma.atividadeescolar_set.all %}
-                    <li class="list-group-item">
-                        <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> - {{aluno.nome}}
-                    </li>
-                {% endfor %}
-                </ul>
-                {% endfor %}
-            </div>
+    <div class="atividades__container col-lg-6">
+      <div class="card__atividades">
+        <div class="atividades">
+          <div class="card-header">
+            <h1 class="titulosecoes">Atividades</h1>
+          </div>
+          <div class="card-body">
+            {% for aluno in alunos %}
+            <ul class="list-group">
+              {% for atividade in aluno.turma.atividadeescolar_set.all %}
+              <li class="list-group-item">
+                <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> - {{aluno.nome}}
+              </li>
+              {% endfor %}
+            </ul>
+            {% endfor %}
+          </div>
         </div>
-    </div>
+      </div>
 
-      
-        <div class="mb-4 text-center col-6 card__enquetes">
-            <div class="enquetes">
-            <div class="card-header"><h1 class="titulosecoes">Enquetes</h1></div>
-            <div class="card-body">
-                <ul class="list-group">
-                    {% for enquete in enquetes %}
-                    <li class="list-group-item">
-                        
-                        <a href="{% url 'enquete_detail' enquete.id %}">{{enquete}}</a>
-                    </li>
-                    {% endfor %}
-            </div>
+
+      <div class="card__enquetes">
+        <div class="enquetes">
+          <div class="card-header">
+            <h1 class="titulosecoes">Enquetes</h1>
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              {% for enquete in enquetes %}
+              <li class="list-group-item">
+
+                <a href="{% url 'enquete_detail' enquete.id %}">{{enquete}}</a>
+              </li>
+              {% endfor %}
+          </div>
         </div>
-    </div>
+      </div>
 
     </div>
-    <!-- Comunicados e Calendário -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                aria-selected="true">Comunicados</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                aria-selected="false">Calendário</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
 
-        <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row">
-                <div class="col-sm-12 col-md-9 col-lg-9">
-                  <div class="tab-content order-first" id="v-pills-tabContent">
-                      <div class="tab-pane fade show active" id="todos_comunicados" role="tabpanel"
-                          aria-labelledby="v-pills-home">
-                          {% for aluno in alunos %}
-                              <h4>{{aluno}}</h4>
-                              {% for comunicado in aluno.turma.comunicado_set.all %}
-                                  <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
-                                    <div class="d-flex flex-column flex-sm-row">
-                                        <div class="">
-                                            <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
-                                        </div>
-                                        <div class="flex-grow-1 p-4">
-                                            <h5 class="m-0">{{comunicado.titulo}}</h5>
-                                            <p class="text-muted mt-3">
-                                                {{comunicado.resumo.html|safe}}
-                                            </p>
-                                        </div>
-                                        <div class="leia-mais">
-                                            <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
-                                        </div>
-                                    </div>
-                                  </div>
-                              {% endfor %}
-                          {% endfor %}
-                      </div>
+  </div>
 
-                      {% for aluno in alunos %}
-                        <div class="tab-pane fade" id="aluno-{{aluno.id}}" role="tabpanel"
-                            aria-labelledby="v-pills-profile-tab">
-                            <h4>{{aluno}}</h4>
-                            {% for comunicado in aluno.turma.comunicado_set.all %}
-                              <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
-                                <div class="d-flex flex-column flex-sm-row">
-                                    <div class="">
-                                        <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
-                                    </div>
-                                    <div class="flex-grow-1 p-4">
-                                        <h5 class="m-0">{{comunicado.titulo}}</h5>
-                                        <p class="text-muted mt-3">
-                                            {{comunicado.resumo.html|safe}}
-                                        </p>
-                                    </div>
-                                    <div class="leia-mais">
-                                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
-                                    </div>
-                                </div>
-                              </div>
-                            {% endfor %}
-                        </div>
-                      {% endfor %}
+
+  <!-- Comunicados e Calendário -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+        aria-selected="true">Comunicados</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+        aria-selected="false">Calendário</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <div class="tab-content order-first" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="todos_comunicados" role="tabpanel"
+              aria-labelledby="v-pills-home">
+              {% for aluno in alunos %}
+              <h4>{{aluno}}</h4>
+              {% for comunicado in aluno.turma.comunicado_set.all %}
+              <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                <div class="d-flex flex-column flex-sm-row">
+                  <div class="">
+                    <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
+                  </div>
+                  <div class="flex-grow-1 p-4">
+                    <h5 class="m-0">{{comunicado.titulo}}</h5>
+                    <p class="text-muted mt-3">
+                      {{comunicado.resumo.html|safe}}
+                    </p>
+                  </div>
+                  <div class="leia-mais">
+                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
                   </div>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
-                  <div class="nav nav-pills flex-column col-3 order-last" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              </div>
+              {% endfor %}
+              {% endfor %}
+            </div>
 
-                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
-                          aria-controls="v-pills-home" aria-selected="true">Todos</a>
-                      {% for aluno in alunos %}
-                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
-                          aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
-
-
-                      {% endfor %}
+            {% for aluno in alunos %}
+            <div class="tab-pane fade" id="aluno-{{aluno.id}}" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+              <h4>{{aluno}}</h4>
+              {% for comunicado in aluno.turma.comunicado_set.all %}
+              <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
+                <div class="d-flex flex-column flex-sm-row">
+                  <div class="">
+                    <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
+                  </div>
+                  <div class="flex-grow-1 p-4">
+                    <h5 class="m-0">{{comunicado.titulo}}</h5>
+                    <p class="text-muted mt-3">
+                      {{comunicado.resumo.html|safe}}
+                    </p>
+                  </div>
+                  <div class="leia-mais">
+                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
                   </div>
                 </div>
+              </div>
+              {% endfor %}
             </div>
+            {% endfor %}
+          </div>
         </div>
-        <!-- Calendário -->
-        <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="card">
-                <div class="card-body">
-                    <div id='script-warning'>
-                        Erro ao carregar eventos.
-                    </div>
-                
-                    <div id='loading'>loading...</div>
-                    <div id='calendar'></div>
-                </div>
-            </div>
+        <div class="col-sm-12 col-md-3 col-lg-3">
+          <div class="nav nav-pills flex-column col-3 order-last" id="v-pills-tab" role="tablist"
+            aria-orientation="vertical">
+
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
+              aria-controls="v-pills-home" aria-selected="true">Todos</a>
+            {% for aluno in alunos %}
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
+              aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
+
+
+            {% endfor %}
+          </div>
         </div>
+      </div>
     </div>
-</main>
+    <!-- Calendário -->
+    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="card">
+        <div class="card-body">
+          <div id='script-warning'>
+            Erro ao carregar eventos.
+          </div>
 
-<div class="modal fade" id="dados_evento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-      <div class="modal-content ">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Detalhes da Atividade</h5>
-        </div>
-        <div class="modal-body">
-          <dl>
-            <dt>Título</dt>
-            <dd id="modal_titulo"></dd>
-
-            <dt>Matéria</dt>
-            <dd id="modal_materia"></dd>
-
-            <dt>Descrição</dt>
-            <dd id="modal_descricao"></dd>
-
-            <dt>Data Inicial</dt>
-            <dd id="modal_data_inicial"></dd>
-  
-            <dt>Data Final</dt>
-            <dd id="modal_data_final"></dd>
-          </dl>
-        </div>
-        <div class="modal-footer">
+          <div id='loading'>loading...</div>
+          <div id='calendar'></div>
         </div>
       </div>
     </div>
   </div>
+</main>
+
+<div class="modal fade" id="dados_evento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalhes da Atividade</h5>
+      </div>
+      <div class="modal-body">
+        <dl>
+          <dt>Título</dt>
+          <dd id="modal_titulo"></dd>
+
+          <dt>Matéria</dt>
+          <dd id="modal_materia"></dd>
+
+          <dt>Descrição</dt>
+          <dd id="modal_descricao"></dd>
+
+          <dt>Data Inicial</dt>
+          <dd id="modal_data_inicial"></dd>
+
+          <dt>Data Final</dt>
+          <dd id="modal_data_final"></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
