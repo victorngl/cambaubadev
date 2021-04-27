@@ -379,6 +379,7 @@ h4 {
 
     #myTabContent {
         padding: 0 1rem;
+        padding-top: 0;
 
         h4 {
             margin-bottom: 30px;
@@ -387,6 +388,8 @@ h4 {
 
         .tab-content {
             padding-left: 0 !important;
+            padding-top: 0;
+
         }
     }
 
@@ -482,7 +485,19 @@ h4 {
         }
     }
 
+    .tab__panel-container {
+        .tab-pane {
+            display: flex;
+
+            .card {
+                width: 50%;
+            }
+        }
+    }
 }
 
+.nav__alunos-container {
+    margin-top: 20px;
+}
 
 @media (max-width:1200px) {}
