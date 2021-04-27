@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap %}
-
 {% block content %}
+
+
 <div class="card mb-4">
     <div class="card-header">
-       <h2>Boletos e Boletins</h2>
+        <h2>Boletos e Boletins</h2>
     </div>
     <div class="card-body p-0">
-        <iframe class="container-fluid vh-100" src="https://sigma.cambauba.com.br/webuiexternal/default.aspx?IDAssociado={{user.profile.id_sigma}}" style="min-height: 100vh;" frameborder="0"></iframe>
+        <iframe class="container-fluid vh-100"
+            src="https://sigma.cambauba.com.br/webuiexternal/default.aspx?IDAssociado={{user.profile.id_sigma}}"
+            style="min-height: 100vh;" frameborder="0"></iframe>
     </div>
 </div>
 {% endblock %}

@@ -1,0 +1,401 @@
+.menu {
+    opacity: 0;
+    padding-top: 20px;
+    z-index: 999;
+    transition: all .5s ease-out !important;
+
+    .wrapper__menu {
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    .logo {
+        flex: 0 0 auto !important;
+        width: 16.6666666667% !important;
+        padding-right: auto;
+
+        img {
+            transition: .3s ease-in-out;
+            height: 50px;
+            object-fit: contain;
+        }
+    }
+
+    li {
+        display: block;
+
+        a {
+            color: $primary-color;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s ease;
+            padding: 5px 25px;
+            font-family: $font-gilroy;
+            letter-spacing: .6px;
+            display: inline-flex;
+            align-items: center;
+
+            &:hover {
+                color: $secondary-color;
+
+            }
+
+            ion-icon {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .sub-menu li {
+        margin-top: 10px;
+
+        &:first-child {
+            margin-top: 5px;
+        }
+    }
+
+    .button__red a {
+        @include button__red;
+        padding: 7px 40px !important;
+        background-color: #e7e7e7;
+        color: $primary-color !important;
+        transition: all .5s ease;
+
+        &:hover {
+            color: white !important;
+            background: $thirty-color !important;
+        }
+    }
+
+    @include media(l) {
+        opacity: 1;
+    }
+
+    @include media(m) {
+        display: none;
+    }
+}
+
+
+.menu__mobile {
+    opacity: 0;
+    min-height: 55px;
+
+    .wrapper__menu {
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    .logo {
+        padding-right: auto;
+        width: 190px;
+    }
+
+    @include media(m) {
+        opacity: 1;
+    }
+
+    @include media(l) {
+        display: none;
+    }
+}
+
+
+//icone mobile 
+.menu__mobile {
+    padding-top: 20px;
+    z-index: 99;
+
+    .hamburguer {
+        margin-left: 5px;
+    }
+
+    .menu__icon-click {
+        display: flex;
+        margin-left: auto;
+        padding: 13px 8px 13px 8px;
+        z-index: 20;
+        position: relative;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: $primary-color;
+        font-size: 16px;
+        font-weight: 600;
+        align-items: center;
+        z-index: 999;
+
+    }
+
+    i:after,
+    i:before {
+        content: "";
+        display: block;
+        background: $primary-color;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition: 0.3s ease-in-out;
+    }
+
+    i {
+        display: block;
+        background: $primary-color;
+        width: 20px;
+        height: 2px;
+        transition: 0.3s ease-in-out;
+        position: relative;
+    }
+
+    i:before {
+        top: -7px;
+    }
+
+    i:after {
+        bottom: -5px;
+    }
+}
+
+
+//atalhos 
+.atalhos {
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    display: none;
+    padding-left: 20px;
+
+    ul:not(.sub-menu) {
+        width: 60vw;
+        height: 100vh;
+        background: white;
+        box-shadow: -7px 10px 25px -14px rgba(0, 0, 0, 0.64);
+        padding: 70px 20px;
+        display: block;
+
+        @include media(ss) {
+            width: 70vw;
+
+        }
+
+        li {
+            margin-bottom: 30px;
+            transition: 0.3s ease-in-out;
+
+            .button__red {
+                @include button__red;
+            }
+
+            a {
+                padding: 15px;
+                color: $primary-color;
+                font-weight: bold;
+            }
+
+
+        }
+
+
+    }
+
+}
+
+.menu__open .atalhos {
+    display: block;
+    z-index: 99;
+    overflow: hidden;
+
+    ul {
+        animation: vemMenu 0.3s ease both;
+        opacity: 1;
+
+    }
+
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: .2s linear;
+}
+
+.ativoScrool .fixed-top {
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0 !important;
+
+}
+
+.ativoScrool .logo img {
+    height: 40px;
+    padding: 5px 0;
+}
+
+.navbar {
+    padding-bottom: 20px;
+}
+
+.menu__open .atalhos ul:not(.sub-menu):after {
+    content: "";
+    background-image: url(img/detalhes-bg-blue.svg);
+    position: absolute;
+    width: 100px;
+    height: 180px;
+    display: block;
+    bottom: 0;
+    right: 0;
+    transition: 0.3;
+    transition-delay: 0.5s;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#menu-principal {
+    align-items: center;
+}
+
+.menu__open i {
+    transform: rotate(45deg);
+    color: $primary-color !important;
+}
+
+.menu__open i:before {
+    transform: rotate(90deg);
+    top: -1px;
+}
+
+.menu__open i:after {
+    transform: rotate(90deg);
+    bottom: 1px;
+}
+
+.menu__open .menu__icon-click {
+    color: $primary-color !important;
+}
+
+.sub-menu {
+    padding: 10px;
+    padding-bottom: 20px;
+
+    border-radius: 10px;
+    transition: all .3s ease;
+    box-shadow: -7px 10px 25px -14px rgba(0, 0, 0, 0.14);
+
+    .menu-item a {
+        color: $primary-color !important;
+    }
+}
+
+
+.body__ademc,
+.body__blog,
+.body__associacao,
+.body__a-escola {
+    .logo a img {
+        filter: brightness(100);
+
+    }
+
+    .menu__mobile .menu__icon-click {
+        color: white;
+    }
+
+    .hamburguer i,
+    .menu__mobile i:after,
+    .menu__mobile i:before {
+        background: white;
+    }
+
+    .menu li a:not(.button__red a) {
+        color: white !important;
+
+    }
+
+    #menu-principal .sub-menu li a {
+        color: #2280c1 !important;
+        padding-bottom: 5px !important;
+
+    }
+
+}
+
+.menu__open {
+
+    .hamburguer i,
+    .menu__mobile i:after,
+    .menu__mobile i:before {
+        background: #2280c1 !important;
+    }
+
+    .menu__mobile li a:not(.button__red a) {
+        color: #2280c1 !important;
+    }
+}
+
+.ativoScrool {
+
+    &.body__ademc,
+    &.body__blog,
+    &.body__associacao,
+    &.body__a-escola {
+        .logo a img {
+            filter: brightness(1) !important;
+
+        }
+
+        .menu li a:not(.button__red a) {
+            color: #2280c1 !important;
+        }
+
+        .menu__mobile .menu__icon-click {
+            color: #2280c1;
+        }
+
+        .hamburguer i,
+        .menu__mobile i:after,
+        .menu__mobile i:before {
+            background: #2280c1 !important;
+        }
+
+    }
+
+
+}
+
+
+
+#wpadminbar {
+    display: none !important;
+}
+
+.sub-menu {
+    background: white;
+    z-index: 200;
+    // transition: all .5s ease;
+}
+
+@keyframes desceu {
+    0% {
+        transform: scale(.95) translateY(-20px);
+        opacity: 0;
+
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+
+    }
+}
+
+.menu-item-has-children:hover .sub-menu {
+    animation: desceu .2s ease both;
+}
+
+.menu li a:not(.button__red a) {
+    &:hover {
+        color: #952634 !important;
+    }
+}

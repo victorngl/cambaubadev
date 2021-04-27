@@ -1,3 +1,42 @@
 {
-    "python.pythonPath": "c:\\Users\\antonio.f.filho\\Documents\\Personal\\venvs\\venvCambauba\\Scripts\\python.exe"
+    "python.pythonPath": "c:\\Users\\antonio.f.filho\\Documents\\Personal\\venvs\\venvCambauba\\Scripts\\python.exe",
+
+    // SASS COMPILE ============================================
+    "liveSassCompile.settings.formats": [{
+            "format": "compressed", //compressed or expanded 
+            "extensionName": ".compilado.css",
+            "savePath": "static/assets/css" //diretorio para salvar o arquivo .css
+        },
+
+    ],
+
+    //lista de pasta para não compilar
+    "liveSassCompile.settings.excludeList": [
+
+        "**/node_modules/**",
+        ".vscode/**",
+        "slick/**",
+        "static/assets/sass/etc",
+        "static/assets/styles",
+        "static/assets/core",
+        "atividades",
+        "atividades_escolares",
+        "escolas",
+        "informativos",
+        "materias_didaticos",
+        "core",
+    ],
+
+    //config que gera .map 
+    "liveSassCompile.settings.generateMap": false,
+
+    // prefix
+    "liveSassCompile.settings.autoprefix": [
+        "> 2%",
+        // "last 2 versions"
+    ],
+
+    //nao mostra a barra || open output  ctrl+shift+u
+    "liveSassCompile.settings.showOutputWindow": false,
+
 }

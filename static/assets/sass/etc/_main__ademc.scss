@@ -1,0 +1,78 @@
+@import "main__associacao";
+
+#intro {
+    h1 {
+        margin-top: 135px !important;
+    }
+}
+
+#principal {
+    padding-top: 60px;
+    padding-bottom: 80px;
+
+    h1 {
+        font-size: 40px;
+        color: $preto-novo;
+        position: relative;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -10px;
+            height: 2px;
+            background: $secondary-color;
+            width: 60px;
+            left: 0;
+
+
+        }
+
+        span {
+            color: $primary-color;
+        }
+    }
+
+    h2 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: $preto-novo;
+    }
+
+    p {
+        margin-top: 30px;
+        line-height: 150%;
+        color: #4a4a4a;
+        font-size: 18px;
+
+        @include media(s) {
+            font-size: 16px;
+        }
+    }
+
+    .acesse {
+        color: $primary-color;
+        display: inline-flex;
+        align-items: center;
+        margin: 20px 0;
+        font-weight: 600;
+        font-size: 18px;
+        background: #e8e8e8;
+        padding: 10px;
+        border-radius: 5px;
+        transition: 0.5s ease;
+
+        ion-icon {
+            margin-left: 10px;
+            font-size: 22px;
+            display: inline-flex;
+        }
+
+        &:hover {
+            background: #bababa;
+
+        }
+    }
+
+
+}

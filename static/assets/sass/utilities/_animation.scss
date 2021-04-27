@@ -1,0 +1,39 @@
+@keyframes vemMenu {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+
+    }
+}
+
+
+@keyframes voltaMenu {
+
+    0% {
+        transform: translateX(0);
+
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+
+}
+
+@keyframes up {
+   
+    100%{
+        transform: translateY(10px);
+    }
+}
+
+@keyframes arrowRight {
+   
+    100%{
+        transform: translateX(5px);
+    }
+}
+

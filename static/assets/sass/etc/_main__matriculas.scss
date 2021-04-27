@@ -1,0 +1,215 @@
+/* @import "fonts";
+@import "variaveis__mixins";
+//bootstrap
+// Required
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+// Opcional
+@import "bootstrap/scss/root";
+//@import "./bootstrap/scss/reboot";
+//@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/button-group";
+
+
+
+//imports projeto
+@import "reset";
+@import "responsivo";
+@import "animation";
+@import "menu";
+@import "footer"; */
+
+@import "carousel__oficina";
+$form-check-padding-start: 0px;
+
+.container {
+    max-width: 1280px
+}
+
+
+.fixed-top {
+    background: white !important;
+}
+
+
+.container__linha {
+    width: 90%;
+    min-height: 900px;
+    border: 1px solid #2280c152;
+    border-radius: 20px;
+    margin: 100px auto;
+    margin-top: 150px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 20px;
+
+    @include media(s) {
+        width: 99%;
+
+    }
+
+    h1,
+    h2 {
+        margin: 30px 0;
+        font-size: 28px;
+        color: $primary-color;
+
+        @include media(s) {
+            font-size: 22px;
+        }
+    }
+
+    .traco {
+        height: 1px;
+        width: 95%;
+        background-color: #B8B8B8;
+        ;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+//estilos dos input radio 
+.formulario__matricula {
+    margin: 0 15px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include media(s) {
+        margin: 0;
+        flex-direction: column;
+
+    }
+
+    input[type=radio]:checked {
+        color: red !important;
+    }
+
+    .form__item {
+        margin: 10px;
+
+        h5 {
+            text-align: start;
+            margin: 15px 5px;
+            margin-left: 10px;
+            font-size: 22px;
+
+            @include media(s) {
+                font-size: 20px;
+            }
+        }
+
+        .form__check {
+            display: flex;
+            margin-bottom: 10px;
+
+        }
+    }
+
+    .text-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+.form__dados {
+    text-align: start;
+    //margin: 0  auto;
+    margin-top: 20px;
+    margin-right: 20px;
+    //reset input
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    @include media(m) {
+        margin-right: 0px;
+        margin-top: 30px;
+        width: 100%;
+
+
+    }
+
+    input {
+        border-color: initial;
+        background: initial;
+        border-width: initial;
+        @include font;
+        border-style: initial;
+    }
+
+    label {
+        font-weight: 700;
+        font-size: 22px;
+
+        @include media(s) {
+            font-size: 20px;
+        }
+    }
+
+    input {
+        margin-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #B8B8B8;
+        transition: 0.3s ease;
+    }
+
+    input:active {
+        border-color: $primary-color;
+    }
+
+    input:focus {
+        border-color: $primary-color;
+    }
+}
+
+.new__row {
+    width: 100%;
+    display: flex;
+
+    @include media(m) {
+        flex-wrap: wrap;
+    }
+}
+
+
+.form__termos {
+    text-align: start;
+    margin: 30px 0;
+    margin-bottom: 15px;
+
+    p {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+}
+
+.concordo {
+    margin-bottom: 20px;
+    margin-right: auto;
+    text-align: start;
+}
+
+.form__enviar {
+    @include button__red;
+    margin-right: auto;
+    display: block;
+    border: transparent;
+    &:hover{
+        color:$primary-color;
+        transform: none;
+    }
+}

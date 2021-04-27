@@ -1,0 +1,123 @@
+@import "../sass/utilities/variaveis__mixins";
+@import "../sass/utilities/responsivo";
+@import "../sass/utilities/animation";
+@import "../sass/utilities/fonts";
+//cores
+
+$cor-azul-1: #2280C1;
+$cor-azul-2: #3BA0E6;
+$cor-azul-3: #1E3C7D;
+$cor-azul-4: #0A1E2B;
+$cor-vermelho-1:#A41B22;
+
+// bordas e sombras 
+$borda-sm: 1px solid #dadce0;
+$shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
+$border-radius: 8px;
+$degrade-1: linear-gradient(to right, #2280c1, #0083b0);
+
+
+$font-gilroy: 'Gilroy',
+arial;
+// asdasd
+
+body {
+    --cor-azul-1:#{$cor-azul-1};
+    --cor-azul-2:#{$cor-azul-2};
+    --cor-azul-3:#{$cor-azul-3};
+    --cor-azul-4:#{$cor-azul-4};
+    --cor-vermelho:#{$cor-vermelho-1};
+
+    --borda-sm:#{$borda-sm};
+    --shadow-sm:#{$shadow-sm};
+    --border-radius:#{$border-radius};
+
+    --degrade-1:#{$degrade-1};
+}
+
+/* gerais */
+
+.main-header {
+    top: 0;
+    /* a */
+}
+
+.card {
+    border: $borda-sm;
+    box-shadow: $shadow-sm;
+    border-radius: $border-radius;
+
+}
+
+
+.body__comunicado__single {
+
+    .col-12 {
+        @include d(m) {
+            padding: 0 8px;
+        }
+    }
+
+    .breadcrumb {
+        margin-top: 80px;
+    }
+
+    .fundo-post {
+        object-fit: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+
+    .card {
+        max-width: 900px;
+        margin: 0 auto;
+
+        p:first-child {
+            border-bottom: $borda-sm;
+            padding-bottom: 5px;
+            font-size: 32px;
+            font-family: $font-gilroy;
+            padding: 15px 0;
+            padding-left: 20px;
+        }
+
+        >.text-center {
+            p:not(p:first-child) {
+                font-size: 14px;
+            }
+
+            p {
+                text-align: start;
+                line-height: 145%;
+                color: rgb(28, 28, 28);
+                padding: 0 20px;
+
+                small {
+                    color: $cor-azul-1;
+
+                }
+            }
+
+            a:last-child {
+                background: none;
+                border: 1px solid transparent;
+                width: 100% !important;
+                color: $cor-azul-1 !important;
+                font-family: $font-gilroy;
+                text-align: start;
+                border-top: $borda-sm;
+                padding: 10px 0;
+                padding-left: 20px;
+                border-radius: 0 0 8px 8px;
+                font-size: 16px;
+
+                &:hover {
+                    box-shadow: initial !important;
+                    background: rgba(243, 243, 243, 0.85);
+                }
+            }
+        }
+    }
+}
+
+.body__home {}

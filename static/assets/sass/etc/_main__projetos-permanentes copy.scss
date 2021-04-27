@@ -1,0 +1,324 @@
+@import "fonts";
+@import "variaveis__mixins";
+//bootstrap
+// Required
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+// Opcional
+@import "bootstrap/scss/root";
+//@import "./bootstrap/scss/reboot";
+//@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+
+
+//imports projeto
+@import "reset";
+@import "responsivo";
+@import "animation";
+@import "menu";
+@import "footer";
+@import "carousel__oficina";
+
+
+.container {
+    max-width: 1280px
+}
+
+body {
+    @include font;
+    //height: 4000px;
+    scroll-behavior: smooth;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.fixed-top {
+    background: white !important;
+}
+
+@import "bg__intro__singles";
+
+
+//sidebar ==============================
+
+.sidebar {
+    margin-top: 50px;
+
+    .sidebar__container {
+        border: 1px solid$primary-color;
+        border-radius: 20px;
+        padding: 20px 20px;
+        max-width: 300px;
+        width: 270px;
+
+        h2 {
+            display: inline-block;
+            color: $primary-color;
+            font-weight: bold;
+            font-size: 22px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(59, 160, 230, 0.5);
+        }
+
+        h3 {
+            margin-bottom: 0px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 29px;
+            color: $primary-color;
+            position: relative;
+
+            &:hover {
+                text-decoration: underline;
+
+                &:after {
+
+                    transform: translateX(5px);
+
+                }
+            }
+
+            &:after {
+                content: "";
+                background-image: url(../img/arrow-right.svg);
+                width: 15px;
+                height: 20px;
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 10px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition: 0.3s ease;
+
+            }
+
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 21px;
+
+            color: $font-color-a;
+        }
+    }
+}
+
+
+body {
+    position: relative;
+
+    &::after {
+        content: '';
+        background-image: url(../img/detalhe-2-azul.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        right: 0;
+        width: 150px;
+        height: 300px;
+        display: block;
+        top: 1300px;
+        opacity: .6;
+
+        @include media(s) {
+            width: 100px;
+            top: 1450px;
+        }
+    }
+}
+
+.centro {
+    h1 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 50px;
+        line-height: 101px;
+        color: #2280C1;
+        text-align: center;
+        padding: 10px 0;
+
+        @include media(s) {
+            font-size: 28px;
+            line-height: 110%;
+        }
+    }
+
+    .centro__text {
+        max-width: 900px;
+    }
+
+    .slider-for {
+        height: 360px;
+        position: relative;
+        max-width: 100%;
+        margin-bottom: 20px;
+        border-radius: 20px;
+
+        @include media(s) {
+            margin-bottom: 0;
+        }
+
+
+        img {
+            object-fit: contain;
+            width: 100%;
+            height: 360px;
+
+
+        }
+    }
+
+    .slider-nav {
+        justify-content: center;
+        margin: 0 auto;
+
+        .slider__item {
+            margin: 10px;
+            border-radius: 20px;
+        }
+
+        img {
+            height: 120px;
+            width: 100%;
+            border-top: 20px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.centro__carousel {
+    position: relative;
+
+    @include media(s) {
+        margin-top: -10px;
+    }
+
+    .right {
+        cursor: pointer;
+        position: absolute;
+        /* top: 0 ;
+        bottom: 0;
+        right: 0; */
+        inset: 0;
+        margin: auto;
+        display: block;
+        background-image: url(../img/a1.svg);
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        transform: translateX(200px);
+
+        @include media(s) {
+            transform: translateX(150px);
+
+        }
+        @include media(ss) {
+            transform: translateX(100px);
+
+        }
+    }
+
+    .left {
+        cursor: pointer;
+        position: absolute;
+        /* top: 0 ;
+        bottom: 0;
+        right: 0; */
+        inset: 0;
+        margin: auto;
+        display: block;
+        background-image: url(../img/a2.svg);
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        transform: translateX(-200px);
+
+        @include media(s) {
+            transform: translateX(-150px);
+
+        }
+        @include media(ss) {
+            transform: translateX(-100px);
+
+        }
+    }
+}
+
+.acesse {
+    color: $primary-color;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    margin-top:20px;
+
+    display: flex;
+    align-items: center;
+    &:after,
+    &:before {
+        content:"";
+        display: block;
+        width: 12px;
+        height: 10px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: inline-block;
+        transition:0.3s ease;
+       
+    }
+
+    &:after {
+        background-image: url(../img/page-projetos/seta.svg);
+        margin-left: 8px;
+
+    }
+    &:before {
+        background-image: url(../img/page-projetos/file.svg);
+        width: 20px;
+        height: 18px;
+        margin-right: 5px;
+    }
+    &:hover{
+        &:after{
+            transform: translateX(5px);
+        }
+    }
+     
+
+}
+
+
+
+
+@media screen and (max-width:1100px)
+
+/* and (min-width: 1846px)  */
+    {
+    nav.sidebar {
+        display: none;
+    }
+
+    .centro {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+}
+
+/* @media screen and (max-width:530px){
+    margin-top: 10px !important;
+
+} */

@@ -1,0 +1,392 @@
+@import "intro__pages";
+
+section {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1090px;
+}
+
+#intro {
+    h1 {
+        @include clamp("font-size", 32px, 4vw, 48px);
+
+    }
+}
+
+
+.intro__wrapper {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+    font-size: 14px;
+    margin-top: 40px;
+
+
+    @include media(ss) {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .intro__link {
+        display: inline-flex;
+        align-items: center;
+        color: rgb(226, 226, 226);
+        font-weight: 600;
+        cursor: pointer;
+        padding: 10px;
+
+        ion-icon {
+            margin-left: 5px;
+            transition: 0.5s ease-in-out;
+        }
+
+        &:hover {
+            ion-icon {
+                transform: translateY(5px);
+            }
+        }
+
+        @include media(ss) {
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+
+    .intro__link+.intro__link {
+        padding-left: 10px;
+
+        &:before {
+            content: "";
+            width: 1px;
+            height: 60%;
+            display: inline-block;
+            background: rgba(226, 226, 226, 0.467);
+            margin-right: 20px;
+
+        }
+    }
+}
+
+$preto-novo:#2b2b2b;
+
+#historia {
+    padding-top: 80px;
+    padding-bottom: 60px;
+    ;
+
+    h1 {
+        font-size: 40px;
+        color: $preto-novo;
+        position: relative;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -10px;
+            height: 2px;
+            background: $secondary-color;
+            width: 60px;
+            left: 0;
+
+
+        }
+
+        span {
+            color: $primary-color;
+        }
+    }
+
+    .historia__wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        @include media(m) {
+            flex-flow: column;
+        }
+
+        &-2 {
+            display: flex;
+            flex-flow: column nowrap;
+            max-width: 50%;
+
+            @include media(m) {
+                max-width: 100%;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            p {
+                margin-top: 30px;
+                line-height: 150%;
+                color: #4a4a4a;
+                font-size: 18px;
+
+                @include media(s) {
+                    font-size: 16px;
+                }
+            }
+
+        }
+
+
+
+
+
+    }
+
+    .img__container {
+        border-radius: 50%;
+        overflow: hidden;
+        height: 300px;
+        width: 300px;
+        position: relative;
+        z-index: 10;
+
+        img {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border: 10px solid #d6eeff;
+            border-radius: 50%;
+        }
+
+        @include media(m) {
+            height: 200px;
+            width: 200px;
+            margin: 20px auto;
+        }
+
+
+
+    }
+
+    .bola__container {
+        position: relative;
+
+        @include media(m) {
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 200px;
+            width: 200px;
+            background: #d6eeff;
+            bottom: -60px;
+            border-radius: 50%;
+            right: 0;
+
+            @include media(m) {
+                height: 70px;
+                width: 70px;
+            }
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 80px;
+            width: 80px;
+            background: #d6eeff;
+            top: -60px;
+            border-radius: 50%;
+            right: 0;
+
+            @include media(m) {
+                height: 70px;
+                width: 70px;
+                top: 0px;
+
+            }
+        }
+    }
+
+    .historia__wrapper-3 {
+        p {
+            line-height: 150%;
+            color: #4a4a4a;
+            font-size: 18px;
+            max-width: 1090px;
+            margin: 0 auto;
+            margin-top: 40px;
+
+            @include media(s) {
+                font-size: 16px;
+            }
+
+        }
+
+        .bola__container {
+            max-width: 300px;
+            margin-top: 30px;
+
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 100px;
+                width: 100px;
+                background: #d6eeff;
+                bottom: -30px;
+                border-radius: 50%;
+                left: 0;
+            }
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 80px;
+                width: 80px;
+                background: #d6eeff;
+                top: -30px;
+                border-radius: 50%;
+                right: 30px;
+            }
+        }
+
+        .historia__wrapper-4 {
+            display: flex;
+
+            @include media(m) {
+                flex-direction: column;
+            }
+        }
+
+        .bola__4 {
+            margin: 20px auto;
+
+            @include media(m) {
+                margin-top: 35px;
+            }
+        }
+
+        .wrapper__4 {
+            align-items: center;
+
+            @include media(m) {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    }
+
+    .flex-md-wrap {
+        @include media(m) {
+            flex-wrap: wrap;
+        }
+    }
+
+    .mt-5 {
+        margin-top: 80px;
+    }
+
+    .mx-auto {
+        margin: 0 auto;
+    }
+
+    .mx-none {
+        margin: 20px 0 !important;
+    }
+
+    .ultima__historia {
+        @include media(m) {
+            justify-content: center;
+        }
+
+        .ultima__img {
+            order: -1;
+
+            .bola__container {
+                @include media(m) {
+                    margin: 30px auto;
+                }
+            }
+
+        }
+    }
+
+
+}
+
+#estatuto {
+
+    h1 {
+        font-size: 40px;
+        color: $preto-novo;
+        position: relative;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -10px;
+            height: 2px;
+            background: $secondary-color;
+            width: 60px;
+            left: 0;
+
+
+        }
+
+        span {
+            color: $primary-color;
+        }
+
+        @include media(ss) {
+            font-size: 32px;
+        }
+    }
+
+    p {
+        margin-top: 20px;
+        line-height: 150%;
+        color: #4a4a4a;
+        font-size: 18px;
+
+        @include media(s) {
+            font-size: 16px;
+        }
+    }
+
+    h2 {
+        font-size: 28px;
+        margin: 20px 0;
+        color: $primary-color;
+    }
+
+    .acesse {
+        color: $primary-color;
+        display: inline-flex;
+        align-items: center;
+        margin: 20px 0;
+        font-weight: 600;
+        font-size: 18px;
+        background: #e8e8e8;
+        padding: 10px;
+        border-radius: 5px;
+        transition: 0.5s ease;
+
+        ion-icon {
+            margin-left: 10px;
+            font-size: 22px;
+            display: inline-flex;
+        }
+
+        &:hover {
+            background: #bababa;
+
+        }
+    }
+
+}

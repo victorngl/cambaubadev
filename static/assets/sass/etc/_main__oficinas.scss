@@ -1,0 +1,286 @@
+/* @import "fonts";
+@import "variaveis__mixins";
+//bootstrap
+// Required
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+// Opcional
+@import "bootstrap/scss/root";
+//@import "./bootstrap/scss/reboot";
+//@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+
+
+//imports projeto
+@import "reset";
+@import "responsivo";
+@import "animation";
+@import "menu";
+@import "footer"; */
+@import "carousel__oficina";
+
+
+.container {
+    max-width: 1280px
+}
+
+
+
+.fixed-top {
+    background: white !important;
+}
+
+@import "bg__intro__singles";
+
+
+//detalhes da OFICINA
+#oficina {
+    .oficina__wrapper {
+        margin: 0 auto;
+        margin-top: 40px;
+        display: grid;
+        overflow: hidden;
+        height: 100%;
+        // grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "imagem texto"
+            "imagem icones"
+        ;
+        grid-gap: 30px;
+
+        img {
+            //max-width: 300px;
+            max-width: 620px;
+            grid-area: imagem;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+    }
+
+    .oficina__texto {
+        grid-area: texto;
+        max-width: 600px;
+
+        /* titulo oficina */
+        h2 {
+            font-weight: bold;
+            font-size: 42px;
+            color: $primary-color;
+            display: flex;
+            align-items: center;
+            max-width: 95%;
+            margin-bottom: 20px;
+
+            @include media(s) {
+                font-size: 32px;
+            }
+        }
+
+        .icon__titulo {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-image: url(../img/page-oficinas/art.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-left: 30px;
+        }
+
+        p {
+            max-width: 650px;
+        }
+    }
+
+    .oficina__info {
+        display: grid;
+        grid-area: icones;
+        max-width: 600px;
+        grid-gap: 10px 20px;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:after {
+            content: "";
+            background-image: url(../img/detalhe-2-azul.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            width: 120px;
+            height: 100%;
+            display: inline-block;
+            right: 0px;
+            bottom: -280px;
+            z-index: 99;
+            opacity: .3;
+
+            @include media(s) {
+                bottom: -430px;
+
+            }
+
+        }
+
+        //bloco da info
+        div {
+            margin: 10px 0 0 5px;
+
+            &:hover {
+                i svg path {
+                    transition: all 0.3s ease;
+
+                    fill: $font-color-a;
+                }
+            }
+
+            &:hover {
+
+                h5,
+                p,
+                li,
+                a {
+                    transition: all 0.3s ease;
+
+                    color: $font-color-a;
+                }
+            }
+        }
+
+        //titulo  info
+        h5 {
+            margin: 10px 0;
+            margin-top: 5px;
+            font-size: 18px;
+            color: $primary-color;
+        }
+
+        i svg {
+            width: 30px;
+            transition: fill 0.3 ease;
+
+            path {
+                fill: $primary-color;
+
+            }
+        }
+
+        a {
+            color: $primary-color;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        p,
+        li {
+            color: $primary-color;
+        }
+
+        p {
+            max-width: 220px;
+        }
+
+
+    }
+
+    .button__red {
+        @include button__red(20px, 12px);
+        margin: 0 auto;
+        text-align: center;
+        display: grid;
+        max-width: 300px;
+        margin-top: 0px;
+
+        @include media(s) {
+            margin-top: 0px;
+        }
+
+
+    }
+
+}
+
+#oficinas {
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+.datas {
+
+
+    li {
+        // padding-bottom: -15px;
+        padding-top: 5px;
+        display: inline-block;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 1px;
+            background: $primary-color;
+            left: 0px;
+            width: 100%;
+            opacity: .3;
+
+        }
+
+    }
+
+
+
+}
+
+//MOBILEEE
+&.mobile #oficina {
+    .oficina__wrapper {
+
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        grid-gap: 30px;
+        margin-bottom: 40px;
+
+        img {
+            object-fit: cover;
+            height: 350px;
+            border-radius: 20px;
+        }
+
+    }
+
+    .oficina__info {
+        grid-template-columns: 1fr;
+        grid-template-rows: initial;
+        max-width: 100%;
+        grid-gap: 25px 0;
+
+        p {
+            max-width: 280px
+        }
+
+    }
+
+    .datas {
+        display: flex;
+        flex-direction: column;
+
+        li:after {
+            opacity: .2;
+        }
+    }
+
+    /* i svg{
+        margin-left: 5px;
+    } */
+}

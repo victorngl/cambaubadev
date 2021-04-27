@@ -1,0 +1,99 @@
+.sidebar {
+    margin-top: 50px;
+
+    .sidebar__container {
+        border-radius: 10px;
+        padding: 20px 20px;
+        max-width: 300px;
+        width: 270px;
+        background: #fff;
+        border: 1px solid rgba(34, 128, 193, .1);
+
+        box-shadow: 0px 3px 10px #0d6efd24;
+
+        h2 {
+            display: inline-block;
+            color: $primary-color;
+            font-weight: bold;
+            font-size: 22px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(59, 160, 230, 0.5);
+            font-family: $font-gilroy;
+
+        }
+
+        h3 {
+            margin-bottom: 0px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 29px;
+            color: $primary-color;
+            position: relative;
+
+            &:hover {
+                text-decoration: underline;
+
+                &:after {
+
+                    transform: translateX(5px);
+
+                }
+            }
+
+            &:after {
+                content: "";
+                background-image: url(img/arrow-right.svg);
+                width: 12px;
+                height: 15px;
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 10px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition: 0.3s ease;
+
+            }
+
+
+        }
+
+        a {
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 21px;
+            margin: 8px 0;
+            color: $font-color-a;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+
+        }
+    }
+
+    .sidebar__container {
+        border-radius: $border-radius;
+        padding: 20px;
+        max-width: 300px;
+        width: 270px;
+        background: #fff;
+        border: $borda-sm !important;
+        box-shadow: $shadow-sm !important;
+    }
+
+    .sidebar__container h2 {
+        border-bottom: $borda-sm !important;
+        width: 100%;
+        margin-bottom: 12px;
+
+    }
+
+}
+
+
