@@ -184,7 +184,7 @@
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
         aria-selected="true">
-        <ion-icon name="receipt-outline">Comunicados</ion-icon>
+        <ion-icon name="receipt-outline"></ion-icon>Comunicados
       </a>
     </li>
     <li class="nav-item">
@@ -197,7 +197,20 @@
   <div class="tab-content" id="myTabContent">
 
     <div class="tab-pane fade show active row" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="nav__alunos-container">
 
+        <div class="nav nav-pills  order-last" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
+            aria-controls="v-pills-home" aria-selected="true">Todos</a>
+          {% for aluno in alunos %}
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
+            aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
+
+
+          {% endfor %}
+        </div>
+      </div>
       <div class="tab__panel-container">
         <div class="tab-content order-first" id="v-pills-tabContent">
           <div class="tab-pane fade show active" id="todos_comunicados" role="tabpanel" aria-labelledby="v-pills-home">
@@ -239,19 +252,6 @@
 
           {% for aluno in alunos %}
           <div class="tab-pane fade" id="aluno-{{aluno.id}}" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <div class="nav__alunos-container">
-              <div class="nav nav-pills  order-last" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
-                  aria-controls="v-pills-home" aria-selected="true">Todos</a>
-                {% for aluno in alunos %}
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#aluno-{{aluno.id}}" role="tab"
-                  aria-controls="v-pills-profile" aria-selected="false">{{aluno.nome}}</a>
-
-
-                {% endfor %}
-              </div>
-            </div>
             <h4>{{aluno}}</h4>
             {% for comunicado in aluno.turma.comunicado_set.all %}
             <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
