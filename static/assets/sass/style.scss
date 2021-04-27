@@ -309,8 +309,6 @@ h4 {
 
         h1 {
             i {
-
-
                 @include iconTitulos("/static/assets/images/icons/book.svg")
             }
         }
@@ -811,6 +809,18 @@ nav[aria-label="Navegação"] {
             display: none;
         }
 
+    }
+
+    .atividade__escolar-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+        margin-top: 30px;
+
+        @include d(m) {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
     }
 }
 
