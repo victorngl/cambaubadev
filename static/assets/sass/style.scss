@@ -69,11 +69,20 @@ h4 {
             text-decoration: underline;
         }
     }
+
+    h2 {
+        @include d(m) {
+
+            font-size: 20px;
+
+        }
+    }
 }
 
 
+
 .container {
-    max-width: 100% !important;
+    max-width: 1000px !important;
 }
 
 //COMUNICADO SINGLE ★★★★★
@@ -149,6 +158,11 @@ h4 {
 
 
 .body__home {
+    .separator-breadcrumb {
+        @include d(m){
+            margin-bottom: 0;
+        }
+    }
     .main-content {
         max-width: 1200px;
         margin: 0 auto;
@@ -358,6 +372,11 @@ h4 {
                 display: inline-flex;
                 align-items: center;
 
+                @include d(m) {
+                    font-size: 16px;
+                    padding: 12px;
+                }
+
                 &.active {
                     border: initial !important;
                     border-bottom: 3px solid $cor-azul-1 !important;
@@ -389,7 +408,7 @@ h4 {
         .tab-content {
             padding-left: 0 !important;
             padding-top: 0;
-
+            padding-right: 0 !important;
         }
     }
 
@@ -491,13 +510,56 @@ h4 {
 
             .card {
                 width: 50%;
+
+                @include d(m) {
+                    width: 100%;
+                    max-width: 600px;
+                    margin: 0 auto 30px;
+                }
             }
         }
+    }
+}
+
+.vermais_aluno {
+    display: inline-flex;
+    align-items: center;
+
+    ion-icon {
+        margin-left: 5px;
     }
 }
 
 .nav__alunos-container {
     margin-top: 20px;
 }
+
+//calendario home
+#profile {
+    .card {
+        border: none !important;
+
+        #calendar {
+            border: $borda-sm;
+            float: none;
+            padding: 20px;
+            border-radius: 8px;
+
+            .fc-button-primary {
+                color: #fff;
+                background-color: $cor-azul-1;
+                border: $borda-sm;
+            }
+
+            .fc-button:focus {
+                outline: none !important;
+                -webkit-box-shadow: initial !important;
+                box-shadow: initial !important;
+                background: #003473 !important;
+            }
+        }
+    }
+}
+
 
 @media (max-width:1200px) {}
