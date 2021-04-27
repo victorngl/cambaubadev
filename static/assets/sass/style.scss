@@ -36,6 +36,9 @@ body {
 }
 
 // GERAIS ★★★★★
+#page__login .entrar {
+    cursor: pointer;
+}
 
 .main-header {
     top: 0;
@@ -581,7 +584,8 @@ h4 {
                 display: grid;
                 gap: 20px;
                 justify-items: center;
-                width: 100% justify-content: center;
+                width: 100%;
+                 justify-content: center;
             }
         }
     }

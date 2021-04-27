@@ -102,7 +102,7 @@
 
 {% block content %}
 <div class="card mb-4">
-    <div class="card-header card__container" style="background-color: blue;">
+    <div class="card-header card__container boasvindas">
         <h2>Bem vindo(a) à Intranet, {{user.first_name}} {{user.last_name}}</h2>
         <small>{{perfil}} {{aluno.turma}}</small>
     </div>
@@ -111,10 +111,9 @@
 
 <main class="page_home">
 <!-- container Aluno-->
-
     <!-- Agenda -->
     <div class="d-flex justify-content-around row card__agenda">
-        <div class="col-12">
+        <div class="col-12 profile__aluno" id="profile">
             <div class="card mb-4 text-center container-fluid">
                 <div class="card-body">
                     <div id='script-warning'>
