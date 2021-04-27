@@ -638,15 +638,21 @@ nav[aria-label="Navegação"] {
 
     @include d(m) {
         grid-template-columns: 1fr;
+    }
 
-        .card {
+    .card {
+        @include d(m) {
             width: 100% !important;
             min-width: 300px;
+        }
 
-            .top__division {
+        .top__division {
+            @include d(m) {
                 flex-direction: column;
+            }
 
-                .card__img {
+            .card__img {
+                @include d(m) {
                     width: 100% !important;
                     border-radius: 8px 8px 0 0;
                 }
@@ -657,11 +663,13 @@ nav[aria-label="Navegação"] {
 
 
 
+
 }
 
 
 
 //home aluno 
+
 .body__aluno {
 
     .boasvindas {
