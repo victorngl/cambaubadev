@@ -270,6 +270,21 @@ h4 {
 
     .atividades__container {
         margin-left: 60px;
+        h1{
+            i{
+                @include bg-props-contain;
+                display: block;
+                @include size(30px);
+                margin-right: 5px;
+                background-image: url("/home/static/assets/images/icons/book.svg");
+            }
+        }
+
+        @include d(m) {
+            margin-left: initial;
+            min-width: 290px;
+            font-size: 12px;
+        }
 
         .card-header {
             padding: 0;
@@ -283,6 +298,12 @@ h4 {
             padding-left: 20px;
 
             margin: 15px 0;
+        }
+    }
+
+    .list-group-item {
+        @include d(m) {
+            padding: 12px;
         }
     }
 
