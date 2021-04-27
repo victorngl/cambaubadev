@@ -122,7 +122,7 @@
         <div class="card mb-4 text-center col-3">
             <div class="card-header"><h4>{{aluno.nome}}</h4></div>
             <div class="card-body">
-                <p><a href="{% url 'turma_detail' aluno.turma.id %}">Turma {{aluno.turma}}</a></p>
+                <p><a href="{% url 'turma_detail' aluno.turma.id %}"><ion-icon name="school-outline"></ion-icon> Turma {{aluno.turma}}</a></p>
                 <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
                     Ver Mais
                 </a>

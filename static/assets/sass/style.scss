@@ -9,7 +9,7 @@ $cor-azul-2: #3BA0E6;
 $cor-azul-3: #1E3C7D;
 $cor-azul-4: #0A1E2B;
 $cor-vermelho-1:#A41B22;
-
+$cor-cinza-1: rgba(243, 243, 243, 0.85);
 // bordas e sombras 
 $borda-sm: 1px solid #dadce0;
 $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
@@ -35,11 +35,10 @@ body {
     --degrade-1:#{$degrade-1};
 }
 
-/* gerais */
+// GERAIS ★★★★★
 
 .main-header {
     top: 0;
-    /* a */
 }
 
 .card {
@@ -49,7 +48,27 @@ body {
 
 }
 
+h1,
+h2,
+h3,
+h4 {
+    font-family: $font-gilroy;
 
+}
+
+.boasvindas {
+    small {
+        font-size: 14px;
+    }
+
+    a {
+        color: $cor-azul-1;
+        font-size: 14px;
+    }
+}
+
+
+//COMUNICADO SINGLE ★★★★★
 .body__comunicado__single {
 
     .col-12 {
@@ -120,4 +139,63 @@ body {
     }
 }
 
-.body__home {}
+
+
+.body__home {
+    .card__alunos {
+        .card {
+            padding: 0;
+            border-radius: $border-radius;
+
+            .card-header {
+                border-radius: 8px 8px 0 0;
+                border-bottom: initial !important;
+
+            }
+
+            &-body {
+                padding: 20px 0 0;
+
+                p {
+                    a {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: $cor-azul-1 !important;
+                        transition: 0.3s ease;
+                        padding: 10px 20px;
+                        border-radius: $border-radius;
+
+                        &:hover {
+                            background: $cor-cinza-1;
+                        }
+                    }
+                }
+
+                >a {
+                    background: none;
+                    color: $cor-vermelho-1 !important;
+                    font-size: 18px;
+                    border-top: $borda-sm;
+                    padding: 12px 0;
+                    border-radius: initial;
+                    font-weight: 600;
+                    font-family: $font-gilroy;
+                    transition: 0.3s ease;
+
+                    &:hover {
+                        background: $cor-cinza-1;
+                    }
+                }
+            }
+        }
+    }
+
+    .card-header {
+        border-bottom: $borda-sm !important;
+    }
+
+    .card-header:first-child {
+        border-radius: initial;
+    }
+
+}
