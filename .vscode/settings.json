@@ -5,27 +5,19 @@
     "liveSassCompile.settings.formats": [{
             "format": "compressed", //compressed or expanded 
             "extensionName": ".compilado.css",
-            "savePath": "home/static/assets/styles/css" //diretorio para salvar o arquivo .css
+            "savePath": "/home/static/assets/styles/css" //diretorio para salvar o arquivo .css
         },
 
     ],
 
     //lista de pasta para não compilar
-    "liveSassCompile.settings.excludeList": [
+    /*  "liveSassCompile.settings.excludeList": [
+         "/"
+     ], */
+ /*    "liveSassCompile.settings.includeItems": [
+        "/static/assets/sass/style.scss",
 
-        "**/node_modules/**",
-        ".vscode/**",
-        "slick/**",
-        "static/assets/sass/etc",
-        "static/assets/styles",
-        "static/assets/core",
-        "atividades",
-        "atividades_escolares",
-        "escolas",
-        "informativos",
-        "materias_didaticos",
-        "core",
-    ],
+    ], */
 
     //config que gera .map 
     "liveSassCompile.settings.generateMap": false,
