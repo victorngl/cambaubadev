@@ -127,22 +127,29 @@
     <!-- Atividade escolar -->
     <div class="atividade__escolar-container">
 
-        <div class="card mb-4 text-center col-4">
-            <div class="card-body">
-                <ul class="list-group">
-                    {% for atividade in aluno.turma.atividadeescolar_set.all %}
 
-                    <li class="list-group-item">
-                        <a href="{% url 'atividade_escolar_detail' atividade.id %}">
-                            {{atividade}} </a>- {{aluno.nome}}
+        <div class="card__atividades mb-4 text-center col-4">
+            <div class="atividades">
+                <div class="card-header">
+                    <h1 class="titulosecoes"> <i></i> Atividades</h1>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for atividade in aluno.turma.atividadeescolar_set.all %}
 
-                    </li>
-                    {% endfor %}
+                        <li class="list-group-item">
+                            <a href="{% url 'atividade_escolar_detail' atividade.id %}">
+                                {{atividade}} </a>- {{aluno.nome}}
 
-                </ul>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
 
             </div>
         </div>
+
     </div>
 
 
@@ -172,7 +179,8 @@
                     </div>
 
                     <div class="leia-mais">
-                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                name="arrow-forward-outline"></ion-icon></a>
                     </div>
                 </div>
                 <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
@@ -195,7 +203,8 @@
                     </div>
 
                     <div class="leia-mais">
-                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                name="arrow-forward-outline"></ion-icon></a>
                     </div>
                 </div>
                 <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
@@ -218,7 +227,8 @@
                     </div>
 
                     <div class="leia-mais">
-                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                name="arrow-forward-outline"></ion-icon></a>
                     </div>
                 </div>
                 <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
@@ -241,7 +251,8 @@
                     </div>
 
                     <div class="leia-mais">
-                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                name="arrow-forward-outline"></ion-icon></a>
                     </div>
                 </div>
                 {% endfor %}
