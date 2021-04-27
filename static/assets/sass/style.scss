@@ -140,9 +140,27 @@ h4 {
 }
 
 
-
 .body__home {
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
     .card__alunos {
+        margin-bottom: 60px;
+        padding-bottom: 60px;
+        border-bottom: $borda-sm;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+
+        .card__alunos-element {
+            max-width: 320px;
+            margin-top: 0px;
+            height: max-content;
+        }
+
         .card {
             padding: 0;
             border-radius: $border-radius;
@@ -154,7 +172,7 @@ h4 {
             }
 
             &-body {
-                padding: 20px 0 0;
+                padding: 10px 0 0;
 
                 p {
                     a {
@@ -162,16 +180,8 @@ h4 {
                         font-weight: 700;
                         color: $cor-azul-1 !important;
                         transition: 0.3s ease;
-                        padding: 8px;
+                        padding: 10px 20px;
                         border-radius: $border-radius;
-                        display: inline-flex;
-                        align-items: center;
-
-                        ion-icon {
-                            margin-right: 5px;
-                            --ionicon-stroke-width: 45px;
-                            font-size: 18px;
-                        }
 
                         &:hover {
                             background: $cor-cinza-1;
@@ -202,8 +212,81 @@ h4 {
         border-bottom: $borda-sm !important;
     }
 
+    .atividades__container {
+        width: calc(100% - 400px);
+        min-width: 500px;
+
+    }
+
+    .card__atividades,
+    .card__enquetes {
+        border: $borda-sm;
+        border-radius: $border-radius;
+        box-shadow: $shadow-sm;
+        overflow: hidden;
+
+        .card-body {
+            padding: 0;
+        }
+
+        ul {
+            li {
+                border-radius: initial;
+                border: initial;
+                transition: .3s ease;
+                color: rgba(0, 0, 0, 0.79);
+
+                a {
+                    color: $cor-azul-1;
+                    font-size: 14px;
+                    font-weight: 600;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                &:hover {
+                    background: $cor-cinza-1;
+                }
+
+            }
+
+            li:not(li:first-child) {
+                border-top: $borda-sm !important;
+
+                &:hover {}
+            }
+        }
+    }
+
+    .card__enquetes {
+        margin-top: 30px;
+    }
+
     .card-header:first-child {
-        border-radius: initial;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .atividades__container {
+        margin-left: 60px;
+
+        .card-header {
+            padding: 0;
+        }
+
+        .titulosecoes {
+            padding: 0;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            padding-left: 20px;
+
+            margin: 15px 0;
+        }
     }
 
 }
+
+
+@media (max-width:1200px) {}

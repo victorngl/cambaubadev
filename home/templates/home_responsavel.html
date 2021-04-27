@@ -116,23 +116,25 @@
   <!-- Alunos -->
   <div class="card__alunos">
 
+    <div class="card__alunos-wrapper">
 
-    {% for aluno in alunos %}
-    <div class="card mb-4 text-center col-lg-6 card__alunos-element">
-      <div class="card-header">
-        <h4>{{aluno.nome}}</h4>
+      {% for aluno in alunos %}
+      <div class="card mb-4 text-center col-lg-6 card__alunos-element">
+        <div class="card-header">
+          <h4>{{aluno.nome}}</h4>
+        </div>
+        <div class="card-body">
+          <p><a href="{% url 'turma_detail' aluno.turma.id %}">
+              <ion-icon name="school-outline"></ion-icon> Turma {{aluno.turma}}
+            </a></p>
+          <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
+            Ver Mais
+          </a>
+        </div>
       </div>
-      <div class="card-body">
-        <p><a href="{% url 'turma_detail' aluno.turma.id %}">
-            <ion-icon name="school-outline"></ion-icon> Turma {{aluno.turma}}
-          </a></p>
-        <a href="{% url 'aluno_detail' aluno.id %}" class="vermais_aluno">
-          Ver Mais
-        </a>
-      </div>
+      {% endfor %}
+
     </div>
-    {% endfor %}
-
     <!-- Atividades e ultimas enquetes -->
     <div class="atividades__container col-lg-6">
       <div class="card__atividades">
