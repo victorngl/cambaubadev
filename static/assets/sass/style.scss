@@ -259,9 +259,25 @@ h4 {
             }
         }
     }
+    .card_-atividades{
+        h1 {
+            i {
+            
+
+                @include iconTitulos("/static/assets/images/icons/book.svg")
+            }
+        }
+    }
 
     .card__enquetes {
         margin-top: 30px;
+        h1 {
+            i {
+            
+
+                @include iconTitulos("/static/assets/images/icons/enquete.svg")
+            }
+        }
     }
 
     .card-header:first-child {
@@ -270,15 +286,8 @@ h4 {
 
     .atividades__container {
         margin-left: 60px;
-        h1{
-            i{
-                @include bg-props-contain;
-                display: block;
-                @include size(30px);
-                margin-right: 5px;
-                background-image: url("/static/assets/images/icons/book.svg");
-            }
-        }
+
+      
 
         @include d(m) {
             margin-left: initial;

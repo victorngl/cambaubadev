@@ -145,25 +145,14 @@
         bottom: -2px;
     }
 }
-@mixin clamp($property, $min-size, $scaler, $max-size, $min-size-left:false, $scaler-left:false, $max-size-left:false){
-    @if $min-size-left == false {
-      #{$property}:$max-size; 
-      #{$property}:#{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"}; 
-      #{$property}:clamp(#{$min-size},#{$scaler}, #{$max-size});
-     
-    } @else if $min-size-left == 0 or $min-size-left == auto{
-      #{$property}:$max-size $min-size-left; 
-      #{$property}:#{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"} $min-size-left;
-      #{$property}:clamp($min-size, $scaler, $max-size) $min-size-left;
-    } @else {
-      #{$property}:$max-size $min-size-left; 
-      #{$property}:#{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"} #{"min(max(#{$min-size-left}, #{$scaler-left}), #{$max-size-left})"}; 
-      #{$property}:clamp($min-size, $scaler, $max-size) clamp($min-size-left, $scaler-left, $max-size-left);
-    }
+
+@mixin iconTitulos($var) {
+    @include bg-props-contain;
+    display: block;
+    @include size(30px);
+    margin-right: 5px;
+    background-image: url($var);
 }
-
-  
-
 // EASE IN
 $ease-in-quad:      cubic-bezier(0.550,  0.085, 0.680, 0.530);
 $ease-in-cubic:     cubic-bezier(0.550,  0.055, 0.675, 0.190);
