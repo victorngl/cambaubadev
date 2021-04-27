@@ -349,23 +349,32 @@ h4 {
     #myTab {
         border-bottom: $borda-sm !important;
 
-        .nav-link {
-            font-family: $font-gilroy !important;
-            font-size: 18px;
-
-            &.active {
-                border: initial !important;
-                border-bottom: 3px solid $cor-azul-1 !important;
-                background: initial !important;
-                color: $cor-azul-1 !important;
-                border-color: #003473 #003473 #fff;
-            }
-
-        }
-
         .nav-item {
             border-radius: $border-radius;
+
+            .nav-link {
+                font-family: $font-gilroy !important;
+                font-size: 18px;
+                display: inline-flex;
+                align-items: center;
+
+                &.active {
+                    border: initial !important;
+                    border-bottom: 3px solid $cor-azul-1 !important;
+                    background: initial !important;
+                    color: $cor-azul-1 !important;
+                    border-color: #003473 #003473 #fff;
+                }
+
+                ion-icon {
+                    margin-right: 8px;
+                    font-size: 20px;
+                }
+
+            }
         }
+
+
     }
 
     #myTabContent {
@@ -441,8 +450,13 @@ h4 {
                 cursor: pointer;
                 display: inline-flex;
                 justify-content: flex-end;
+                align-items: center;
                 font-size: 16px;
                 z-index: 2;
+
+                ion-icon {
+                    margin-left: 5px;
+                }
 
                 &:hover {
                     background: $cor-cinza-1;
