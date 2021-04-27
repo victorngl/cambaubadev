@@ -549,7 +549,7 @@ h4 {
             .fc-button-primary {
                 color: #fff;
                 background-color: $cor-azul-1;
-                border: $borda-sm;
+                border: 1px solid #09609b;
             }
 
             .fc-button:focus {
@@ -571,6 +571,33 @@ h4 {
     }
 }
 
+
+.comunicados__wrapper {
+    display: grid !important;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+
+    @include d(m) {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        width: 100% !important;
+        min-width: 300px;
+
+        .top__division {
+            flex-direction: column;
+
+            .card__img {
+                width: 100% !important;
+                border-radius: 8px 8px 0 0;
+            }
+        }
+    }
+
+
+}
 
 
 
