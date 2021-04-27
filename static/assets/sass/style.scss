@@ -754,6 +754,64 @@ nav[aria-label="Navegação"] {
             margin-top: 30px;
         }
     }
+
+    /* show calendar */
+    .show__calendar {
+        display: none;
+    }
+
+
+
+    .calendar.fechado {
+        max-height: 100px;
+        position: relative;
+        overflow: hidden;
+
+        .show__calendar {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            z-index: 2;
+            background: white;
+            top: 0;
+            left: 0;
+            place-items: center;
+            text-align: center;
+            font-size: 18px;
+            color: #347cbe;
+            font-family: $font-gilroy;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            ion-icon:first-child {
+                margin-right: 8px;
+                font-size: 22px;
+
+            }
+
+            ion-icon:last-child {
+                margin-left: 30px;
+                font-size: 22px;
+            }
+
+
+
+        }
+    }
+
+
+
+    .calendar:not(.fechado) {
+        max-height: 490px;
+
+        .show__calendar {
+            z-index: -2;
+            display: none;
+        }
+
+    }
 }
 
 @media (max-width:1200px) {}
