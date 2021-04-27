@@ -378,6 +378,8 @@ h4 {
     }
 
     #myTabContent {
+        padding: 0 1rem;
+
         h4 {
             margin-bottom: 30px;
             font-size: 20px;
@@ -463,6 +465,20 @@ h4 {
                 }
             }
 
+        }
+    }
+
+    .nav__alunos-container {
+        .nav-pills .nav-link {
+            color: $cor-azul-1;
+            transition: .3s ease;
+
+            &.active {
+                background-color: #dfdfdf;
+                font-size: 16px;
+                padding: 5px 10px;
+                font-weight: 600;
+            }
         }
     }
 
