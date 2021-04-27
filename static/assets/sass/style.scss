@@ -260,7 +260,7 @@ h4 {
         }
     }
 
-    .card_-atividades {
+    .card__atividades {
         h1 {
             i {
 
@@ -312,6 +312,7 @@ h4 {
             justify-content: space-between;
             padding-right: 10px;
             margin: 15px 0;
+            width: 100%;
         }
     }
 
@@ -323,10 +324,11 @@ h4 {
 
 }
 
-//comunicados e tabs
+
+@media (max-width:1200px) {}
+
 #myTab {
     border-bottom: $borda-sm !important;
-    border-top: $borda-sm !important;
 
     .nav-link {
         font-family: $font-gilroy !important;
@@ -341,22 +343,79 @@ h4 {
         }
 
     }
-
     .nav-item {
         border-radius: $border-radius;
     }
 }
-
 #myTabContent {
     h4 {
         margin-bottom: 30px;
         font-size: 20px;
     }
-
     .tab-content {
         padding-left: 0 !important;
     }
 }
 
+.card__img {
+    height: 113px;
+    border-radius: 8px 0 8px 0;
+    width: 221px !important;
+    position: relative;
+    overflow: hidden;
+    background: #0000000a;
+}
+.card__titulo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 20px;
 
-@media (max-width:1200px) {}
+    h5 {
+        font-family: $font-gilroy;
+        margin: 10px 0;
+        display: inline-block;
+        font-size: 20px;
+    }
+}
+
+.card__texto {
+    height: 100%;
+    padding-bottom: 0px;
+    margin-left: 0;
+    p {
+        margin-top: 10px;
+        font-size: 14px;
+        display: block;
+        max-width: 700px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        color: #3f4449;
+        padding: 0 20px;
+    }
+    .leia-mais {
+        border-top: $borda-sm;
+        
+        display: inline-flex;
+        justify-content: flex-end;
+        width: 100%;
+        a {
+            padding: 12px 20px;
+            width: 100%;
+            margin-left: auto;
+            font-family: $font-gilroy;
+            transition: 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            justify-content: flex-end;
+            font-size: 16px;
+            z-index: 2;
+            &:hover {
+                background: $cor-cinza-1;
+            }
+        }
+
+    }
+}
