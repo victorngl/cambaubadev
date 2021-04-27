@@ -243,15 +243,17 @@ h4 {
         border-radius: $border-radius;
         box-shadow: $shadow-sm;
         overflow: hidden;
-        min-height: 140px;
-        overflow-y: auto;
-        max-height: 200px;
+
 
         .card-body {
             padding: 0;
         }
 
         ul {
+            min-height: 140px;
+            overflow-y: auto;
+            max-height: 200px;
+
             li {
                 border-radius: initial;
                 border: initial;
