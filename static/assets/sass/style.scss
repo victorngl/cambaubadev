@@ -660,6 +660,49 @@ nav[aria-label="Navegação"] {
         }
     }
 
+    .leia-mais {
+        a {
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            border-top: $borda-sm;
+            text-align: end;
+            transition: .3s ease;
+            font-family: $font-gilroy;
+            font-size: 16px;
+            align-items: center;
+
+            ion-icon {
+                margin-left: 5px;
+            }
+
+            &:hover {
+                background: $cor-cinza-1;
+            }
+        }
+    }
+
+    .visualizar__wrapper {
+        .col-12 {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 18px;
+            font-family: $font-gilroy;
+            border-bottom: $borda-sm;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+
+            a {
+                display: inline-flex;
+                align-items: center;
+
+                ion-icon {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
 
 
 
