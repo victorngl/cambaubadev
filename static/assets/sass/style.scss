@@ -663,6 +663,7 @@ nav[aria-label="Navegação"] {
     .boasvindas {
         border: initial !important;
         box-shadow: initial !important;
+        margin-bottom: 0 !important;
 
         .card-header {
             padding: 10px 0;
@@ -673,6 +674,29 @@ nav[aria-label="Navegação"] {
             }
         }
 
+    }
+
+
+    .card__agenda {
+        padding: 0;
+    }
+
+
+
+    main.page_home {
+        padding-top: 0;
+    }
+
+    .profile__aluno {
+        .card {
+            margin-top: 0;
+        }
+
+        #calendar {
+            max-width: 100%;
+            margin: 30px 15px;
+            margin-top: 30px;
+        }
     }
 }
 
