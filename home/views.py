@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseForbidden
 from escolas.models import Aluno, Turma
 from enquetes.models import Enquete
@@ -51,7 +51,7 @@ def home(request):
         }
     )
 
-@login_required
+@permission_required("core.pode_acessar_boletos_boletins")
 def gerar_boletos_boletins(request):
     try:
         request.user.profile.id_sigma
