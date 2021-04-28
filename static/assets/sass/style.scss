@@ -285,6 +285,7 @@ h4 {
             overflow-y: auto;
             max-height: 200px;
 
+
             li {
                 border-radius: initial;
                 border: initial;
@@ -311,6 +312,55 @@ h4 {
                 border-bottom: 1px solid #dadce0 !important;
                 margin-bottom: 0;
             }
+
+            .list-group-item {
+                span {
+                    padding: 3px 5px;
+                    border-radius: 8px;
+                }
+
+                &.aluno {
+                    &-2 {
+                        span {
+                            background: rgb(237, 237, 237);
+                            padding: 3px 5px;
+                            border-radius: 8px;
+                        }
+                    }
+
+                    &-3 {
+                        span {
+                            background: rgb(255, 241, 241);
+                            padding: 3px 5px;
+                            border-radius: 8px;
+                        }
+                    }
+
+                    &-4 {
+                        span {
+                            background: rgb(232, 238, 255);
+                            padding: 3px 5px;
+                            border-radius: 8px;
+                        }
+
+
+
+                    }
+
+                    &-5 {
+                        span {
+                            background: rgb(232, 255, 255);
+                            padding: 3px 5px;
+                            border-radius: 8px;
+                        }
+
+
+
+                    }
+                }
+            }
+
+
         }
     }
 
@@ -408,9 +458,11 @@ h4 {
 
             }
 
-            .nav-link+.nav-link {
-                margin-left: 20px;
-            }
+
+        }
+
+        .nav-item+.nav-item {
+            margin-left: 20px;
         }
 
 
