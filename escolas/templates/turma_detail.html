@@ -148,7 +148,9 @@
     </div>
 
     <section class="calendario">
-        <h1 class="titulosecoes">Calendário</h1>
+        <h1 class="titulosecoes">
+            <ion-icon name="calendar-outline"></ion-icon> Calendário
+        </h1>
         <div class="conteudo-calendario">
             <div class="card-body calendar">
                 <div id='script-warning'>
@@ -157,12 +159,16 @@
 
                 <div id='loading'>loading...</div>
                 <div id='calendar'></div>
+                <div class="show__calendar">
+                    <ion-icon name="calendar-outline"></ion-icon> Ver calendario<ion-icon name="chevron-down-outline">
+                    </ion-icon>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="comunicados">
-        <h1 class="titulosecoes">Comunicados</h1>
+        <h1 class="titulosecoes"><ion-icon name="receipt-outline"></ion-icon> Comunicados</h1>
         <div class="conteudo-comunicados">
             {% for comunicado in comunicados %}
             <div class="comunicado">
