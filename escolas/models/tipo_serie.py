@@ -24,7 +24,7 @@ class TipoSerie(models.Model):
     def __str__(self):
         return self.nome
 
-    class META:
+    class Meta:
         app_label="escolas"
         verbose_name="Tipo de Série"
         verbose_name_plural="Tipos de série"

@@ -1,0 +1,49 @@
+{% load static %}
+{% load home_tags %}
+
+<div class="side-content-wrap">
+    <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+        <ul class="navigation-left" style="overflow-y: auto;">
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'home' %}">
+                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Início</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            <li class="nav-item" data-item="turmas">
+                <a class="nav-item-hold" href="#">
+                    <img src="{% static 'assets/images/atividade.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Turmas</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'admin:index' %}">
+                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Admin</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-overlay"></div>
+</div>
+<div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+    <ul class="childNav" data-parent="turmas">
+        {% minhas_turmas_professor as minhas_turmas %}
+        {% for turma in minhas_turmas %}
+            <li class="nav-item">
+                <a href="{% url 'turma_detail' turma.id %}" class="item-name">
+                    <span class="item-name">{{turma.nome}}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="sidebar-overlay"></div>
+</div>
+<!--=============== Left side End ================-->
