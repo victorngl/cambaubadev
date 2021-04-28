@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseForbidden
+from django.core.paginator import Paginator
 from escolas.models import Aluno, Turma
 from enquetes.models import Enquete
 from django.db.models import Q
@@ -13,15 +14,22 @@ from atividades_escolares.models import AtividadeEscolar
 def home(request):
     try:
         perfil = 'Sem Vínculo'
+        pagina_atual = request.GET.get('page', 1)
         alunos = None
         enquetes = None
         aluno = None
         materiais_didaticos = None
+        comunicados = []
+        paginacao_comunicados = None
         if request.user.profile:
             perfil = request.user.profile.perfil
             if perfil == 'Aluno':
                 aluno=Aluno.objects.get(usuario=request.user)
                 template_name = 'home_aluno.html'
+
+                comunicados = aluno.turma.comunicado_set.all().order_by('-id')
+                paginacao_comunicados = Paginator(comunicados, 2)
+                pagina_atual = paginacao_comunicados.page(pagina_atual)
             elif perfil == 'Responsável':
                 alunos=Aluno.objects.filter(
                     Q(responsavel1=request.user) | 
@@ -47,7 +55,9 @@ def home(request):
             'enquetes': enquetes,
             'perfil': perfil,
             'alunos': alunos,
-            'hoje': date.today()
+            'hoje': date.today(),
+            'paginacao_comunicados': paginacao_comunicados,
+            'pagina_atual': pagina_atual
         }
     )
 
