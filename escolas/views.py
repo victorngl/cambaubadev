@@ -35,7 +35,8 @@ class TurmaDetailView(DetailView):
             {
                 'comunicados': comunicados,
                 'atividades_escolares': atividades_escolares,
-                'materiais_didaticos': materiais_didaticos
+                'materiais_didaticos': materiais_didaticos,
+                'hoje': date.today()
             }
         )
         return context
