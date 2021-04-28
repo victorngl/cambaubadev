@@ -21,7 +21,7 @@ class Professor(Pessoa):
     def __str__(self):
         return self.nome
 
-    class META:
+    class Meta:
         app_label="escolas"
         verbose_name="Professor"
         verbose_name_plural="Professores"

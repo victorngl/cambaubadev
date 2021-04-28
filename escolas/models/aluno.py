@@ -72,7 +72,7 @@ class Aluno(Pessoa):
     def __str__(self):
         return self.nome
 
-    class META:
+    class Meta:
         app_label="escolas"
         verbose_name="Aluno"
         verbose_name_plural="Alunos"

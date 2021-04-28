@@ -18,6 +18,7 @@
                                     <tr>
                                         <th></th>
                                         <th>Nome</th>
+                                        <th>Matéria</th>
                                         <th>Download</th>
                                         <th>Tipo</th>
                                         <th>Data</th>
@@ -32,6 +33,7 @@
                                                {% endif %}
                                             </td>
                                             <td>{{material_didatico.titulo}}</td>
+                                            <td>{{material_didatico.materia}}</td>
                                             <td>
                                                 {% if material_didatico.anexo %}
                                                     <a class="download_arquivo" href="{{material_didatico.anexo.url}}" target="_blank">Clique Aqui</a>
