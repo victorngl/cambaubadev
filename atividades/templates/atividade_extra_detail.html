@@ -3,49 +3,62 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="card user-profile o-hidden mb-4">
-    {% if object.foto_capa %}
+<main class="single__atividades">
+    <div class="card user-profile o-hidden mb-4">
+        {% if object.foto_capa %}
         <div class="header-cover" style="background-image: url({{object.foto_capa.url}})"></div>
-    {% else %}
+        {% else %}
         <div class="header-cover" style="background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
-    {% endif %}
-    <div class="user-info">
-        <img class="profile-picture avatar-lg mb-2" src="{% static 'assets/images/faces/1.jpg' %}" alt="">
-    </div>
-    <div class="card-body">
-        <h4>{{ object.titulo }}</h4>
-        <hr>
-        <div class="row">
-            <div class="col-md-4 col-6">
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Notepad text-16 mr-1"></i>Vagas</p>
-                    <span>{{object.vagas}}</span>
+        {% endif %}
+        <div class="user-info">
+            <img class="profile-picture avatar-lg mb-2" src="{% static 'assets/images/faces/1.jpg' %}" alt="">
+        </div>
+        <div class="card-body">
+            <h4>{{ object.titulo }}</h4>
+            <hr>
+            <div class="row">
+                <div class="col-md-4 col-6">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="checkmark-done-circle-outline"></ion-icon>Vagas
+                        </p>
+                        <span>{{object.vagas}}</span>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="newspaper-outline"></ion-icon>Descrição
+                        </p>
+                        <span>{{object.descricao}}</span>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Letter-Open text-16 mr-1"></i>Descrição</p>
-                    <span>{{object.descricao}}</span>
+                <div class="col-md-4 col-6">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="calendar-outline"></ion-icon>Data Inicial
+                        </p>
+                        <span>{{object.data_inicial}}</span>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="calendar-outline"></ion-icon>Data Final
+                        </p>
+                        <span>{{object.data_final}}</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="alarm-outline"></ion-icon>Horário
+                        </p>
+                        <span>{{object.horario}}</span>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 col-6">
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data Inicial</p>
-                    <span>{{object.data_inicial}}</span>
-                </div>
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data Final</p>
-                    <span>{{object.data_final}}</span>
-                </div>
-            </div>
-            <div class="col-md-4 col-6">
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Clock text-16 mr-1"></i>Horário</p>
-                    <span>{{object.horario}}</span>
-                </div>
+            <div class="footer__atividade">
+                <a class="" href="{% url 'inscricao_atividade_extra_create' object.id %}">
+                   Inscrever-se <ion-icon name="arrow-forward-outline"></ion-icon></a>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <a class="btn btn-primary text-white" href="{% url 'inscricao_atividade_extra_create' object.id %}"><i class="i-Yes-4"></i> Inscrever-se</a>
-        </div>
     </div>
-</div>
+</main>
 {% endblock %}

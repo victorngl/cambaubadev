@@ -1430,7 +1430,7 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
         transition: background .3s ease;
 
         &:hover {
-            background: rgb(228, 228, 228) !important;
+            background: rgb(235, 251, 255) !important;
         }
 
         ion-icon {
@@ -1520,7 +1520,6 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
                 color: $cor-azul-3;
             }
 
-            img {}
 
             &:hover {
                 box-shadow: initial;
@@ -1572,6 +1571,88 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
                     font-size: 12px !important;
                 }
             }
+        }
+    }
+}
+
+.body__atividades-single {
+
+    .text-primary {
+        font-family: "gilroy";
+        display: grid;
+        grid-template-columns: 1fr 10fr;
+        align-items: center;
+
+        ion-icon {
+            font-size: 20px;
+        }
+    }
+
+    .text-primary {
+        font-family: "gilroy";
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        align-items: center;
+        gap: 5px;
+
+        @include d(m) {
+            font-size: 14px;
+        }
+
+        ion-icon {
+            font-size: 20px;
+
+            @include d(m) {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .footer__atividade {
+        background: initial;
+
+
+        border-top: $borda-sm;
+
+
+        a {
+            transition: background .3s ease;
+            width: 100%;
+            padding: 12px 20px;
+            background: initial;
+            border: initial;
+            color: $cor-vermelho-1 !important;
+            font-family: $font-gilroy;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            &:hover {
+                background: $cor-cinza-1;
+            }
+
+            ion-icon {
+                margin-left: 10px;
+            }
+
+            &:hover {
+                box-shadow: initial !important;
+            }
+        }
+    }
+
+    .card-body {
+        padding: 0;
+
+        h4 {
+            padding: 0 20px;
+            ;
+        }
+
+        >.row {
+            padding: 0 20px;
+            ;
         }
     }
 }
