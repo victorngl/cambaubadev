@@ -174,9 +174,18 @@ h4 {
     .main-content {
         max-width: 1200px;
         margin: 0 auto;
+
+        @include d(m) {
+            margin: initial;
+        }
     }
 
     //card alunos 
+    .card__alunos-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 320px;
+    }
 
     .card__alunos {
         margin-bottom: 60px;
@@ -470,7 +479,6 @@ h4 {
         }
 
         .leia-mais {
-            border-top: $borda-sm;
 
             display: inline-flex;
             justify-content: flex-end;
@@ -517,10 +525,8 @@ h4 {
 
     .tab__panel-container {
         .tab-pane {
-            display: flex;
 
             .card {
-                width: 50%;
 
                 @include d(m) {
                     width: 100%;
@@ -725,6 +731,20 @@ nav[aria-label="Navegação"] {
             max-width: 100%;
             margin: 30px 15px;
             margin-top: 30px;
+
+            @include d(m) {
+                padding: 0;
+                margin: 30px auto;
+            }
+
+            .fc-toolbar {
+                @include d(m) {
+                    display: grid;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    gap: 15px;
+                    justify-content: center;
+                }
+            }
         }
     }
 
@@ -855,6 +875,11 @@ nav[aria-label="Navegação"] {
             display: flex;
             flex-direction: column;
 
+            @include d(m) {
+                font-size: 10px;
+                min-height: 300px;
+            }
+
             div.row:nth-child(3) {
                 margin-top: auto;
             }
@@ -862,6 +887,11 @@ nav[aria-label="Navegação"] {
             .dataTables_length {
                 display: flex;
                 align-items: center;
+
+                @include d(m) {
+                    justify-content: center;
+                    margin-bottom: 10px;
+                }
 
                 select {
                     width: 40px;
@@ -907,6 +937,14 @@ nav[aria-label="Navegação"] {
         }
     }
 
+    .card__texto {
+        p {
+            @include d(m) {
+                font-size: 12px;
+            }
+        }
+    }
+
     .pagination {
         .page-item {
             a {
@@ -922,6 +960,42 @@ nav[aria-label="Navegação"] {
                     border-bottom: 2px solid $cor-azul-1;
                 }
             }
+        }
+    }
+
+}
+
+.enquete-details {
+    .enquete__subtitulo {
+        font-family: $font-gilroy;
+        display: inline-grid;
+        align-items: center;
+        grid-template-columns: 25px 1fr;
+    }
+}
+
+@mixin iconTitulos($var) {
+    @include bg-props-contain;
+    display: block;
+    @include size(30px);
+    margin-right: 5px;
+    background-image: url($var);
+}
+
+// ★ TURMA SINGLE  
+.body__turma-single {
+
+    .boasvindas {
+        h2 {
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+
+            i {
+                @include iconTitulos("/static/assets/images/icons/class.svg");
+                margin-right: 5px;
+            }
+
         }
     }
 
