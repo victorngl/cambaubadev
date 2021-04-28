@@ -64,6 +64,7 @@ class MateriaAdmin(admin.ModelAdmin):
 class ProfessorAdmin(admin.ModelAdmin):
     list_display = ['id', 'nome']
     search_fields = ['nome']
+    autocomplete_fields = ['usuario']
     fieldsets = (
         ('Dados Principais', {'fields': (
 			'nome',

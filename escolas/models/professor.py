@@ -13,6 +13,7 @@ class Professor(Pessoa):
         verbose_name="Usuário do Professor",
         related_name="usuario_professor",
         on_delete=models.SET_NULL,
+        unique=True,
         blank=True,
         null=True
     )

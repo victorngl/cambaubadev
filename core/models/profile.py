@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.db.models import Q
-from escolas.models import Aluno
+from escolas.models import Aluno, Professor
 
 
 class Profile(models.Model):
@@ -34,6 +34,8 @@ class Profile(models.Model):
     def perfil(self):
         if Aluno.objects.filter(usuario=self.user).exists():
             return 'Aluno'
+        elif Professor.objects.filter(usuario=self.user).exists():
+            return 'Professor'
         else:
             alunos_responsaveis = Aluno.objects.filter(
                 Q(responsavel1=self.user) | 
