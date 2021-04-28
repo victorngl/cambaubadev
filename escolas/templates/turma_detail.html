@@ -117,8 +117,10 @@
                 <div class="sidebar" style="border-left: 10px solid {{material_didatico.materia.hexadecimal}}">
                     <a href="{% url 'material_didatico_detail' material_didatico.id %}" class="link-area"></a>
                     <h3 class="sidebar-titulo mt-0">{{material_didatico.titulo}}</h3>
-                    <span class="sidebar-materia float-left">{{material_didatico.materia}}</span>
-                    <span class="sidebar-data float-right">{{material_didatico.data}}</span>
+                    <div class="sidebar__wrapper">
+                        <span class="sidebar-materia">{{material_didatico.materia}}</span>
+                        <span class="sidebar-data ">{{material_didatico.data}}</span>
+                    </div>
                 </div>
                 {% endfor %}
 
@@ -134,8 +136,8 @@
                     <h3 class="sidebar-titulo mt-0">{{atividade_escolar.titulo}}</h3>
 
                     <div class="sidebar__wrapper">
-                        <span class="sidebar-materia float-left">{{atividade_escolar.materia}}</span>
-                        <span class="sidebar-data float-right">{{atividade_escolar.data_inicial}}</span>
+                        <span class="sidebar-materia">{{atividade_escolar.materia}}</span>
+                        <span class="sidebar-data">{{atividade_escolar.data_inicial}}</span>
                     </div>
                 </div>
                 {% endfor %}
