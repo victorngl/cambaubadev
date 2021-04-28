@@ -1241,6 +1241,7 @@ nav[aria-label="Navegação"] {
 
         .conteudo-comunicados {
             border-top: $borda-sm;
+            row-gap: 20px;
         }
 
         h1 {
@@ -1320,6 +1321,7 @@ nav[aria-label="Navegação"] {
                     align-items: center;
                     font-size: 16px;
                     z-index: 2;
+                    color: $cor-azul-1 !important;
 
                     ion-icon {
                         margin-left: 5px;
