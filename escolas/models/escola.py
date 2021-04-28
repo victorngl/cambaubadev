@@ -24,7 +24,7 @@ class Escola(models.Model):
     def __str__(self):
         return self.nome
 
-    class META:
+    class Meta:
         app_label="escolas"
         verbose_name="Escola"
         verbose_name_plural="Escolas"

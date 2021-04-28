@@ -35,7 +35,7 @@ class Materia(models.Model):
     def __str__(self):
         return self.titulo
 
-    class META:
+    class Meta:
         app_label="escolas"
         verbose_name="Matéria"
         verbose_name_plural="Matérias"

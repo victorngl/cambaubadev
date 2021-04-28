@@ -13,6 +13,7 @@ class Professor(Pessoa):
         verbose_name="Usuário do Professor",
         related_name="usuario_professor",
         on_delete=models.SET_NULL,
+        unique=True,
         blank=True,
         null=True
     )
@@ -20,7 +21,7 @@ class Professor(Pessoa):
     def __str__(self):
         return self.nome
 
-    class META:
+    class Meta:
         app_label="escolas"
         verbose_name="Professor"
         verbose_name_plural="Professores"

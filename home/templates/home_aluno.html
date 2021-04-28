@@ -100,7 +100,7 @@
 <div class="card mb-4 boasvindas">
     <div class="card-header card__container">
         <h2>Bem vindo(a) à Intranet, {{user.first_name}} {{user.last_name}}</h2>
-        <small>{{perfil}} {{aluno.turma}}</small>
+        <small>{{perfil}} <a href="{% url 'turma_detail' aluno.turma.id %}">{{aluno.turma}}</a></small>
     </div>
 </div>
 

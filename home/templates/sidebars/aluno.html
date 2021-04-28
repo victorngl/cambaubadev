@@ -1,0 +1,67 @@
+
+{% load static %}
+{% load home_tags %}
+
+<div class="side-content-wrap">
+    <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+        <ul class="navigation-left" style="overflow-y: auto;">
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'home' %}">
+                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Início</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            <li class="nav-item">
+                {% minha_turma as minha_turma %}
+                <a class="nav-item-hold" href="{% url 'turma_detail' minha_turma.id %}">
+                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Minha Turma</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% if perms.core.pode_acessar_informativos %}
+            <li class="nav-item" data-item="informativos">
+                <a class="nav-item-hold" href="#">
+                    <img src="{% static 'assets/images/materiais_didáticos.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Informativos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            
+        </ul>
+    </div>
+    <div class="sidebar-overlay"></div>
+</div>
+<div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+    <ul class="childNav" data-parent="informativos">
+        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Informativos</p>
+        <li class="nav-item">
+            <a href="{% url 'balancetes' %}" class="item-name">
+                <span class="item-name">Todos os Balancetes</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'balancos_patrimoniais' %}" class="item-name">
+                <span class="item-name">Todos os Balanços Patrimoniais</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'documentacoes_obras' %}" class="item-name">
+                <span class="item-name">Todas as Documentações de Obras</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'atas_reunioes' %}" class="item-name">
+                <span class="item-name">Todas as Atas de Reuniões</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="sidebar-overlay"></div>
+</div>
+<!--=============== Left side End ================-->

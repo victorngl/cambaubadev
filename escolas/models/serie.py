@@ -40,7 +40,7 @@ class Serie(models.Model):
     def __str__(self):
         return self.nome
 
-    class META:
+    class Meta:
         app_label="escolas"
         verbose_name="Série"
         verbose_name_plural="Séries"
