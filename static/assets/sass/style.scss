@@ -485,12 +485,13 @@ h4 {
     }
 
     .card__img {
+        object-fit: cover;
         height: 113px;
         border-radius: 8px 0 8px 0;
         width: 221px !important;
         position: relative;
         overflow: hidden;
-        background: #0000000a;
+
     }
 
     .card__titulo {
@@ -708,6 +709,8 @@ nav[aria-label="Navegação"] {
             }
 
             .card__img {
+                object-fit: cover;
+
                 @include d(m) {
                     width: 100% !important;
                     border-radius: 8px 8px 0 0;
@@ -1037,6 +1040,77 @@ nav[aria-label="Navegação"] {
 // ★ TURMA SINGLE  
 .body__turma-single {
 
+    /* show calendar */
+    .show__calendar {
+        display: none;
+    }
+
+    .calendar {
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+
+    .calendar.fechado {
+
+        max-height: 100px;
+        position: relative;
+        overflow: hidden;
+        border: $borda-sm;
+        border-radius: 8px;
+        transition: all .3s ease;
+
+        &:hover {
+            background: $cor-cinza-1;
+        }
+
+        .show__calendar {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            z-index: 2;
+            background: white;
+            top: 0;
+            left: 0;
+            place-items: center;
+            text-align: center;
+            font-size: 18px;
+            color: #347cbe;
+            font-family: $font-gilroy;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+
+            ion-icon:first-child {
+                margin-right: 8px;
+                font-size: 22px;
+
+            }
+
+            ion-icon:last-child {
+                margin-left: 30px;
+                font-size: 22px;
+            }
+
+
+
+        }
+    }
+
+
+
+    .calendar:not(.fechado) {
+        max-height: 100%;
+
+        .show__calendar {
+            z-index: -2;
+            display: none;
+        }
+
+    }
+
+
     .boasvindas {
         .card-header {
             padding: 10px 0;
@@ -1048,11 +1122,12 @@ nav[aria-label="Navegação"] {
             align-items: center;
             width: 100%;
             padding: 0;
+            color: $cor-azul-1 !important;
 
             i {
                 @include iconTitulos("/static/assets/images/icons/class.svg");
                 margin-right: 10px;
-
+                color: $cor-azul-1 !important;
             }
 
         }
@@ -1084,7 +1159,7 @@ nav[aria-label="Navegação"] {
             box-shadow: $shadow-sm;
         }
 
-        .materiais-didaticos{
+        .materiais-didaticos {
             h1 {
                 i {
                     background-image: url("/static/assets/images/icons/material.svg") !important;
@@ -1096,6 +1171,171 @@ nav[aria-label="Navegação"] {
     .conteudo-materialdidatico,
     .conteudo-ativ-escolares {
         border-top: $borda-sm;
+        padding: 0;
+        max-height: 420px;
+        overflow-y: auto;
+
+        .sidebar {
+            box-shadow: initial;
+            border: initial;
+            border-bottom: $borda-sm;
+            float: none;
+            display: flex;
+            flex-direction: column;
+            transition: .3s ease;
+            margin: 0;
+
+            &:hover {
+                background: rgba(243, 243, 243, 0.85);
+            }
+
+            &-materia {
+                font-weight: 600;
+            }
+
+        }
+    }
+
+
+    .sidebar__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    .sidebar-data {
+        color: #808080;
+    }
+
+    .calendario {
+        margin-top: 30px;
+
+        .conteudo-calendario {
+            border-top: $borda-sm;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+
+            ion-icon {
+                margin-right: 8px;
+            }
+        }
+    }
+
+
+    .comunicados {
+        margin-top: 30px;
+
+        .card__meta {
+            display: flex;
+            padding: 0 20px;
+            margin-bottom: 10px;
+            justify-content: space-between;
+            color: rgb(83, 83, 83);
+        }
+
+        .conteudo-comunicados {
+            border-top: $borda-sm;
+            row-gap: 20px;
+        }
+
+        h1 {
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+
+            ion-icon {
+                margin-right: 5px;
+            }
+        }
+
+        .card__img {
+            object-fit: cover;
+            height: 113px;
+            border-radius: 8px 0 8px 0;
+            width: 221px !important;
+            position: relative;
+            overflow: hidden;
+
+            background-position: center;
+            background-size: cover;
+        }
+
+        .card__titulo {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            margin-top: 20px;
+
+            h5 {
+                font-family: $font-gilroy;
+                margin: 10px 0;
+                display: inline-block;
+                font-size: 20px;
+            }
+        }
+
+
+        .top__division {
+            display: flex;
+        }
+
+        .card__texto {
+            height: 100%;
+            padding-bottom: 0px;
+            margin-left: 0;
+
+            p {
+                margin-top: 10px;
+                font-size: 14px;
+                display: block;
+                max-width: 700px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                color: #3f4449;
+                padding: 0 20px;
+            }
+
+            .leia-mais {
+
+                display: inline-flex;
+                justify-content: flex-end;
+                width: 100%;
+
+                a {
+                    padding: 12px 20px;
+                    width: 100%;
+                    margin-left: auto;
+                    font-family: $font-gilroy;
+                    transition: 0.3s ease;
+                    cursor: pointer;
+                    display: inline-flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    font-size: 16px;
+                    z-index: 2;
+                    color: $cor-azul-1 !important;
+
+                    ion-icon {
+                        margin-left: 5px;
+                    }
+
+                    &:hover {
+                        background: $cor-cinza-1;
+                    }
+                }
+
+            }
+        }
+
+
     }
 
 }
