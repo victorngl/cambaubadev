@@ -8,7 +8,7 @@
             <li class="nav-item">
                 <a class="nav-item-hold" href="{% url 'home' %}">
                     <img src="{% static 'assets/images/inicio.png' %}" alt="">
-                    <br>
+                   
                     <span class="nav-text">Início</span>
                 </a>
                 <div class="triangle"></div>
@@ -17,7 +17,7 @@
                 {% minha_turma as minha_turma %}
                 <a class="nav-item-hold" href="{% url 'turma_detail' minha_turma.id %}">
                     <img src="{% static 'assets/images/inicio.png' %}" alt="">
-                    <br>
+                   
                     <span class="nav-text">Minha Turma</span>
                 </a>
                 <div class="triangle"></div>
@@ -26,7 +26,7 @@
             <li class="nav-item" data-item="informativos">
                 <a class="nav-item-hold" href="#">
                     <img src="{% static 'assets/images/materiais_didáticos.png' %}" alt="">
-                    <br>
+                   
                     <span class="nav-text">Informativos</span>
                 </a>
                 <div class="triangle"></div>

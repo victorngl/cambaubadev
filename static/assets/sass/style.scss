@@ -1373,6 +1373,7 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
                 font-family: "gilroy";
             }
         }
+
         .nav-item-hold {
             padding: 0 !important;
 
@@ -1420,5 +1421,5 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 }
 
 body {
-    @include scrollbars(8px, $cor-azul-2, rgb(238, 238, 238));
+    @include scrollbars(8px, rgb(208, 208, 208), rgb(238, 238, 238));
 }
