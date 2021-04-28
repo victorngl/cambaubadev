@@ -549,7 +549,7 @@ h4 {
                 align-items: center;
                 font-size: 16px;
                 z-index: 2;
-
+                color: $cor-azul-1 !important;
                 ion-icon {
                     margin-left: 5px;
                 }
@@ -730,10 +730,11 @@ nav[aria-label="Navegação"] {
             font-family: $font-gilroy;
             font-size: 16px;
             align-items: center;
-            color: $cor-azul-1;
+            color: $cor-azul-1 !important;
 
             ion-icon {
                 margin-left: 5px;
+                color: $cor-azul-1 !important;
             }
 
             &:hover {
@@ -1214,6 +1215,7 @@ nav[aria-label="Navegação"] {
         .conteudo-calendario {
             border-top: $borda-sm;
             padding: 0;
+            min-height: initial;
         }
 
         h1 {
