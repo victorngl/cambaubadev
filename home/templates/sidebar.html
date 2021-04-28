@@ -1,10 +1,157 @@
 {% load static %}
 
-{{user.profile.perfil}}
-{% if user.profile.perfil == 'Aluno' %}
-    {% include 'sidebars/aluno.html' %}
-{% elif user.profile.perfil == 'Responsável' %}
-    {% include 'sidebars/responsavel.html' %}
-{% elif user.profile.perfil == 'Professor' %}
-    {% include 'sidebars/professor.html' %}
-{% endif %}
+<div class="side-content-wrap">
+    <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+        <ul class="navigation-left" style="overflow-y: auto;">
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'home' %}">
+                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Início</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% if perms.core.pode_acessar_materiais_didaticos %}
+            <li class="nav-item" data-item="materiais_didaticos">
+                <a class="nav-item-hold" href="materiais_didaticos">
+                    <img src="{% static 'assets/images/materiais_didáticos.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Materiais Didáticos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_boletos_boletins %}
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'boletos_boletins' %}">
+                    <img src="{% static 'assets/images/boletoseboletins.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Boletos e Boletins</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_enquetes %}
+            <li class="nav-item" data-item="enquetes">
+                <a class="nav-item-hold" href="{% url 'enquetes' %}">
+                    <img src="{% static 'assets/images/enquete.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Enquetes</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_atividades %}
+            <li class="nav-item" data-item="atividades">
+                <a class="nav-item-hold" href="#">
+                    <img src="{% static 'assets/images/atividade.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Atividades</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_atividades_escolares %}
+            <li class="nav-item" data-item="atividades_escolares">
+                <a class="nav-item-hold" href="#">
+                    <img src="{% static 'assets/images/atividades_escolares (1).png' %}" alt="">
+                    <span class="nav-text">Atividades Escolares</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_informativos %}
+            <li class="nav-item" data-item="informativos">
+                <a class="nav-item-hold" href="#">
+                    <img src="{% static 'assets/images/informativos.png' %}" alt="">
+                    <br>
+                    <span class="nav-text">Informativos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="sidebar-overlay"></div>
+</div>
+<div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+    <!-- Submenu Dashboards -->
+    <ul class="childNav" data-parent="enquetes">
+        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Enquetes</p>
+        <li class="nav-item">
+            <a href="{% url 'enquetes' %}" class="item-name">
+                <span class="item-name">Todas as Enquetes</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="childNav" data-parent="atividades">
+        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Atividades</p>
+        <li class="nav-item">
+            <a href="{% url 'oficinas' %}" class="item-name">
+                <span class="item-name">Todas as Oficinas</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'atividades_extras' %}" class="item-name">
+                <span class="item-name">Todas as Atividades Extras</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'atividades_noturnas' %}" class="item-name">
+                <span class="item-name">Todas as Atividades Noturnas</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="childNav" data-parent="atividades_escolares">
+        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Atividades Escolares</p>
+        <li class="nav-item">
+            <a href="{% url 'atividades_escolares' %}" class="item-name">
+                <span class="item-name">Todas as Atividades Escolares</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="childNav" data-parent="informativos">
+        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Informativos</p>
+        <li class="nav-item">
+            <a href="{% url 'balancetes' %}" class="item-name">
+                <span class="item-name">Todos os Balancetes</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'balancos_patrimoniais' %}" class="item-name">
+                <span class="item-name">Todos os Balanços Patrimoniais</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'documentacoes_obras' %}" class="item-name">
+                <span class="item-name">Todas as Documentações de Obras</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'atas_reunioes' %}" class="item-name">
+                <span class="item-name">Todas as Atas de Reuniões</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="childNav" data-parent="materiais_didaticos">
+        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Materiais Didáticos</p>
+        <li class="nav-item">
+            <a href="{% url 'materiais_didaticos' %}" class="item-name">
+                <span class="item-name">Todos os Materiais Didáticos</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'calendarios_atividades' %}" class="item-name">
+                <span class="item-name">Todos os Calendários de Atividades</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'comunicados' %}" class="item-name">
+                <span class="item-name">Todos os Comunicados</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="sidebar-overlay"></div>
+</div>
+<!--=============== Left side End ================-->
