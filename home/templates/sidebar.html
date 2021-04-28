@@ -11,6 +11,7 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            {% if perms.core.pode_acessar_materiais_didaticos %}
             <li class="nav-item" data-item="materiais_didaticos">
                 <a class="nav-item-hold" href="materiais_didaticos">
                     <img src="{% static 'assets/images/materiais_didáticos.png' %}" alt="">
@@ -19,6 +20,8 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_boletos_boletins %}
             <li class="nav-item">
                 <a class="nav-item-hold" href="{% url 'boletos_boletins' %}">
                     <img src="{% static 'assets/images/boletoseboletins.png' %}" alt="">
@@ -27,6 +30,8 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_enquetes %}
             <li class="nav-item" data-item="enquetes">
                 <a class="nav-item-hold" href="{% url 'enquetes' %}">
                     <img src="{% static 'assets/images/enquete.png' %}" alt="">
@@ -35,6 +40,8 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_atividades %}
             <li class="nav-item" data-item="atividades">
                 <a class="nav-item-hold" href="#">
                     <img src="{% static 'assets/images/atividade.png' %}" alt="">
@@ -43,6 +50,8 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_atividades_escolares %}
             <li class="nav-item" data-item="atividades_escolares">
                 <a class="nav-item-hold" href="#">
                     <img src="{% static 'assets/images/atividades_escolares (1).png' %}" alt="">
@@ -51,6 +60,8 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_informativos %}
             <li class="nav-item" data-item="informativos">
                 <a class="nav-item-hold" href="#">
                     <img src="{% static 'assets/images/informativos.png' %}" alt="">
@@ -59,7 +70,7 @@
                 </a>
                 <div class="triangle"></div>
             </li>
-            
+            {% endif %}
         </ul>
     </div>
     <div class="sidebar-overlay"></div>

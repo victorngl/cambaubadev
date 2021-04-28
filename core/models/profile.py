@@ -51,6 +51,14 @@ class Profile(models.Model):
         return self.user.username
 
     class Meta:
+        permissions = (
+			('pode_acessar_materiais_didaticos', 'pode_acessar_materiais_didaticos'),
+			('pode_acessar_boletos_boletins', 'pode_acessar_boletos_boletins'),
+			('pode_acessar_enquetes', 'pode_acessar_enquetes'),
+			('pode_acessar_atividades', 'pode_acessar_atividades'),
+			('pode_acessar_atividades_escolares', 'pode_acessar_atividades_escolares'),
+			('pode_acessar_informativos', 'pode_acessar_informativos')
+		)
         app_label = "core"
         verbose_name = "Profile"
         verbose_name_plural = "Profiles"

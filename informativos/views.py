@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView
 from .models import Balancete, BalancoPatrimonial, DocumentacaoObra, AtaReuniao
 
-@login_required
+@permission_required("core.pode_acessar_informativos")
 def balancetes(request):
     balancetes = Balancete.objects.all()
     return render(
@@ -14,7 +14,7 @@ def balancetes(request):
         }
     )
 
-@login_required
+@permission_required("core.pode_acessar_informativos")
 def balancos_patrimoniais(request):
     balancos_patrimoniais = BalancoPatrimonial.objects.all()
     return render(
@@ -25,7 +25,7 @@ def balancos_patrimoniais(request):
         }
     )
 
-@login_required
+@permission_required("core.pode_acessar_informativos")
 def documentacoes_obras(request):
     documentacoes_obras = DocumentacaoObra.objects.all()
     return render(
@@ -35,7 +35,8 @@ def documentacoes_obras(request):
             'documentacoes_obras': documentacoes_obras
         }
     )
-@login_required
+
+@permission_required("core.pode_acessar_informativos")
 def atas_reunioes(request):
     atas_reunioes = AtaReuniao.objects.all()
     return render(
@@ -48,12 +49,36 @@ def atas_reunioes(request):
 
 class BalancetesDetailView(DetailView):
     model = Balancete
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_informativos'):
+            return super(BalancetesDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class BalancoPatrimonialDetailView(DetailView):
     model = BalancoPatrimonial
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_informativos'):
+            return super(BalancoPatrimonialDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class DocumentacaoObraDetailView(DetailView):
     model = DocumentacaoObra
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_informativos'):
+            return super(DocumentacaoObraDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class AtaReuniaoDetailView(DetailView):
     model = AtaReuniao
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_informativos'):
+            return super(AtaReuniaoDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()

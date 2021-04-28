@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView, ListView
 from django.http import JsonResponse
 from escolas.models import Materia
 from .models import CalendarioAtividade, Comunicado, MaterialDidatico
 
-@login_required
+@permission_required("core.pode_acessar_materiais_didaticos")
 def calendarios_atividades(request):
     calendarios_atividades = CalendarioAtividade.objects.all()
     return render(
@@ -16,7 +16,8 @@ def calendarios_atividades(request):
         }
     )
 
-@login_required
+
+@permission_required("core.pode_acessar_materiais_didaticos")
 def get_calendarios_atividades(request):
     calendarios_atividades = CalendarioAtividade.objects.all()
 
@@ -33,7 +34,7 @@ def get_calendarios_atividades(request):
     
     return JsonResponse(list_eventos, safe=False)
 
-@login_required
+@permission_required("core.pode_acessar_materiais_didaticos")
 def materiais_didaticos(request):
     materiais_didaticos = MaterialDidatico.objects.all()
     materias = Materia.objects.all()
@@ -52,12 +53,30 @@ def materiais_didaticos(request):
 
 class CalendariosAtividadesDetailView(DetailView):
     model = CalendarioAtividade
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+            return super(CalendariosAtividadesDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class ComunicadosDetailView(DetailView):
     model = Comunicado
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+            return super(ComunicadosDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class MateriaisDidaticosDetailView(DetailView):
     model = MaterialDidatico
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+            return super(MateriaisDidaticosDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class ComunicadoListView(ListView):
     model = Comunicado
@@ -67,3 +86,9 @@ class ComunicadoListView(ListView):
     def get_queryset(self):
         queryset = super(ComunicadoListView, self).get_queryset()
         return queryset
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+            return super(ComunicadoListView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()

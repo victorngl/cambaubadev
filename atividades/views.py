@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.views.generic import CreateView, ListView, DetailView
 from atividades.models import Oficina, AtividadeExtra, AtividadeNoturna, InscricaoOficina, InscricaoAtividadeExtra, InscricaoAtividadeNoturna
 from .forms import InscricaoOficinaForm, InscricaoAtividadeExtraForm, InscricaoAtividadeNoturnaForm
 from django.urls import reverse, reverse_lazy
 
-@login_required
+@permission_required("core.pode_acessar_atividades")
 def oficinas(request):
     oficinas = Oficina.objects.all()
     return render(
@@ -16,7 +16,7 @@ def oficinas(request):
         }
     )
 
-@login_required
+@permission_required("core.pode_acessar_atividades")
 def atividades_extras(request):
     atividades_extras = AtividadeExtra.objects.all()
     return render(
@@ -27,7 +27,7 @@ def atividades_extras(request):
         }
     )
 
-@login_required
+@permission_required("core.pode_acessar_atividades")
 def atividades_noturnas(request):
     atividades_noturnas = AtividadeNoturna.objects.all()
     return render(
@@ -63,6 +63,12 @@ class InscricaoOficinaCreateView(CreateView):
             }
         )
         return context
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_atividades'):
+            return super(InscricaoOficinaCreateView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class InscricaoAtividadeExtraCreateView(CreateView):
     model = InscricaoAtividadeExtra
@@ -89,6 +95,12 @@ class InscricaoAtividadeExtraCreateView(CreateView):
             }
         )
         return context
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_atividades'):
+            return super(InscricaoAtividadeExtraCreateView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class InscricaoAtividadeNoturnaCreateView(CreateView):
     model = InscricaoAtividadeNoturna
@@ -115,12 +127,36 @@ class InscricaoAtividadeNoturnaCreateView(CreateView):
             }
         )
         return context
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_atividades'):
+            return super(InscricaoAtividadeNoturnaCreateView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class OficinaDetailView(DetailView):
     model = Oficina
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_atividades'):
+            return super(OficinaDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class AtividadeNoturnaDetailView(DetailView):
     model = AtividadeNoturna
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_atividades'):
+            return super(AtividadeNoturnaDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
 
 class AtividadeExtraDetailView(DetailView):
     model = AtividadeExtra
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_atividades'):
+            return super(AtividadeExtraDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()

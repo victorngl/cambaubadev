@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView
 from atividades_escolares.models import AtividadeEscolar
 
-@login_required
+@permission_required("core.pode_acessar_atividades_escolares")
 def atividades_escolares(request):
     atividades_escolares = AtividadeEscolar.objects.all()
     return render(
@@ -16,3 +16,9 @@ def atividades_escolares(request):
 
 class AtividadesEscolaresDetailView(DetailView):
     model = AtividadeEscolar
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('pode_acessar_atividades_escolares'):
+            return super(AtividadesEscolaresDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
