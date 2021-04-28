@@ -1,6 +1,6 @@
 {% load static %}
 
-{{user.profile.perfil}}
+
 {% if user.profile.perfil == 'Aluno' %}
     {% include 'sidebars/aluno.html' %}
 {% elif user.profile.perfil == 'Responsável' %}

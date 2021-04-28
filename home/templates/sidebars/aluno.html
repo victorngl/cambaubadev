@@ -1,14 +1,13 @@
-
 {% load static %}
 {% load home_tags %}
 
-<div class="side-content-wrap">
+<div class="side-content-wrap" >
     <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
         <ul class="navigation-left" style="overflow-y: auto;">
             <li class="nav-item">
                 <a class="nav-item-hold" href="{% url 'home' %}">
-                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
-                    <br>
+
+                    <ion-icon src="{% static 'assets/images/icons/house2.svg' %}"></ion-icon>
                     <span class="nav-text">Início</span>
                 </a>
                 <div class="triangle"></div>
@@ -16,8 +15,7 @@
             <li class="nav-item">
                 {% minha_turma as minha_turma %}
                 <a class="nav-item-hold" href="{% url 'turma_detail' minha_turma.id %}">
-                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
-                    <br>
+                    <ion-icon src="{% static 'assets/images/icons/blackboard.svg' %}"></ion-icon>
                     <span class="nav-text">Minha Turma</span>
                 </a>
                 <div class="triangle"></div>
@@ -25,21 +23,21 @@
             {% if perms.core.pode_acessar_informativos %}
             <li class="nav-item" data-item="informativos">
                 <a class="nav-item-hold" href="#">
-                    <img src="{% static 'assets/images/materiais_didáticos.png' %}" alt="">
-                    <br>
+                    <ion-icon src="{% static 'assets/images/icons/info.svg' %}"></ion-icon>
+
                     <span class="nav-text">Informativos</span>
                 </a>
                 <div class="triangle"></div>
             </li>
             {% endif %}
-            
+
         </ul>
     </div>
     <div class="sidebar-overlay"></div>
 </div>
 <div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
     <ul class="childNav" data-parent="informativos">
-        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Informativos</p>
+        <p class="titulo_produto"> <ion-icon src="{% static 'assets/images/icons/info.svg' %}"></ion-icon>Informativos</p>
         <li class="nav-item">
             <a href="{% url 'balancetes' %}" class="item-name">
                 <span class="item-name">Todos os Balancetes</span>
