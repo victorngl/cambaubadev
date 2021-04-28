@@ -19,19 +19,19 @@
         <div class="row">
             <div class="col-md-6 col-6">
                 <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Information text-16 mr-1"></i>Descrição</p>
+                    <p class="enquete__subtitulo text-primary mb-1"><i class="i-Information text-16 mr-1"></i>Descrição</p>
                     <span>{{object.descricao.html|safe}}</span>
                 </div>
                 {% if object.anexo %}
                 <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Library text-16 mr-1"></i>Anexo</p>
+                    <p class="text-primary enquete__subtitulo mb-1"><i class="i-Library text-16 mr-1"></i>Anexo</p>
                     <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
                 </div>
                 {% endif %}
             </div>
             <div class="col-md-6 col-6">
                 <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data da Expiração</p>
+                    <p class="text-primary enquete__subtitulo mb-1"><i class="i-Calendar text-16 mr-1"></i>Data da Expiração</p>
                     <span>{{object.data_expiracao}}</span>
                 </div>
             </div>

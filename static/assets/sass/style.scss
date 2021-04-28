@@ -963,4 +963,13 @@ nav[aria-label="Navegação"] {
 
 }
 
+.enquete-details {
+    .enquete__subtitulo {
+        font-family: $font-gilroy;
+        display: inline-grid;
+        align-items: center;
+        grid-template-columns: 25px 1fr;
+    }
+}
+
 @media (max-width:1200px) {}
