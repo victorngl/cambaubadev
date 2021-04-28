@@ -1084,7 +1084,7 @@ nav[aria-label="Navegação"] {
             box-shadow: $shadow-sm;
         }
 
-        .materiais-didaticos{
+        .materiais-didaticos {
             h1 {
                 i {
                     background-image: url("/static/assets/images/icons/material.svg") !important;
@@ -1096,8 +1096,24 @@ nav[aria-label="Navegação"] {
     .conteudo-materialdidatico,
     .conteudo-ativ-escolares {
         border-top: $borda-sm;
+        padding: 0;
+
+        .sidebar {
+            box-shadow: initial;
+            border: initial;
+            border-bottom: $borda-sm;
+            float: none;
+            display: flex;
+            flex-direction: column;
+        }
     }
 
+
+    .sidebar__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 @media (max-width:1200px) {}
