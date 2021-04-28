@@ -1542,6 +1542,39 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
     }
 }
 
+@include d(m) {
+
+    .layout-sidebar-large .sidebar-left.open {
+        width: 120px !important;
+
+        .nav-item {
+            a {
+                ion-icon {
+                    font-size: 16px !important;
+                }
+
+                span.nav-text {
+                    font-size: 12px !important;
+                }
+            }
+        }
+
+    }
+
+    .layout-sidebar-large .sidebar-left-secondary.open {
+        left: 120px !important;
+
+        .nav-item {
+            a {
+
+
+                span.item-name {
+                    font-size: 12px !important;
+                }
+            }
+        }
+    }
+}
 
 body {
     @include scrollbars(8px, rgb(208, 208, 208), rgb(238, 238, 238));
