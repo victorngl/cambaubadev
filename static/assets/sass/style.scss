@@ -1214,6 +1214,7 @@ nav[aria-label="Navegação"] {
         .conteudo-calendario {
             border-top: $borda-sm;
             padding: 0;
+            min-height: initial;
         }
 
         h1 {
