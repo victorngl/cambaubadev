@@ -6,57 +6,57 @@
         <ul class="navigation-left" style="overflow-y: auto;">
             <li class="nav-item">
                 <a class="nav-item-hold" href="{% url 'home' %}">
-                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
-                 
+                    <ion-icon src="{% static 'assets/images/icons/house2.svg' %}"></ion-icon>
+
                     <span class="nav-text">Início</span>
                 </a>
                 <div class="triangle"></div>
             </li>
             <li class="nav-item" data-item="alunos">
                 <a class="nav-item-hold" href="#">
-                    <img src="{% static 'assets/images/atividade.png' %}" alt="">
-                 
+                    <ion-icon src="{% static 'assets/images/icons/student.svg' %}"></ion-icon>
+
                     <span class="nav-text">Alunos</span>
                 </a>
                 <div class="triangle"></div>
             </li>
             <li class="nav-item" data-item="turmas">
                 <a class="nav-item-hold" href="#">
-                    <img src="{% static 'assets/images/atividade.png' %}" alt="">
-                 
+                    <ion-icon src="{% static 'assets/images/icons/blackboard.svg' %}"></ion-icon>
+
                     <span class="nav-text">Turmas</span>
                 </a>
                 <div class="triangle"></div>
             </li>
             {% if perms.core.pode_acessar_boletos_boletins %}
-                <li class="nav-item">
-                    <a class="nav-item-hold" href="{% url 'boletos_boletins' %}">
-                        <img src="{% static 'assets/images/boletoseboletins.png' %}" alt="">
-                     
-                        <span class="nav-text">Boletos e Boletins</span>
-                    </a>
-                    <div class="triangle"></div>
-                </li>
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'boletos_boletins' %}">
+                    <ion-icon src="{% static 'assets/images/icons/newspapper.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Boletos e Boletins</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
             {% endif %}
             {% if perms.core.pode_acessar_atividades %}
-                <li class="nav-item" data-item="atividades">
-                    <a class="nav-item-hold" href="#">
-                        <img src="{% static 'assets/images/atividade.png' %}" alt="">
-                     
-                        <span class="nav-text">Atividades Extra</span>
-                    </a>
-                    <div class="triangle"></div>
-                </li>
+            <li class="nav-item" data-item="atividades">
+                <a class="nav-item-hold" href="#">
+                    <ion-icon src="{% static 'assets/images/icons/extra.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Atividades Extra</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
             {% endif %}
             {% if perms.core.pode_acessar_informativos %}
-                <li class="nav-item" data-item="informativos">
-                    <a class="nav-item-hold" href="#">
-                        <ion-icon name="information-outline"></ion-icon>
-                     
-                        <span class="nav-text">Informativos</span>
-                    </a>
-                    <div class="triangle"></div>
-                </li>
+            <li class="nav-item" data-item="informativos">
+                <a class="nav-item-hold" href="#">
+                    <ion-icon name="information-outline"></ion-icon>
+
+                    <span class="nav-text">Informativos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
             {% endif %}
         </ul>
     </div>
@@ -66,21 +66,21 @@
     <ul class="childNav" data-parent="alunos">
         {% meus_alunos as meus_alunos %}
         {% for aluno in meus_alunos %}
-            <li class="nav-item">
-                <a href="{% url 'aluno_detail' aluno.id %}" class="item-name">
-                    <span class="item-name">{{aluno.nome}}</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a href="{% url 'aluno_detail' aluno.id %}" class="item-name">
+                <span class="item-name">{{aluno.nome}}</span>
+            </a>
+        </li>
         {% endfor %}
     </ul>
     <ul class="childNav" data-parent="turmas">
         {% minhas_turmas as minhas_turmas %}
         {% for turma in minhas_turmas %}
-            <li class="nav-item">
-                <a href="{% url 'turma_detail' turma.id %}" class="item-name">
-                    <span class="item-name">{{turma.nome}}</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a href="{% url 'turma_detail' turma.id %}" class="item-name">
+                <span class="item-name">{{turma.nome}}</span>
+            </a>
+        </li>
         {% endfor %}
     </ul>
     <ul class="childNav" data-parent="atividades">
@@ -101,7 +101,9 @@
         </li>
     </ul>
     <ul class="childNav" data-parent="informativos">
-        <p class="titulo_produto"><i class="text-20 i-Clock"></i>Informativos</p>
+        <p class="titulo_produto">
+            <ion-icon src="{% static 'assets/images/icons/info.svg' %}"></ion-icon>Informativos
+        </p>
         <li class="nav-item">
             <a href="{% url 'balancetes' %}" class="item-name">
                 <span class="item-name">Todos os Balancetes</span>
