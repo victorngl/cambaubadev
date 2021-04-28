@@ -1040,6 +1040,7 @@ nav[aria-label="Navegação"] {
     .boasvindas {
         .card-header {
             padding: 10px 0;
+            border-bottom: $borda-sm !important;
         }
 
         h2 {
