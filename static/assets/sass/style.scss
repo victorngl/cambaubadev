@@ -174,6 +174,10 @@ h4 {
     .main-content {
         max-width: 1200px;
         margin: 0 auto;
+
+        @include d(m) {
+            margin: initial;
+        }
     }
 
     //card alunos 
@@ -725,6 +729,20 @@ nav[aria-label="Navegação"] {
             max-width: 100%;
             margin: 30px 15px;
             margin-top: 30px;
+
+            @include d(m) {
+                padding: 0;
+                margin: 30px auto;
+            }
+
+            .fc-toolbar {
+                @include d(m) {
+                    display: grid;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    gap: 15px;
+                    justify-content: center;
+                }
+            }
         }
     }
 
@@ -855,6 +873,11 @@ nav[aria-label="Navegação"] {
             display: flex;
             flex-direction: column;
 
+            @include d(m) {
+                font-size: 10px;
+                min-height: 300px;
+            }
+
             div.row:nth-child(3) {
                 margin-top: auto;
             }
@@ -862,6 +885,11 @@ nav[aria-label="Navegação"] {
             .dataTables_length {
                 display: flex;
                 align-items: center;
+
+                @include d(m) {
+                    justify-content: center;
+                    margin-bottom: 10px;
+                }
 
                 select {
                     width: 40px;
@@ -903,6 +931,14 @@ nav[aria-label="Navegação"] {
                 ion-icon {
                     margin-left: 5px;
                 }
+            }
+        }
+    }
+
+    .card__texto {
+        p {
+            @include d(m) {
+                font-size: 12px;
             }
         }
     }
