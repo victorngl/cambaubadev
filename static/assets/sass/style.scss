@@ -1119,12 +1119,12 @@ nav[aria-label="Navegação"] {
             align-items: center;
             width: 100%;
             padding: 0;
-            color: $cor-azul-1;
+            color: $cor-azul-1 !important;
 
             i {
                 @include iconTitulos("/static/assets/images/icons/class.svg");
                 margin-right: 10px;
-                color: $cor-azul-1;
+                color: $cor-azul-1 !important;
             }
 
         }
