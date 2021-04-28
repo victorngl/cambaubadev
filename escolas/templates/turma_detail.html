@@ -172,7 +172,7 @@
             <ion-icon name="receipt-outline"></ion-icon> Comunicados
         </h1>
         <div class="conteudo-comunicados comunicados__wrapper">
-            {% for comunicado in comunicados %}
+            {% for comunicado in pagina_atual %}
 
             <div class="noticia_destaque card js-gsap">
 
@@ -207,25 +207,27 @@
         </div>
         <nav aria-label="Navegação js-gsap">
             <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">
-                            <ion-icon name="chevron-back-outline"></ion-icon>
-                        </span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">
-                            <ion-icon name="chevron-forward-outline"></ion-icon>
-                        </span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
+                {% if pagina_atual.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ pagina_atual.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">
+                                <ion-icon name="chevron-back-outline"></ion-icon>
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                {% endif %}
+                <li class="page-item active">Página {{ pagina_atual.number }} de {{ pagina_atual.paginator.num_pages }}.</li>
+                {% if pagina_atual.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ pagina_atual.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </section>

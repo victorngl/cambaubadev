@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from .models import Turma, Aluno
 from materiais_didaticos.models import Comunicado
 from atividades_escolares.models import AtividadeEscolar
@@ -20,8 +21,9 @@ class TurmaDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(TurmaDetailView, self).get_context_data(**kwargs)
+        pagina_atual = self.request.GET.get('page', 1)
         turma = get_object_or_404(Turma, pk=self.kwargs['pk'])
-        comunicados = Comunicado.objects.filter(turmas=turma)
+        comunicados = Comunicado.objects.filter(turmas=turma).order_by('-id')
         atividades_escolares = AtividadeEscolar.objects.filter(
             Q(turmas=turma) &
             Q(data_final__gte=date.today())
@@ -30,13 +32,19 @@ class TurmaDetailView(DetailView):
             Q(turmas=turma) &
             Q(data__gte=date.today())
         ).order_by('data')
-        print(materiais_didaticos)
+        
+        paginacao_comunicados = Paginator(comunicados, 2)
+
+        pagina_atual = paginacao_comunicados.page(pagina_atual)
+        
         context.update(
             {
                 'comunicados': comunicados,
                 'atividades_escolares': atividades_escolares,
                 'materiais_didaticos': materiais_didaticos,
-                'hoje': date.today()
+                'hoje': date.today(),
+                'paginacao_comunicados': paginacao_comunicados,
+                'pagina_atual': pagina_atual
             }
         )
         return context
