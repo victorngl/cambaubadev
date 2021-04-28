@@ -1241,6 +1241,85 @@ nav[aria-label="Navegação"] {
                 margin-right: 5px;
             }
         }
+
+        .card__img {
+            height: 113px;
+            border-radius: 8px 0 8px 0;
+            width: 221px !important;
+            position: relative;
+            overflow: hidden;
+            background: #0000000a;
+        }
+
+        .card__titulo {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            margin-top: 20px;
+
+            h5 {
+                font-family: $font-gilroy;
+                margin: 10px 0;
+                display: inline-block;
+                font-size: 20px;
+            }
+        }
+
+
+        .top__division {
+            display: flex;
+        }
+
+        .card__texto {
+            height: 100%;
+            padding-bottom: 0px;
+            margin-left: 0;
+
+            p {
+                margin-top: 10px;
+                font-size: 14px;
+                display: block;
+                max-width: 700px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                color: #3f4449;
+                padding: 0 20px;
+            }
+
+            .leia-mais {
+
+                display: inline-flex;
+                justify-content: flex-end;
+                width: 100%;
+
+                a {
+                    padding: 12px 20px;
+                    width: 100%;
+                    margin-left: auto;
+                    font-family: $font-gilroy;
+                    transition: 0.3s ease;
+                    cursor: pointer;
+                    display: inline-flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    font-size: 16px;
+                    z-index: 2;
+
+                    ion-icon {
+                        margin-left: 5px;
+                    }
+
+                    &:hover {
+                        background: $cor-cinza-1;
+                    }
+                }
+
+            }
+        }
+
+
     }
 
 }
