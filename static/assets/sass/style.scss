@@ -37,7 +37,7 @@ body {
 
 // GERAIS ★★★★★
 #page__login .entrar {
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 .sidebar-left-secondary {
@@ -1038,17 +1038,63 @@ nav[aria-label="Navegação"] {
 .body__turma-single {
 
     .boasvindas {
+        .card-header {
+            padding: 10px 0;
+        }
+
         h2 {
             display: inline-flex;
             align-items: center;
             width: 100%;
+            padding: 0;
 
             i {
                 @include iconTitulos("/static/assets/images/icons/class.svg");
-                margin-right: 5px;
+                margin-right: 10px;
+
             }
 
         }
+    }
+
+    .materias__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 30px;
+
+        .titulosecoes {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+
+            i {
+                @include iconTitulos("/static/assets/images/icons/book.svg");
+                margin-right: 10px;
+            }
+        }
+
+        .materiais-didaticos,
+        .ativ-escolares {
+            border-radius: 8px;
+            border: $borda-sm;
+            box-shadow: $shadow-sm;
+        }
+
+        .materiais-didaticos{
+            h1 {
+                i {
+                    background-image: url("/static/assets/images/icons/material.svg") !important;
+                }
+            }
+        }
+    }
+
+    .conteudo-materialdidatico,
+    .conteudo-ativ-escolares {
+        border-top: $borda-sm;
     }
 
 }
