@@ -32,6 +32,7 @@ class Aluno(Pessoa):
         verbose_name="Usuário do Aluno",
         related_name="usuario_aluno",
         on_delete=models.SET_NULL,
+        unique=True,
         blank=True,
         null=True
     )
