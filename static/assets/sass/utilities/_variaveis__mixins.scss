@@ -1,5 +1,3 @@
-
-
 //mixins
 @mixin font($peso:400) {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,8 +14,30 @@
     z-index: 100;
 }
 
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
 
-@mixin button__red($tamanho:16px,$padding-y:7px,$padding-x:40px) {
+    // For Google Chrome
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    // For Internet Explorer
+    & {
+        scrollbar-face-color: $foreground-color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+@mixin button__red($tamanho:16px, $padding-y:7px, $padding-x:40px) {
     display: inline-block;
     background: $thirty-color;
     border-radius: 23px;
@@ -29,40 +49,41 @@
     cursor: pointer;
     font-family: $font-gilroy !important;
 
-   /*  &:hover{
+    /*  &:hover{
         background: #dd252e;
         transform: scale(1.05);
         
     } */
-  /*   &:hover {
+    /*   &:hover {
         background: #dd252e radial-gradient(circle, transparent 1%, #85060d 1%) center/15000%;
       } */
 
-      &:active {
+    &:active {
         background-color: #dd252e;
         background-size: 100%;
         transition: background .5s;
-      }
-      
+    }
+
 }
 
-  @mixin bordaBotao($shadow:#a41b2261, $bg:#a41b22, $cor-2:$primary-color) {
-            box-shadow: 2px 3px 0px $shadow;
-            background-color: $bg;
-            transition: .3s ease;
+@mixin bordaBotao($shadow:#a41b2261, $bg:#a41b22, $cor-2:$primary-color) {
+    box-shadow: 2px 3px 0px $shadow;
+    background-color: $bg;
+    transition: .3s ease;
 
-            &:hover {
-                background-color: $cor-2;
-            }
- }
+    &:hover {
+        background-color: $cor-2;
+    }
+}
 
-@mixin imgAbsolute($object:cover){
+@mixin imgAbsolute($object:cover) {
     @include size (100%);
-    position:absolute;
-    object-fit:$object;
- }
+    position: absolute;
+    object-fit: $object;
+}
 
-@mixin text-white{
+@mixin text-white {
+
     .menu__emc a,
     .menu__matriculas a,
     .menu__blog a {
@@ -70,25 +91,27 @@
 
     }
 }
-@mixin tittle-single($tamanho:52px){
+
+@mixin tittle-single($tamanho:52px) {
     font-weight: bold;
     font-size: $tamanho;
     text-transform: uppercase;
     color: #FFFFFF;
     font-family: $font-gilroy !important;
 
-} 
+}
 
 .d-flex {
     display: flex
 }
 
-@mixin data__logo{
+@mixin data__logo {
     display: flex;
     width: 100%;
     justify-content: flex-end;
     padding: 5px 10px;
-    img{
+
+    img {
         width: 75px;
     }
 }
@@ -110,17 +133,18 @@
 // Sizing
 // ------
 @mixin size($width, $height: $width) {
-	width: $width;
-	height: $height;
+    width: $width;
+    height: $height;
 }
 
 // Normal & hover state
 // --------------------
 @mixin hoverer($property, $normal, $hovered) {
-	#{$property}: $normal;
-	&:hover {
-		#{$property}: $hovered;
-	}
+    #{$property}: $normal;
+
+    &:hover {
+        #{$property}: $hovered;
+    }
 }
 
 @mixin underlineLink($cor:$primary-color) {
@@ -153,30 +177,31 @@
     margin-right: 5px;
     background-image: url($var);
 }
+
 // EASE IN
-$ease-in-quad:      cubic-bezier(0.550,  0.085, 0.680, 0.530);
-$ease-in-cubic:     cubic-bezier(0.550,  0.055, 0.675, 0.190);
-$ease-in-quart:     cubic-bezier(0.895,  0.030, 0.685, 0.220);
-$ease-in-quint:     cubic-bezier(0.755,  0.050, 0.855, 0.060);
-$ease-in-sine:      cubic-bezier(0.470,  0.000, 0.745, 0.715);
-$ease-in-expo:      cubic-bezier(0.950,  0.050, 0.795, 0.035);
-$ease-in-circ:      cubic-bezier(0.600,  0.040, 0.980, 0.335);
-$ease-in-back:      cubic-bezier(0.600, -0.280, 0.735, 0.045);
+$ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$ease-in-cubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$ease-in-quart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$ease-in-sine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$ease-in-expo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$ease-in-circ: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 // EASE OUT
-$ease-out-quad:     cubic-bezier(0.250,  0.460, 0.450, 0.940);
-$ease-out-cubic:    cubic-bezier(0.215,  0.610, 0.355, 1.000);
-$ease-out-quart:    cubic-bezier(0.165,  0.840, 0.440, 1.000);
-$ease-out-quint:    cubic-bezier(0.230,  1.000, 0.320, 1.000);
-$ease-out-sine:     cubic-bezier(0.390,  0.575, 0.565, 1.000);
-$ease-out-expo:     cubic-bezier(0.190,  1.000, 0.220, 1.000);
-$ease-out-circ:     cubic-bezier(0.075,  0.820, 0.165, 1.000);
-$ease-out-back:     cubic-bezier(0.175,  0.885, 0.320, 1.275);
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-out-cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 // EASE IN OUT
-$ease-in-out-quad:  cubic-bezier(0.455,  0.030, 0.515, 0.955);
-$ease-in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000);
-$ease-in-out-quart: cubic-bezier(0.770,  0.000, 0.175, 1.000);
-$ease-in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000);
-$ease-in-out-sine:  cubic-bezier(0.445,  0.050, 0.550, 0.950);
-$ease-in-out-expo:  cubic-bezier(1.000,  0.000, 0.000, 1.000);
-$ease-in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860);
-$ease-in-out-back:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
+$ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$ease-in-out-quart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$ease-in-out-back: cubic-bezier(0.680, -0.550, 0.265, 1.550);
