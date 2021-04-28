@@ -972,4 +972,31 @@ nav[aria-label="Navegação"] {
     }
 }
 
+@mixin iconTitulos($var) {
+    @include bg-props-contain;
+    display: block;
+    @include size(30px);
+    margin-right: 5px;
+    background-image: url($var);
+}
+
+// ★ TURMA SINGLE  
+.body__turma-single {
+
+    .boasvindas {
+        h2 {
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+
+            i {
+                @include iconTitulos("/static/assets/images/icons/class.svg");
+                margin-right: 5px;
+            }
+
+        }
+    }
+
+}
+
 @media (max-width:1200px) {}

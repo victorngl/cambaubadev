@@ -55,6 +55,7 @@ function Dom(seletor) {
 //escopo
 const pageHome = new Dom().el(".page_home")
 const HomeAluno = new Dom().el(".page_aluno");
+const pageTurma = new Dom().el(".page_turma-single");
 
 
 const pageComunicadoSingle = new Dom().el("#page_comunicado-single")
@@ -75,12 +76,10 @@ function escopo() {
             calendar.classList.toggle("fechado")
         })
 
-
-
-
-
     } else if (pageComunicadoSingle) { // ★ Single COMUNICADO  
         new Dom().bodyClass("body__comunicado__single")
+    } else if (pageTurma) { // ★ Page turma  
+        new Dom().bodyClass("body__turma-single")
     }
 }
 
