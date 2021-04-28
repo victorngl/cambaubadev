@@ -1119,11 +1119,12 @@ nav[aria-label="Navegação"] {
             align-items: center;
             width: 100%;
             padding: 0;
+            color: $cor-azul-1;
 
             i {
                 @include iconTitulos("/static/assets/images/icons/class.svg");
                 margin-right: 10px;
-
+                color: $cor-azul-1;
             }
 
         }
@@ -1168,6 +1169,8 @@ nav[aria-label="Navegação"] {
     .conteudo-ativ-escolares {
         border-top: $borda-sm;
         padding: 0;
+        max-height: 420px;
+        overflow-y: auto;
 
         .sidebar {
             box-shadow: initial;
@@ -1176,6 +1179,17 @@ nav[aria-label="Navegação"] {
             float: none;
             display: flex;
             flex-direction: column;
+            transition: .3s ease;
+            margin: 0;
+
+            &:hover {
+                background: rgba(243, 243, 243, 0.85);
+            }
+
+            &-materia {
+                font-weight: 600;
+            }
+
         }
     }
 
