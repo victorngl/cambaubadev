@@ -181,6 +181,11 @@ h4 {
     }
 
     //card alunos 
+    .card__alunos-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 320px;
+    }
 
     .card__alunos {
         margin-bottom: 60px;
@@ -474,7 +479,6 @@ h4 {
         }
 
         .leia-mais {
-            border-top: $borda-sm;
 
             display: inline-flex;
             justify-content: flex-end;
@@ -521,10 +525,8 @@ h4 {
 
     .tab__panel-container {
         .tab-pane {
-            display: flex;
 
             .card {
-                width: 50%;
 
                 @include d(m) {
                     width: 100%;
