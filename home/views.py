@@ -11,32 +11,32 @@ from atividades_escolares.models import AtividadeEscolar
 
 @login_required
 def home(request):
-    #try:
-    perfil = 'Sem Vínculo'
-    alunos = None
-    enquetes = None
-    aluno = None
-    materiais_didaticos = None
-    if request.user.profile:
-        perfil = request.user.profile.perfil
-        if perfil == 'Aluno':
-            aluno=Aluno.objects.get(usuario=request.user)
-            template_name = 'home_aluno.html'
-        elif perfil == 'Responsável':
-            alunos=Aluno.objects.filter(
-                Q(responsavel1=request.user) | 
-                Q(responsavel2=request.user) | 
-                Q(responsavel3=request.user)
-            )
-            enquetes = Enquete.objects.all()
-            template_name = 'home_responsavel.html'
-        else:
-            aluno=Aluno.objects.filter(
-                Q(nome=request.user)  
-            )
-            template_name = 'home.html'
-    #except:
-    #    template_name = 'home.html'
+    try:
+        perfil = 'Sem Vínculo'
+        alunos = None
+        enquetes = None
+        aluno = None
+        materiais_didaticos = None
+        if request.user.profile:
+            perfil = request.user.profile.perfil
+            if perfil == 'Aluno':
+                aluno=Aluno.objects.get(usuario=request.user)
+                template_name = 'home_aluno.html'
+            elif perfil == 'Responsável':
+                alunos=Aluno.objects.filter(
+                    Q(responsavel1=request.user) | 
+                    Q(responsavel2=request.user) | 
+                    Q(responsavel3=request.user)
+                )
+                enquetes = Enquete.objects.all()
+                template_name = 'home_responsavel.html'
+            else:
+                aluno=Aluno.objects.filter(
+                    Q(nome=request.user)  
+                )
+                template_name = 'home.html'
+    except:
+        template_name = 'home.html'
         
 
     return render(
