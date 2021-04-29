@@ -10,35 +10,50 @@
         {% else %}
         <div class="header-cover" style="background-image: url(/static/assets/images/balancete.png);"></div>
         {% endif %}
-       
+
         <div class="card-body">
             <h4>{{ object.titulo }}</h4>
             <hr>
             <div class="row">
                 <div class="col-12">
                     <div class="mb-4">
-                        <p class="text-primary mb-1"> <ion-icon name="newspaper-outline"></ion-icon>Descrição</p>
+                        <p class="text-primary mb-1">
+                            <ion-icon name="newspaper-outline"></ion-icon>Descrição
+                        </p>
                         <span>{{object.descricao}}</span>
                     </div>
-                    <div class="mb-4">
-                        <p class="text-primary mb-1"><ion-icon name="calendar-outline"></ion-icon>Data</p>
-                        <span>{{object.data|default_if_none:'-'}}</span>
-                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-around align-items-center">
+
+                <div class="mb-4  col-lg-4 col-6">
+                    <p class="text-primary mb-1">
+                        <ion-icon name="calendar-outline"></ion-icon>Data
+                    </p>
+                    <span>{{object.data|default_if_none:'-'}}</span>
                 </div>
 
-                <div class="row justify-content-around align-items-center">
+                <div class="mb-4  col-lg-4 col-6">
                     {% if object.anexo %}
                     <div class="mb-4 col-lg-6">
-                        <p class="text-primary mb-1"><ion-icon name="attach-outline"></ion-icon>AnexoAnexo</p>
+                        <p class="text-primary mb-1">
+                            <ion-icon name="attach-outline"></ion-icon>AnexoAnexo
+                        </p>
                         <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
                     </div>
+
                     {% endif %}
-                    <div class="mb-4 col-lg-6">
-                        <p class="text-primary mb-1"><ion-icon name="business-outline"></ion-icon>Escola</p>
+                    <div class="mb-4 col-lg-4 col-6">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="business-outline"></ion-icon>Escola
+                        </p>
                         <span>{{object.escola}}</span>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </main>
