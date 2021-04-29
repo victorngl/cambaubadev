@@ -18,6 +18,7 @@ ALLOWED_HOSTS = [
     'cambauba.herokuapp.com',
     'cambauba.dokku.outboxsistemas.com',
     'intranet.cambauba.org.br',
+    'novo.cambauba.com.br',
 ]
 
 LOGIN_URL = '/login/'
