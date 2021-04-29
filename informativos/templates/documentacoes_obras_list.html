@@ -25,7 +25,7 @@
                         <td>{{documentacao_obra.titulo}}</td>
                         <td>{{documentacao_obra.data|default_if_none:'-'}}</td>
                         <td>{{documentacao_obra.escola}}</td>
-                        <td><a href="{% url 'documentacao_obra_detail' documentacao_obra.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
+                        <td><a class="detalhes" href="{% url 'documentacao_obra_detail' documentacao_obra.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

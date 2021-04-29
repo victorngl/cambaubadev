@@ -107,7 +107,7 @@
                         <tr>
                             <td>{{material_didatico.titulo}}</td>
                             <td>{{material_didatico.turmas_vinculadas}}</td>
-                            <td><a href="{% url 'material_didatico_detail' material_didatico.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></a></td>
+                            <td><a class="detalhes" href="{% url 'material_didatico_detail' material_didatico.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

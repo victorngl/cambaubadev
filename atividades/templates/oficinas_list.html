@@ -27,7 +27,7 @@
                         <td>{{ oficina.vagas }}</td>
                         <td>{{ oficina.data_inicial }}</td>
                         <td>{{ oficina.data_final }}</td>
-                        <td><a href="{% url 'oficina_detail' oficina.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
+                        <td><a class="detalhes" href="{% url 'oficina_detail' oficina.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

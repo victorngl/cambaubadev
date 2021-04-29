@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ata_reuniao.titulo}}</td>
                         <td>{{ata_reuniao.data|default_if_none:'-'}}</td>
-                        <td><a href="{% url 'ata_reuniao_detail' ata_reuniao.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
+                        <td><a class="detalhes" href="{% url 'ata_reuniao_detail' ata_reuniao.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

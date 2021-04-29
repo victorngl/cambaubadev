@@ -27,7 +27,7 @@
                         <td>{{ atividade_extra.vagas }}</td>
                         <td>{{ atividade_extra.data_inicial }}</td>
                         <td>{{ atividade_extra.data_final }}</td>
-                        <td><a href="{% url 'atividade_extra_detail' atividade_extra.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
+                        <td><a class="detalhes" href="{% url 'atividade_extra_detail' atividade_extra.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
