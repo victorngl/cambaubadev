@@ -177,8 +177,11 @@
             <div class="noticia_destaque card js-gsap">
 
                 <div class="top__division">
+                    {% if comunicado.foto %}
                     <div class="card__img" style="background-image: url({{comunicado.foto.url}})"></div>
-
+                    {% else %}
+                    <div class="card__img" style="background-image: url(/static/assets/images/foto_comunicado.png)"></div>
+                    {% endif %}
                     <div class="card__titulo">
                         <h3>{{comunicado.titulo}}</h3>
                     </div>

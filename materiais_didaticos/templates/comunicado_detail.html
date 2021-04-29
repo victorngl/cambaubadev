@@ -10,12 +10,12 @@
             {% if object.foto_capa %}
             <div class="fundo-post" style="background-image: url({{object.foto_capa.url}}); height: 300px;"></div>
             {% else %}
-            <div class="fundo-post" style="background-image: url(/static/assets/images/fundo_padrao.jpg); height: 300px;"></div>
+            <div class="fundo-post" style="background-image: url(/static/assets/images/capa_comunicado.png); height: 300px;"></div>
             {% endif %}
-
                 <div class="text-center">
                     <p class="text-24">{{object.titulo}}</p>
                     <p><small>{{object.data_criacao}}</small></p>
+                    <p><small>{{object.usuario_criacao.first_name}} {{object.usuario_criacao.last_name}}</small></p>
                     <p>{{object.descricao.html|safe}}</p>
                     <a href="{% url 'home' %}" class="btn btn-primary w-50 text-white mt-3 leia-mais mb-">Voltar</a>
                 </div>
