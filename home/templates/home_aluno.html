@@ -132,7 +132,10 @@
 
                 </div>
             </div>
-            <a href="{% url 'atividades_escolares' %}" class="ver-mais text-16 text-center">Ver todos</a>
+
+            <div class="ver__container">
+                <a href="{% url 'atividades_escolares' %}" class="ver-mais text-16 text-center">Ver todos <ion-icon name="arrow-forward-outline"></ion-icon></a>
+            </div>
         </div>
 
 
@@ -158,7 +161,9 @@
                     </div>
                 </div>
             </div>
-            <a href="{% url 'atividades_extras' %}" class="ver-mais text-16 text-center">Ver todos</a>
+            <div class="ver__container">
+                <a href="{% url 'atividades_extras' %}" class="ver-mais text-16 text-center">Ver todos<ion-icon name="arrow-forward-outline"></ion-icon></a>
+            </div>
         </div>
         <!-- Calendário -->
         <!-- <div class="col-6 card__calendario">
@@ -205,9 +210,135 @@
         <div class="card__comunicados">
 
             <div class="comunicado__title">
-                <h2> <ion-icon name="receipt-outline"></ion-icon>Comunicados</h2>
+                <h2>
+                    <ion-icon name="receipt-outline"></ion-icon>Comunicados
+                </h2>
             </div>
-            <div class=" ultimas_noticias comunicados__wrapper">
+
+            <div class="swiper__container-aluno">
+                <!-- wrapper -->
+                <div class="comunicados__wrapper swiper-wrapper">
+                    <!-- item -->
+                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+                        <div class="notica__wrapper">
+                            <div class="top__division">
+                                <div class="card__img"> <img src="#" alt=""></div>
+                                <div class="card__titulo">
+                                    <h5 class="m-0">Titulo Do Comunicado</h5>
+                                </div>
+                            </div>
+
+                            <div class="card__texto">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                    elementa naturae,
+                                    quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                    dicere inter
+                                    honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                    omnino interesse.
+                                    Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                    inquit, in hoc
+                                    quidem
+                                    pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                    ad modum eae
+                                    semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                    equidem
+                                    intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                    potest probare,
+                                    quod
+                                    perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                    amicum destitero
+                                    tueri.
+
+                                </p>
+                                <div class="leia-mais">
+                                    <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- item -->
+                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+                        <div class="notica__wrapper">
+                            <div class="top__division">
+                                <div class="card__img"> <img src="#" alt=""></div>
+                                <div class="card__titulo">
+                                    <h5 class="m-0">Titulo Do Comunicado</h5>
+                                </div>
+                            </div>
+                            <div class="card__texto">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque solum ea communia,
+                                    verum etiam
+                                    paria
+                                    esse dixerunt. Tu vero, inquam, ducas licet, si sequetur; At iste non dolendi status
+                                    non vocatur
+                                    voluptas. Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate
+                                    sapientis. Nihilne
+                                    est
+                                    in
+                                    his rebus, quod dignum libero aut indignum esse ducamus? Duo Reges: constructio
+                                    interrete. Negat
+                                    enim
+                                    summo bono afferre incrementum diem. Quod ea non occurrentia fingunt, vincunt
+                                    Aristonem; Isto modo
+                                    ne
+                                    improbos quidem, si essent boni viri.
+
+                                </p>
+                                <div class="leia-mais">
+                                    <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- item -->
+                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+                        <div class="notica__wrapper">
+                            <div class="top__division">
+                                <div class="card__img"> <img src="#" alt=""></div>
+                                <div class="card__titulo">
+                                    <h5 class="m-0">Titulo Do Comunicado</h5>
+                                </div>
+                            </div>
+                            <div class="card__texto">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque solum ea communia,
+                                    verum etiam
+                                    paria
+                                    esse dixerunt. Tu vero, inquam, ducas licet, si sequetur; At iste non dolendi status
+                                    non vocatur
+                                    voluptas. Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate
+                                    sapientis. Nihilne
+                                    est
+                                    in
+                                    his rebus, quod dignum libero aut indignum esse ducamus? Duo Reges: constructio
+                                    interrete. Negat
+                                    enim
+                                    summo bono afferre incrementum diem. Quod ea non occurrentia fingunt, vincunt
+                                    Aristonem; Isto modo
+                                    ne
+                                    improbos quidem, si essent boni viri.
+
+                                </p>
+                                <div class="leia-mais">
+                                    <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <!--  <div class=" ultimas_noticias comunicados__wrapper">
                 {% for comunicado in pagina_atual %}
                     <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
                         <div class="top__division">
@@ -238,38 +369,13 @@
                         </div>
                     </div>
                 {% endfor %}
-            </div>
+            </div> -->
         </div>
     </div>
 
     <div class="row visualizar__wrapper">
-        <div class="col-12">
-            
-            <nav aria-label="Navegação">
-                <ul class="pagination">
-                    {% if pagina_atual.has_previous %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ pagina_atual.previous_page_number }}" aria-label="Previous">
-                                <span aria-hidden="true">
-                                    <ion-icon name="chevron-back-outline"></ion-icon>
-                                </span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                    {% endif %}
-                    <li class="page-item active">Página {{ pagina_atual.number }} de {{ pagina_atual.paginator.num_pages }}.</li>
-                    {% if pagina_atual.has_next %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ pagina_atual.next_page_number }}" aria-label="Next">
-                                <span aria-hidden="true">
-                                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                                </span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </nav>
+        <div class="ver__todos">
+            <a href="#">Ver Todos <ion-icon name="arrow-forward-outline"></ion-icon></a>
         </div>
     </div>
     <!--Materiais didáticos-->
@@ -295,9 +401,9 @@
                             <td>{{material_didatico.titulo}}</td>
                             <td>{{material_didatico.turmas_vinculadas}}</td>
                             <td>
-                            {% if object.foto_capa %}
-                            <a href="{{material_didatico.anexo.url}}">{{material_didatico.anexo.url}}</a>
-                            {% endif %}
+                                {% if object.foto_capa %}
+                                <a href="{{material_didatico.anexo.url}}">{{material_didatico.anexo.url}}</a>
+                                {% endif %}
                             </td>
                             <td>{{material_didatico.materia.titulo}}</td>
                             <td>{{material_didatico.data}}</td>
@@ -346,6 +452,53 @@
 
 {% block extra_js %}
 <script>
+    const props = {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        centeredSlides: false,
+        freeMode: false,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        breakpoints: {
+            320: {
+                slidesPerView: "auto",
+                centeredSlides: true,
+                spaceBetween: 15,
+            },
+            720: {
+                slidesPerView: "auto",
+                centeredSlides: false,
+                spaceBetween: 15,
+            },
+            1024: {
+                slidesPerView: "auto",
+                spaceBetween: 50,
+                centeredSlides: false,
+
+            },
+
+            1240: {
+                slidesPerView: "auto",
+                spaceBetween: 20,
+                centeredSlides: false,
+
+            },
+        }
+    }
+
+    /* carouseis */
+    /*  let carouseis = document.querySelectorAll(".swiper__container-all")
+     carouseis.forEach((i) => {
+         new Swiper(i, props) //loop para add carouseis
+
+     }) */
+
+    let carouselAluno = document.querySelector(".swiper__container-aluno")
+    new Swiper(carouselAluno, props)
+
     $(document).ready(function () {
         $('#material_didatico').DataTable({
             "language": {
@@ -364,4 +517,5 @@
         });
     });
 </script>
+
 {% endblock %}
