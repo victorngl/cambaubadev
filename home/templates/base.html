@@ -77,26 +77,18 @@
     </div>
     <!--=============== End app-admin-wrap ================-->
 
+    <!-- scene ainmation -->
     <div class="scene__container">
         <div id="scene">
-
-
-
             <!-- circulo1 -->
-
             <svg data-depth=".6" class="circulosSvg" id="circulo-1" data-depth="0.1" width="32" height="32"
                 viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 
                 <path
                     d="M15.9953 31.9905C24.8292 31.9905 31.9906 24.8292 31.9906 15.9953C31.9906 7.16131 24.8292 0 15.9953 0C7.16134 0 0 7.16131 0 15.9953C0 24.8292 7.16134 31.9905 15.9953 31.9905Z"
                     fill="#FF9280" />
-
             </svg>
-
-
-
             <!-- circulo2 -->
-
             <svg data-depth=".4" class="circulosSvg" id="circulo-2" data-depth="0.2" width="45" height="45"
                 viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -104,18 +96,6 @@
 
             </svg>
 
-
-
-
-
-            <!-- circulo4 -->
-
-            <!--   <svg class="circulosSvg" id="circulo-4" data-depth="0.3" width="117" height="117" viewBox="0 0 117 117"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
-
-                <ellipse cx="58.5" cy="58.5" rx="58.5" ry="58.5" transform="rotate(90 58.5 58.5)" fill="#D6EEFF" />
-
-            </svg> -->
             <svg class="circulosSvg" id="circulo-4" data-depth="0.3" width="117" height="117" viewBox="0 0 200 200"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill="#D6EEFF"
@@ -123,9 +103,7 @@
                     transform="translate(100 100)" />
             </svg>
 
-
             <!-- circulo5 -->
-
             <svg class="circulosSvg" id="circulo-5" data-depth="0.1" width="28" height="25" viewBox="0 0 28 25"
                 fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -135,12 +113,7 @@
 
             </svg>
 
-
-
-
             <!-- circulo7 -->
-
-
             <svg data-depth="0.6" class="circulosSvg" id="circulo-7" width="17" height="35" viewBox="0 0 159 172"
                 fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -151,66 +124,7 @@
 
         </div>
     </div>
-    <style>
-        main {
-            z-index: 2;
-            position: relative;
-        }
 
-
-
-        .circulosSvg {
-            position: absolute !important;
-            transition: all 0.2s ease;
-            z-index: -3;
-        }
-
-        #circulo-1 {
-            right: 0px;
-            top: 500px !important;
-            display: block;
-            z-index: -2;
-            left: initial !important;
-        }
-
-        #circulo-2 {
-
-            right: 140px;
-            top: 120px !important;
-            display: block;
-            left: initial !important
-        }
-
-        #circulo-4 {
-            position: absolute;
-            right: -10px;
-            top: 100px !important;
-            display: block;
-            z-index: -2;
-            left: initial !important;
-
-        }
-
-        #circulo-5 {
-            position: absolute;
-            right: 60px;
-            top: 350px !important;
-            display: block;
-            z-index: -2;
-            left: initial !important;
-            transition: .3s ease;
-        }
-
-
-        #circulo-7 {
-            position: absolute;
-            right: 0px;
-            top: 240px !important;
-            display: block;
-            z-index: -2;
-            left: initial !important;
-        }
-    </style>
 
 
     <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
@@ -223,8 +137,8 @@
     <script src="{% static 'assets/js/es5/script.min.js' %}"></script>
     <script src="{% static 'assets/js/es5/sidebar.large.script.min.js' %}"></script>
     <script src="{% static 'assets/js/vendor/datatables.min.js' %}"></script>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-
+    <!-- swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- parallax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 
