@@ -203,7 +203,8 @@
 
         <!-- todos e alunos -->
         <div class="nav__alunos-container">
-          <div class="nav nav-pills  order-last button__carousel" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <div class="nav nav-pills  order-last button__carousel" id="v-pills-tab" role="tablist"
+            aria-orientation="vertical">
 
             <a data-aluno="all" class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
               href="#todos_comunicados" role="tab" aria-controls="v-pills-home" aria-selected="true">Todos</a>
@@ -211,13 +212,15 @@
             <a data-aluno="1" class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#" role="tab"
               aria-controls="v-pills-profile" aria-selected="false">Nome do Aluno</a>
 
+            <a data-aluno="2" class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#" role="tab"
+              aria-controls="v-pills-profile" aria-selected="false">Nome do Aluno 2</a>
           </div>
         </div>
 
 
         <!-- swiper container -->
         <div class="swiper__container-comunicados swiper__container-all" data-aluno="all">
-          <h4>Aluno Tal</h4>
+          <h4>Aluno Tal 1</h4>
           <!-- wrapper -->
           <div class="comunicados__wrapper swiper-wrapper" id="todos_comunicados" role="tabpanel"
             aria-labelledby="v-pills-home">
@@ -311,12 +314,15 @@
             </div>
 
           </div>
-
+          <div class="swiper-buttons">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
         </div>
 
         <!-- swiper container -->
         <div class="swiper__container-comunicados swiper__container-all" data-aluno="1">
-          <h4>Aluno Tal</h4>
+          <h4>Aluno Tal 2</h4>
           <!-- wrapper -->
           <div class="comunicados__wrapper swiper-wrapper" id="todos_comunicados" role="tabpanel"
             aria-labelledby="v-pills-home">
@@ -326,7 +332,7 @@
                 <div class="top__division">
                   <div class="card__img"> <img src="#" alt=""></div>
                   <div class="card__titulo">
-                    <h5 class="m-0">Titulo Do Comunicado</h5>
+                    <h5 class="m-0">Titulo Do Comunicado 2</h5>
                   </div>
                 </div>
 
@@ -349,6 +355,7 @@
                 </div>
 
               </div>
+
             </div>
 
             <!-- item -->
@@ -357,7 +364,7 @@
                 <div class="top__division">
                   <div class="card__img"> <img src="#" alt=""></div>
                   <div class="card__titulo">
-                    <h5 class="m-0">Titulo Do Comunicado</h5>
+                    <h5 class="m-0">Titulo Do Comunicado 2</h5>
                   </div>
                 </div>
                 <div class="card__texto">
@@ -410,7 +417,10 @@
             </div>
 
           </div>
-
+          <div class="swiper-buttons">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
         </div>
 
 
@@ -510,7 +520,10 @@
             </div>
 
           </div>
-
+          <div class="swiper-buttons">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
         </div>
 
 
@@ -573,6 +586,7 @@
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+
     breakpoints: {
       320: {
         slidesPerView: "auto",
@@ -599,7 +613,6 @@
       },
     }
   }
-
 
 
   let clickItems = document.querySelectorAll(".button__carousel a");
