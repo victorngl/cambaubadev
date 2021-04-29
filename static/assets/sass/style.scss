@@ -614,6 +614,7 @@ h4 {
         justify-content: flex-end;
         width: 100%;
         border-bottom: $borda-sm;
+        margin-bottom: 40px;
 
         a {
             padding: 12px 20px;
@@ -698,7 +699,7 @@ h4 {
     position: relative;
     height: 370px;
     overflow: hidden;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 
     @include d(m) {
         height: 434px;
@@ -1256,7 +1257,9 @@ nav[aria-label="Navegação"] {
 
     .swiper-button-next,
     .swiper-button-prev {
-        top: 20%;
+        @include d(m) {
+            top: 20%;
+        }
     }
 
     .comunicados__wrapper {
@@ -1270,16 +1273,18 @@ nav[aria-label="Navegação"] {
     .swiper__container-turma {
         overflow: hidden;
         position: relative;
-        @include d(m){
+
+        @include d(m) {
             overflow: initial;
-            .card{
+
+            .card {
                 width: 280px;
-              
+
                 min-width: initial;
             }
         }
 
-      
+
     }
 
     .ver__todos {
