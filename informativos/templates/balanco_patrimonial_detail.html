@@ -23,24 +23,26 @@
                         <span>{{object.descricao}}</span>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <p class="text-primary mb-1">
+            </div>
+
+
+            <div class="row">
+                <div class="mb-4 col-lg-4 col-6">
+                    <p class=" text-primary mb-1">
                         <ion-icon name="calendar-outline"></ion-icon>Data
                     </p>
                     <span>{{object.data|default_if_none:'-'}}</span>
                 </div>
-            </div>
 
-            <div class="row">
                 {% if object.anexo %}
-                <div class="mb-4 col-6">
+                <div class="mb-4 col-lg-4 col-6">
                     <p class="text-primary mb-1">
-                        <ion-icon name="attach-outline"></ion-icon>AnexoAnexo
+                        <ion-icon name="attach-outline"></ion-icon>Anexo
                     </p>
                     <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
                 </div>
                 {% endif %}
-                <div class="mb-4 col-6">
+                <div class="mb-4 col-lg-4 col-6">
                     <p class="text-primary mb-1">
                         <ion-icon name="business-outline"></ion-icon>Escola
                     </p>
