@@ -578,9 +578,7 @@ h4 {
         }
     }
 
-    .swiper__container-all:not(.ativo) {
-        display: none !important;
-    }
+
 
     .nav__alunos-container {
         .nav-pills .nav-link {
@@ -609,6 +607,10 @@ h4 {
             }
         }
     }
+}
+
+.swiper__container-all:not(.ativo) {
+    display: none !important;
 }
 
 .vermais_aluno {
