@@ -18,6 +18,7 @@ ALLOWED_HOSTS = [
     'cambauba.herokuapp.com',
     'cambauba.dokku.outboxsistemas.com',
     'intranet.cambauba.org.br',
+    'novo.cambauba.com.br',
 ]
 
 LOGIN_URL = '/login/'
@@ -81,17 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cambauba.wsgi.application'
 
-
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-DATABASES = {
-    'default': config(
-        'DATABASE_URL',
-        default=default_dburl,
-        cast=dburl
-    ),
-}
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -117,34 +107,41 @@ USE_L10N = True
 
 USE_TZ = True
 
-USE_AWS = config('USE_AWS', default=False, cast=bool)
+PRODUCAO = config('PRODUCAO', default=True, cast=bool)
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-if USE_AWS:
-    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'django-cambauba'
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
+if PRODUCAO:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'intranet_cambauba',
+            'USER': 'intranet_cambauba_user',
+            'PASSWORD': 'D@t@C@rt3sC@mb@ub@',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
-    AWS_LOCATION = 'static'
-    AWS_DEFAULT_ACL = None
 
-    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join('/var/www/html/static')
 
-    # s3 public media settings
-    PUBLIC_MEDIA_LOCATION = 'media'
-    MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
-    DEFAULT_FILE_STORAGE = 'core.storage_backends.PublicMediaStorage'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join('/var/www/html/media')
+else:
+    DATABASES = {
+        'default': config(
+            'DATABASE_URL',
+            default=default_dburl,
+            cast=dburl
+        ),
+    }
 
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
