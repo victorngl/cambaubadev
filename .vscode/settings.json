@@ -20,7 +20,7 @@
     ],
 
     //config que gera .map 
-    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.generateMap": true,
 
     // prefix
     "liveSassCompile.settings.autoprefix": [
