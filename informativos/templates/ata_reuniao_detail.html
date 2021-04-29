@@ -24,47 +24,47 @@
                         <span>{{object.descricao}}</span>
                     </div>
                 </div>
-                <div class="row">
-                    {% if object.data %}
-                    <div class="mb-4 col-lg-4 col-6">
-                        <p class="text-primary mb-1">
-                            <ion-icon name="calendar-outline"></ion-icon>Data
-                        </p>
-                        <span>{{object.data}}</span>
-                    </div>
-                    {% endif %}
-                    {% if object.data_inicial %}
-                    <div class="mb-4 col-lg-4 col-6">
-                        <p class="text-primary mb-1">
-                            <ion-icon name="calendar-outline"></ion-icon>Data Inicial
-                        </p>
-                        <span>{{object.data_inicial}}</span>
-                    </div>
-                    {% endif %}
-                    {% if object.data_final %}
-                    <div class="mb-4 col-lg-4 col-6">
-                        <p class="text-primary mb-1">
-                            <ion-icon name="calendar-outline"></ion-icon>Data Final
-                        </p>
-                        <span>{{object.data_final}}</span>
-                    </div>
-                    {% endif %}
+            </div>
+            <div class="row">
+                {% if object.data %}
+                <div class="mb-4 col-lg-4 col-6">
+                    <p class="text-primary mb-1">
+                        <ion-icon name="calendar-outline"></ion-icon>Data
+                    </p>
+                    <span>{{object.data}}</span>
                 </div>
-                <div class="row">
-                    {% if object.anexo %}
-                    <div class="mb-4 col-lg-4 col-6">
-                        <p class="text-primary mb-1">
-                            <ion-icon name="attach-outline"></ion-icon>Anexo
-                        </p>
-                        <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
-                    </div>
-                    {% endif %}
-                    <div class="mb-4 col-lg-4 col-6">
-                        <p class="text-primary mb-1">
-                            <ion-icon name="people-outline"></ion-icon>Turmas
-                        </p>
-                        <span>{{object.turmas_vinculadas}}</span>
-                    </div>
+                {% endif %}
+                {% if object.data_inicial %}
+                <div class="mb-4 col-lg-4 col-6">
+                    <p class="text-primary mb-1">
+                        <ion-icon name="calendar-outline"></ion-icon>Data Inicial
+                    </p>
+                    <span>{{object.data_inicial}}</span>
+                </div>
+                {% endif %}
+                {% if object.data_final %}
+                <div class="mb-4 col-lg-4 col-6">
+                    <p class="text-primary mb-1">
+                        <ion-icon name="calendar-outline"></ion-icon>Data Final
+                    </p>
+                    <span>{{object.data_final}}</span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                {% if object.anexo %}
+                <div class="mb-4 col-lg-4 col-6">
+                    <p class="text-primary mb-1">
+                        <ion-icon name="attach-outline"></ion-icon>Anexo
+                    </p>
+                    <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
+                </div>
+                {% endif %}
+                <div class="mb-4 col-lg-4 col-6">
+                    <p class="text-primary mb-1">
+                        <ion-icon name="people-outline"></ion-icon>Turmas
+                    </p>
+                    <span>{{object.turmas_vinculadas}}</span>
                 </div>
             </div>
 
