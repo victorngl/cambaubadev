@@ -1660,3 +1660,67 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 body {
     @include scrollbars(8px, rgb(208, 208, 208), rgb(238, 238, 238));
 }
+
+
+/* circulos */
+
+.circulosSvg {
+    position: absolute !important;
+    transition: all 0.2s ease;
+}
+
+#circulo-1 {
+    position: absolute;
+    right: 320px;
+    top: 540px !important;
+    display: block;
+    z-index: -2;
+    left: initial !important;
+}
+
+#circulo-2 {
+    position: absolute;
+    right: 40px;
+    top: -80px !important;
+    display: block;
+    left: initial !important;
+}
+
+#circulo-4 {
+    position: absolute;
+    right: -10px;
+    top: 100px !important;
+    display: block;
+    z-index: -2;
+    left: initial !important;
+
+    @include media(s) {}
+}
+
+#circulo-5 {
+    position: absolute;
+    right: 340px;
+    top: 350px !important;
+    display: block;
+    z-index: -2;
+    left: initial !important;
+}
+
+#circulo-6 {
+    position: absolute;
+    right: 140px;
+    top: 0px !important;
+    display: block;
+    z-index: -2;
+    left: initial !important;
+}
+
+
+#circulo-7 {
+    position: absolute;
+    right: 0px;
+    top: 240px !important;
+    display: block;
+    z-index: -2;
+    left: initial !important;
+}
