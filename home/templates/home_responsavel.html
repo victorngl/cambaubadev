@@ -219,7 +219,7 @@
 
 
         <!-- swiper container -->
-        <div class="swiper__container-comunicados swiper__container-all" data-aluno="all">
+        <div class="swiper__container-comunicados swiper__container-all ativo" data-aluno="all">
           <h4>Aluno Tal 1</h4>
           <!-- wrapper -->
           <div class="comunicados__wrapper swiper-wrapper" id="todos_comunicados" role="tabpanel"
@@ -625,7 +625,6 @@
 
   clickItems.forEach((i) => {
     i.addEventListener("click", trocaCarousel) //evento de click troca
-
   })
 
   function trocaCarousel(event) {
@@ -635,10 +634,7 @@
     carouseis.forEach((carousel) => {
 
       let dataset = carousel.dataset.aluno
-      console.log(dataset);
-
       carousel.classList.remove("ativo")
-      console.log(dataset == itemData);
 
       if (dataset == itemData) {
         carousel.classList.add("ativo")

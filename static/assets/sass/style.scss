@@ -613,6 +613,38 @@ h4 {
     display: none !important;
 }
 
+.swiper__container-all {
+    position: relative;
+
+    .swiper-buttons {
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2280c1;
+        }
+
+        .swiper-button-prev {
+            left: -40px !important;
+
+        }
+
+        .swiper-button-next {
+            right: -40px !important;
+            left: auto;
+        }
+    }
+}
+
 .vermais_aluno {
     display: inline-flex;
     align-items: center;
