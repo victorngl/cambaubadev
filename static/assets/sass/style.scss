@@ -634,15 +634,37 @@ h4 {
         }
 
         .swiper-button-prev {
-            left: -40px !important;
+            left: 10px !important;
 
         }
 
         .swiper-button-next {
-            right: -40px !important;
+            right: 10px !important;
             left: auto;
         }
     }
+}
+
+.swiper__container-all {
+    position: absolute !important;
+    top: 0;
+    transition: transform .3s ease;
+    width: 100vw;
+}
+
+.swiper__container-all:not(.ativo) {
+    display: block !important;
+    transform: translatey(100%);
+}
+
+.swiper__container-all.ativo {
+    transform: translatey(0) !important;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+    opacity: 0 !important;
+
 }
 
 .vermais_aluno {
