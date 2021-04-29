@@ -600,6 +600,38 @@
     }
   }
   const swiper1 = new Swiper(".swiper__container-comunicados", props)
+
+
+  let clickItems = document.querySelectorAll(".button__carousel a");
+  let carouseis = document.querySelectorAll(".swiper__container-all")
+
+
+  clickItems.forEach((i) => {
+    i.addEventListener("click", trocaCarousel)
+
+  })
+
+
+  function trocaCarousel(event) {
+    let itemData = event.target.dataset.aluno
+    let item = event.target
+
+    carouseis.forEach((carousel) => {
+
+      let dataset = carousel.dataset.aluno
+      console.log(dataset);
+
+      carousel.classList.remove("ativo")
+      console.log(dataset == itemData);
+
+      if (dataset == itemData) {
+        carousel.classList.add("ativo")
+      }
+
+    })
+
+
+  }
 </script>
 
 {% endblock %}

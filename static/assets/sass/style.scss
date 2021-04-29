@@ -486,7 +486,18 @@ h4 {
             padding-top: 0;
             padding-right: 0 !important;
         }
+
+        .swiper-slide {
+            max-width: 450px;
+        }
+
+        .swiper-wrapper {
+            display: flex !important;
+            flex-wrap: nowrap;
+        }
     }
+
+
 
     .card__img {
         object-fit: cover;
@@ -565,6 +576,10 @@ h4 {
             }
 
         }
+    }
+
+    .swiper__container-all:not(.ativo) {
+        display: none !important;
     }
 
     .nav__alunos-container {
@@ -704,6 +719,8 @@ nav[aria-label="Navegação"] {
     }
 
     .card {
+        max-width: 450px;
+
         @include d(m) {
             width: 100% !important;
             min-width: 300px;
@@ -749,7 +766,7 @@ nav[aria-label="Navegação"] {
         }
     }
 
-    .parte__final{
+    .parte__final {
         margin-bottom: 80px;
     }
 
@@ -1663,4 +1680,3 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 body {
     @include scrollbars(8px, rgb(208, 208, 208), rgb(238, 238, 238));
 }
-
