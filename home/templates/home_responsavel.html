@@ -599,18 +599,21 @@
       },
     }
   }
-  const swiper1 = new Swiper(".swiper__container-comunicados", props)
+
 
 
   let clickItems = document.querySelectorAll(".button__carousel a");
   let carouseis = document.querySelectorAll(".swiper__container-all")
 
-
-  clickItems.forEach((i) => {
-    i.addEventListener("click", trocaCarousel)
+  carouseis.forEach((i) => {
+    new Swiper(i, props) //loop para add carouseis
 
   })
 
+  clickItems.forEach((i) => {
+    i.addEventListener("click", trocaCarousel) //evento de click troca
+
+  })
 
   function trocaCarousel(event) {
     let itemData = event.target.dataset.aluno
