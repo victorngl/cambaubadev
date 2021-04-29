@@ -117,7 +117,6 @@
   <div class="card__alunos">
 
     <div class="card__alunos-wrapper">
-
       {% for aluno in alunos %}
       <div class="card mb-4 text-center col-lg-6 card__alunos-element">
         <div class="card-header">
@@ -157,7 +156,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="card__enquetes">
         <div class="enquetes">
@@ -205,7 +203,6 @@
       <!-- todos e alunos -->
       <div class="nav__alunos-container">
         <div class="nav nav-pills  order-last" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
           <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#todos_comunicados" role="tab"
             aria-controls="v-pills-home" aria-selected="true">Todos</a>
           {% for aluno in alunos %}
@@ -216,115 +213,78 @@
       </div>
 
 
-      <div class="tab__panel-container">
-        <div class="tab-content order-first " id="v-pills-tabContent">
-          {% for aluno in alunos %}
-          <h4>{{aluno}}</h4>
-          {% for comunicado in aluno.turma.comunicado_set.all %}
-          <!-- swiper container -->
-          <div class="swiper__container-comunicados" data-aluno="1">
-            <!-- wrapper -->
-            <div class="tab-pane fade show active comunicados__wrapper swiper-wrapper" id="todos_comunicados"
-              role="tabpanel" aria-labelledby="v-pills-home">
 
-              <!-- item -->
-              <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                <div class="notica__wrapper">
-                  <div class="top__division">
-                    <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
-                    <div class="card__titulo">
-                      <h5 class="m-0">{{comunicado.titulo}}</h5>
-                    </div>
-                  </div>
 
-                  <div class="card__texto">
-                    <p>
-                      {{comunicado.resumo.html|safe}}
-                    </p>
-                    <div class="leia-mais">
-                      <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
-                          name="arrow-forward-outline"></ion-icon></a>
-                    </div>
-                  </div>
-
+      <!-- swiper container -->
+      <div class="swiper__container-comunicados" data-aluno="1">
+        <h4>Aluno Tal</h4>
+        <!-- wrapper -->
+        <div class="comunicados__wrapper swiper-wrapper" id="todos_comunicados" role="tabpanel"
+          aria-labelledby="v-pills-home">
+          <!-- item -->
+          <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+            <div class="notica__wrapper">
+              <div class="top__division">
+                <div class="card__img"> <img src="#" alt=""></div>
+                <div class="card__titulo">
+                  <h5 class="m-0">Titulo Do Comunicado</h5>
                 </div>
               </div>
 
-              <!-- item -->
-              <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                <div class="notica__wrapper">
-                  <div class="top__division">
-                    <div class="card__img"> <img src="{{comunicado.foto.url}}" alt=""></div>
-                    <div class="card__titulo">
-                      <h5 class="m-0">{{comunicado.titulo}}</h5>
-                    </div>
-                  </div>
+              <div class="card__texto">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima elementa naturae,
+                  quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se dicere inter
+                  honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil omnino interesse.
+                  Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies, inquit, in hoc quidem
+                  pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem ad modum eae
+                  semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum equidem
+                  intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam potest probare, quod
+                  perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si amicum destitero
+                  tueri.
 
-                  <div class="card__texto">
-                    <p>
-                      {{comunicado.resumo.html|safe}}
-                    </p>
-                    <div class="leia-mais">
-                      <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
-                          name="arrow-forward-outline"></ion-icon></a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              {% endfor %}
-              {% endfor %}
-            </div>
-          </div>
-          <nav aria-label="Navegação">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">
-                    <ion-icon name="chevron-back-outline"></ion-icon>
-                  </span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                  </span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <!-- 
-          {% for aluno in alunos %}
-          <div class="tab-pane fade" id="aluno-{{aluno.id}}" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <h4>{{aluno}}</h4>
-            {% for comunicado in aluno.turma.comunicado_set.all %}
-            <div class="card card-ecommerce-3 o-hidden mb-4 noticia_destaque">
-              <div class="">
-                <div class="">
-                  <img class="card-img-left" src="{{comunicado.foto.url}}" alt="">
-                </div>
-                <div class="flex-grow-1 p-4">
-                  <h5 class="m-0">{{comunicado.titulo}}</h5>
-                  <p class="text-muted mt-3">
-                    {{comunicado.resumo.html|safe}}
-                  </p>
-                </div>
+                </p>
                 <div class="leia-mais">
-                  <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais</a>
+                  <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- item -->
+          <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+            <div class="notica__wrapper">
+              <div class="top__division">
+                <div class="card__img"> <img src="#" alt=""></div>
+                <div class="card__titulo">
+                  <h5 class="m-0">Titulo Do Comunicado</h5>
+                </div>
+              </div>
+              <div class="card__texto">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque solum ea communia, verum etiam paria
+                  esse dixerunt. Tu vero, inquam, ducas licet, si sequetur; At iste non dolendi status non vocatur
+                  voluptas. Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Nihilne est in
+                  his rebus, quod dignum libero aut indignum esse ducamus? Duo Reges: constructio interrete. Negat enim
+                  summo bono afferre incrementum diem. Quod ea non occurrentia fingunt, vincunt Aristonem; Isto modo ne
+                  improbos quidem, si essent boni viri.
+
+                </p>
+                <div class="leia-mais">
+                  <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
                 </div>
               </div>
             </div>
-            {% endfor %}
           </div>
-          {% endfor %} -->
+
+          <!-- <div class="tab__panel-container">
+            <div class="tab-content order-first " id="v-pills-tabContent">
+            </div>
+          </div> -->
+
         </div>
+
       </div>
 
 
