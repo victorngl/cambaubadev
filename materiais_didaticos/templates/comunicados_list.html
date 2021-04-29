@@ -19,13 +19,14 @@
                                     {% if comunicado.foto_capa %}
                                         <img class="card-img-left col-12" src="{{comunicado.foto_capa.url}}" alt="">
                                     {% else %}
-                                        <img class="card-img-left col-12" src="{% static 'assets/images/fundo_padrao.jpg' %}">
+                                        <img class="card-img-left col-12" src="{% static 'assets/images/capa_comunicado' %}">
                                     {% endif %}
                                 </div>
                             </div>
                             <div class="flex-grow-1 p-4 bloco_conteudo_comunicado">
                                 <h5 class="m-0">{{comunicado.titulo}}</h5>
-                                <small>{{comunicado.data_criacao}}</small>
+                                <p><small>{{comunicado.data_criacao}}</small></p>
+                                <small>{{comunicado.usuario_criacao.first_name}} {{comunicado.usuario_criacao.last_name}}</small>
                                 <p class="text-muted mt-3">
                                     {{comunicado.resumo.html|safe}}
                                     <a href="{% url 'comunicado_detail' comunicado.pk %}">Leia mais</a>
