@@ -53,16 +53,19 @@ function Dom(seletor) {
 
 }
 
+const calendar = document.querySelector(".calendar")
+
 
 function calendarioFechado() {
-    const media = window.matchMedia('(min-width: 992px)').matches
-    const botaoShowCalendar = document.querySelector(".show__calendar")
-    const calendar = document.querySelector(".calendar")
-    calendar.classList.add("fechado")
+    if (calendar) {
+        const media = window.matchMedia('(min-width: 992px)').matches
+        const botaoShowCalendar = document.querySelector(".show__calendar")
+        calendar.classList.add("fechado")
 
-    botaoShowCalendar.addEventListener("click", function () {
-        calendar.classList.toggle("fechado")
-    })
+        botaoShowCalendar.addEventListener("click", function () {
+            calendar.classList.toggle("fechado")
+        })
+    }
 }
 
 //escopo
@@ -83,13 +86,14 @@ function escopo() {
         if (HomeAluno)
             new Dom().bodyClass("body__aluno")
 
-
     } else if (pageComunicadoSingle) { // ★ Single COMUNICADO  
         new Dom().bodyClass("body__comunicado__single")
+
     } else if (pageTurma) { // ★ Page turma  
         new Dom().bodyClass("body__turma-single")
         calendarioFechado()
-    } else if (pageAtividadesSingle) {
+
+    } else if (pageAtividadesSingle) { // ★ Page single atividades
         new Dom().bodyClass("body__atividades-single")
 
     }
