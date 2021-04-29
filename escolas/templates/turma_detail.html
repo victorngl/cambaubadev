@@ -172,7 +172,7 @@
             <ion-icon name="receipt-outline"></ion-icon> Comunicados
         </h1>
         <div class="conteudo-comunicados">
-           <!--  {% for comunicado in pagina_atual %} -->
+            <!--  {% for comunicado in pagina_atual %} -->
 
 
             <div class="swiper__container-turma">
@@ -364,9 +364,7 @@
         </nav> -->
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"
-        integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ=="
-        crossorigin="anonymous"></script>
+  
 
     <script>
         const props = {
@@ -407,28 +405,6 @@
         }
         let carouselTurma = document.querySelector(".swiper__container-turma")
         new Swiper(carouselTurma, props)
-
-        const tl = gsap.timeline({
-            paused: true,
-            delay: 0.4,
-        })
-        const el = document.querySelectorAll(".js-gsap")
-        if (el) {
-            gsap.set(el, {
-                opacity: 0,
-                y: 100,
-            })
-            tl.to(el, {
-                duration: .4,
-                stagger: 0.2,
-                opacity: 1,
-                y: 0,
-                ease: "power1.out",
-            })
-            window.addEventListener("load", function () {
-                tl.play()
-            })
-        }
     </script>
 
 </main>

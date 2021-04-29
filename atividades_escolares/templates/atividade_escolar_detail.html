@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-4 col-6 card__detalhes">
                             <div class="mb-4">
-                                <p class="text-primary mb-1"><i class="i-MaleFemale text-16 mr-1"></i>Anexo</p>
+                                <p class="text-primary mb-1"><ion-icon name="attach-outline"></ion-icon>Anexo</p>
                                 {% if object.anexo %}
                                 <span><a href="{{object.anexo.url}}">{{object.anexo|default_if_none:'-'}}</a></span>
                                 {% endif %}
