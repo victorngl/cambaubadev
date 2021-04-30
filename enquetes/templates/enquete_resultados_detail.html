@@ -75,46 +75,54 @@
                     <li>
                         <p>Nome da Opção 1</p>
                         <div class="bar__container">
-                            <span class="percent"></span>
-                            <span class="dados"></span>
+                            <span class="percent" style="--percent-var: 20%;"></span>
+                            <span class="dados">20%</span>
                         </div>
                     </li>
                     <li>
                         <p>Nome da Opção 2</p>
                         <div class="bar__container">
-                            <span class="percent"></span>
-                            <span class="dados"></span>
+                            <span class="percent" style="--percent-var: 80%;"></span>
+                            <span class="dados">80%</span>
                         </div>
                     </li>
                     <li>
                         <p>Nome da Opção 3</p>
                         <div class="bar__container">
-                            <span class="percent"></span>
-                            <span class="dados"></span>
+                            <span class="percent" style="--percent-var: 10%;"></span>
+                            <span class="dados">10%</span>
                         </div>
                     </li>
                 </ul>
 
             </div>
+
             <div class="row">
                 <div class="col-12">
                     <div class="mb-4">
-                        <p class="text-primary mb-1"><i class="i-Information text-16 mr-1"></i>Descrição</p>
+                        <p class="text-primary mb-1">
+                            <ion-icon name="newspaper-outline"></ion-icon>Descrição
+                        </p>
                         <span>{{object.descricao.html|safe}}</span>
                     </div>
                     {% if objectanexo %}
                     <div class="mb-4">
-                        <p class="text-primary mb-1"><i class="i-Library text-16 mr-1"></i>Anexo</p>
+                        <p class="text-primary mb-1">
+                            <ion-icon name="attach-outline"></ion-icon>Anexo
+                        </p>
                         <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
                     </div>
                     {% endif %}
                 </div>
                 <div class="col-12">
                     <div class="mb-4">
-                        <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data da Expiração</p>
+                        <p class="text-primary mb-1">
+                            <ion-icon name="calendar-outline"></ion-icon>Data da Expiração
+                        </p>
                         <span>{{object.data_expiracao}}</span>
                     </div>
                 </div>
+
                 <div class="col-12 respostas__enquete">
                     <hr>
                     <h4>Resposta(s) ({{object.quantidade_respostas}}):</h4>
@@ -138,7 +146,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-6">
+                <div class="col-12">
                     <hr>
                     <h4>Gráfico de respostas</h4>
                     <div id="chart_div"></div>
