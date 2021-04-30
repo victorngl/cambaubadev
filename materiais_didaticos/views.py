@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView, ListView
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from escolas.models import Materia
 from .models import CalendarioAtividade, Comunicado, MaterialDidatico
 
