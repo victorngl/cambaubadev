@@ -248,16 +248,18 @@
         }
 
         const menuToggle = document.querySelector('.menu-toggle')
-        const sidenav = document.querySelector(".main-content-wrap")
+        const sidenav = document.querySelector(".sidebar-left")
 
         menuToggle.addEventListener("click",
 
             function () {
-                if (sidenav.classList.contains("sidenav-open")) {
-                    document.body.classList.add("menu__open")
-                } else {
-                    document.body.classList.remove("menu__open")
-                }
+                setTimeout(() => {
+                    if (sidenav.classList.contains("open")) {
+                        document.body.classList.add("menu__open")
+                    } else {
+                        document.body.classList.remove("menu__open")
+                    }
+                }, 60);
             })
     </script>
 
