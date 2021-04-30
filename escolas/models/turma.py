@@ -36,6 +36,10 @@ class Turma(models.Model):
         auto_now_add=True
     )
 
+    @property
+    def comunicados_exibicao(self):
+        return self.comunicado_set.all()[:10]
+
     def __str__(self):
         return self.nome
 
