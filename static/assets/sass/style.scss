@@ -74,6 +74,19 @@ body {
     }
 }
 
+.card__titulo {
+
+    margin-right: 5px;
+}
+
+.card__img {
+    @include d(m) {
+
+        width: 150px !important;
+    }
+
+}
+
 #page__login .entrar {
     cursor: pointer !important;
 }
@@ -2040,123 +2053,126 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 
         >.card {
             width: 100%;
+            box-shadow: initial;
+            border: initial;
         }
     }
+}
 
-    .container__grid {
-        display: grid;
-        gap: 30px;
-        row-gap: 10px;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 450px));
-        justify-content: center;
-        margin: 0 auto;
-        width: 100%;
-        padding-bottom: 60px;
-        margin-top: 20px;
+.container__grid {
+    display: grid;
+    gap: 30px;
+    row-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 450px));
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 60px;
+    margin-top: 20px;
 
-        .card {
-            height: 275px;
-            margin: 0;
-        }
+    .card {
+        height: 264px;
+        margin: 0;
+    }
+}
+
+.card__img {
+    object-fit: cover;
+    height: 113px;
+    border-radius: 8px 0 8px 0;
+    width: 221px !important;
+    position: relative;
+    overflow: hidden;
+
+    background-position: center;
+    background-size: cover;
+}
+
+.card__titulo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 20px;
+
+    h5 {
+        font-family: $font-gilroy;
+        margin: 10px 0;
+        display: inline-block;
+        font-size: 20px;
+    }
+}
+
+
+.top__division {
+    display: flex;
+}
+
+
+.card__texto {
+    height: 90px;
+    padding-bottom: 0px;
+    margin-left: 0;
+
+    p {
+        margin-bottom: 0;
     }
 
-    .card__img {
-        object-fit: cover;
-        height: 113px;
-        border-radius: 8px 0 8px 0;
-        width: 221px !important;
-        position: relative;
+    p:last-child {
+        margin-bottom: 5px;
+    }
+
+    span {
+        margin-top: 10px;
+        font-size: 14px;
+        display: block;
+        max-width: 700px;
         overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
 
-        background-position: center;
-        background-size: cover;
+        -webkit-box-orient: vertical;
+        color: #3f4449;
+        padding: 0 20px;
     }
 
-    .card__titulo {
-        display: flex;
-        flex-direction: column;
-        margin-left: 20px;
-        margin-top: 20px;
+}
 
-        h5 {
-            font-family: $font-gilroy;
-            margin: 10px 0;
-            display: inline-block;
-            font-size: 20px;
-        }
-    }
+.leia-mais {
 
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
 
-    .top__division {
-        display: flex;
-    }
-
-
-    .card__texto {
-        height: 90px;
-        padding-bottom: 0px;
-        margin-left: 0;
-
-        p {
-            margin-bottom: 0;
-        }
-
-        p:last-child {
-            margin-bottom: 5px;
-        }
-
-        span {
-            margin-top: 10px;
-            font-size: 14px;
-            display: block;
-            max-width: 700px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-
-            -webkit-box-orient: vertical;
-            color: #3f4449;
-            padding: 0 20px;
-        }
-
-    }
-
-    .leia-mais {
-
+    a {
+        padding: 12px 20px;
+        width: 100%;
+        margin-left: auto;
+        font-family: $font-gilroy;
+        transition: 0.3s ease;
+        cursor: pointer;
         display: inline-flex;
         justify-content: flex-end;
-        width: 100%;
+        align-items: center;
+        font-size: 16px;
+        z-index: 2;
+        color: $cor-azul-1 !important;
 
-        a {
-            padding: 12px 20px;
-            width: 100%;
-            margin-left: auto;
-            font-family: $font-gilroy;
-            transition: 0.3s ease;
-            cursor: pointer;
-            display: inline-flex;
-            justify-content: flex-end;
-            align-items: center;
-            font-size: 16px;
-            z-index: 2;
-            color: $cor-azul-1 !important;
-
-            ion-icon {
-                margin-left: 5px;
-            }
-
-            &:hover {
-                background: $cor-cinza-1;
-            }
+        ion-icon {
+            margin-left: 5px;
         }
 
+        &:hover {
+            background: $cor-cinza-1;
+        }
     }
 
-    .pagination {
-        font-size: gilroy;
-        font-size: 18px;
-        color: $cor-azul-1;
-    }
+}
+
+.pagination {
+    font-size: gilroy;
+    font-size: 18px;
+    color: $cor-azul-1;
+}
 }
 
 .main-enquete {
