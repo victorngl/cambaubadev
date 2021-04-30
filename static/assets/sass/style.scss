@@ -753,12 +753,24 @@ h4 {
 
 .swiper__container-geral {
     position: relative;
-    height: 370px;
+    height: 400px;
     overflow: hidden;
     margin-bottom: 40px;
 
     @include d(m) {
-        height: 434px;
+        height: 460px;
+    }
+
+    .card {
+        min-height: 310px;
+
+        .card__texto {
+            height: 195px;
+        }
+
+        .leia-mais {
+            margin-top: auto;
+        }
     }
 }
 
