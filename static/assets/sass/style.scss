@@ -753,12 +753,12 @@ h4 {
 
 .swiper__container-geral {
     position: relative;
-    height: 400px;
+    height: 385px;
     overflow: hidden;
     margin-bottom: 40px;
 
     @include d(m) {
-        height: 460px;
+        height: 420px;
     }
 
     .card {
