@@ -5,6 +5,7 @@ from .tipo_serie import TipoSerie
 from .turma import Turma
 from .materia import Materia
 from .professor import Professor
+from .responsavel import Responsavel
 
 __all__ = [
     Aluno,
@@ -13,5 +14,6 @@ __all__ = [
     TipoSerie,
     Turma,
     Materia,
-    Professor
+    Professor,
+    Responsavel
 ]
