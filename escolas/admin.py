@@ -37,6 +37,12 @@ class AlunoAdmin(admin.ModelAdmin):
 			'observacao',
             'foto',
 		)}),
+        ('Dados Extras', {'fields': (
+			'matricula',
+			'id_sigma',
+            'username',
+            'senha',
+		)}),
     )
 
 @admin.register(Escola)

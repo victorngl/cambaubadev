@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from datetime import datetime
 from core.models import Pessoa
 from .turma import Turma
@@ -68,6 +68,50 @@ class Aluno(Pessoa):
 		verbose_name="Observação",
 		blank=True, null=True
 	)
+
+    matricula = models.CharField(
+        max_length=200,
+        verbose_name="Matrícula",
+        blank=True, null=True
+    )
+
+    id_sigma = models.CharField(
+        max_length=200,
+        verbose_name="ID Sigma",
+        blank=True, null=True
+    )
+
+    username = models.CharField(
+        max_length=200,
+        verbose_name="Usuário",
+        blank=True, null=True
+    )
+
+    senha = models.CharField(
+        max_length=200,
+        verbose_name="Senha",
+        blank=True, null=True
+    )
+
+    def sincronizar_aluno(self):
+        from core.models import Profile
+        if self.username and not self.usuario:
+            novo_usuario = User.objects.create(
+                username=self.username
+            )
+            novo_usuario.set_password(self.senha)
+            novo_usuario.save()
+
+            grupo_professor = Group.objects.get(name='Aluno') 
+            grupo_professor.user_set.add(novo_usuario)
+
+            self.usuario = novo_usuario
+            self.save()
+
+            novo_profile = Profile.objects.create(
+                user=novo_usuario,
+                id_sigma=self.id_sigma
+            )
 
     def __str__(self):
         return self.nome
