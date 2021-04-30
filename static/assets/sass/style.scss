@@ -2243,18 +2243,31 @@ body {
     }
 
 
-    .enquete__percent {
-        margin-bottom: 30px;
+    $base-color: #85ff95;
 
-        .text-primary {
-            font-family: $font-gilroy;
-            display: inline-flex;
-            align-items: center;
+    @for $i from 1 through 10 {
 
-            ion-icon {
-                margin-right: 5px;
+        ul li:nth-child(10n + #{$i}) {
+            .percent {
+                // background: grayscale($base-color, $i * 2%);
+                background-color: lighten($base-color, $i * 2%) !important;
             }
         }
+    }
+
+    .text-primary {
+        font-family: $font-gilroy;
+        display: inline-flex;
+        align-items: center;
+        font-size: 18px;
+
+        ion-icon {
+            margin-right: 5px;
+        }
+    }
+
+    .enquete__percent {
+        margin-bottom: 30px;
 
         ul {
             display: grid;
@@ -2302,7 +2315,12 @@ body {
                     position: absolute;
                     right: 20px;
                     font-family: $font-gilroy;
-                    color: black
+                    color: black;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    display: inline-block;
+                    height: 20px;
                 }
             }
         }
