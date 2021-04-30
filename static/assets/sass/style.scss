@@ -1991,7 +1991,18 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 
 .body__comunicados-list {
     .content__list-comunicados {
+        margin: 0 auto;
         margin-bottom: 30px;
+
+        .card-body {
+            padding: 0;
+        }
+
+        @include d(s) {
+            border: initial;
+            box-shadow: initial;
+            margin: 0 auto;
+        }
 
         >.card {
             width: 100%;
