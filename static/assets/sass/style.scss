@@ -762,14 +762,22 @@ h4 {
     }
 
     .card {
-        min-height: 310px;
-
-        .card__texto {
-            height: 195px;
+        img {
+            object-fit: cover;
+            object-position: center;
         }
 
         .leia-mais {
             margin-top: auto;
+        }
+    }
+
+    .card {
+        min-height: 275px !important;
+
+        .card__texto {
+            min-height: 103px;
+            height: initial;
         }
     }
 }
