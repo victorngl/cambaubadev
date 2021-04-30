@@ -177,28 +177,31 @@
                 <div class="comunicados__wrapper swiper-wrapper">
                     <!-- item -->
                     {% for comunicado in comunicados %}
-                        <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                            <div class="notica__wrapper">
-                                <div class="top__division">
-                                    {% if comunicado.foto %}
-                                      <img src="{{comunicado.foto.url}}" alt="">
-                                    {% else %}
-                                      <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
-                                    {% endif %}
-                                    <div class="card__titulo">
-                                        <h5 class="m-0">{{comunicado.titulo}}</h5>
-                                    </div>
+                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+                        <div class="notica__wrapper">
+                            <div class="top__division">
+                                {% if comunicado.foto %}
+                                <img src="{{comunicado.foto.url}}" alt="">
+                                {% else %}
+                                <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                                {% endif %}
+                                <div class="card__titulo">
+                                    <h5 class="m-0">{{comunicado.titulo}}</h5>
                                 </div>
+                            </div>
 
-                                <div class="card__texto">
+                            <div class="card__texto">
+                                <span>
                                     {{comunicado.resumo.html|safe}}
-                                    <div class="leia-mais">
-                                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
-                                    </div>
-                                </div>
-
+                                </span>
+                            </div>
+                            
+                            <div class="leia-mais">
+                                <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                        name="arrow-forward-outline"></ion-icon></a>
                             </div>
                         </div>
+                    </div>
                     {% endfor %}
                 </div>
                 <div class="swiper-buttons">
@@ -213,7 +216,7 @@
         </div>
     </section>
 
-  
+
 
     <script>
         const props = {
