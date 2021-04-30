@@ -208,11 +208,11 @@
 
             <a data-aluno="all" class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
               href="#todos_comunicados" role="tab" aria-controls="v-pills-home" aria-selected="true">Todos</a>
-              
-              {% for aluno in alunos %}
-                <a data-aluno="{{aluno.id}}" class="nav-link" id="v-pills-home-tab" data-toggle="pill"
-                href="#aluno-{{aluno.id}}" role="tab" aria-controls="v-pills-home" aria-selected="true">{{aluno.nome}}</a>
-              {% endfor %}
+
+            {% for aluno in alunos %}
+            <a data-aluno="{{aluno.id}}" class="nav-link" id="v-pills-home-tab" data-toggle="pill"
+              href="#aluno-{{aluno.id}}" role="tab" aria-controls="v-pills-home" aria-selected="true">{{aluno.nome}}</a>
+            {% endfor %}
           </div>
         </div>
 
@@ -221,33 +221,36 @@
           <!-- swiper container -->
           <div class="swiper__container-comunicados swiper__container-all ativo" data-aluno="all">
             <h4>Todos os alunos</h4>
-            <div class="comunicados__wrapper swiper-wrapper" id="todos_comunicados" role="tabpanel" aria-labelledby="v-pills-home">
+            <div class="comunicados__wrapper swiper-wrapper" id="todos_comunicados" role="tabpanel"
+              aria-labelledby="v-pills-home">
               {% for aluno in alunos %}
-                {% for comunicado in aluno.turma.comunicados_exibicao %}
-                  <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                    <div class="notica__wrapper">
-                      <div class="top__division">
-                        <div class="card__img"> 
-                          {% if comunicado.foto %}
-                            <img src="{{comunicado.foto.url}}" alt="">
-                          {% else %}
-                            <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
-                          {% endif %}
-                        </div>
-                        <div class="card__titulo">
-                          <h5 class="m-0">{{comunicado.titulo}} - {{aluno.nome}}</h5>
-                        </div>
-                      </div>
-
-                      <div class="card__texto">
-                        {{comunicado.resumo.html|safe}}
-                        <div class="leia-mais">
-                          <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
-                        </div>
-                      </div>
+              {% for comunicado in aluno.turma.comunicados_exibicao %}
+              
+              <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+                <div class="notica__wrapper">
+                  <div class="top__division">
+                    <div class="card__img">
+                      {% if comunicado.foto %}
+                      <img src="{{comunicado.foto.url}}" alt="">
+                      {% else %}
+                      <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                      {% endif %}
+                    </div>
+                    <div class="card__titulo">
+                      <h5 class="m-0">{{comunicado.titulo}} - {{aluno.nome}}</h5>
                     </div>
                   </div>
-                {% endfor %}
+
+                  <div class="card__texto">
+                    {{comunicado.resumo.html|safe}}
+                  </div>
+                  <div class="leia-mais">
+                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                        name="arrow-forward-outline"></ion-icon></a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
               {% endfor %}
             </div>
             <div class="swiper-buttons">
@@ -257,44 +260,47 @@
           </div>
 
           {% for aluno in alunos %}
-            <!-- swiper container -->
-            <div class="swiper__container-comunicados swiper__container-all" data-aluno="{{aluno.id}}">
-              <h4>{{aluno.nome}}</h4>
-              <!-- wrapper -->
-              <div class="comunicados__wrapper swiper-wrapper" id="aluno-{{aluno.id}}" role="tabpanel" aria-labelledby="v-pills-home">
-                <!-- item -->
-                {% for comunicado in aluno.turma.comunicados_exibicao %}
-                  <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                    <div class="notica__wrapper">
-                      <div class="top__division">
-                        <div class="card__img">
-                          {% if comunicado.foto %}
-                            <img src="{{comunicado.foto.url}}" alt="">
-                          {% else %}
-                            <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
-                          {% endif %}
-                        </div>
-                        <div class="card__titulo">
-                          <h5 class="m-0">{{comunicado.titulo}}</h5>
-                        </div>
-                      </div>
-
-                      <div class="card__texto">
-                        {{comunicado.resumo.html|safe}}
-                        <div class="leia-mais">
-                          <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
-                        </div>
-                      </div>
+          <!-- swiper container -->
+          <div class="swiper__container-comunicados swiper__container-all" data-aluno="{{aluno.id}}">
+            <h4>{{aluno.nome}}</h4>
+            <!-- wrapper -->
+            <div class="comunicados__wrapper swiper-wrapper" id="aluno-{{aluno.id}}" role="tabpanel"
+              aria-labelledby="v-pills-home">
+              <!-- item -->
+              {% for comunicado in aluno.turma.comunicados_exibicao %}
+              <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+                <div class="notica__wrapper">
+                  <div class="top__division">
+                    <div class="card__img">
+                      {% if comunicado.foto %}
+                      <img src="{{comunicado.foto.url}}" alt="">
+                      {% else %}
+                      <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                      {% endif %}
+                    </div>
+                    <div class="card__titulo">
+                      <h5 class="m-0">{{comunicado.titulo}}</h5>
                     </div>
                   </div>
-                {% endfor %}
+
+                  <div class="card__texto">
+                    {{comunicado.resumo.html|safe}}                  
+                  </div>
+
+                  <div class="leia-mais">
+                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                        name="arrow-forward-outline"></ion-icon></a>
+                  </div>
+                </div>
               </div>
-              
-              <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-              </div>
+              {% endfor %}
             </div>
+
+            <div class="swiper-buttons">
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
           {% endfor %}
         </div>
 
