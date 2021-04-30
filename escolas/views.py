@@ -16,6 +16,23 @@ def escolas(request):
 class AlunoDetailView(DetailView):
     model = Aluno
 
+    def get_context_data(self, **kwargs):
+        context = super(AlunoDetailView, self).get_context_data(**kwargs)
+        pagina_atual = self.request.GET.get('page', 1)
+        comunicados = self.object.turma.comunicado_set.all().order_by('-id')
+        paginacao_comunicados = Paginator(comunicados, 2)
+        pagina_atual = paginacao_comunicados.page(pagina_atual)
+        
+        context.update(
+            {
+                'comunicados': comunicados,
+                'hoje': date.today(),
+                'paginacao_comunicados': paginacao_comunicados,
+                'pagina_atual': pagina_atual
+            }
+        )
+        return context
+
 class TurmaDetailView(DetailView):
     model = Turma
 

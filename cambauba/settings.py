@@ -143,6 +143,9 @@ else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+AVATAR_THUMB_FORMAT = "PNG"
+AVATAR_CACHE_ENABLED = False
+AVATAR_GRAVATAR_DEFAULT = 'assets/images/user_1.png'
 
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
