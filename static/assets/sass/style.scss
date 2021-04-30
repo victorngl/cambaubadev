@@ -74,20 +74,6 @@ body {
     }
 }
 
-.card__titulo {
-    margin-right: 5px;
-}
-
-
-
-.card__img {
-    @include d(m) {
-
-        width: 150px !important;
-    }
-
-}
-
 #page__login .entrar {
     cursor: pointer !important;
 }
@@ -1337,6 +1323,69 @@ nav[aria-label="Navegação"] {
         }
 
     }
+
+    .card__texto {
+        height: 90px;
+
+        padding-bottom: 0px;
+        margin-left: 0;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        p:last-child {
+            margin-bottom: 5px;
+        }
+
+        span {
+            margin-top: 10px;
+            font-size: 14px;
+            display: block;
+            max-width: 700px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+
+            -webkit-box-orient: vertical;
+            color: #3f4449;
+            padding: 0 20px;
+        }
+
+
+    }
+
+    .leia-mais {
+
+        display: inline-flex;
+        justify-content: flex-end;
+        width: 100%;
+
+        a {
+            padding: 12px 20px;
+            width: 100%;
+            margin-left: auto;
+            font-family: $font-gilroy;
+            transition: 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 16px;
+            z-index: 2;
+            color: $cor-azul-1 !important;
+
+            ion-icon {
+                margin-left: 5px;
+            }
+
+            &:hover {
+                background: $cor-cinza-1;
+            }
+        }
+
+    }
+
 }
 
 .enquete-details {
@@ -2403,6 +2452,20 @@ body {
                 }
             }
         }
+    }
+
+}
+
+
+.card__titulo {
+    margin-right: 5px !important;
+}
+
+
+
+.card__img {
+    @include d(m) {
+        width: 150px !important;
     }
 
 }

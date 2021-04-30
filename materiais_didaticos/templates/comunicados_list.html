@@ -3,72 +3,75 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="row content__list-comunicados">
+<main>
 
-    <div class="card">
-        <div class="card-header">
-            <h2>Comunicados</h2>
-            <small>Últimas Notícias.</small>
-        </div>
+    <div class="row content__list-comunicados">
 
-        <div class="card-body">
+        <div class="card">
+            <div class="card-header">
+                <h2>Comunicados</h2>
+                <small>Últimas Notícias.</small>
+            </div>
+
+            <div class="card-body">
 
 
-            <div class="container__grid">
-                {% for comunicado in object_list %}
-                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
-                    <div class="notica__wrapper">
-                        <div class="top__division">
-                            <div class="card__img">
-                                {% if comunicado.foto %}
-                                <img src="{{comunicado.foto.url}}" alt="">
-                                {% else %}
-                                <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
-                                {% endif %}
+                <div class="container__grid">
+                    {% for comunicado in object_list %}
+                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                        <div class="notica__wrapper">
+                            <div class="top__division">
+                                <div class="card__img">
+                                    {% if comunicado.foto %}
+                                    <img src="{{comunicado.foto.url}}" alt="">
+                                    {% else %}
+                                    <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="card__titulo">
+                                    <h5 class="m-0">{{comunicado.titulo}}</h5>
+                                </div>
                             </div>
-                            <div class="card__titulo">
-                                <h5 class="m-0">{{comunicado.titulo}}</h5>
-                            </div>
-                        </div>
 
-                        <div class="card__texto">
-                            <span>{{comunicado.resumo.html|safe}}</p>
-                        </div>
-                        <div class="leia-mais">
-                            <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
-                                    name="arrow-forward-outline"></ion-icon></a>
+                            <div class="card__texto">
+                                <span>{{comunicado.resumo.html|safe}}</p>
+                            </div>
+                            <div class="leia-mais">
+                                <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                        name="arrow-forward-outline"></ion-icon></a>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
 
 
-            <!-- paginação -->
-            {% if is_paginated %}
-            <div class="row pagination">
-                <div class="col-4 text-left">
-                    {% if page_obj.has_previous %}
-                    <a href="?page={{page_obj.previous_page_number}}" class="ml-2" style="text-decoration: none;"><i
-                            class="i-Arrow-Left"></i></a>
-                    {% endif %}
+                <!-- paginação -->
+                {% if is_paginated %}
+                <div class="row pagination">
+                    <div class="col-4 text-left">
+                        {% if page_obj.has_previous %}
+                        <a href="?page={{page_obj.previous_page_number}}" class="ml-2" style="text-decoration: none;"><i
+                                class="i-Arrow-Left"></i></a>
+                        {% endif %}
+                    </div>
+                    <div class="col-4 text-center">
+                        <span class="current">
+                            {{page_obj.number}} de {{page_obj.paginator.num_pages}}
+                        </span>
+                    </div>
+                    <div class="col-4 text-right">
+                        {% if page_obj.has_next %}
+                        <a href="?page={{page_obj.next_page_number}}" class="mr-2" style="text-decoration: none;"><i
+                                class="i-Arrow-Right"></i></a>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="col-4 text-center">
-                    <span class="current">
-                        {{page_obj.number}} de {{page_obj.paginator.num_pages}}
-                    </span>
-                </div>
-                <div class="col-4 text-right">
-                    {% if page_obj.has_next %}
-                    <a href="?page={{page_obj.next_page_number}}" class="mr-2" style="text-decoration: none;"><i
-                            class="i-Arrow-Right"></i></a>
-                    {% endif %}
-                </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
     </div>
-</div>
+</main>
 
 {% endblock %}
 {% block extra_js %}
