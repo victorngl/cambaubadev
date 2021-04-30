@@ -172,124 +172,36 @@
             <ion-icon name="receipt-outline"></ion-icon> Comunicados
         </h1>
         <div class="conteudo-comunicados">
-            <!--  {% for comunicado in pagina_atual %} -->
-
-
             <div class="swiper__container-turma">
                 <!-- wrapper -->
                 <div class="comunicados__wrapper swiper-wrapper">
                     <!-- item -->
-                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                        <div class="notica__wrapper">
-                            <div class="top__division">
-                                <div class="card__img"> <img src="#" alt=""></div>
-                                <div class="card__titulo">
-                                    <h5 class="m-0">Titulo Do Comunicado</h5>
+                    {% for comunicado in comunicados %}
+                        <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
+                            <div class="notica__wrapper">
+                                <div class="top__division">
+                                    {% if comunicado.foto %}
+                                      <img src="{{comunicado.foto.url}}" alt="">
+                                    {% else %}
+                                      <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                                    {% endif %}
+                                    <div class="card__titulo">
+                                        <h5 class="m-0">{{comunicado.titulo}}</h5>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="card__texto">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
-                                    elementa naturae,
-                                    quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
-                                    dicere inter
-                                    honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
-                                    omnino interesse.
-                                    Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
-                                    inquit, in hoc
-                                    quidem
-                                    pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
-                                    ad modum eae
-                                    semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
-                                    equidem
-                                    intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
-                                    potest probare,
-                                    quod
-                                    perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
-                                    amicum destitero
-                                    tueri.
-
-                                </p>
-                                <div class="leia-mais">
-                                    <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                                <div class="card__texto">
+                                    <p>
+                                        {{comunicado.resumo.html|safe}}
+                                    </p>
+                                    <div class="leia-mais">
+                                        <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                        <div class="notica__wrapper">
-                            <div class="top__division">
-                                <div class="card__img"> <img src="#" alt=""></div>
-                                <div class="card__titulo">
-                                    <h5 class="m-0">Titulo Do Comunicado</h5>
-                                </div>
-                            </div>
-                            <div class="card__texto">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque solum ea communia,
-                                    verum etiam
-                                    paria
-                                    esse dixerunt. Tu vero, inquam, ducas licet, si sequetur; At iste non dolendi status
-                                    non vocatur
-                                    voluptas. Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate
-                                    sapientis. Nihilne
-                                    est
-                                    in
-                                    his rebus, quod dignum libero aut indignum esse ducamus? Duo Reges: constructio
-                                    interrete. Negat
-                                    enim
-                                    summo bono afferre incrementum diem. Quod ea non occurrentia fingunt, vincunt
-                                    Aristonem; Isto modo
-                                    ne
-                                    improbos quidem, si essent boni viri.
-
-                                </p>
-                                <div class="leia-mais">
-                                    <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
-                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- item -->
-                    <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                        <div class="notica__wrapper">
-                            <div class="top__division">
-                                <div class="card__img"> <img src="#" alt=""></div>
-                                <div class="card__titulo">
-                                    <h5 class="m-0">Titulo Do Comunicado</h5>
-                                </div>
-                            </div>
-                            <div class="card__texto">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque solum ea communia,
-                                    verum etiam
-                                    paria
-                                    esse dixerunt. Tu vero, inquam, ducas licet, si sequetur; At iste non dolendi status
-                                    non vocatur
-                                    voluptas. Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate
-                                    sapientis. Nihilne
-                                    est
-                                    in
-                                    his rebus, quod dignum libero aut indignum esse ducamus? Duo Reges: constructio
-                                    interrete. Negat
-                                    enim
-                                    summo bono afferre incrementum diem. Quod ea non occurrentia fingunt, vincunt
-                                    Aristonem; Isto modo
-                                    ne
-                                    improbos quidem, si essent boni viri.
-
-                                </p>
-                                <div class="leia-mais">
-                                    <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
                 <div class="swiper-buttons">
                     <div class="swiper-button-next"></div>
@@ -300,68 +212,7 @@
                     <a href="#">Ver Todos <ion-icon name="arrow-forward-outline"></ion-icon></a>
                 </div>
             </div>
-            <!-- 
-            <div class="noticia_destaque card js-gsap">
-
-                <div class="top__division">
-                    {% if comunicado.foto %}
-                    <div class="card__img" style="background-image: url({{comunicado.foto.url}})"></div>
-                    {% else %}
-                    <div class="card__img" style="background-image: url(/static/assets/images/foto_comunicado.png)">
-                    </div>
-                    {% endif %}
-                    <div class="card__titulo">
-                        <h3>{{comunicado.titulo}}</h3>
-                    </div>
-
-                </div>
-
-                <div class="card__texto">
-                    <p class="comunicado-resumo">{{comunicado.resumo.html|safe}}</p>
-                </div>
-
-
-                <div class="card__meta">
-                    <span class="comunicado-header-meta-autor">{{comunicado.usuario_criacao.first_name}}
-                        {{comunicado.usuario_criacao.last_name}} </span>
-                    <span class="comunicado-header-meta-data float-right">{{comunicado.data}}</span>
-                </div>
-
-                <span class="leia-mais">
-                    <a href="{% url 'comunicado_detail' comunicado.id %}" class="text-dark">Ler Mais <ion-icon
-                            name="arrow-forward-outline"></ion-icon></a></a>
-                </span>
-            </div> -->
-
-
-            <!-- {% endfor %} -->
         </div>
-        <!-- <nav aria-label="Navegação js-gsap">
-            <ul class="pagination">
-                {% if pagina_atual.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ pagina_atual.previous_page_number }}" aria-label="Previous">
-                        <span aria-hidden="true">
-                            <ion-icon name="chevron-back-outline"></ion-icon>
-                        </span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                {% endif %}
-                <li class="page-item active">Página {{ pagina_atual.number }} de {{ pagina_atual.paginator.num_pages }}.
-                </li>
-                {% if pagina_atual.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ pagina_atual.next_page_number }}" aria-label="Next">
-                        <span aria-hidden="true">
-                            <ion-icon name="chevron-forward-outline"></ion-icon>
-                        </span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav> -->
     </section>
 
   

@@ -753,12 +753,24 @@ h4 {
 
 .swiper__container-geral {
     position: relative;
-    height: 370px;
+    height: 400px;
     overflow: hidden;
     margin-bottom: 40px;
 
     @include d(m) {
-        height: 434px;
+        height: 460px;
+    }
+
+    .card {
+        min-height: 310px;
+
+        .card__texto {
+            height: 195px;
+        }
+
+        .leia-mais {
+            margin-top: auto;
+        }
     }
 }
 
@@ -1991,7 +2003,18 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 
 .body__comunicados-list {
     .content__list-comunicados {
+        margin: 0 auto;
         margin-bottom: 30px;
+
+        .card-body {
+            padding: 0;
+        }
+
+        @include d(s) {
+            border: initial;
+            box-shadow: initial;
+            margin: 0 auto;
+        }
 
         >.card {
             width: 100%;
@@ -2104,6 +2127,100 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
     }
 }
 
+.main-enquete {
+    margin-bottom: 40px;
+
+    .info__1 {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    h2 {
+        font-family: $font-gilroy;
+    }
+
+    form {
+        >label {
+            font-size: 18px;
+            font-family: $font-gilroy;
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+
+
+
+        ul {
+            display: flex;
+            flex-direction: column;
+
+            li {
+                display: inline-flex;
+                align-items: center;
+
+                p {
+                    margin: 0;
+                    cursor: pointer;
+
+                    @include d(s) {
+                        font-size: 12px;
+                    }
+                }
+
+                label {
+                    display: inline-flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    margin-bottom: 12px;
+                }
+
+                input {
+                    margin-right: 5px;
+                    cursor: pointer;
+                    width: 20px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+
+    .card-body {
+        padding-bottom: 0;
+        padding: 0;
+    }
+
+    button[type="submit"] {
+        background: initial;
+        color: $cor-azul-1;
+        border: initial;
+        border-radius: 0;
+        width: 100%;
+        text-align: end;
+        border-top: $borda-sm;
+        padding-top: 20px;
+        font-family: $font-gilroy;
+        font-size: 16px;
+        padding-bottom: 20px;
+        border-radius: 0 0 8px 8px;
+        padding-right: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        &:hover {
+            box-shadow: initial;
+            background: $cor-cinza-1;
+            color: $cor-vermelho-1;
+        }
+
+
+        ion-icon {
+            margin-left: 10px;
+        }
+    }
+}
+
 @media (max-width:890px) {
     .container__grid {
         display: flex !important;
@@ -2121,4 +2238,122 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 
 body {
     @include scrollbars(8px, rgb(208, 208, 208), rgb(238, 238, 238));
+}
+
+
+.enquete__resultados {
+    .respostas__enquete {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h4 {
+            text-align: center;
+            font-size: 20px;
+        }
+    }
+
+
+    $base-color: #85ff95;
+
+    @for $i from 1 through 10 {
+
+        ul li:nth-child(10n + #{$i}) {
+            .percent {
+                // background: grayscale($base-color, $i * 2%);
+                background-color: lighten($base-color, $i * 2%) !important;
+            }
+        }
+    }
+
+    .data__row {
+        p {
+            margin-right: 5px;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .grafico__enquete {
+        h4 {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        [dir="ltr"] {
+            margin: 0 auto;
+        }
+    }
+
+    .text-primary {
+        font-family: $font-gilroy;
+        display: inline-flex;
+        align-items: center;
+        font-size: 18px;
+
+        ion-icon {
+            margin-right: 5px;
+        }
+    }
+
+    .enquete__percent {
+        margin-bottom: 30px;
+
+        ul {
+            display: grid;
+            gap: 12px;
+            padding-left: 0;
+
+            li {
+                display: inline-flex;
+                align-items: center;
+                padding: 0;
+                border-radius: 20px;
+                height: 45px;
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+                border: $borda-sm;
+
+                p {
+                    display: inline-flex;
+                    align-items: center;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    left: 20px;
+                    z-index: 2;
+                    color: black;
+                    font-family: $font-gilroy;
+                    letter-spacing: .5px;
+                }
+
+                .percent {
+                    --percent-var: 0%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    height: 110%;
+                    transition: .3s linear;
+                    background: rgb(163, 255, 175);
+                    width: var(--percent-var);
+                    z-index: 1;
+                }
+
+                .dados {
+                    position: absolute;
+                    right: 20px;
+                    font-family: $font-gilroy;
+                    color: black;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    display: inline-block;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
 }

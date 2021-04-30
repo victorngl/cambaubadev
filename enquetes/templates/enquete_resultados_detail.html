@@ -18,7 +18,7 @@
     // instantiates the pie chart, passes in the data and
     // draws it.
     function drawChart() {
-
+        
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
@@ -48,63 +48,102 @@
 {% endblock %}
 
 {% block content %}
-<div class="enquetes-details card user-profile o-hidden mb-4">
-    {% if object.foto_capa %}
-    <div class="header-cover" style="background-image: url({{object.foto_capa.url}})"></div>
-    {% else %}
-    <div class="header-cover" style="background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
-    {% endif %}
- 
-    <div class="card-body">
-        <h4>{{ object.titulo }}</h4>
-        <hr>
-        <div class="row">
-            <div class="col-md-6 col-6">
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Information text-16 mr-1"></i>Descrição</p>
-                    <span>{{object.descricao.html|safe}}</span>
-                </div>
-                {% if objectanexo %}
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Library text-16 mr-1"></i>Anexo</p>
-                    <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
-                </div>
-                {% endif %}
+<main class="enquete__resultados">
+
+    <div class="enquetes-details card user-profile o-hidden mb-4">
+        {% if object.foto_capa %}
+        <div class="header-cover" style="background-image: url({{object.foto_capa.url}})"></div>
+        {% else %}
+        <div class="header-cover" style="background-image: url(/static/assets/images/fundo_padrao.jpg);"></div>
+        {% endif %}
+
+        <div class="card-body">
+            <h4>{{ object.titulo }}</h4>
+            <hr>
+            <div class="enquete__percent">
+                <ul>
+
+                    <li>
+                        <p>Nome da Opção 2</p>
+                        <div class="bar__container">
+                            <span class="percent" style="--percent-var: 80%;"></span>
+                            <span class="dados">80%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Nome da Opção 1</p>
+                        <div class="bar__container">
+                            <span class="percent" style="--percent-var: 30%;"></span>
+                            <span class="dados">30%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Nome da Opção 3</p>
+                        <div class="bar__container">
+                            <span class="percent" style="--percent-var: 10%;"></span>
+                            <span class="dados">10%</span>
+                        </div>
+                    </li>
+                </ul>
+
             </div>
-            <div class="col-md-6 col-6">
-                <div class="mb-4">
-                    <p class="text-primary mb-1"><i class="i-Calendar text-16 mr-1"></i>Data da Expiração</p>
-                    <span>{{object.data_expiracao}}</span>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="newspaper-outline"></ion-icon>Descrição
+                        </p>
+                        <span>{{object.descricao.html|safe}}</span>
+                    </div>
+                    {% if objectanexo %}
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="attach-outline"></ion-icon>Anexo
+                        </p>
+                        <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
+                    </div>
+                    {% endif %}
                 </div>
-            </div>
-            <div class="col-6">
-                <hr>
-                <h4>Resposta(s) ({{object.quantidade_respostas}}):</h4>
-                <table class="table table-striped" id="enquetes">
-                    <thead>
-                        <tr>
-                            <th>Opção</th>
-                            <th>Quantidade de votos</th>
-                            <th>Porcentagem</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for opcao in object.opcao_set.all %}
-                        <tr>
-                            <td id='questao'>{{opcao.titulo.html|safe}}</td>
-                            <td id='quantidade_questao'>{{opcao.quantidade_resposta_opcao}}</td>
-                            <td>{% widthratio opcao.quantidade_resposta_opcao object.quantidade_respostas 100 %}%</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-6">
-                <hr>
-                <h4>Gráfico de respostas</h4>
-                <div id="chart_div" class=></div>
+                <div class="col-12 data__row">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1">
+                            <ion-icon name="calendar-outline"></ion-icon>Data da Expiração
+                        </p>
+                        <span>{{object.data_expiracao}}</span>
+                    </div>
+                </div>
+
+                <div class="col-12 respostas__enquete">
+                    <hr>
+                    <h4>Resposta(s) ({{object.quantidade_respostas}}):</h4>
+                    <table class="table table-striped" id="enquetes">
+                        <thead>
+                            <tr>
+                                <th>Opção</th>
+                                <th>Quantidade de votos</th>
+                                <th>Porcentagem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for opcao in object.opcao_set.all %}
+                            <tr>
+                                <td id='questao'>{{opcao.titulo.html|safe}}</td>
+                                <td id='quantidade_questao'>{{opcao.quantidade_resposta_opcao}}</td>
+                                <td>{% widthratio opcao.quantidade_resposta_opcao object.quantidade_respostas 100 %}%
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 grafico__enquete">
+                    <hr>
+                    <h4>Gráfico de respostas</h4>
+                    <div id="chart_div"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 {% endblock %}
