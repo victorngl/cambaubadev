@@ -38,6 +38,42 @@ body {
 }
 
 // GERAIS ★★★★★
+
+.menu__open {
+
+    .menu-toggle {
+        div {
+            &:nth-child(1) {
+                transform: rotate(-45deg);
+                margin-bottom: -4px;
+            }
+
+            &:nth-child(2) {
+                transform: rotate(45deg);
+
+                margin-bottom: -4px;
+            }
+
+            &:nth-child(3) {
+                transform: rotate(45deg);
+            }
+        }
+    }
+}
+
+.card__titulo h5 {
+    @include d(m) {
+        font-size: 16px !important;
+
+    }
+}
+
+.card__texto p {
+    @include d(m) {
+        font-size: 12px !important;
+    }
+}
+
 #page__login .entrar {
     cursor: pointer !important;
 }
@@ -69,10 +105,12 @@ h4 {
     content: none;
     display: none;
 }
+
 .user-profile .header-cover {
 
     background-position: center;
 }
+
 .detalhes {
     display: inline-grid;
     align-items: center;
@@ -1947,6 +1985,136 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
         >.row {
             padding: 0 20px;
             ;
+        }
+    }
+}
+
+.body__comunicados-list {
+    .content__list-comunicados {
+        margin-bottom: 30px;
+
+        >.card {
+            width: 100%;
+        }
+    }
+
+    .container__grid {
+        display: grid;
+        gap: 30px;
+        row-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 450px));
+        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+        padding-bottom: 60px;
+        margin-top: 20px;
+
+        .card {
+            height: 275px;
+            margin: 0;
+        }
+    }
+
+    .card__img {
+        object-fit: cover;
+        height: 113px;
+        border-radius: 8px 0 8px 0;
+        width: 221px !important;
+        position: relative;
+        overflow: hidden;
+
+        background-position: center;
+        background-size: cover;
+    }
+
+    .card__titulo {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        margin-top: 20px;
+
+        h5 {
+            font-family: $font-gilroy;
+            margin: 10px 0;
+            display: inline-block;
+            font-size: 20px;
+        }
+    }
+
+
+    .top__division {
+        display: flex;
+    }
+
+    .card__texto {
+        height: 100%;
+        padding-bottom: 0px;
+        margin-left: 0;
+
+        p {
+            margin-top: 10px;
+            font-size: 14px;
+            display: block;
+            max-width: 700px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            color: #3f4449;
+            padding: 0 20px;
+        }
+
+        .leia-mais {
+
+            display: inline-flex;
+            justify-content: flex-end;
+            width: 100%;
+
+            a {
+                padding: 12px 20px;
+                width: 100%;
+                margin-left: auto;
+                font-family: $font-gilroy;
+                transition: 0.3s ease;
+                cursor: pointer;
+                display: inline-flex;
+                justify-content: flex-end;
+                align-items: center;
+                font-size: 16px;
+                z-index: 2;
+                color: $cor-azul-1 !important;
+
+                ion-icon {
+                    margin-left: 5px;
+                }
+
+                &:hover {
+                    background: $cor-cinza-1;
+                }
+            }
+
+        }
+    }
+
+
+    .pagination {
+        font-size: gilroy;
+        font-size: 18px;
+        color: $cor-azul-1;
+    }
+}
+
+@media (max-width:890px) {
+    .container__grid {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: initial;
+
+        .card {
+            width: 280px;
+            margin-bottom: 30px;
+            height: 275px;
         }
     }
 }

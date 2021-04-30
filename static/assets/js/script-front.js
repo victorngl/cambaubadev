@@ -73,6 +73,7 @@ const pageHome = new Dom().el(".page_home")
 const HomeAluno = new Dom().el(".page_aluno");
 const pageTurma = new Dom().el(".page_turma-single");
 const pageAtividadesSingle = new Dom().el(".single__atividades");
+const listComunicados = new Dom().el(".content__list-comunicados");
 
 
 const pageComunicadoSingle = new Dom().el("#page_comunicado-single")
@@ -95,6 +96,9 @@ function escopo() {
 
     } else if (pageAtividadesSingle) { // ★ Page single atividades
         new Dom().bodyClass("body__atividades-single")
+
+    } else if (listComunicados) {
+        new Dom().bodyClass("body__comunicados-list")
 
     }
 }
