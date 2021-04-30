@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="card__texto">
-                            <p>{{comunicado.resumo.html|safe}}</p>
+                            <span>{{comunicado.resumo.html|safe}}</p>
                         </div>
                         <div class="leia-mais">
                             <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
