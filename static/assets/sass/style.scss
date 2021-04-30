@@ -19,9 +19,26 @@ $degrade-1: linear-gradient(to right, #2280c1, #0083b0);
 
 $font-gilroy: 'Gilroy',
 arial;
+
 // asdas
+.card__titulo p {
+    font-size: 14px !important;
+    color: rgb(119, 119, 119);
 
+    @include d(m) {
+        font-size: 12px !important;
+    }
+}
 
+.main-header .logo img {
+
+    height: 55px !important;
+
+    @include d(m) {
+        width: 50px !important;
+        height: 47px !important;
+    }
+}
 
 body {
     --cor-azul-1:#{$cor-azul-1};
