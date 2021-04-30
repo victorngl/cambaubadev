@@ -2115,6 +2115,90 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
     }
 }
 
+.main-enquete {
+    .info__1 {
+        display: inline-flex;
+        align-items: center;
+
+    }
+
+    h2 {
+        font-family: $font-gilroy;
+    }
+
+    form {
+        >label {
+            font-size: 18px;
+            font-family: $font-gilroy;
+            margin-left: 30px;
+
+        }
+
+
+
+        ul {
+            display: flex;
+            flex-direction: column;
+
+            li {
+                display: inline-flex;
+                align-items: center;
+
+                p {
+                    margin: 0;
+                }
+
+                label {
+                    display: inline-flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+
+                }
+
+                input {
+                    margin-right: 5px;
+                    cursor: pointer;
+                    width: 20px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+
+    .card-body {
+        padding-bottom: 0;
+        padding: 0;
+    }
+
+    button[type="submit"] {
+        background: initial;
+        color: black;
+        border: initial;
+        border-radius: 0;
+        width: 100%;
+        text-align: end;
+        border-top: $borda-sm;
+        padding-top: 20px;
+        font-family: $font-gilroy;
+        font-size: 16px;
+        padding-bottom: 20px;
+        border-radius: 0 0 8px 8px;
+        padding-right: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        &:hover {
+            box-shadow: initial;
+            background: $cor-cinza-1;
+            color: $cor-vermelho-1;
+        }
+        ion-icon{
+            margin-left: 10px;
+        }
+    }
+}
+
 @media (max-width:890px) {
     .container__grid {
         display: flex !important;

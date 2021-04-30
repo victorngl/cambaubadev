@@ -3,20 +3,28 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="row">
+<div class="row main-enquete">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="card">
+
             <div class="card-header">
                 <h2>Título: {{ enquete.enquete }}</h2>
                 <p>{{ enquete.enquete.descricao }}</p>
+
+                <div class="info__1">
+                    Só pode ser respondida uma vez
+                </div>
+
                 <small>Informe a opção escolhida abaixo:</small>
+
             </div>
             <div class="card-body">
-                <form method="POST" action="{% url 'resposta_enquete_create' enquete.id %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'resposta_enquete_create' enquete.id %}"
+                    enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|safe }}
                     <hr>
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar <ion-icon name="arrow-forward-outline"></ion-icon></button>
                 </form>
             </div>
         </div>
