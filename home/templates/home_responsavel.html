@@ -225,7 +225,7 @@
               aria-labelledby="v-pills-home">
               {% for aluno in alunos %}
               {% for comunicado in aluno.turma.comunicados_exibicao %}
-              
+
               <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
                 <div class="notica__wrapper">
                   <div class="top__division">
@@ -237,12 +237,13 @@
                       {% endif %}
                     </div>
                     <div class="card__titulo">
-                      <h5 class="m-0">{{comunicado.titulo}} - {{aluno.nome}}</h5>
+                      <h5 class="m-0">{{comunicado.titulo}} </h5>
+                      <p>{{aluno.nome}}</p>
                     </div>
                   </div>
 
                   <div class="card__texto">
-                    {{comunicado.resumo.html|safe}}
+                    <p>{{comunicado.resumo.html|safe}}</p>
                   </div>
                   <div class="leia-mais">
                     <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
@@ -284,7 +285,7 @@
                   </div>
 
                   <div class="card__texto">
-                    {{comunicado.resumo.html|safe}}                  
+                    <p>{{comunicado.resumo.html|safe}}</p>
                   </div>
 
                   <div class="leia-mais">
