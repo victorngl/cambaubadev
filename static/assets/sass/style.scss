@@ -2255,6 +2255,13 @@ body {
         }
     }
 
+    .data__row {
+        p {
+            margin-right: 5px;
+            margin-bottom: 0 !important;
+        }
+    }
+
     .text-primary {
         font-family: $font-gilroy;
         display: inline-flex;
