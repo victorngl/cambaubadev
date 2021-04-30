@@ -50,7 +50,7 @@ class RespostaEnqueteCreateView(CreateView):
             }
         )
         return context
-    
+    '''
     def dispatch(self, request, *args, **kwargs):
         user = get_current_user()
         enquete = Enquete.objects.get(id=self.kwargs['id'])
@@ -59,7 +59,8 @@ class RespostaEnqueteCreateView(CreateView):
             return super(RespostaEnqueteCreateView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
-
+    '''
+    
     def get_success_url(self): 
         enquete = Enquete.objects.get(id=self.kwargs['id'])
 

@@ -3,7 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User, Group
 from core.models import Pessoa
 
-class Professor(Pessoa):
+class Responsavel(Pessoa):
     """
        Classe Professor implementa as funções relacionadas a um professor na plataforma.
     """
@@ -34,14 +34,14 @@ class Professor(Pessoa):
     usuario = models.ForeignKey(
         User,
         verbose_name="Usuário do Professor",
-        related_name="usuario_professor",
         on_delete=models.SET_NULL,
+        related_name='usuario_responsavel',
         unique=True,
         blank=True,
         null=True
     )
 
-    def sincronizar_professor(self):
+    def sincronizar_responsavel(self):
         from core.models import Profile
         print("Sincronizando")
         if self.username and not self.usuario:
@@ -51,7 +51,7 @@ class Professor(Pessoa):
             novo_usuario.set_password(self.senha)
             novo_usuario.save()
 
-            grupo_professor = Group.objects.get(name='Professor') 
+            grupo_professor = Group.objects.get(name='Responsavel') 
             grupo_professor.user_set.add(novo_usuario)
 
             self.usuario = novo_usuario
@@ -67,5 +67,5 @@ class Professor(Pessoa):
 
     class Meta:
         app_label="escolas"
-        verbose_name="Professor"
-        verbose_name_plural="Professores"
+        verbose_name="Responsável"
+        verbose_name_plural="Responsáveis"

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia, Professor
+from import_export.admin import ImportExportModelAdmin
+from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia, Professor, Responsavel
 
 
 @admin.register(Turma)
@@ -61,7 +62,7 @@ class MateriaAdmin(admin.ModelAdmin):
     search_fields = ['titulo']
 
 @admin.register(Professor)
-class ProfessorAdmin(admin.ModelAdmin):
+class ProfessorAdmin(ImportExportModelAdmin):
     list_display = ['id', 'nome']
     search_fields = ['nome']
     autocomplete_fields = ['usuario']
@@ -76,5 +77,37 @@ class ProfessorAdmin(admin.ModelAdmin):
 			'telefone',
 			'celular',
 			'email',
+		)}),
+        ('Dados Extras', {'fields': (
+			'id_acesso',
+			'id_sigma',
+			'username',
+			'senha',
+		)})
+    )
+
+
+@admin.register(Responsavel)
+class responsavelAdmin(ImportExportModelAdmin):
+    list_display = ['id', 'nome']
+    search_fields = ['nome']
+    autocomplete_fields = ['usuario']
+    fieldsets = (
+        ('Dados Principais', {'fields': (
+			'nome',
+			'cpf_cnpj',
+			'rg',
+			'usuario',
+		)}),
+        ('Contatos', {'fields': (
+			'telefone',
+			'celular',
+			'email',
+		)}),
+        ('Dados Extras', {'fields': (
+			'id_acesso',
+			'id_sigma',
+			'username',
+			'senha',
 		)})
     )
