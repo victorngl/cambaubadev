@@ -38,6 +38,11 @@ body {
 }
 
 // GERAIS ★★★★★
+.menu-toggle {
+    div {
+        transition: all .4s ease;
+    }
+}
 
 .menu__open {
 
@@ -1835,7 +1840,6 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
                 color: $cor-azul-3;
             }
 
-            img {}
 
             &:hover {
                 box-shadow: initial;

@@ -250,17 +250,18 @@
         const menuToggle = document.querySelector('.menu-toggle')
         const sidenav = document.querySelector(".sidebar-left")
 
-        menuToggle.addEventListener("click",
 
-            function () {
-                setTimeout(() => {
-                    if (sidenav.classList.contains("open")) {
-                        document.body.classList.add("menu__open")
-                    } else {
-                        document.body.classList.remove("menu__open")
-                    }
-                }, 60);
-            })
+        function menuX() {
+            setTimeout(() => {
+                if (sidenav.classList.contains("open")) {
+                    document.body.classList.add("menu__open")
+                } else {
+                    document.body.classList.remove("menu__open")
+                }
+            }, 60);
+        }
+        menuX()
+        menuToggle.addEventListener("click", menuX)
     </script>
 
 
