@@ -239,12 +239,26 @@
 
     <script>
         const media = window.matchMedia('(min-width: 1279px)').matches
+
         if (media) {
             var scene = document.getElementById('scene');
             var parallaxInstance = new Parallax(scene, {
                 relativeInput: true,
             });
         }
+
+        const menuToggle = document.querySelector('.menu-toggle')
+        const sidenav = document.querySelector(".sidebar-overlay")
+
+        menuToggle.addEventListener("click",
+
+            function () {
+                if (sidenav.classList.contains("open")) {
+                    document.body.classList.add("menu__open")
+                } else {
+                    document.body.classList.remove("menu__open")
+                }
+            })
     </script>
 
 

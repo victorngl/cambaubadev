@@ -3,80 +3,452 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <h2>Comunicados</h2>
-                <small>Últimas Notícias.</small>
-            </div>
-            <div class="card-body">
-                {% for comunicado in object_list %}
-                    <div class="card card-ecommerce-3 o-hidden mb-4">
-                        <div class="d-flex flex-column flex-sm-row">
-                            <div class="foto_noticia">
-                                <div class="row">
-                                    {% if comunicado.foto_capa %}
-                                        <img class="card-img-left col-12" src="{{comunicado.foto_capa.url}}" alt="">
-                                    {% else %}
-                                        <img class="card-img-left col-12" src="{% static 'assets/images/capa_comunicado' %}">
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="flex-grow-1 p-4 bloco_conteudo_comunicado">
-                                <h5 class="m-0">{{comunicado.titulo}}</h5>
-                                <p><small>{{comunicado.data_criacao}}</small></p>
-                                <small>{{comunicado.usuario_criacao.first_name}} {{comunicado.usuario_criacao.last_name}}</small>
-                                <p class="text-muted mt-3">
-                                    {{comunicado.resumo.html|safe}}
-                                    <a href="{% url 'comunicado_detail' comunicado.pk %}">Leia mais</a>
-                                </p>
+<div class="row content__list-comunicados">
+
+    <div class="card">
+
+        <div class="card-header">
+            <h2>Comunicados</h2>
+            <small>Últimas Notícias.</small>
+        </div>
+
+        <div class="card-body">
+
+
+            <div class="container__grid">
+
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
                             </div>
                         </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
                     </div>
-                {% endfor %}
-                {% if is_paginated %}
-                    <div class="row">
-                        <div class="col-4 text-left">
-                            {% if page_obj.has_previous %}
-                                <a href="?page={{page_obj.previous_page_number}}" class="ml-2" style="text-decoration: none;"><i class="i-Arrow-Left"></i></a>
-                            {% endif %}
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
                         </div>
-                        <div class="col-4 text-center">
-                            <span class="current">
-                                {{page_obj.number}} de {{page_obj.paginator.num_pages}}
-                            </span>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
                         </div>
-                        <div class="col-4 text-right">
-                            {% if page_obj.has_next %}
-                                <a href="?page={{page_obj.next_page_number}}" class="mr-2" style="text-decoration: none;"><i class="i-Arrow-Right"></i></a>
-                            {% endif %}
-                        </div>
+
                     </div>
-                {% endif %}
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
+                        </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
+                        </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
+                        </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
+                        </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
+                        </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
+                        </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 card__comunicado">
+                    <div class="notica__wrapper">
+                        <div class="top__division">
+                            <div class="card__img"> <img src="#" alt=""></div>
+                            <div class="card__titulo">
+                                <h5 class="m-0">Titulo Do Comunicado</h5>
+                            </div>
+                        </div>
+
+                        <div class="card__texto">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt enim quasi prima
+                                elementa naturae,
+                                quibus ubertas orationis adhiberi vix potest, nec equidem eam cogito consectari. Se
+                                dicere inter
+                                honestum et turpe nimium quantum, nescio quid inmensum, inter ceteras res nihil
+                                omnino interesse.
+                                Vitae autem degendae ratio maxime quidem illis placuit quieta. Atqui reperies,
+                                inquit, in hoc
+                                quidem
+                                pertinacem; Duo Reges: constructio interrete. Quaeque de virtutibus dicta sunt, quem
+                                ad modum eae
+                                semper voluptatibus inhaererent, eadem de amicitia dicenda sunt. Ergo adhuc, quantum
+                                equidem
+                                intellego, causa non videtur fuisse mutandi nominis. An vero, inquit, quisquam
+                                potest probare,
+                                quod
+                                perceptfum, quod. Quid de Platone aut de Democrito loquar? Ne in odium veniam, si
+                                amicum destitero
+                                tueri.
+
+                            </p>
+                            <div class="leia-mais">
+                                <a href="#">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+               
+
             </div>
+
+
+
+            <!-- paginação -->
+            {% if is_paginated %}
+            <div class="row pagination">
+                <div class="col-4 text-left">
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{page_obj.previous_page_number}}" class="ml-2" style="text-decoration: none;"><i
+                            class="i-Arrow-Left"></i></a>
+                    {% endif %}
+                </div>
+                <div class="col-4 text-center">
+                    <span class="current">
+                        {{page_obj.number}} de {{page_obj.paginator.num_pages}}
+                    </span>
+                </div>
+                <div class="col-4 text-right">
+                    {% if page_obj.has_next %}
+                    <a href="?page={{page_obj.next_page_number}}" class="mr-2" style="text-decoration: none;"><i
+                            class="i-Arrow-Right"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
+
 {% endblock %}
 {% block extra_js %}
-    <script>
-        $(document).ready(function () {
-            $('#comunicados').DataTable({
-                "language": {
-                    "show": "Visualizar",
-                    "lengthMenu": "Mostrar _MENU_ linhas por página",
-                    "zeroRecords": "Nada encontrado",
-                    "info": "Exibindo página _PAGE_ de _PAGES_",
-                    "infoEmpty": "Nada encontrado",
-                    "infoFiltered": "(filtrado de _MAX_ no total)",
-                    "search": "Pesquisar",
-                    "paginate": {
-                        "previous": "Anterior",
-                        "next": "Próxima"
-                    }
-                },
-            });
-        });    
-    </script>
+<script>
+    $(document).ready(function () {
+        $('#comunicados').DataTable({
+            "language": {
+                "show": "Visualizar",
+                "lengthMenu": "Mostrar _MENU_ linhas por página",
+                "zeroRecords": "Nada encontrado",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nada encontrado",
+                "infoFiltered": "(filtrado de _MAX_ no total)",
+                "search": "Pesquisar",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Próxima"
+                }
+            },
+        });
+    });
+</script>
 {% endblock %}
+
+<!-- 
+
+{% for comunicado in object_list %}
+<div class="card card-ecommerce-3 o-hidden mb-4">
+    <div class="d-flex flex-column flex-sm-row">
+        <div class="foto_noticia">
+            <div class="row">
+                {% if comunicado.foto_capa %}
+                <img class="card-img-left col-12" src="{{comunicado.foto_capa.url}}" alt="">
+                {% else %}
+                <img class="card-img-left col-12" src="{% static 'assets/images/capa_comunicado' %}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="flex-grow-1 p-4 bloco_conteudo_comunicado">
+            <h5 class="m-0">{{comunicado.titulo}}</h5>
+            <p><small>{{comunicado.data_criacao}}</small></p>
+            <small>{{comunicado.usuario_criacao.first_name}}
+                {{comunicado.usuario_criacao.last_name}}</small>
+            <p class="text-muted mt-3">
+                {{comunicado.resumo.html|safe}}
+                <a href="{% url 'comunicado_detail' comunicado.pk %}">Leia mais</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+{% endfor %} -->
