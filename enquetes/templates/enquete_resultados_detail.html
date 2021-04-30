@@ -25,19 +25,15 @@
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
 
-        data.addRows([{
-                %
-                for opcao in object.opcao_set.all %
-            }
+        data.addRows([
+                {% for opcao in object.opcao_set.all %}
+       
             ['{{opcao.titulo.html|safe}}', {
                 {
                     opcao.quantidade_resposta_opcao
                 }
             }],
-            {
-                %
-                endfor %
-            }
+            {% endfor %}
         ]);
 
 
