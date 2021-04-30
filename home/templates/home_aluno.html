@@ -235,9 +235,7 @@
                                 </div>
 
                                 <div class="card__texto">
-                                    <p>
-                                        {{comunicado.resumo.html|safe}}
-                                    </p>
+                                    {{comunicado.resumo.html|safe}}
                                     <div class="leia-mais">
                                         <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon name="arrow-forward-outline"></ion-icon></a>
                                     </div>
@@ -289,7 +287,7 @@
 
     <div class="row visualizar__wrapper">
         <div class="ver__todos">
-            <a href="#">Ver Todos <ion-icon name="arrow-forward-outline"></ion-icon></a>
+            <a href="{% url 'comunicados' %}">Ver Todos <ion-icon name="arrow-forward-outline"></ion-icon></a>
         </div>
     </div>
     <!--Materiais didáticos-->
