@@ -2116,10 +2116,13 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 }
 
 .main-enquete {
+    margin-bottom: 40px;
+
     .info__1 {
         display: inline-flex;
         align-items: center;
-
+        width: 100%;
+        margin-bottom: 5px;
     }
 
     h2 {
@@ -2131,7 +2134,7 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
             font-size: 18px;
             font-family: $font-gilroy;
             margin-left: 30px;
-
+            margin-top: 30px;
         }
 
 
@@ -2146,13 +2149,18 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 
                 p {
                     margin: 0;
+                    cursor: pointer;
+
+                    @include d(s) {
+                        font-size: 12px;
+                    }
                 }
 
                 label {
                     display: inline-flex;
                     align-items: center;
                     flex-wrap: wrap;
-
+                    margin-bottom: 12px;
                 }
 
                 input {
@@ -2172,7 +2180,7 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 
     button[type="submit"] {
         background: initial;
-        color: black;
+        color: $cor-azul-1;
         border: initial;
         border-radius: 0;
         width: 100%;
@@ -2193,7 +2201,9 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
             background: $cor-cinza-1;
             color: $cor-vermelho-1;
         }
-        ion-icon{
+
+
+        ion-icon {
             margin-left: 10px;
         }
     }
@@ -2216,4 +2226,19 @@ $shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
 
 body {
     @include scrollbars(8px, rgb(208, 208, 208), rgb(238, 238, 238));
+}
+
+
+.enquete__resultados {
+    .respostas__enquete {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h4 {
+            text-align: center;
+            font-size: 20px;
+        }
+    }
 }
