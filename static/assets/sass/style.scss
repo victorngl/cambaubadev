@@ -589,88 +589,23 @@ h4 {
         padding-bottom: 0px;
         margin-left: 0;
 
-        p {
-            margin-top: 10px;
-            font-size: 14px;
-            display: block;
-            max-width: 700px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            color: #3f4449;
-            padding: 0 20px;
-        }
-
-        .leia-mais {
-
-            display: inline-flex;
-            justify-content: flex-end;
-            width: 100%;
-
-            a {
-                padding: 12px 20px;
-                width: 100%;
-                margin-left: auto;
-                font-family: $font-gilroy;
-                transition: 0.3s ease;
-                cursor: pointer;
-                display: inline-flex;
-                justify-content: flex-end;
-                align-items: center;
-                font-size: 16px;
-                z-index: 2;
-                color: $cor-azul-1 !important;
-
-                ion-icon {
-                    margin-left: 5px;
-                }
-
-                &:hover {
-                    background: $cor-cinza-1;
-                }
-            }
-
-        }
+        margin-top: 10px;
+        font-size: 14px;
+        display: block;
+        max-width: 700px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        color: #3f4449;
+        padding: 0 20px;
     }
 
-
-
-    .nav__alunos-container {
-        .nav-pills .nav-link {
-            color: $cor-azul-1;
-            transition: .3s ease;
-
-            &.active {
-                background-color: #dfdfdf;
-                font-size: 16px;
-                padding: 5px 10px;
-                font-weight: 600;
-            }
-        }
-    }
-
-    .tab__panel-container {
-        .tab-pane {
-
-            .card {
-
-                @include d(m) {
-                    width: 100%;
-                    max-width: 600px;
-                    margin: 0 auto 30px;
-                }
-            }
-        }
-    }
-
-    .ver__todos {
+    .leia-mais {
 
         display: inline-flex;
         justify-content: flex-end;
         width: 100%;
-        border-bottom: $borda-sm;
-        margin-bottom: 40px;
 
         a {
             padding: 12px 20px;
@@ -684,18 +619,82 @@ h4 {
             align-items: center;
             font-size: 16px;
             z-index: 2;
-            color: $cor-azul-3;
+            color: $cor-azul-1 !important;
 
             ion-icon {
                 margin-left: 5px;
             }
 
             &:hover {
-                color: $cor-vermelho-1;
+                background: $cor-cinza-1;
             }
         }
 
     }
+}
+
+
+
+.nav__alunos-container {
+    .nav-pills .nav-link {
+        color: $cor-azul-1;
+        transition: .3s ease;
+
+        &.active {
+            background-color: #dfdfdf;
+            font-size: 16px;
+            padding: 5px 10px;
+            font-weight: 600;
+        }
+    }
+}
+
+.tab__panel-container {
+    .tab-pane {
+
+        .card {
+
+            @include d(m) {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto 30px;
+            }
+        }
+    }
+}
+
+.ver__todos {
+
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+    border-bottom: $borda-sm;
+    margin-bottom: 40px;
+
+    a {
+        padding: 12px 20px;
+        width: 100%;
+        margin-left: auto;
+        font-family: $font-gilroy;
+        transition: 0.3s ease;
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 16px;
+        z-index: 2;
+        color: $cor-azul-3;
+
+        ion-icon {
+            margin-left: 5px;
+        }
+
+        &:hover {
+            color: $cor-vermelho-1;
+        }
+    }
+
+}
 }
 
 .swiper__container-all:not(.ativo) {
@@ -752,9 +751,11 @@ h4 {
         }
     }
 }
+
 .spinner-bubble-primary {
     color: #2280c1 !important;
 }
+
 .swiper__container-geral {
     position: relative;
     height: 385px;
