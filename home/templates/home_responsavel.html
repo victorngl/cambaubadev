@@ -242,12 +242,12 @@
                     </div>
                   </div>
 
-                  <div class="card__texto">
-                    <p>{{comunicado.resumo.html|safe}}</p>
+                  <p class="card__texto">
+                    <p> {{comunicado.resumo.html|safe}} </p>
                   </div>
                   <div class="leia-mais">
-                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
-                        name="arrow-forward-outline"></ion-icon></a>
+                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais 
+                      <ion-icon name="arrow-forward-outline"></ion-icon></a>
                   </div>
                 </div>
               </div>
