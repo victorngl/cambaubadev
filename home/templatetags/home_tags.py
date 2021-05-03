@@ -57,5 +57,11 @@ def meus_alunos():
     )
 
     return alunos
-        
+
+@register.simple_tag()
+def index_aluno(alunos, aluno):
+    for idx, obj in enumerate(alunos):
+        if obj == aluno:
+            index = idx + 1
+            return index
         
