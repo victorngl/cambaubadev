@@ -12,7 +12,7 @@ class TurmaAdmin(admin.ModelAdmin):
 
 
 @admin.register(Aluno)
-class AlunoAdmin(admin.ModelAdmin):
+class AlunoAdmin(ImportExportModelAdmin):
     list_display = ['id', 'nome', 'responsavel1', 'responsavel2', 'responsavel3', 'turma']
     list_filter = ['responsavel1', 'responsavel2', 'responsavel3', 'turma', 'turma__serie']
     autocomplete_fields = ['turma', 'usuario', 'responsavel1', 'responsavel2', 'responsavel3']

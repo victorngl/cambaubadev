@@ -12,7 +12,8 @@ class Profile(models.Model):
 
     id_sigma = models.CharField(
         max_length=200,
-        verbose_name="ID Sigma"
+        verbose_name="ID Sigma",
+        blank=True, null=True
     )
 
     user = models.OneToOneField(
