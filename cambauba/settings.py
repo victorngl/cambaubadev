@@ -146,7 +146,7 @@ else:
 
 AVATAR_THUMB_FORMAT = "PNG"
 AVATAR_CACHE_ENABLED = False
-AVATAR_GRAVATAR_DEFAULT = 'assets/images/user_1.png'
+AVATAR_GRAVATAR_DEFAULT = 'https://intranet.cambauba.com.br/static/assets/images/user_1.png'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
