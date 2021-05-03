@@ -16,7 +16,7 @@ class ProfileAdminInline(admin.StackedInline):
     extra = 1
 
 @admin.register(User)
-class UserAdmin(UserAdmin):
+class UserAdmin(UserAdmin, ImportExportModelAdmin):
     add_form = UserCreateForm
     inlines = [ProfileAdminInline]
     add_fieldsets = (
