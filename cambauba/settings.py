@@ -147,6 +147,14 @@ AVATAR_THUMB_FORMAT = "PNG"
 AVATAR_CACHE_ENABLED = False
 AVATAR_GRAVATAR_DEFAULT = 'assets/images/user_1.png'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'EMC - Escola Modular Cambauba <sistema@cambauba.org.br>'
+
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
     'init_template': 'djrichtextfield/init/tinymce.js',
