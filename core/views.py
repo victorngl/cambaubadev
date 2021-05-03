@@ -5,6 +5,9 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import Endereco
 from .models import Estado
 from .models import Cidade
@@ -56,3 +59,26 @@ def signup(request):
 @login_required
 def resetar_senha(request):
     return render(request, 'resetar_senha.html', {})
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('senha_resetada')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+    })
+
+
+@login_required
+def senha_resetada(request):
+    return render(request, 'senha_resetada.html', {})

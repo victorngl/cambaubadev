@@ -5,6 +5,8 @@ from .views import on_change_pais
 from .views import on_change_estado
 from .views import signup
 from .views import resetar_senha
+from .views import change_password
+from .views import senha_resetada
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name="login/index.html"), name='login'),
@@ -15,4 +17,6 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('', include('django.contrib.auth.urls')),
     path('resetar_senha/', resetar_senha, name='resetar_senha'),
+    path('change_password/', change_password, name='change_password'),
+    path('senha_resetada/', senha_resetada, name='senha_resetada'),
 ]
