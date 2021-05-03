@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_quill',
     'colorfield',
     'import_export',
+    'password_reset'
 ]
 
 MIDDLEWARE = [

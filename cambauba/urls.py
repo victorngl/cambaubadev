@@ -34,7 +34,8 @@ urlpatterns = [
     path('materiais_didaticos/', include('materiais_didaticos.urls')),
     path('turmas/', include('escolas.urls')),
     path('avatar/', include('avatar.urls')),
-    path('djrichtextfield/', include('djrichtextfield.urls'))
+    path('djrichtextfield/', include('djrichtextfield.urls')),
+    path('password_reset/', include('password_reset.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Gestor Cambauba"
