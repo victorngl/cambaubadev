@@ -84,6 +84,7 @@ class Aluno(Pessoa):
     username = models.CharField(
         max_length=200,
         verbose_name="Usuário",
+        unique=True,
         blank=True, null=True
     )
 
