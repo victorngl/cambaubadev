@@ -29,7 +29,7 @@ class Materia(models.Model):
 
     foto_capa = models.ImageField(
         verbose_name='Foto de Capa',  
-        null=True
+        null=True, blank=True
     )
     
     def __str__(self):
