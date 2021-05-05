@@ -13,10 +13,10 @@ class TurmaAdmin(admin.ModelAdmin):
 
 @admin.register(Aluno)
 class AlunoAdmin(ImportExportModelAdmin):
-    list_display = ['id', 'nome', 'responsavel1', 'responsavel2', 'responsavel3', 'turma']
-    list_filter = ['responsavel1', 'responsavel2', 'responsavel3', 'turma', 'turma__serie']
-    autocomplete_fields = ['turma', 'usuario', 'responsavel1', 'responsavel2', 'responsavel3']
-    search_fields = ['nome', 'responsavel1__username', 'responsavel2__username', 'responsavel3__username']
+    list_display = ['id', 'nome', 'responsavel1', 'responsavel2', 'responsavel3', 'responsavel4', 'responsavel5', 'turma']
+    list_filter = ['responsavel1', 'responsavel2', 'responsavel3', 'responsavel4', 'responsavel5', 'turma', 'turma__serie']
+    autocomplete_fields = ['turma', 'usuario', 'responsavel1', 'responsavel2', 'responsavel3', 'responsavel4', 'responsavel5']
+    search_fields = ['nome', 'responsavel1__username', 'responsavel2__username', 'responsavel3__username', 'responsavel4__username', 'responsavel5__username']
     fieldsets = (
         ('Dados Principais', {'fields': (
 			'nome',
@@ -25,7 +25,9 @@ class AlunoAdmin(ImportExportModelAdmin):
 			'usuario',
 			'responsavel1',
 			'responsavel2',
-			'responsavel3'
+			'responsavel3',
+			'responsavel4',
+			'responsavel5'
 		)}),
         ('Contatos', {'fields': (
 			'telefone',

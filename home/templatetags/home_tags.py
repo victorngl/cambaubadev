@@ -23,7 +23,9 @@ def minhas_turmas():
     alunos=Aluno.objects.filter(
         Q(responsavel1=user) | 
         Q(responsavel2=user) | 
-        Q(responsavel3=user)
+        Q(responsavel3=user) | 
+        Q(responsavel4=user) | 
+        Q(responsavel5=user)
     )
 
     turmas = [
@@ -53,7 +55,9 @@ def meus_alunos():
     alunos=Aluno.objects.filter(
         Q(responsavel1=user) | 
         Q(responsavel2=user) | 
-        Q(responsavel3=user)
+        Q(responsavel3=user) | 
+        Q(responsavel4=user) | 
+        Q(responsavel5=user)
     )
 
     return alunos

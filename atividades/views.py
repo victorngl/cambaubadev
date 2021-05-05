@@ -60,7 +60,9 @@ class InscricaoOficinaCreateView(CreateView):
 		context['form'].fields['aluno'].queryset = context['form'].fields['aluno'].queryset.filter(
 			Q(responsavel1=self.request.user) | 
 			Q(responsavel2=self.request.user) | 
-			Q(responsavel3=self.request.user)
+			Q(responsavel3=self.request.user) | 
+			Q(responsavel4=self.request.user) | 
+			Q(responsavel5=self.request.user)
 		)
 		context.update(
 			{
@@ -98,7 +100,9 @@ class InscricaoAtividadeExtraCreateView(CreateView):
 		context['form'].fields['aluno'].queryset = context['form'].fields['aluno'].queryset.filter(
 			Q(responsavel1=self.request.user) | 
 			Q(responsavel2=self.request.user) | 
-			Q(responsavel3=self.request.user)
+			Q(responsavel3=self.request.user) | 
+			Q(responsavel4=self.request.user) | 
+			Q(responsavel5=self.request.user)
 		)
 		context.update(
 			{
@@ -135,7 +139,9 @@ class InscricaoAtividadeNoturnaCreateView(CreateView):
 		context['form'].fields['aluno'].queryset = context['form'].fields['aluno'].queryset.filter(
 			Q(responsavel1=self.request.user) | 
 			Q(responsavel2=self.request.user) | 
-			Q(responsavel3=self.request.user)
+			Q(responsavel3=self.request.user) | 
+			Q(responsavel4=self.request.user) | 
+			Q(responsavel5=self.request.user)
 		)
 		context.update(
 			{

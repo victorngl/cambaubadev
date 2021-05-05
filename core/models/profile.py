@@ -41,7 +41,9 @@ class Profile(models.Model):
             alunos_responsaveis = Aluno.objects.filter(
                 Q(responsavel1=self.user) | 
                 Q(responsavel2=self.user) | 
-                Q(responsavel3=self.user)
+                Q(responsavel3=self.user) | 
+                Q(responsavel4=self.user) | 
+                Q(responsavel5=self.user)
             ).exists()
 
             if alunos_responsaveis:

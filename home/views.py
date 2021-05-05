@@ -34,7 +34,9 @@ def home(request):
                 alunos=Aluno.objects.filter(
                     Q(responsavel1=request.user) | 
                     Q(responsavel2=request.user) | 
-                    Q(responsavel3=request.user)
+                    Q(responsavel3=request.user) | 
+                    Q(responsavel4=request.user) | 
+                    Q(responsavel5=request.user)
                 )
                 enquetes = Enquete.objects.all()
                 template_name = 'home_responsavel.html'

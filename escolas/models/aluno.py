@@ -64,6 +64,24 @@ class Aluno(Pessoa):
         null=True
     )
 
+    responsavel4 = models.ForeignKey(
+        User,
+        verbose_name="Responsável 4",
+        related_name="responsavel4_aluno",
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+    )
+
+    responsavel5 = models.ForeignKey(
+        User,
+        verbose_name="Responsável 5",
+        related_name="responsavel5_aluno",
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+    )
+
     observacao = models.TextField(
 		verbose_name="Observação",
 		blank=True, null=True
