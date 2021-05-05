@@ -11,9 +11,11 @@
                 <h2>Título: {{ enquete.enquete }}</h2>
                 <p>{{ enquete.enquete.descricao }}</p>
 
-                <div class="info__1">
-                    Só pode ser respondida uma vez
-                </div>
+                {% if enquete.voto_unico %}
+                    <div class="info__1">
+                        Só pode ser respondida uma vez
+                    </div>
+                {% endif %}
 
                 <small>Informe a opção escolhida abaixo:</small>
 
