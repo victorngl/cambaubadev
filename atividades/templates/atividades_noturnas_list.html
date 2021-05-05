@@ -15,6 +15,7 @@
                     <tr>
                         <th>Título</th>
                         <th>Vagas</th>
+                        <th>Quantidade de Inscritos</th>
                         <th>Data de início</th>
                         <th>Data de término</th>
                         <th>Ação</th>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ atividade_noturna.titulo }}</td>
                         <td>{{ atividade_noturna.vagas }}</td>
+                        <td>{{ atividade_noturna.quantidade_inscritos }}</td>
                         <td>{{ atividade_noturna.data_inicial }}</td>
                         <td>{{ atividade_noturna.data_final }}</td>
                         <td><a class="detalhes" href="{% url 'atividade_noturna_detail' atividade_noturna.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>

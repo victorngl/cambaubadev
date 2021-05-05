@@ -15,6 +15,7 @@
                     <tr>
                         <th>Título</th>
                         <th>Vagas</th>
+                        <th>Quantidade de Inscritos</th>
                         <th>Data de início</th>
                         <th>Data de término</th>
                         <th>Ação</th>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ oficina.titulo }}</td>
                         <td>{{ oficina.vagas }}</td>
+                        <td>{{ oficina.quantidade_inscritos }}</td>
                         <td>{{ oficina.data_inicial }}</td>
                         <td>{{ oficina.data_final }}</td>
                         <td><a class="detalhes" href="{% url 'oficina_detail' oficina.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>

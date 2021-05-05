@@ -65,6 +65,10 @@ class AtividadeExtra(models.Model):
         auto_now_add=True
     )
 
+    @property
+    def quantidade_inscritos(self):
+        return self.inscricaoatividadeextra_set.all().count()
+
     def __str__(self):
         return self.titulo
 

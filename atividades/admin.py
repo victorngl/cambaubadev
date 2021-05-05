@@ -24,21 +24,21 @@ class InscricaoAtividadeNoturnaInline(admin.TabularInline):
 
 @admin.register(Oficina)
 class OficinaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'vagas', 'horario', 'data_inicial', 'data_final']
+    list_display = ['id', 'titulo', 'vagas', 'quantidade_inscritos', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoOficinaInline] 
 
 @admin.register(AtividadeExtra)
 class AtividadeExtraAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'vagas', 'horario', 'data_inicial', 'data_final']
+    list_display = ['id', 'titulo', 'vagas', 'quantidade_inscritos', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoAtividadeExtraInline]
 
 @admin.register(AtividadeNoturna)
 class AtividadeNoturnaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo', 'vagas', 'horario', 'data_inicial', 'data_final']
+    list_display = ['id', 'titulo', 'vagas', 'quantidade_inscritos', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoAtividadeNoturnaInline]

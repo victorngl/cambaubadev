@@ -15,6 +15,7 @@
                     <tr>
                         <th>Título</th>
                         <th>Vagas</th>
+                        <th>Quantidade de Inscritos</th>
                         <th>Data de início</th>
                         <th>Data de término</th>
                         <th>Ação</th>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ atividade_extra.titulo }}</td>
                         <td>{{ atividade_extra.vagas }}</td>
+                        <td>{{ atividade_extra.quantidade_inscritos }}</td>
                         <td>{{ atividade_extra.data_inicial }}</td>
                         <td>{{ atividade_extra.data_final }}</td>
                         <td><a class="detalhes" href="{% url 'atividade_extra_detail' atividade_extra.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
