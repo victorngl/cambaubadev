@@ -320,8 +320,8 @@
                             <td>{{material_didatico.titulo}}</td>
                             <td>{{material_didatico.turmas_vinculadas}}</td>
                             <td>
-                                {% if object.foto_capa %}
-                                <a href="{{material_didatico.anexo.url}}">{{material_didatico.anexo.url}}</a>
+                                {% if material_didatico.anexo %}
+                                <a href="{{material_didatico.anexo.url}}" target="_blank">Download</a>
                                 {% endif %}
                             </td>
                             <td>{{material_didatico.materia.titulo}}</td>
