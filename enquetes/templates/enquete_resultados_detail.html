@@ -6,45 +6,6 @@
 <!--Load the AJAX API-->
 <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-
-    // Load the Visualization API and the corechart package.
-    google.charts.load('current', { 'packages': ['corechart'] });
-
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawChart);
-
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
-    function drawChart() {
-        
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-
-        data.addRows([
-            {% for opcao in object.opcao_set.all %}
-                ['{{opcao.titulo.html|safe}}', {{ opcao.quantidade_resposta_opcao }}],
-            {% endfor %}
-        ]);
-
-
-    // Set chart options
-    var options = {
-        'title': 'Gráfico de respostas',
-        'width': 600,
-        'is3D': true,
-        'height': 500,
-    };
-
-    // Instantiate and draw our chart, passing in some options.
-    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-   }
-</script>
-
 {% endblock %}
 
 {% block content %}
@@ -62,30 +23,18 @@
             <hr>
             <div class="enquete__percent">
                 <ul>
-
-                    <li>
-                        <p>Nome da Opção 2</p>
-                        <div class="bar__container">
-                            <span class="percent" style="--percent-var: 80%;"></span>
-                            <span class="dados">80%</span>
-                        </div>
-                    </li>
-                    <li>
-                        <p>Nome da Opção 1</p>
-                        <div class="bar__container">
-                            <span class="percent" style="--percent-var: 30%;"></span>
-                            <span class="dados">30%</span>
-                        </div>
-                    </li>
-                    <li>
-                        <p>Nome da Opção 3</p>
-                        <div class="bar__container">
-                            <span class="percent" style="--percent-var: 10%;"></span>
-                            <span class="dados">10%</span>
-                        </div>
-                    </li>
+                    {% for opcao in object.opcao_set.all %}
+                        <li>
+                            {{opcao.titulo.html|safe}}
+                            <p class="quantidade_opcoes">{{opcao.quantidade_resposta_opcao}} voto(s)</p>
+                            <div class="bar__container">
+                                {% widthratio opcao.quantidade_resposta_opcao object.quantidade_respostas 100 as this_option %}
+                                <span class="percent" style="--percent-var: {{this_option}}%;"></span>
+                                <span class="dados">{{this_option}}%</span>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
-
             </div>
 
             <div class="row">
@@ -96,13 +45,13 @@
                         </p>
                         <span>{{object.descricao.html|safe}}</span>
                     </div>
-                    {% if objectanexo %}
-                    <div class="mb-4">
-                        <p class="text-primary mb-1">
-                            <ion-icon name="attach-outline"></ion-icon>Anexo
-                        </p>
-                        <span><a href="{{object.anexo.url}}">{{object.anexo}}</a></span>
-                    </div>
+                    {% if object.anexo %}
+                        <div class="mb-4">
+                            <p class="text-primary mb-1">
+                                <ion-icon name="attach-outline"></ion-icon>Anexo
+                            </p>
+                            <span><a href="{{object.anexo.url}}" target="_blank">{{object.anexo}}</a></span>
+                        </div>
                     {% endif %}
                 </div>
                 <div class="col-12 data__row">
@@ -136,11 +85,6 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                </div>
-                <div class="col-12 grafico__enquete">
-                    <hr>
-                    <h4>Gráfico de respostas</h4>
-                    <div id="chart_div"></div>
                 </div>
             </div>
         </div>
