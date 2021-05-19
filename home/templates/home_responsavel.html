@@ -318,7 +318,8 @@
 
       </div>
       <!-- Calendário -->
-      <div style="display:block !important;" class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div style="display:block !important;" class="tab-pane fade show" id="profile" role="tabpanel"
+        aria-labelledby="profile-tab">
         <div class="card">
           <div class="card-body">
             <div id='script-warning'>
@@ -364,6 +365,24 @@
     </div>
   </div>
 </div>
+
+<style>
+  #calendar {
+    max-height: 1px !important;
+    overflow: hidden;
+  }
+
+  .tab-pane.active #calendar {
+    max-height: 100% !important;
+    overflow: hidden;
+  }
+
+  .tab-pane.active #profile {
+    max-height: 100% !important;
+    overflow: initial;
+  }
+</style>
+
 <script>
   const props = {
     slidesPerView: 'auto',
