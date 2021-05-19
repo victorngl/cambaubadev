@@ -5,6 +5,8 @@
     {% include 'sidebars/aluno.html' %}
 {% elif user.profile.perfil == 'Responsável' %}
     {% include 'sidebars/responsavel.html' %}
+{% elif user.profile.perfil == 'Professor/Responsavel' %}
+    {% include 'sidebars/responsavel_professor.html' %}
 {% elif user.profile.perfil == 'Professor' %}
     {% include 'sidebars/professor.html' %}
 {% endif %}

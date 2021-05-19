@@ -36,7 +36,18 @@ class Profile(models.Model):
         if Aluno.objects.filter(usuario=self.user).exists():
             return 'Aluno'
         elif Professor.objects.filter(usuario=self.user).exists():
-            return 'Professor'
+            alunos_responsaveis = Aluno.objects.filter(
+                Q(responsavel1=self.user) | 
+                Q(responsavel2=self.user) | 
+                Q(responsavel3=self.user) | 
+                Q(responsavel4=self.user) | 
+                Q(responsavel5=self.user)
+            ).exists()
+
+            if alunos_responsaveis:
+                return 'Professor/Responsavel'
+            else:
+                return 'Professor'
         else:
             alunos_responsaveis = Aluno.objects.filter(
                 Q(responsavel1=self.user) | 

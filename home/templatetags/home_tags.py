@@ -50,6 +50,36 @@ def minhas_turmas_professor():
     return turmas
 
 @register.simple_tag()
+def minhas_turmas_professor_responsavel():
+    user = get_current_user()
+    professor = Professor.objects.filter(
+        usuario=user
+    ).first()
+
+    turmas_professor = Turma.objects.filter(
+        professores__in=[professor]
+    )
+
+    alunos=Aluno.objects.filter(
+        Q(responsavel1=user) | 
+        Q(responsavel2=user) | 
+        Q(responsavel3=user) | 
+        Q(responsavel4=user) | 
+        Q(responsavel5=user)
+    )
+
+    turmas = [
+        aluno.turma for aluno in alunos
+    ]
+
+    for turma in turmas_professor:
+        turmas.append(turma)
+
+    turmas = list(set(turmas))
+
+    return turmas
+
+@register.simple_tag()
 def meus_alunos():
     user = get_current_user()
     alunos=Aluno.objects.filter(

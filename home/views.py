@@ -30,7 +30,7 @@ def home(request):
                 comunicados = aluno.turma.comunicado_set.all().order_by('-id')
                 paginacao_comunicados = Paginator(comunicados, 2)
                 pagina_atual = paginacao_comunicados.page(pagina_atual)
-            elif perfil == 'Responsável':
+            elif perfil == 'Responsável' or perfil == 'Professor/Responsavel':
                 alunos=Aluno.objects.filter(
                     Q(responsavel1=request.user) | 
                     Q(responsavel2=request.user) | 

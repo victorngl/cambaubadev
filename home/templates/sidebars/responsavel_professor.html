@@ -1,0 +1,140 @@
+{% load static %}
+{% load home_tags %}
+
+<div class="side-content-wrap">
+    <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+        {{request.user.profile.perfil}}
+        <ul class="navigation-left" style="overflow-y: auto;">
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'home' %}">
+                    <ion-icon src="{% static 'assets/images/icons/house2.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Início</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            <li class="nav-item" data-item="alunos">
+                <a class="nav-item-hold" href="#">
+                    <ion-icon src="{% static 'assets/images/icons/student.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Alunos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            <li class="nav-item" data-item="turmas">
+                <a class="nav-item-hold" href="#">
+                    <ion-icon src="{% static 'assets/images/icons/blackboard.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Turmas</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% if perms.core.pode_acessar_boletos_boletins %}
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'boletos_boletins' %}">
+                    <ion-icon src="{% static 'assets/images/icons/newspaper.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Boletos e Boletins</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_atividades %}
+            <li class="nav-item" data-item="atividades">
+                <a class="nav-item-hold" href="#">
+                    <ion-icon src="{% static 'assets/images/icons/extra.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Atividades Extras</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            {% if perms.core.pode_acessar_informativos %}
+            <li class="nav-item" data-item="informativos">
+                <a class="nav-item-hold" href="#">
+                    <ion-icon src="{% static 'assets/images/icons/info.svg' %}"></ion-icon>
+
+                    <span class="nav-text">Informativos</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-item-hold" href="{% url 'admin:index' %}">
+                    <img src="{% static 'assets/images/inicio.png' %}" alt="">
+                
+                    <span class="nav-text">Admin</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-overlay"></div>
+</div>
+<div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+    <ul class="childNav" data-parent="alunos">
+        {% meus_alunos as meus_alunos %}
+        {% for aluno in meus_alunos %}
+        <li class="nav-item">
+            <a href="{% url 'aluno_detail' aluno.id %}" class="item-name">
+                <span class="item-name">{{aluno.nome}}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <ul class="childNav" data-parent="turmas">
+        {% minhas_turmas_professor_responsavel as minhas_turmas %}
+        {% for turma in minhas_turmas %}
+        <li class="nav-item">
+            <a href="{% url 'turma_detail' turma.id %}" class="item-name">
+                <span class="item-name">{{turma.nome}}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <ul class="childNav" data-parent="atividades">
+        <li class="nav-item">
+            <a href="{% url 'oficinas' %}" class="item-name">
+                <span class="item-name">Oficinas</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'atividades_extras' %}" class="item-name">
+                <span class="item-name">Atividades Extras</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'atividades_noturnas' %}" class="item-name">
+                <span class="item-name">Atividades Noturnas</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="childNav" data-parent="informativos">
+        <p class="titulo_produto">
+            <ion-icon src="{% static 'assets/images/icons/info.svg' %}"></ion-icon>Informativos
+        </p>
+        <li class="nav-item">
+            <a href="{% url 'balancetes' %}" class="item-name">
+                <span class="item-name">Balancetes</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'balancos_patrimoniais' %}" class="item-name">
+                <span class="item-name">Balanços Patrimoniais</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'documentacoes_obras' %}" class="item-name">
+                <span class="item-name">Documentações de Obras</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'atas_reunioes' %}" class="item-name">
+                <span class="item-name">Atas de Reuniões</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="sidebar-overlay"></div>
+</div>
+<!--=============== Left side End ================-->
