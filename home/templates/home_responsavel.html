@@ -18,11 +18,10 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    console.log("alteração online");
+
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
       locale: 'pt-br',
       plugins: ['interaction', 'dayGrid', 'timeGrid'],
       header: {
@@ -32,6 +31,8 @@
       },
       defaultDate: '{{hoje|date:"Y-m-d"}}',
       navLinks: true, // can click day/week names to navigate views
+      initialView: 'dayGridWeek',
+
       select: function (arg) {
         var title = prompt('Event Title:');
         if (title) {
@@ -69,6 +70,8 @@
     });
 
     calendar.render();
+
+    console.log(calendar);
   });
 </script>
 <style>
