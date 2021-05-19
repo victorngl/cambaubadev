@@ -18,6 +18,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    console.log("alteração online");
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -147,12 +148,12 @@
           <div class="card-body">
             <ul class="list-group">
               {% for aluno in alunos %}
-                  {% for atividade in aluno.turma.atividadeescolar_set.all %}
-                      <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
-                        <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> -
-                        <span>{{aluno.nome}}</span>
-                      </li>
-                  {% endfor %}
+              {% for atividade in aluno.turma.atividadeescolar_set.all %}
+              <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
+                <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> -
+                <span>{{aluno.nome}}</span>
+              </li>
+              {% endfor %}
               {% endfor %}
             </ul>
           </div>
