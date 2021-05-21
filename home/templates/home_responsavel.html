@@ -18,6 +18,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -30,6 +31,8 @@
       },
       defaultDate: '{{hoje|date:"Y-m-d"}}',
       navLinks: true, // can click day/week names to navigate views
+      initialView: 'dayGridWeek',
+
       select: function (arg) {
         var title = prompt('Event Title:');
         if (title) {
@@ -67,6 +70,8 @@
     });
 
     calendar.render();
+
+    console.log(calendar);
   });
 </script>
 <style>
@@ -146,12 +151,12 @@
           <div class="card-body">
             <ul class="list-group">
               {% for aluno in alunos %}
-                  {% for atividade in aluno.turma.atividadeescolar_set.all %}
-                      <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
-                        <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> -
-                        <span>{{aluno.nome}}</span>
-                      </li>
-                  {% endfor %}
+              {% for atividade in aluno.turma.atividadeescolar_set.all %}
+              <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
+                <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> -
+                <span>{{aluno.nome}}</span>
+              </li>
+              {% endfor %}
               {% endfor %}
             </ul>
           </div>
@@ -313,7 +318,8 @@
 
       </div>
       <!-- Calendário -->
-      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div style="display:block !important;" class="tab-pane fade show" id="profile" role="tabpanel"
+        aria-labelledby="profile-tab">
         <div class="card">
           <div class="card-body">
             <div id='script-warning'>
@@ -359,6 +365,31 @@
     </div>
   </div>
 </div>
+
+<style>
+  #calendar {
+    max-height: 1px !important;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  #profile {
+    max-height: 1px !important;
+    overflow: hidden;
+  }
+
+  .tab-pane.active #calendar {
+    max-height: 100% !important;
+    overflow: initial !important;
+    opacity: 1;
+  }
+
+  .tab-pane.active#profile {
+    max-height: 100% !important;
+    overflow: initial !important;
+  }
+</style>
+
 <script>
   const props = {
     slidesPerView: 'auto',
