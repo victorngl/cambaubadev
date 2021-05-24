@@ -55,7 +55,7 @@ class CalendariosAtividadesDetailView(DetailView):
     model = CalendarioAtividade
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+        if request.user.has_perm('core.pode_acessar_materiais_didaticos'):
             return super(CalendariosAtividadesDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
@@ -64,7 +64,7 @@ class ComunicadosDetailView(DetailView):
     model = Comunicado
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+        if request.user.has_perm('core.pode_acessar_materiais_didaticos'):
             return super(ComunicadosDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
@@ -73,7 +73,7 @@ class MateriaisDidaticosDetailView(DetailView):
     model = MaterialDidatico
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+        if request.user.has_perm('core.pode_acessar_materiais_didaticos'):
             return super(MateriaisDidaticosDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
@@ -88,7 +88,7 @@ class ComunicadoListView(ListView):
         return queryset
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_materiais_didaticos'):
+        if request.user.has_perm('core.pode_acessar_materiais_didaticos'):
             return super(ComunicadoListView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()

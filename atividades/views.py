@@ -74,7 +74,7 @@ class InscricaoOficinaCreateView(CreateView):
 		return context
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('pode_acessar_atividades'):
+		if request.user.has_perm('core.pode_acessar_atividades'):
 			return super(InscricaoOficinaCreateView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
@@ -114,7 +114,7 @@ class InscricaoAtividadeExtraCreateView(CreateView):
 		return context
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('pode_acessar_atividades'):
+		if request.user.has_perm('core.pode_acessar_atividades'):
 			return super(InscricaoAtividadeExtraCreateView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
@@ -153,7 +153,7 @@ class InscricaoAtividadeNoturnaCreateView(CreateView):
 		return context
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('pode_acessar_atividades'):
+		if request.user.has_perm('core.pode_acessar_atividades'):
 			return super(InscricaoAtividadeNoturnaCreateView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
@@ -162,7 +162,7 @@ class OficinaDetailView(DetailView):
 	model = Oficina
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('pode_acessar_atividades'):
+		if request.user.has_perm('core.pode_acessar_atividades'):
 			return super(OficinaDetailView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
@@ -171,7 +171,7 @@ class AtividadeNoturnaDetailView(DetailView):
 	model = AtividadeNoturna
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('pode_acessar_atividades'):
+		if request.user.has_perm('core.pode_acessar_atividades'):
 			return super(AtividadeNoturnaDetailView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
@@ -180,7 +180,7 @@ class AtividadeExtraDetailView(DetailView):
 	model = AtividadeExtra
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('pode_acessar_atividades'):
+		if request.user.has_perm('core.pode_acessar_atividades'):
 			return super(AtividadeExtraDetailView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()

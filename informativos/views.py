@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView
 from .models import Balancete, BalancoPatrimonial, DocumentacaoObra, AtaReuniao
+from django.http import HttpResponseForbidden
 
 @permission_required("core.pode_acessar_informativos")
 def balancetes(request):
@@ -51,7 +52,7 @@ class BalancetesDetailView(DetailView):
     model = Balancete
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_informativos'):
+        if request.user.has_perm('core.pode_acessar_informativos'):
             return super(BalancetesDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
@@ -60,7 +61,7 @@ class BalancoPatrimonialDetailView(DetailView):
     model = BalancoPatrimonial
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_informativos'):
+        if request.user.has_perm('core.pode_acessar_informativos'):
             return super(BalancoPatrimonialDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
@@ -69,7 +70,7 @@ class DocumentacaoObraDetailView(DetailView):
     model = DocumentacaoObra
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_informativos'):
+        if request.user.has_perm('core.pode_acessar_informativos'):
             return super(DocumentacaoObraDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
@@ -78,7 +79,7 @@ class AtaReuniaoDetailView(DetailView):
     model = AtaReuniao
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_informativos'):
+        if request.user.has_perm('core.pode_acessar_informativos'):
             return super(AtaReuniaoDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()

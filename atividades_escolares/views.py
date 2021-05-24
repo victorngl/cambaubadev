@@ -19,7 +19,7 @@ class AtividadesEscolaresDetailView(DetailView):
     model = AtividadeEscolar
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_atividades_escolares'):
+        if request.user.has_perm('core.pode_acessar_atividades_escolares'):
             return super(AtividadesEscolaresDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()

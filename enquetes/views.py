@@ -25,7 +25,7 @@ class EnqueteDetailView(DetailView):
     model = Enquete
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.has_perm('pode_acessar_enquetes'):
+        if request.user.has_perm('core.pode_acessar_enquetes'):
             return super(EnqueteDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
@@ -55,7 +55,7 @@ class RespostaEnqueteCreateView(CreateView):
         user = get_current_user()
         enquete = Enquete.objects.get(id=self.kwargs['id'])
         enquetes_respondidas = RespostaEnquete.objects.filter(usuario_votante=user, enquete=self.kwargs['id'])
-        if enquete.voto_unico and enquetes_respondidas.count() < 1 and enquete.data_expiracao >= date.today() and request.user.has_perm('pode_acessar_enquetes'):
+        if enquete.voto_unico and enquetes_respondidas.count() < 1 and enquete.data_expiracao >= date.today() and request.user.has_perm('core.pode_acessar_enquetes'):
             return super(RespostaEnqueteCreateView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
