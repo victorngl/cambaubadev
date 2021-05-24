@@ -78,9 +78,13 @@ def gerar_boletos_boletins(request):
 
 @login_required
 def get_calendario(request):
-    calendarios_atividades = CalendarioAtividade.objects.all()
-    atividades_escolares = AtividadeEscolar.objects.all()
-
+    try:
+        calendarios_atividades = CalendarioAtividade.objects.filter(
+            turmas__in=request.user.profile.turmas
+        )
+    except:
+        calendarios_atividades = CalendarioAtividade.objects.all()
+    
     list_eventos = [
         {
             'id': evento.id, 
@@ -91,18 +95,5 @@ def get_calendario(request):
             'descricao': evento.descricao
         } for evento in calendarios_atividades
     ]
-    '''
-    list_eventos_atividades_escolares = [
-        {
-            'id': evento.id, 
-            'title': evento.titulo,
-            #'start': '{}T{}'.format(evento.data_inicial, evento.hora_inicio),
-            'start': evento.data_inicial,
-            #'end': '{}T{}'.format(evento.data_final, evento.hora_termino)
-            'end': evento.data_final
-        } for evento in atividades_escolares
-    ]
-
-    list_eventos = list_eventos_calendario_atividades + list_eventos_atividades_escolares
-    '''
+    
     return JsonResponse(list_eventos, safe=False)

@@ -62,6 +62,33 @@ class Profile(models.Model):
             else:
                 return "Sem vínculo"
 
+    @property
+    def alunos(self):
+        alunos = []
+        
+        perfil_aluno = Aluno.objects.filter(usuario=self.user)
+        for aluno in perfil_aluno:
+            alunos.append(aluno)
+        
+        perfil_responsavel = Aluno.objects.filter(
+            Q(responsavel1=self.user) | 
+            Q(responsavel2=self.user) | 
+            Q(responsavel3=self.user) | 
+            Q(responsavel4=self.user) | 
+            Q(responsavel5=self.user)
+        )
+        for aluno in perfil_responsavel:
+            alunos.append(aluno)
+
+        return list(set(alunos))
+    
+    @property
+    def turmas(self):
+        turmas = []
+        for aluno in self.alunos:
+            turmas.append(aluno.turma)
+
+        return list(set(turmas))
 
     def __str__(self):
         return self.user.username
