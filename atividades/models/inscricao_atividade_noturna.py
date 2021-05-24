@@ -56,3 +56,4 @@ class InscricaoAtividadeNoturna(models.Model):
         app_label = "atividades"
         verbose_name = "Inscrição na Atividade Noturna"
         verbose_name_plural = "Inscrições na Atividade Noturna"
+        unique_together = [['aluno', 'atividade_noturna']]

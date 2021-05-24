@@ -56,3 +56,4 @@ class InscricaoAtividadeExtra(models.Model):
         app_label = "atividades"
         verbose_name = "Inscrição na Atividade Extra"
         verbose_name_plural = "Inscrições na Atividade Extra"
+        unique_together = [['aluno', 'atividade_extra']]

@@ -56,3 +56,4 @@ class InscricaoOficina(models.Model):
         app_label = "atividades"
         verbose_name = "Inscrição na Oficina"
         verbose_name_plural = "Inscrições na Oficina"
+        unique_together = [['aluno', 'oficina']]
