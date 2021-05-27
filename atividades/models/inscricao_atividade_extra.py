@@ -1,9 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+
+from django.db.models import fields
 from .atividade_extra import AtividadeExtra
 from escolas.models import Aluno
 from crum import get_current_user
+from django.core.exceptions import ValidationError
 
 class InscricaoAtividadeExtra(models.Model):
     """
@@ -57,3 +60,10 @@ class InscricaoAtividadeExtra(models.Model):
         verbose_name = "Inscrição na Atividade Extra"
         verbose_name_plural = "Inscrições na Atividade Extra"
         unique_together = [['aluno', 'atividade_extra']]
+
+    def validate_unique(self,exclude=None):
+        try:
+            super(InscricaoAtividadeExtra,self).validate_unique()
+        except ValidationError as e:
+            raise ValidationError("Não é possivel inscrever " + str(self.aluno) + " em " + str(self.atividade_extra) + " duas vezes!")
+
