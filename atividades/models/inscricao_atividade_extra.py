@@ -44,6 +44,12 @@ class InscricaoAtividadeExtra(models.Model):
         auto_now_add=True
     )
 
+    def validate_unique(self,exclude=None):
+        try:
+            super(InscricaoAtividadeExtra,self).validate_unique()
+        except ValidationError as e:
+            raise ValidationError("Não é possivel inscrever " + str(self.aluno) + " em " + str(self.atividade_extra) + " duas vezes!")
+
     def save(self, *args, **kwargs):
         user = get_current_user()
         if user and not user.pk:
@@ -53,7 +59,7 @@ class InscricaoAtividadeExtra(models.Model):
         super(InscricaoAtividadeExtra, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.id)    
 
     class Meta:
         app_label = "atividades"
@@ -61,9 +67,5 @@ class InscricaoAtividadeExtra(models.Model):
         verbose_name_plural = "Inscrições na Atividade Extra"
         unique_together = [['aluno', 'atividade_extra']]
 
-    def validate_unique(self,exclude=None):
-        try:
-            super(InscricaoAtividadeExtra,self).validate_unique()
-        except ValidationError as e:
-            raise ValidationError("Não é possivel inscrever " + str(self.aluno) + " em " + str(self.atividade_extra) + " duas vezes!")
+    
 

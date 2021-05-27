@@ -66,6 +66,13 @@ class AtividadeExtra(models.Model):
     )
 
     @property
+    def inscricoes_abertas(self):
+        if self.data_inicial < datetime.now().date() < self.data_final:
+            return True
+        else: 
+            return False
+
+    @property
     def quantidade_inscritos(self):
         return self.inscricaoatividadeextra_set.all().count()
 
