@@ -1,9 +1,12 @@
+from materiais_didaticos.models import comunicado
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView, ListView
 from django.http import JsonResponse, HttpResponseForbidden
 from escolas.models import Materia
 from .models import CalendarioAtividade, Comunicado, MaterialDidatico
+from escolas.models import Aluno
+from django.db.models import Q
 
 @permission_required("core.pode_acessar_materiais_didaticos")
 def calendarios_atividades(request):
@@ -85,8 +88,12 @@ class ComunicadoListView(ListView):
     
     def get_queryset(self):
         queryset = super(ComunicadoListView, self).get_queryset()
+        if self.request.user.profile:
+            queryset = queryset.filter(
+                turmas__in = self.request.user.profile.turmas
+            )
         return queryset
-    
+
     def dispatch(self, request, *args, **kwargs):
         if request.user.has_perm('core.pode_acessar_materiais_didaticos'):
             return super(ComunicadoListView, self).dispatch(request, *args, **kwargs)
