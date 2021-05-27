@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CalendarioAtividade, Comunicado, MaterialDidatico, TipoMaterialDidatico
+from .models import CalendarioAtividade, Comunicado, MaterialDidatico, TipoMaterialDidatico, Midia
 
 @admin.register(CalendarioAtividade)
 class CalendarioAtividadeAdmin(admin.ModelAdmin):
@@ -26,3 +26,9 @@ class MaterialDidaticoAdmin(admin.ModelAdmin):
 class TipoMaterialDidaticoAdmin(admin.ModelAdmin):
     list_display = ['id', 'tipo']
     search_fields = ['tipo']
+
+@admin.register(Midia)
+class MidiaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'nome', 'arquivo']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
+    search_fields = ['nome']
