@@ -69,6 +69,13 @@ class AtividadeNoturna(models.Model):
 	def quantidade_inscritos(self):
 		return self.inscricaoatividadenoturna_set.all().count()
 
+	@property
+	def inscricoes_abertas(self):
+	    if self.data_inicial < datetime.now().date() < self.data_final:
+	        return True
+	    else: 
+	        return False
+
 	def __str__(self):
 		return self.titulo
 

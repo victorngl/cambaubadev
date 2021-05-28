@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.contrib.auth.decorators import permission_required
@@ -113,8 +114,10 @@ class InscricaoAtividadeExtraCreateView(CreateView):
 		)
 		return context
 	
+
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('core.pode_acessar_atividades'):
+		atividade_extra = AtividadeExtra.objects.get(id=self.kwargs['id'])
+		if request.user.has_perm('core.pode_acessar_atividades') and atividade_extra.inscricoes_abertas:
 			return super(InscricaoAtividadeExtraCreateView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()

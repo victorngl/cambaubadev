@@ -48,9 +48,11 @@
                     </div>
                 </div>
             </div>
-            <div class="footer__atividade">
-                <a class="" href="{% url 'inscricao_oficina_create' object.id %}"> Inscrever-se  <ion-icon name="arrow-forward-outline"></ion-icon></a>
-            </div>
+            {% if object.inscricoes_abertas %}
+                <div class="footer__atividade">
+                    <a class="" href="{% url 'inscricao_oficina_create' object.id %}"> Inscrever-se  <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </main>
