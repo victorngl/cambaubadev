@@ -71,10 +71,13 @@ class AtividadeNoturna(models.Model):
 
 	@property
 	def inscricoes_abertas(self):
-	    if self.data_inicial < datetime.now().date() < self.data_final:
-	        return True
-	    else: 
-	        return False
+		try:
+			if self.data_inicial < datetime.now().date() < self.data_final:
+				return True
+			else: 
+				return False
+		except:
+			return True
 
 	def __str__(self):
 		return self.titulo
