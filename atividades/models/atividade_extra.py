@@ -68,7 +68,7 @@ class AtividadeExtra(models.Model):
     @property
     def inscricoes_abertas(self):
         try:
-            if self.data_inicial < datetime.now().date() < self.data_final:
+            if self.data_inicial <= datetime.now().date() <= self.data_final:
                 return True
             else: 
                 return False
