@@ -80,8 +80,12 @@ def gerar_boletos_boletins(request):
 def get_calendario(request):
     try:
         calendarios_atividades = CalendarioAtividade.objects.filter(
-            turmas__in=request.user.profile.turmas
+            turmas__in=request.user.profile.turmas,    
         )
+        turma = request.GET.get('turma')
+        if turma:
+            calendarios_atividades = calendarios_atividades.filter(turmas__in=turma)
+        
     except:
         calendarios_atividades = CalendarioAtividade.objects.all()
     
