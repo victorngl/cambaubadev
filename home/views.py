@@ -20,6 +20,7 @@ def home(request):
         aluno = None
         materiais_didaticos = None
         comunicados = []
+        comunicados_responsavel = []
         paginacao_comunicados = None
         if request.user.profile:
             perfil = request.user.profile.perfil
@@ -37,7 +38,7 @@ def home(request):
                     Q(responsavel3=request.user) | 
                     Q(responsavel4=request.user) | 
                     Q(responsavel5=request.user)
-                )
+                )   
                 enquetes = Enquete.objects.all()
                 template_name = 'home_responsavel.html'
             else:
