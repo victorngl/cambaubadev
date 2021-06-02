@@ -69,5 +69,5 @@ class DocumentacaoObra(models.Model):
 
     class Meta:
         app_label = "informativos"
-        verbose_name = "Documentação de Obra"
-        verbose_name_plural = "Documentações de Obra"
+        verbose_name = "AEMC Notícia"
+        verbose_name_plural = "AEMC Notícias"

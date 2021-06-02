@@ -1,3 +1,4 @@
+from informativos.models.documentacao_obra import DocumentacaoObra
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseForbidden
@@ -20,8 +21,9 @@ def home(request):
         aluno = None
         materiais_didaticos = None
         comunicados = []
-        comunicados_responsavel = []
+        aemc_noticias = []
         paginacao_comunicados = None
+        aemc_noticias = DocumentacaoObra.objects.all().order_by('-id')
         if request.user.profile:
             perfil = request.user.profile.perfil
             if perfil == 'Aluno':
@@ -54,6 +56,7 @@ def home(request):
         request,
         template_name,
         {   
+            'aemc_noticias' : aemc_noticias,
             'aluno': aluno,
             'enquetes': enquetes,
             'perfil': perfil,

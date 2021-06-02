@@ -9,14 +9,18 @@ from .forms import RespostaEnqueteForm
 from crum import get_current_user
 from datetime import date
 from django.db.models import Q
+from datetime import datetime    
+
 
 @permission_required("core.pode_acessar_enquetes")
 def enquetes(request):
     enquetes = Enquete.objects.all()
+    data_atual = date.today()
     return render(
         request,
         'enquetes_list.html',
         {
+            'data_atual' : data_atual,
             'enquetes': enquetes
         }
     )

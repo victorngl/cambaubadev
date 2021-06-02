@@ -25,9 +25,13 @@
                         <td>{{enquete.data_expiracao}}</td>
                         <td>
                             <a class="detalhes" href="{% url 'enquete_detail' enquete.id %}"><i
-                                    class="fas fa-search-plus"></i> Detalhes</a></a>
-                            <a class="detalhes" href="{% url 'enquete_resultados_detail' enquete.id %}"><i class="fas fa-superpowers"
-                                    aria-hidden="true"></i> Resultados</a></a>
+                                    class="fas fa-search-plus"></i> Detalhes</a>
+                                {% if data_atual > enquete.data_expiracao %}
+                                    <a class="detalhes" href="{% url 'enquete_resultados_detail' enquete.id %}"><i class="fas fa-superpowers"
+                                    aria-hidden="true"></i> Resultados</a>
+                                {% endif %} 
+                                
+                 
                         </td>
 
                     </tr>
