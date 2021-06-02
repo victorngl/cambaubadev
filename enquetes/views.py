@@ -34,6 +34,16 @@ class EnqueteDetailView(DetailView):
         else:
             return HttpResponseForbidden()
 
+class EnqueteResultadoDetailView(DetailView):
+    model = Enquete
+    
+    def dispatch(self, request, *args, **kwargs):
+        enquete = get_object_or_404(Enquete, pk=self.kwargs['pk'])
+        if request.user.has_perm('core.pode_acessar_enquetes') and enquete.data_expiracao < date.today():
+            return super(EnqueteResultadoDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
+
 class RespostaEnqueteCreateView(CreateView):
     model = RespostaEnquete
     form_class = RespostaEnqueteForm
