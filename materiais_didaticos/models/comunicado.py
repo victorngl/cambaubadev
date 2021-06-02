@@ -1,4 +1,4 @@
-from typing import OrderedDict
+from collections import OrderedDict
 from django.db import models
 from datetime import datetime
 from crum import get_current_user
