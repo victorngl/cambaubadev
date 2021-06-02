@@ -76,3 +76,4 @@ class AtividadeEscolar(models.Model):
         app_label = "atividades_escolares"
         verbose_name = "Atividade Escolar"
         verbose_name_plural = "Atividades Escolares"
+        ordering = ["-id"]

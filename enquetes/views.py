@@ -9,14 +9,18 @@ from .forms import RespostaEnqueteForm
 from crum import get_current_user
 from datetime import date
 from django.db.models import Q
+from datetime import datetime    
+
 
 @permission_required("core.pode_acessar_enquetes")
 def enquetes(request):
     enquetes = Enquete.objects.all()
+    data_atual = date.today()
     return render(
         request,
         'enquetes_list.html',
         {
+            'data_atual' : data_atual,
             'enquetes': enquetes
         }
     )
@@ -27,6 +31,16 @@ class EnqueteDetailView(DetailView):
     def dispatch(self, request, *args, **kwargs):
         if request.user.has_perm('core.pode_acessar_enquetes'):
             return super(EnqueteDetailView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
+
+class EnqueteResultadoDetailView(DetailView):
+    model = Enquete
+    
+    def dispatch(self, request, *args, **kwargs):
+        enquete = get_object_or_404(Enquete, pk=self.kwargs['pk'])
+        if request.user.has_perm('core.pode_acessar_enquetes') and enquete.data_expiracao < date.today():
+            return super(EnqueteResultadoDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
 

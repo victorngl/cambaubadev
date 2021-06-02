@@ -162,6 +162,23 @@
           </div>
         </div>
       </div>
+      
+      <div class="card__noticias">
+        <div class="card__enquetes">
+          <div class="card-header">
+            <h1 class="titulosecoes"><ion-icon name="newspaper-outline"></ion-icon> AEMC Notícias</h1>
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              {% for aemc in aemc_noticias %}
+              <li class="list-group-item">
+                <a href="{% url 'documentacao_obra_detail' aemc.id %}">{{aemc.titulo}}</a>
+              </li>
+              {% endfor %}
+          </div>
+      </div>
+      </div>
+       
 
       <div class="card__enquetes">
         <div class="enquetes">
@@ -231,7 +248,7 @@
               aria-labelledby="v-pills-home">
               {% for aluno in alunos %}
               {% for comunicado in aluno.turma.comunicados_exibicao %}
-
+              
               <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
                 <div class="notica__wrapper">
                   <div class="top__division">
@@ -388,6 +405,10 @@
     max-height: 100% !important;
     overflow: initial !important;
   }
+
+  .body__home .card__noticias h1 ion-icon{
+  font-size:32px;
+}
 </style>
 
 <script>

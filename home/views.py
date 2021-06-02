@@ -1,3 +1,4 @@
+from informativos.models.documentacao_obra import DocumentacaoObra
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseForbidden
@@ -20,7 +21,9 @@ def home(request):
         aluno = None
         materiais_didaticos = None
         comunicados = []
+        aemc_noticias = []
         paginacao_comunicados = None
+        aemc_noticias = DocumentacaoObra.objects.all().order_by('-id')
         if request.user.profile:
             perfil = request.user.profile.perfil
             if perfil == 'Aluno':
@@ -37,7 +40,7 @@ def home(request):
                     Q(responsavel3=request.user) | 
                     Q(responsavel4=request.user) | 
                     Q(responsavel5=request.user)
-                )
+                )   
                 enquetes = Enquete.objects.all()
                 template_name = 'home_responsavel.html'
             else:
@@ -53,6 +56,7 @@ def home(request):
         request,
         template_name,
         {   
+            'aemc_noticias' : aemc_noticias,
             'aluno': aluno,
             'enquetes': enquetes,
             'perfil': perfil,
@@ -80,8 +84,12 @@ def gerar_boletos_boletins(request):
 def get_calendario(request):
     try:
         calendarios_atividades = CalendarioAtividade.objects.filter(
-            turmas__in=request.user.profile.turmas
+            turmas__in=request.user.profile.turmas,    
         )
+        turma = request.GET.get('turma')
+        if turma:
+            calendarios_atividades = calendarios_atividades.filter(turmas__in=turma)
+        
     except:
         calendarios_atividades = CalendarioAtividade.objects.all()
     

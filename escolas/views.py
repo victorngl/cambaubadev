@@ -18,6 +18,7 @@ class AlunoDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(AlunoDetailView, self).get_context_data(**kwargs)
+        turma = self.object.turma
         pagina_atual = self.request.GET.get('page', 1)
         comunicados = self.object.turma.comunicado_set.all().order_by('-id')
         paginacao_comunicados = Paginator(comunicados, 2)
@@ -25,6 +26,7 @@ class AlunoDetailView(DetailView):
         
         context.update(
             {
+                'turma' : turma,
                 'comunicados': comunicados,
                 'hoje': date.today(),
                 'paginacao_comunicados': paginacao_comunicados,
@@ -56,6 +58,7 @@ class TurmaDetailView(DetailView):
         
         context.update(
             {
+                'turma' : turma,
                 'comunicados': comunicados,
                 'atividades_escolares': atividades_escolares,
                 'materiais_didaticos': materiais_didaticos,

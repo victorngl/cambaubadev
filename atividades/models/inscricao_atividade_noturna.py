@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -40,6 +41,12 @@ class InscricaoAtividadeNoturna(models.Model):
         verbose_name="Data de Criação",
         auto_now_add=True
     )
+
+    def validate_unique(self,exclude=None):
+        try:
+            super(InscricaoAtividadeNoturna,self).validate_unique()
+        except ValidationError as e:
+            raise ValidationError("Não é possivel inscrever " + str(self.aluno) + " em " + str(self.atividade_noturna) + " duas vezes!")
 
     def save(self, *args, **kwargs):
         user = get_current_user()

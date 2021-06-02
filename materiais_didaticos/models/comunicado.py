@@ -1,3 +1,4 @@
+from typing import OrderedDict
 from django.db import models
 from datetime import datetime
 from crum import get_current_user
@@ -94,3 +95,4 @@ class Comunicado(models.Model):
         app_label = "materiais_didaticos"
         verbose_name = "Comunicado"
         verbose_name_plural = "Comunicados"
+        ordering = ["-id"]
