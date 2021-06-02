@@ -30,7 +30,7 @@
                         <td>
                             <a class="detalhes" href="{% url 'enquete_detail' enquete.id %}"><i
                                     class="fas fa-search-plus"></i> Detalhes</a>
-                                {% if data_atual > enquete.data_expiracao or not enquete.data_expiracao%}
+                                {% if data_atual > enquete.data_expiracao or not enquete.data_expiracao or enquete.mostrar_resultado%}
                                     <a class="detalhes" href="{% url 'enquete_resultados_detail' enquete.id %}"><i class="fas fa-superpowers"
                                     aria-hidden="true"></i> Resultados</a>
                                 {% endif %} 

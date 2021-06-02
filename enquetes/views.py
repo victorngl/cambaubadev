@@ -44,6 +44,8 @@ class EnqueteResultadoDetailView(DetailView):
             dia_expiracao = enquete.data_expiracao
         if request.user.has_perm('core.pode_acessar_enquetes') and dia_expiracao < date.today():
             return super(EnqueteResultadoDetailView, self).dispatch(request, *args, **kwargs)
+        if request.user.has_perm('core.pode_acessar_enquetes') and enquete.mostrar_resultado:
+            return super(EnqueteResultadoDetailView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
 
