@@ -87,7 +87,7 @@ class ComunicadoListView(ListView):
     template_name='comunicados_list.html'
     
     def get_queryset(self):
-        queryset = super(ComunicadoListView, self).get_queryset().order_by('-data_alteracao')
+        queryset = super(ComunicadoListView, self).get_queryset().order_by('-data_alteracao').distinct()
         if self.request.user.profile:
             queryset = queryset.filter(
                 turmas__in = self.request.user.profile.turmas
