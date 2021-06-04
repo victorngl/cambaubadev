@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django_quill.fields import QuillField
 from django.contrib.auth.models import Group
+from crum import get_current_user
 
 class Enquete(models.Model):
     """
@@ -67,6 +68,22 @@ class Enquete(models.Model):
         null=True, blank=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     @property
     def quantidade_respostas(self):
         from .resposta_enquete import RespostaEnquete
@@ -79,6 +96,15 @@ class Enquete(models.Model):
 
     def __str__(self):
         return self.titulo
+
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
+        super(Enquete, self).save(*args, **kwargs)
 
     class Meta:
         app_label = "enquetes"

@@ -10,7 +10,7 @@ __status__ = "Production"
 from django.db import models
 from .estado import Estado
 from datetime import datetime
-
+from crum import get_current_user
 
 class Cidade(models.Model):
     """
@@ -38,12 +38,37 @@ class Cidade(models.Model):
         auto_now=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     @property
     def pais(self):
         return self.estado.pais
 
     def __str__(self):
         return self.nome
+
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
+        super(Cidade, self).save(*args, **kwargs)
 
     class Meta:
         app_label = "core"

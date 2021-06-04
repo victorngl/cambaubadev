@@ -5,8 +5,8 @@ from datetime import datetime
 from django.db.models import fields
 from .atividade_extra import AtividadeExtra
 from escolas.models import Aluno
-from crum import get_current_user
 from django.core.exceptions import ValidationError
+from crum import get_current_user
 
 class InscricaoAtividadeExtra(models.Model):
     """
@@ -44,6 +44,22 @@ class InscricaoAtividadeExtra(models.Model):
         auto_now_add=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     def validate_unique(self,exclude=None):
         try:
             super(InscricaoAtividadeExtra,self).validate_unique()
@@ -56,6 +72,8 @@ class InscricaoAtividadeExtra(models.Model):
             user = None
         if not self.pk:
             self.usuario_inscricao = user
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
         super(InscricaoAtividadeExtra, self).save(*args, **kwargs)
 
     def __str__(self):

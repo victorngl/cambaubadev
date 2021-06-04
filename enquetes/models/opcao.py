@@ -3,6 +3,7 @@ from datetime import datetime
 from django_quill.fields import QuillField
 from .enquete import Enquete
 from .resposta_enquete import RespostaEnquete
+from crum import get_current_user
 
 class Opcao(models.Model):
     """
@@ -30,6 +31,22 @@ class Opcao(models.Model):
         auto_now_add=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     @property
     def quantidade_resposta_opcao(self):
         quantidade = RespostaEnquete.objects.filter(
@@ -41,6 +58,15 @@ class Opcao(models.Model):
 
     def __str__(self):
         return str(self.titulo)
+
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
+        super(Opcao, self).save(*args, **kwargs)
     
     class Meta:
         app_label = "enquetes"

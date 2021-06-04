@@ -3,8 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from .atividade_noturna import AtividadeNoturna
-from escolas.models import Aluno
 from crum import get_current_user
+from escolas.models import Aluno
+
 
 class InscricaoAtividadeNoturna(models.Model):
     """
@@ -42,6 +43,22 @@ class InscricaoAtividadeNoturna(models.Model):
         auto_now_add=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     def validate_unique(self,exclude=None):
         try:
             super(InscricaoAtividadeNoturna,self).validate_unique()
@@ -54,6 +71,8 @@ class InscricaoAtividadeNoturna(models.Model):
             user = None
         if not self.pk:
             self.usuario_inscricao = user
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
         super(InscricaoAtividadeNoturna, self).save(*args, **kwargs)
 
     def __str__(self):

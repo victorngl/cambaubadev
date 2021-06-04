@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from escolas.models import Turma
+from crum import get_current_user
 
 class AtividadeExtra(models.Model):
     """
@@ -65,6 +66,22 @@ class AtividadeExtra(models.Model):
         auto_now_add=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     @property
     def inscricoes_abertas(self):
         try:
@@ -82,6 +99,14 @@ class AtividadeExtra(models.Model):
     def __str__(self):
         return self.titulo
 
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
+        super(AtividadeExtra, self).save(*args, **kwargs)
     class Meta:
         app_label = "atividades"
         verbose_name = "Atividade Extra"

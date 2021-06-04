@@ -72,16 +72,13 @@ class Comunicado(models.Model):
 		on_delete=models.SET_NULL
 	)
 
-    def __str__(self):
-        return self.titulo
-
-    def save(self, *args, **kwargs):
-        user = get_current_user()
-        if user and not user.pk:
-            user = None
-        if not self.pk:
-            self.usuario_criacao = user
-        super(Comunicado, self).save(*args, **kwargs)
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
 
     @property
     def turmas_vinculadas(self):
@@ -90,7 +87,18 @@ class Comunicado(models.Model):
             turmas_formatadas+="{} ".format(turma)
             
         return (turmas_formatadas)
-
+    
+    def __str__(self):
+        return self.titulo
+    
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
+        super(Comunicado, self).save(*args, **kwargs)
     class Meta:
         app_label = "materiais_didaticos"
         verbose_name = "Comunicado"

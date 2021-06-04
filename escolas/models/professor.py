@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User, Group
 from core.models import Pessoa
+from crum import get_current_user
 
 class Professor(Pessoa):
     """

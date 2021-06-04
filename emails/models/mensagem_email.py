@@ -10,14 +10,13 @@ __status__ = "Production"
 from django.db import models
 from django.contrib.auth.models import User
 from .template_email import TemplateEmail
-from crum import get_current_user
 from django.template.loader import render_to_string
 from decouple import config
 from django.core.mail import EmailMessage
 from .destinatario import Destinatario
 from django.template.loader import get_template
 from django.template import Context, Template
-
+from crum import get_current_user
 
 
 class MensagemEmail(models.Model):
@@ -53,6 +52,15 @@ class MensagemEmail(models.Model):
 	)
 
 
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+
     def save(self, *args, **kwargs):
         user = get_current_user()
         criacao = False
@@ -61,6 +69,7 @@ class MensagemEmail(models.Model):
         if not self.pk:
             self.usuario_criacao = user
             criacao = True
+        self.usuario_atualizacao = user
         super(MensagemEmail, self).save(*args, **kwargs)
 
 
