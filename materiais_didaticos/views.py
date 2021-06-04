@@ -99,3 +99,24 @@ class ComunicadoListView(ListView):
             return super(ComunicadoListView, self).dispatch(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
+
+class ComunicadoTurmaListView(ListView):
+    model = Comunicado
+    paginate_by = 10
+    template_name='comunicados_list.html'
+    
+
+    def get_queryset(self, **kwargs):
+        queryset = super(ComunicadoTurmaListView, self).get_queryset().order_by('-data_alteracao').distinct()
+        if self.request.user.profile:
+            queryset = queryset.filter(
+                turmas__in = self.request.user.profile.turmas,
+                turmas = self.kwargs['pk']
+            ).order_by('-data_alteracao')
+        return queryset
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.has_perm('core.pode_acessar_materiais_didaticos'):
+            return super(ComunicadoTurmaListView, self).dispatch(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden()
