@@ -26,8 +26,8 @@ class AtividadeEscolarAdmin(admin.ModelAdmin):
     ]
 
     def get_queryset(self, request):
-        qs = super(AtividadeEscolarAdmin, self).get_queryset(request)
+        queryset = super(AtividadeEscolarAdmin, self).get_queryset(request)
         if not request.user.is_superuser:
-            qs = super(AtividadeEscolarAdmin, self).get_queryset(request).filter(usuario_criacao=request.user)
-            return qs
-        return qs.filter(usuario_criacao=request.user)
+            queryset = super(AtividadeEscolarAdmin, self).get_queryset(request).filter(usuario_criacao=request.user)
+            return queryset
+        return queryset
