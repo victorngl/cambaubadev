@@ -25,6 +25,8 @@ class AtividadeEscolarAdmin(admin.ModelAdmin):
         'materia',
     ]
 
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
+
     def get_queryset(self, request):
         queryset = super(AtividadeEscolarAdmin, self).get_queryset(request)
         if not request.user.is_superuser:
