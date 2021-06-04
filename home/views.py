@@ -88,7 +88,7 @@ def get_calendario(request):
         )
         turma = request.GET.get('turma')
         if turma:
-            calendarios_atividades = calendarios_atividades.filter(turmas__in=turma)
+            calendarios_atividades = calendarios_atividades.filter(turmas__in=turma).distinct()
         
     except:
         calendarios_atividades = CalendarioAtividade.objects.all()
