@@ -24,3 +24,10 @@ class AtividadeEscolarAdmin(admin.ModelAdmin):
     autocomplete_fields = [
         'materia',
     ]
+
+    def get_queryset(self, request):
+        qs = super(AtividadeEscolarAdmin, self).get_queryset(request)
+        if not request.user.is_superuser:
+            qs = super(AtividadeEscolarAdmin, self).get_queryset(request).filter(usuario_criacao=request.user)
+            return qs
+        return qs.filter(usuario_criacao=request.user)
