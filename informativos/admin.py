@@ -26,6 +26,8 @@ class BalanceteAdmin(admin.ModelAdmin):
         'grupo_usuarios',
     ]
 
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
+
 @admin.register(BalancoPatrimonial)
 class BalancoPatrimonialAdmin(admin.ModelAdmin):
     list_display = [
@@ -50,6 +52,8 @@ class BalancoPatrimonialAdmin(admin.ModelAdmin):
     filter_horizontal = [
         'grupo_usuarios',
     ]
+
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(DocumentacaoObra)
 class DocumentacaoObraAdmin(admin.ModelAdmin):
@@ -76,6 +80,8 @@ class DocumentacaoObraAdmin(admin.ModelAdmin):
         'grupo_usuarios',
     ]
 
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
+
 @admin.register(AtaReuniao)
 class AtaReuniaoAdmin(admin.ModelAdmin):
     list_display = [
@@ -92,3 +98,5 @@ class AtaReuniaoAdmin(admin.ModelAdmin):
     filter_horizontal = [
         'turmas',
     ]
+
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']

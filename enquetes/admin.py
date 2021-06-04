@@ -11,6 +11,7 @@ class OpcaoInline(admin.TabularInline):
 class EnqueteAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'data_expiracao']
     search_fields = ['titulo']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     filter_horizontal = ['grupo_usuarios']
     fieldsets = (
         ('Dados Principais', {'fields': [
@@ -36,6 +37,7 @@ class EnqueteAdmin(admin.ModelAdmin):
 class RespostaEnqueteAdmin(admin.ModelAdmin):
     list_display = ['id', 'enquete', 'usuario_votante']
     autocomplete_fields = ['enquete', 'usuario_votante']
+    readonly_fields = ['usuario_votante', 'usuario_atualizacao']
     list_filter = ['enquete']
     fieldsets = (
         (None, {'fields': [
@@ -49,6 +51,7 @@ class RespostaEnqueteAdmin(admin.ModelAdmin):
 class OpcaoAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'enquete']
     autocomplete_fields = ['enquete']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     list_filter = ['enquete']
     fieldsets = (
         ('Opções', {'fields': [

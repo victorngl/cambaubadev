@@ -9,6 +9,7 @@ class TurmaAdmin(admin.ModelAdmin):
     autocomplete_fields = ['serie']
     filter_horizontal = ['professores']
     search_fields = ['nome']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 
 @admin.register(Aluno)
@@ -51,6 +52,7 @@ class AlunoAdmin(ImportExportModelAdmin):
 class EscolaAdmin(admin.ModelAdmin):
     list_display = ['id', 'nome']
     search_fields = ['nome']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     
 @admin.register(Serie)
 class SerieAdmin(admin.ModelAdmin):
@@ -58,16 +60,19 @@ class SerieAdmin(admin.ModelAdmin):
     list_filter = ['tipo_serie', 'escola']
     autocomplete_fields = ['tipo_serie', 'escola']
     search_fields = ['nome']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(TipoSerie)
 class TipoSerieAdmin(admin.ModelAdmin):
     list_display = ['id', 'nome']
     search_fields = ['nome']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(Materia)
 class MateriaAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'foto_capa']
     search_fields = ['titulo']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(Professor)
 class ProfessorAdmin(ImportExportModelAdmin):

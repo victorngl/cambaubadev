@@ -7,6 +7,7 @@ class CalendarioAtividadeAdmin(admin.ModelAdmin):
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     autocomplete_fields = ['materia']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(Comunicado)
 class ComunicadoAdmin(admin.ModelAdmin):
@@ -14,6 +15,7 @@ class ComunicadoAdmin(admin.ModelAdmin):
     filter_horizontal = ['turmas']
     exclude = ['usuario_criacao']
     search_fields = ['titulo', 'data']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(MaterialDidatico)
 class MaterialDidaticoAdmin(admin.ModelAdmin):
@@ -21,11 +23,13 @@ class MaterialDidaticoAdmin(admin.ModelAdmin):
     filter_horizontal = ['turmas']
     search_fields = ['titulo', 'tipo', 'materia']
     autocomplete_fields = ['tipo', 'materia']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(TipoMaterialDidatico)
 class TipoMaterialDidaticoAdmin(admin.ModelAdmin):
     list_display = ['id', 'tipo']
     search_fields = ['tipo']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(Midia)
 class MidiaAdmin(admin.ModelAdmin):

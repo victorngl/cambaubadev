@@ -4,21 +4,21 @@ from .models import Oficina, AtividadeExtra, AtividadeNoturna, InscricaoOficina,
 class InscricaoOficinaInline(admin.TabularInline):
     model = InscricaoOficina
     fields = ['aluno', 'usuario_inscricao', 'data_criacao']
-    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao']
+    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao', 'usuario_criacao', 'usuario_atualizacao']
     can_delete = False
     extra = 0
 
 class InscricaoAtividadeExtraInline(admin.TabularInline):
     model = InscricaoAtividadeExtra
     fields = ['aluno', 'usuario_inscricao', 'data_criacao']
-    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao']
+    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao', 'usuario_criacao', 'usuario_atualizacao']
     can_delete = False
     extra = 0
 
 class InscricaoAtividadeNoturnaInline(admin.TabularInline):
     model = InscricaoAtividadeNoturna
     fields = ['aluno', 'usuario_inscricao', 'data_criacao']
-    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao']
+    readonly_fields = ['aluno', 'usuario_inscricao', 'data_criacao', 'usuario_criacao', 'usuario_atualizacao']
     can_delete = False
     extra = 0
 
@@ -26,6 +26,7 @@ class InscricaoAtividadeNoturnaInline(admin.TabularInline):
 class OficinaAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'vagas', 'quantidade_inscritos', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoOficinaInline] 
 
@@ -33,6 +34,7 @@ class OficinaAdmin(admin.ModelAdmin):
 class AtividadeExtraAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'vagas', 'quantidade_inscritos', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoAtividadeExtraInline]
 
@@ -40,18 +42,21 @@ class AtividadeExtraAdmin(admin.ModelAdmin):
 class AtividadeNoturnaAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'vagas', 'quantidade_inscritos', 'horario', 'data_inicial', 'data_final']
     filter_horizontal = ['turmas']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     search_fields = ['titulo', 'data_inicial', 'data_final']
     inlines = [InscricaoAtividadeNoturnaInline]
 
 @admin.register(Olimpiada)
 class OlimpiadaAdmin(admin.ModelAdmin):
     list_display = ['id', 'titulo', 'data_inicial', 'data_final']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     search_fields = ['titulo', 'data_inicial', 'data_final']
 
 @admin.register(InscricaoOficina)
 class InscricaoOficinaAdmin(admin.ModelAdmin):
     list_display = ['oficina', 'aluno', 'usuario_inscricao', 'data_criacao']
     list_filter = ['oficina', 'aluno']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
     autocomplete_fields = ['oficina', 'aluno']
     fieldsets = (
         (None, {'fields': (
