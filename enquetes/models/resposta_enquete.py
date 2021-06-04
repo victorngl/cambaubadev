@@ -50,6 +50,14 @@ class RespostaEnquete(models.Model):
         auto_now_add=True
     )
 
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     def __str__(self):
         return str(self.id)
 
@@ -59,6 +67,7 @@ class RespostaEnquete(models.Model):
             user = None
         if not self.pk:
             self.usuario_votante = user
+        self.usuario_atualizacao = user
         super(RespostaEnquete, self).save(*args, **kwargs)
         
     class Meta:

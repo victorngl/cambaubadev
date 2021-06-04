@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from .serie import Serie
 from .professor import Professor
+from crum import get_current_user
 
 class Turma(models.Model):
     """
@@ -36,12 +37,38 @@ class Turma(models.Model):
         auto_now_add=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     @property
     def comunicados_exibicao(self):
         return self.comunicado_set.all()[:10]
 
     def __str__(self):
         return self.nome
+
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
+        super(Turma, self).save(*args, **kwargs)
+
 
     class Meta:
         app_label="escolas"

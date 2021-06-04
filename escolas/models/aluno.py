@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, Group
 from datetime import datetime
 from core.models import Pessoa
 from .turma import Turma
+from crum import get_current_user
 
 class Aluno(Pessoa):
     """

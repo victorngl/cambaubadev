@@ -11,6 +11,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from core.models import Endereco
+from crum import get_current_user
 
 
 class Evento(models.Model):
@@ -50,6 +51,22 @@ class Evento(models.Model):
         null=True
     )
 
+    usuario_criacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_created',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
+    usuario_atualizacao = models.ForeignKey(
+		'auth.User', 
+		related_name='%(class)s_requests_modified',
+		blank=True, null=True,
+		default=None,
+		on_delete=models.SET_NULL
+	)
+
     data_criacao = models.DateTimeField(
         verbose_name="Data de Criação",
         default=datetime.now
@@ -57,6 +74,15 @@ class Evento(models.Model):
 
     def __str__(self):
         return self.nome
+
+    def save(self, *args, **kwargs):
+        user = get_current_user()
+        if user and not user.pk:
+            user = None
+        if not self.pk:
+            self.usuario_criacao = user
+        self.usuario_atualizacao = user
+        super(Evento, self).save(*args, **kwargs)
 
     class Meta:
         app_label = "calendario"
