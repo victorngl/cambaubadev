@@ -2,7 +2,7 @@ from django import template
 from enquetes.models import Enquete, RespostaEnquete
 from crum import get_current_user
 from django.db import connection
-from datetime import date
+from datetime import date, datetime, timedelta
  
 register = template.Library()
 
@@ -24,11 +24,13 @@ def bloquear_enquete(enquete):
         usuario_votante=user, 
         enquete=enquete 
     ).exists()
-
+    data_expiracao = date.today() + timedelta(days=1)
     if enquetes_respondidas and enquete.voto_unico:
         return False # Se respondeu a enquete && se o voto é unico
-    else: 
-        if enquete.data_expiracao < date.today(): 
+    else:
+        if enquete.data_expiracao:
+            data_expiracao = enquete.data_expiracao
+        if data_expiracao < date.today(): 
             return False # Se a data foi inspirada
         else:
             return True # Se não respondeu a enquete
