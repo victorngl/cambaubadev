@@ -14,10 +14,10 @@ from atividades_escolares.models import AtividadeEscolar
 
 @login_required
 def home(request):
-    def data_limite(x):
-        return True
+
 
     try:
+        data = date.today() 
         perfil = 'Sem Vínculo'
         pagina_atual = request.GET.get('page', 1)
         alunos = None
@@ -45,7 +45,6 @@ def home(request):
                     Q(responsavel4=request.user) | 
                     Q(responsavel5=request.user)
                 )  
-                data = date.today() 
                 enquetes = Enquete.objects.all()
 
                 template_name = 'home_responsavel.html'
