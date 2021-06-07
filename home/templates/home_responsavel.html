@@ -188,10 +188,11 @@
           <div class="card-body">
             <ul class="list-group">
               {% for enquete in enquetes %}
-              <li class="list-group-item">
-
-                <a href="{% url 'enquete_detail' enquete.id %}">{{enquete}}</a>
-              </li>
+                {% if enquete.data_expiracao >= data_hoje or enquete.data_expiracao == Null%}
+                  <li class="list-group-item">
+                    <a href="{% url 'enquete_detail' enquete.id %}">{{enquete}}</a>
+                  </li>
+                {% endif %}
               {% endfor %}
           </div>
         </div>
