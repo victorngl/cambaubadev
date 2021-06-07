@@ -4,6 +4,7 @@ from datetime import datetime
 from djrichtextfield.models import RichTextField
 from .enquete import Enquete
 from crum import get_current_user
+import re
 
 
 class RespostaEnquete(models.Model):
@@ -57,6 +58,15 @@ class RespostaEnquete(models.Model):
 		default=None,
 		on_delete=models.SET_NULL
 	)
+
+    @property
+    def opcao_escolha(self):
+        from enquetes.models.opcao import Opcao
+        escolha = Opcao.objects.get(id = self.opcao)
+        opcao = escolha.titulo.html
+        opcao = opcao.replace("<p>", "")
+        opcao = opcao.replace("</p>", "")
+        return opcao
 
     def __str__(self):
         return str(self.id)

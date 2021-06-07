@@ -37,13 +37,13 @@ class EnqueteAdmin(admin.ModelAdmin):
 class RespostaEnqueteAdmin(admin.ModelAdmin):
     list_display = ['id', 'enquete', 'usuario_votante']
     autocomplete_fields = ['enquete', 'usuario_votante']
-    readonly_fields = ['usuario_votante', 'usuario_atualizacao']
+    readonly_fields = ['usuario_votante', 'usuario_atualizacao', 'opcao_escolha']
     list_filter = ['enquete']
     fieldsets = (
         (None, {'fields': [
 			'enquete',
-            'opcao',
-            'usuario_votante'
+            'usuario_votante',
+            'opcao_escolha',
         ]}),
     )
 
