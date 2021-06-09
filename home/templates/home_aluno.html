@@ -119,12 +119,14 @@
                     <div class="card-body">
                         <ul class="list-group">
                             {% for atividade in aluno.turma.atividadeescolar_set.all %}
-
-                            <li class="list-group-item">
-                                <a href="{% url 'atividade_escolar_detail' atividade.id %}">
-                                    {{atividade}} </a>- {{aluno.nome}}
-
-                            </li>
+                            <div>
+                                <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
+                                <li class="list-group-item">
+                                    <a href="{% url 'atividade_escolar_detail' atividade.id %}">
+                                        {{atividade}} </a>- {{aluno.nome}}
+                                </li>
+                            </div>
+                            
                             {% endfor %}
 
                         </ul>

@@ -152,10 +152,14 @@
             <ul class="list-group">
               {% for aluno in alunos %}
               {% for atividade in aluno.turma.atividadeescolar_set.all %}
-              <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
+              <div>
+                <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
+                <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
                 <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> -
                 <span>{{aluno.nome}}</span>
               </li>
+              </div>
+              
               {% endfor %}
               {% endfor %}
             </ul>
