@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "c:\\Users\\antonio.f.filho\\Documents\\Personal\\venvs\\venvCambauba\\Scripts\\python.exe",
+    "python.pythonPath": "/home/rafael/Documentos/estagio/estagio-django/projeto-cambauba/.venv_cambauba/bin/python",
 
     // SASS COMPILE ============================================
     "liveSassCompile.settings.formats": [{

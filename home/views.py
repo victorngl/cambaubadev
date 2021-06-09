@@ -1,3 +1,4 @@
+from enquetes.models.resposta_enquete import RespostaEnquete
 from informativos.models.documentacao_obra import DocumentacaoObra
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, permission_required
@@ -13,7 +14,10 @@ from atividades_escolares.models import AtividadeEscolar
 
 @login_required
 def home(request):
+
+
     try:
+        data = date.today() 
         perfil = 'Sem Vínculo'
         pagina_atual = request.GET.get('page', 1)
         alunos = None
@@ -40,8 +44,9 @@ def home(request):
                     Q(responsavel3=request.user) | 
                     Q(responsavel4=request.user) | 
                     Q(responsavel5=request.user)
-                )   
+                )  
                 enquetes = Enquete.objects.all()
+
                 template_name = 'home_responsavel.html'
             else:
                 aluno=Aluno.objects.filter(
@@ -56,6 +61,7 @@ def home(request):
         request,
         template_name,
         {   
+            'data_hoje' : data,
             'aemc_noticias' : aemc_noticias,
             'aluno': aluno,
             'enquetes': enquetes,
