@@ -228,9 +228,9 @@
                             <div class="top__division">
                                 <div class="card__img">
                                     {% if comunicado.foto %}
-                                    <img src="{{comunicado.foto.url}}" alt="">
+                                    <img class="card__img" style="object-fit: fit;" src="{{comunicado.foto.url}}" alt="">
                                     {% else %}
-                                    <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                                    <img class="card__img" style="object-fit: fit;" src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
                                     {% endif %}
                                 </div>
                                 <div class="card__titulo">
