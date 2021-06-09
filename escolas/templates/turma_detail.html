@@ -138,7 +138,7 @@
 
                     <div class="sidebar__wrapper">
                         <span class="sidebar-materia">{{atividade_escolar.materia}}</span>
-                        <span class="sidebar-data">{{atividade_escolar.data_inicial}}</span>
+                        <span class="sidebar-data">{{atividade_escolar.data_final}}</span>
                     </div>
                 </div>
                 {% endfor %}
@@ -182,9 +182,9 @@
                         <div class="notica__wrapper">
                             <div class="top__division">
                                 {% if comunicado.foto %}
-                                <img class="card__img" src="{{comunicado.foto.url}}" alt="">
+                                <img class="card__img" style="object-fit: fit;" src="{{comunicado.foto.url}}" alt="">
                                 {% else %}
-                                <img class="card__img" src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                                <img class="card__img" style="object-fit: fit;" src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
                                 {% endif %}
                                 <div class="card__titulo">
                                     <h5 class="m-0">{{comunicado.titulo}}</h5>

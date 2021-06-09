@@ -1,9 +1,35 @@
 {% load static %}
 {% load home_tags %}
 
+<style>
+/* width */
+teste::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+teste::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+teste::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+teste::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+</style>
+
+
 <div class="side-content-wrap">
     <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
-        <ul class="navigation-left" style="overflow-y: auto;">
+        <div class = "teste" style="overflow-y: auto!important;">
+        <ul class="navigation-left teste" >
             <li class="nav-item">
                 <a class="nav-item-hold" href="{% url 'home' %}">
                     <ion-icon src="{% static 'assets/images/icons/house2.svg' %}"></ion-icon>
@@ -75,6 +101,7 @@
                 <div class="triangle"></div>
             </li>
         </ul>
+        </div>
     </div>
     <div class="sidebar-overlay"></div>
 </div>

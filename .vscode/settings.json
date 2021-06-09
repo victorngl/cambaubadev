@@ -1,8 +1,6 @@
 {
-    "python.pythonPath": "/home/rafael/Documentos/estagio/estagio-django/projeto-cambauba/.venv_cambauba/bin/python",
-
-    // SASS COMPILE ============================================
-    "liveSassCompile.settings.formats": [{
+    "liveSassCompile.settings.formats": [
+        {
             "format": "compressed", //compressed or expanded 
             "extensionName": ".compilado.css",
             "savePath": "/home/static/assets/styles/css" //diretorio para salvar o arquivo .css

@@ -152,10 +152,14 @@
             <ul class="list-group">
               {% for aluno in alunos %}
               {% for atividade in aluno.turma.atividadeescolar_set.all %}
-              <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
+              <div>
+                <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
+                <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
                 <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> -
                 <span>{{aluno.nome}}</span>
               </li>
+              </div>
+              
               {% endfor %}
               {% endfor %}
             </ul>
@@ -251,31 +255,32 @@
               {% for comunicado in aluno.turma.comunicados_exibicao %}
               
               <div class="card card-ecommerce-3 swiper-slide o-hidden mb-4 noticia_destaque">
-                <div class="notica__wrapper">
-                  <div class="top__division">
-                    <div class="card__img">
-                      {% if comunicado.foto %}
-                      <img src="{{comunicado.foto.url}}" alt="">
-                      {% else %}
-                      <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
-                      {% endif %}
-                    </div>
-                    <div class="card__titulo">
-                      <h5 class="m-0">{{comunicado.titulo}} </h5>
-                      <p>{{aluno.nome}}</p>
-                    </div>
-                  </div>
+                        <div class="notica__wrapper">
+                            <div class="top__division">
+                                {% if comunicado.foto %}
+                                <img class="card__img" style="object-fit: fit;" src="{{comunicado.foto.url}}" alt="">
+                                {% else %}
+                                <img class="card__img" style="object-fit: fit;" src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                                {% endif %}
+                                <div class="card__titulo">
+                                    <h5 class="m-0">{{comunicado.titulo}}</h5>
+                                    <p>{{aluno.nome}}</p>
+                                </div>
+                            </div>
 
-                  <div class="card__texto">
-                    <span> {{comunicado.resumo.html|safe}} </span>
-                  </div>
+                            <div class="card__texto">
+                                <span>
+                                    {{comunicado.resumo.html|safe}}
+                                </span>
+                            </div>
 
-                  <div class="leia-mais">
-                    <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais
-                      <ion-icon name="arrow-forward-outline"></ion-icon></a>
-                  </div>
-                </div>
-              </div>
+                            <div class="leia-mais">
+                                <a href="{% url 'comunicado_detail' comunicado.id %}">Leia mais <ion-icon
+                                        name="arrow-forward-outline"></ion-icon></a>
+                            </div>
+                        </div>
+                    </div>
+          
               {% endfor %}
               {% endfor %}
             </div>
@@ -299,9 +304,9 @@
                   <div class="top__division">
                     <div class="card__img">
                       {% if comunicado.foto %}
-                      <img src="{{comunicado.foto.url}}" alt="">
+                      <img class="card__img" style="object-fit: fit;" src="{{comunicado.foto.url}}" alt="">
                       {% else %}
-                      <img src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
+                      <img class="card__img" style="object-fit: fit;" src="{% static 'assets/images/capa_comunicado.png' %}" alt="">
                       {% endif %}
                     </div>
                     <div class="card__titulo">
