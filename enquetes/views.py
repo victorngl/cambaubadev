@@ -81,16 +81,7 @@ class RespostaEnqueteCreateView(CreateView):
         elif enquete.voto_unico and enquetes_respondidas.count() < 1 and enquete.data_expiracao >= date.today() and request.user.has_perm('core.pode_acessar_enquetes'):
             return super(RespostaEnqueteCreateView, self).dispatch(request, *args, **kwargs)
         else:
-            enquetes = Enquete.objects.all()
-            data_atual = date.today()
-            return render(
-                        request,
-                        'enquetes_list.html',
-                        {
-                            'data_atual' : data_atual,
-                            'enquetes': enquetes
-                    }
-    )
+           return HttpResponseForbidden()
 
     
     def get_success_url(self): 
