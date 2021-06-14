@@ -26,11 +26,11 @@
                     {% for opcao in object.opcao_set.all %}
                         <li>
                             {{opcao.titulo.html|safe}}
-                            <p class="quantidade_opcoes">{{opcao.quantidade_resposta_opcao}} voto(s)</p>
+                            {% comment %} <p style="position:absolute;"class="quantidade_opcoes">{{opcao.quantidade_resposta_opcao}} voto(s)</p> {% endcomment %}
                             <div class="bar__container">
                                 {% widthratio opcao.quantidade_resposta_opcao object.quantidade_respostas 100 as this_option %}
                                 <span class="percent" style="--percent-var: {{this_option}}%;"></span>
-                                <span class="dados">{{this_option}}%</span>
+                                <span style="z-index:1;" style= "position: absolute;"class="dados">{{this_option}}%</span>
                             </div>
                         </li>
                     {% endfor %}
