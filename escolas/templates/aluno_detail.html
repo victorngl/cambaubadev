@@ -120,13 +120,23 @@
                             {% for atividade in aluno.turma.atividadeescolar_set.all %}
                             <div>
                             
-                                <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
-                                <li class="list-group-item">
-                                    <a href="{% url 'atividade_escolar_detail' atividade.id %}">
-                                        {{atividade}} </a>- {{aluno.nome}}
+                                <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}"/>
+                                    <li class="list-group-item">
+                                    <a href="{% url 'atividade_escolar_detail' atividade.id %}" class="link-area"></a>
+                                    
+                                        <div style="display: flex;justify-content: space-between;padding-inline-start: 5px;">
+                                            <h5 class="sidebar-titulo mt-0">{{atividade.titulo}}</h5>
+                                        </div>
+                                        <div class="sidebar__wrapper" style="display: flex;justify-content: space-between;">
+                                            <span class="sidebar-materia">{{atividade.materia}}</span>
+                                            <span class="sidebar-data">{{atividade.data_final}}</span>
+                                        </div>
 
-                                </li>
+                                    </li>
                             </div>
+
+
+                                   
                             {% endfor %}
 
                         </ul>
