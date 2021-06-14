@@ -95,5 +95,5 @@ class BalancoPatrimonial(models.Model):
 
     class Meta:
         app_label = "informativos"
-        verbose_name = "Balanço Patrimonial"
-        verbose_name_plural = "Balanços Patrimoniais"
+        verbose_name = "Relatório Trimestral"
+        verbose_name_plural = "Relatórios Trimestrais"
