@@ -1,4 +1,3 @@
-from atividades_escolares.models.anexos_atividade_escolar import AnexosAtividadeEscolar
 from django.db import models
 from datetime import datetime
 from escolas.models import Turma, Materia
@@ -42,12 +41,6 @@ class AtividadeEscolar(models.Model):
 		blank=True, null=True
     )
     
-    anexos = models.ManyToManyField(
-        AnexosAtividadeEscolar,
-        blank=True,
-        verbose_name="Anexo"
-    )
-
     turmas = models.ManyToManyField(
         Turma,
         verbose_name=("Turmas"),

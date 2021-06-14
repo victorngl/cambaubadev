@@ -17,7 +17,6 @@ def atividades_escolares(request):
 
 class AtividadesEscolaresDetailView(DetailView):
     model = AtividadeEscolar
-    
     def dispatch(self, request, *args, **kwargs):
         if request.user.has_perm('core.pode_acessar_atividades_escolares'):
             return super(AtividadesEscolaresDetailView, self).dispatch(request, *args, **kwargs)

@@ -1,7 +1,8 @@
+from atividades_escolares.models.atividade_escolar import AtividadeEscolar
 from django.db import models
 from crum import get_current_user
 
-class AnexosAtividadeEscolar(models.Model):
+class AnexoAtividadeEscolar(models.Model):
     """
        Classe Anexo Atividade Escolar implementa as funções relacionadas aos anexos das atividades escolares.
     """
@@ -16,6 +17,13 @@ class AnexosAtividadeEscolar(models.Model):
         verbose_name="Anexo",
         upload_to ='uploads/',
         blank=True
+    )
+
+    atividade_escolar = models.ForeignKey(
+        AtividadeEscolar,
+        verbose_name="Atividade Escolar",
+        on_delete=models.SET_NULL,
+        null=True
     )
 
     data_alteracao = models.DateTimeField(
@@ -54,7 +62,7 @@ class AnexosAtividadeEscolar(models.Model):
         if not self.pk:
             self.usuario_criacao = user
         self.usuario_atualizacao = user
-        super(AnexosAtividadeEscolar, self).save(*args, **kwargs)
+        super(AnexoAtividadeEscolar, self).save(*args, **kwargs)
 
 
     class Meta:

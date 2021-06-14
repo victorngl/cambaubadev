@@ -1,7 +1,12 @@
-from atividades_escolares.models.anexos_atividade_escolar import AnexosAtividadeEscolar
+from atividades_escolares.models.anexo_atividade_escolar import AnexoAtividadeEscolar
 from django.contrib import admin
 from .models import AtividadeEscolar
+from atividades_escolares import models
 
+class AnexoAtividadeEscolarInline(admin.TabularInline):
+    model = AnexoAtividadeEscolar
+    extra = 0 
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
 @admin.register(AtividadeEscolar)
 class AtividadeEscolarAdmin(admin.ModelAdmin):
@@ -20,11 +25,14 @@ class AtividadeEscolarAdmin(admin.ModelAdmin):
 
     filter_horizontal = [
         'turmas',
-        'anexos'
     ]
 
     autocomplete_fields = [
         'materia',    
+    ]
+
+    inlines =[
+        AnexoAtividadeEscolarInline
     ]
 
     readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
@@ -35,10 +43,3 @@ class AtividadeEscolarAdmin(admin.ModelAdmin):
             queryset = super(AtividadeEscolarAdmin, self).get_queryset(request).filter(usuario_criacao=request.user)
             return queryset
         return queryset
-
-
-@admin.register(AnexosAtividadeEscolar)
-class AnexosAtividadeEscolarAdmin(admin.ModelAdmin):
-    list_display = ['id', 'titulo']
-    search_fields = ['titulo']
-    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']

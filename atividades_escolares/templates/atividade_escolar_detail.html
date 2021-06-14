@@ -52,10 +52,10 @@
                         <div class="col-md-4 col-6 card__detalhes">
                             <div class="mb-4">
                                 <p class="text-primary mb-1"><ion-icon name="attach-outline"></ion-icon>Anexo</p>
-                                {% if object.anexos %}
-                                {% for arquivos in object.anexos.all %}
-                                    <span>{{arquivos.titulo}} - <a href="{{arquivos.anexo.url}}">Download</a></span><br>
-                                {% endfor %}
+                                {% if object.anexoatividadeescolar_set.all %}
+                                    {% for arquivo in object.anexoatividadeescolar_set.all %}
+                                        <span>{{arquivo.titulo}} - <a href="{{arquivo.anexo.url}}">Download</a></span><br>
+                                    {% endfor %}
                                 {% endif %}
                             </div>
                         </div>

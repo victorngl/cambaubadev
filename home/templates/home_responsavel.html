@@ -152,13 +152,24 @@
             <ul class="list-group">
               {% for aluno in alunos %}
               {% for atividade in aluno.turma.atividadeescolar_set.all %}
-              <div>
+              
                 <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
                 <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
-                <a href="{% url 'atividade_escolar_detail' atividade.id %}">{{atividade.titulo}} </a> -
-                <span>{{aluno.nome}}</span>
+                    <a href="{% url 'atividade_escolar_detail' atividade.id %}" class="link-area"></a>
+                    <div style="display: flex;justify-content: space-between;padding-inline-start: 5px;">
+                      <h5 class="sidebar-titulo mt-0">{{atividade.titulo}}</h5>
+                      <p>{{aluno.nome}}</p>
+                    
+                    </div>
+                    
+
+                    <div class="sidebar__wrapper" style="display: flex;justify-content: space-between;">
+                        <span class="sidebar-materia">{{atividade.materia}}</span>
+                        <span class="sidebar-data">{{atividade.data_final}}</span>
+                    </div>
+                </div>
               </li>
-              </div>
+              
               
               {% endfor %}
               {% endfor %}
@@ -167,7 +178,8 @@
         </div>
       </div>
       
-      <div class="card__noticias">
+      
+      
         <div class="card__enquetes">
           <div class="card-header">
             <h1 class="titulosecoes"><ion-icon name="newspaper-outline"></ion-icon> AEMC Notícias</h1>
@@ -181,7 +193,7 @@
               {% endfor %}
           </div>
       </div>
-      </div>
+      
        
 
       <div class="card__enquetes">
