@@ -1,7 +1,72 @@
 {% extends 'admin/change_form.html' %}
 {% load static %}
+{% load bootstrap %}
 
-{% block admin_change_form_document_ready %}
-{{ block.super }}
-<script src="{% static 'enquetes/formset_handlers.js' %}"></script>
+{% block extra_style %}
+<!--Load the AJAX API-->
+<!--Load the AJAX API-->
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% endblock %}
+{% block after_field_sets %}
+<link rel="stylesheet" href="{% static 'assets/styles/css/enqueteStyle.compilado.css' %}">
+
+
+    <div class="module aligned">
+
+    <main class="enquete__resultados">
+    
+        <div class="enquetes-details card user-profile o-hidden mb-4">
+            <div class="card-body enquete__percent">
+                <h2>Resultado</h2>
+                <hr>
+                    <ul style="display: contents;">
+                        {% for opcao in adminform.form.instance.opcao_set.all %}
+                            <li style="margin:5px;">
+                                {{opcao.titulo.html|safe}}
+                                {% comment %} <p style="position:absolute;"class="quantidade_opcoes">{{opcao.quantidade_resposta_opcao}} voto(s)</p> {% endcomment %}
+                                <div class="bar__container">
+                                    {% widthratio opcao.quantidade_resposta_opcao adminform.form.instance.quantidade_respostas 100 as this_option %}
+                                    <span class="percent" style="--percent-var: {{this_option}}%;"></span>
+                                    <span style="z-index:1;" style= "position: absolute;"class="dados">{{this_option}}%</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="row">
+                
+
+                    <div class="col-12 respostas__enquete">
+                        <hr>
+                        <h2>Resposta(s) ({{adminform.form.instance.quantidade_respostas}}):</h2>
+                        <table class="table table-striped" id="enquetes">
+                            <thead>
+                                <tr>
+                                    <th>Opção</th>
+                                    <th>Quantidade de votos</th>
+                                    <th>Porcentagem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for opcao in adminform.form.instance.opcao_set.all %}
+                                <tr>
+                                    <td id='questao'>{{opcao.titulo.html|safe}}</td>
+                                    <td id='quantidade_questao'>{{opcao.quantidade_resposta_opcao}}</td>
+                                    <td>{% widthratio opcao.quantidade_resposta_opcao adminform.form.instance.quantidade_respostas 100 %}%
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </main>
+    </div>
+
+
 {% endblock %}

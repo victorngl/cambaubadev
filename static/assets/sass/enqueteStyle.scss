@@ -1,0 +1,137 @@
+@import "../sass/utilities/variaveis__mixins";
+@import "../sass/utilities/responsivo";
+@import "../sass/utilities/animation";
+@import "../sass/utilities/fonts";
+
+$cor-azul-1: #2280C1;
+$cor-azul-2: #3BA0E6;
+$cor-azul-3: #1E3C7D;
+$cor-azul-4: #0A1E2B;
+$cor-vermelho-1:#A41B22;
+$cor-cinza-1: rgba(243, 243, 243, 0.85);
+// bordas e sombras 
+$borda-sm: 1px solid #dadce0;
+$shadow-sm: 0 3px 4px rgba(0, 0, 0, 0.05);
+$border-radius: 8px;
+$degrade-1: linear-gradient(to right, #2280c1, #0083b0);
+
+
+$font-gilroy: 'Gilroy',
+arial;
+
+.enquete__resultados {
+    .respostas__enquete {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h4 {
+            text-align: center;
+            font-size: 20px;
+        }
+    }
+
+
+    $base-color: #85ff95;
+
+    @for $i from 1 through 10 {
+
+        ul li:nth-child(10n + #{$i}) {
+            .percent {
+                // background: grayscale($base-color, $i * 2%);
+                background-color: lighten($base-color, $i * 2%) !important;
+            }
+        }
+    }
+
+    .data__row {
+        p {
+            margin-right: 5px;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .grafico__enquete {
+        h4 {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        [dir="ltr"] {
+            margin: 0 auto;
+        }
+    }
+
+    .text-primary {
+        // font-family: $font-gilroy;
+        display: inline-flex;
+        align-items: center;
+        font-size: 18px;
+
+        ion-icon {
+            margin-right: 5px;
+        }
+    }
+
+    .enquete__percent {
+        margin-bottom: 30px;
+
+        ul {
+            display: grid;
+            gap: 12px;
+            padding-left: 0;
+
+            li {
+                display: inline-flex;
+                align-items: center;
+                padding: 0;
+                border-radius: 20px;
+                height: 45px;
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+                border: $borda-sm;
+
+                p {
+                    display: inline-flex;
+                    align-items: center;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    left: 20px;
+                    z-index: 2;
+                    color: black;
+                    font-family: $font-gilroy;
+                    letter-spacing: .5px;
+                }
+
+                .percent {
+                    --percent-var: 0%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    height: 110%;
+                    transition: .3s linear;
+                    background: rgb(163, 255, 175);
+                    width: var(--percent-var);
+                    z-index: 1;
+                }
+
+                .dados {
+                    position: absolute;
+                    right: 20px;
+                    font-family: $font-gilroy;
+                    color: black;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    display: inline-block;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+}
