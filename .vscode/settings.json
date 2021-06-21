@@ -14,7 +14,7 @@
      ], */
     "liveSassCompile.settings.includeItems": [
         "static/assets/sass/style.scss",
-
+        "static/assets/sass/enqueteStyle.scss",
     ],
 
     //config que gera .map 
