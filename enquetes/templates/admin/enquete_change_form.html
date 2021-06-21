@@ -17,12 +17,12 @@
     <main class="enquete__resultados">
     
         <div class="enquetes-details card user-profile o-hidden mb-4">
-            <div class="card-body">
+            <div class="card-body enquete__percent">
                 <h2>Resultado</h2>
                 <hr>
-                    <ul>
+                    <ul style="display: contents;">
                         {% for opcao in adminform.form.instance.opcao_set.all %}
-                            <li>
+                            <li style="margin:5px;">
                                 {{opcao.titulo.html|safe}}
                                 {% comment %} <p style="position:absolute;"class="quantidade_opcoes">{{opcao.quantidade_resposta_opcao}} voto(s)</p> {% endcomment %}
                                 <div class="bar__container">
@@ -40,7 +40,7 @@
 
                     <div class="col-12 respostas__enquete">
                         <hr>
-                        <h4>Resposta(s) ({{adminform.form.instance.quantidade_respostas}}):</h4>
+                        <h2>Resposta(s) ({{adminform.form.instance.quantidade_respostas}}):</h2>
                         <table class="table table-striped" id="enquetes">
                             <thead>
                                 <tr>
