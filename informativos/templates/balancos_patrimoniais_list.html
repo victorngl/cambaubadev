@@ -21,12 +21,14 @@
                 </thead>
                 <tbody>
                     {% for balanco_patrimonial in balancos_patrimoniais %}
-                    <tr>
-                        <td>{{balanco_patrimonial.titulo}}</td>
-                        <td>{{balanco_patrimonial.data|default_if_none:'-'}}</td>
-                        <td>{{balanco_patrimonial.escola}}</td>
-                        <td><a class="detalhes" href="{% url 'balanco_patrimonial_detail' balanco_patrimonial.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
-                    </tr>
+                    {% if balanco_patrimonial.data <= data_hoje or not balanco_patrimonial.data %}
+                        <tr>
+                            <td>{{balanco_patrimonial.titulo}}</td>
+                            <td>{{balanco_patrimonial.data|default_if_none:'-'}}</td>
+                            <td>{{balanco_patrimonial.escola}}</td>
+                            <td><a class="detalhes" href="{% url 'balanco_patrimonial_detail' balanco_patrimonial.id %}"><i class="fas fa-search-plus"></i> Detalhes</a></td>
+                        </tr>
+                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
