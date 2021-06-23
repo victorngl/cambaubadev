@@ -1,4 +1,5 @@
 from datetime import datetime
+from escolas.models.aluno import Aluno
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.contrib.auth.decorators import permission_required
@@ -21,7 +22,29 @@ def oficinas(request):
 
 @permission_required("core.pode_acessar_atividades")
 def atividades_extras(request):
-	atividades_extras = AtividadeExtra.objects.all()
+	perfil = request.user.profile.perfil
+	atividades_extras_filtro = []
+	atividades_extras = []
+	if perfil == "Aluno":
+		aluno = Aluno.objects.get(usuario=request.user)
+		atividades_extras = AtividadeExtra.objects.get(turmas=aluno.turma)
+	elif perfil == 'Responsável' or perfil == 'Professor/Responsavel':
+		alunos=Aluno.objects.filter(
+                Q(responsavel1=request.user) | 
+                Q(responsavel2=request.user) | 
+                Q(responsavel3=request.user) | 
+                Q(responsavel4=request.user) | 
+                Q(responsavel5=request.user)
+                ) 
+		atividades_extras_completo = AtividadeExtra.objects.all() 
+		for aluno in alunos:
+			atividades_extras_filtro.append(AtividadeExtra.objects.filter(turmas=aluno.turma))
+		for i in range(atividades_extras_filtro.__len__()):
+			for atividade_extra in atividades_extras_completo:
+				for atividade_filtro in atividades_extras_filtro[i]:
+					if(atividade_filtro == atividade_extra):
+						atividades_extras.append(atividade_filtro)
+		atividades_extras = list(set(atividades_extras))
 	return render(
 		request,
 		'atividades_extras_list.html',
