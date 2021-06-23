@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView
 from .models import Balancete, BalancoPatrimonial, DocumentacaoObra, AtaReuniao
 from django.http import HttpResponseForbidden
+from datetime import date
 
 @permission_required("core.pode_acessar_informativos")
 def balancetes(request):
@@ -18,10 +19,12 @@ def balancetes(request):
 @permission_required("core.pode_acessar_informativos")
 def balancos_patrimoniais(request):
     balancos_patrimoniais = BalancoPatrimonial.objects.all()
+    data_hoje = date.today();
     return render(
         request,
         'balancos_patrimoniais_list.html',
         {
+            'data_hoje' : data_hoje,
             'balancos_patrimoniais': balancos_patrimoniais
         }
     )
