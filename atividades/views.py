@@ -27,7 +27,7 @@ def atividades_extras(request):
 	atividades_extras = []
 	if perfil == "Aluno":
 		aluno = Aluno.objects.get(usuario=request.user)
-		atividades_extras.append(AtividadeExtra.objects.get(turmas=aluno.turma))
+		atividades_extras.append(AtividadeExtra.objects.filter(turmas=aluno.turma))
 	elif perfil == 'Responsável' or perfil == 'Professor/Responsavel':
 		alunos=Aluno.objects.filter(
                 Q(responsavel1=request.user) | 
