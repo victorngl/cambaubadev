@@ -185,9 +185,11 @@
           <div class="card-body">
             <ul class="list-group">
               {% for aemc in aemc_noticias %}
-              <li class="list-group-item">
-                <a href="{% url 'documentacao_obra_detail' aemc.id %}">{{aemc.titulo}}</a>
-              </li>
+                {% if aemc.data <= hoje or not aemc.data %}
+                  <li class="list-group-item">
+                    <a href="{% url 'documentacao_obra_detail' aemc.id %}">{{aemc.titulo}}</a>
+                  </li>
+                {% endif %}
               {% endfor %}
           </div>
       </div>

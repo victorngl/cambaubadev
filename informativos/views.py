@@ -8,10 +8,12 @@ from datetime import date
 @permission_required("core.pode_acessar_informativos")
 def balancetes(request):
     balancetes = Balancete.objects.all()
+    data_hoje = date.today()
     return render(
         request,
         'balancetes_list.html',
         {
+            'data_hoje': data_hoje,
             'balancetes': balancetes
         }
     )
@@ -19,7 +21,7 @@ def balancetes(request):
 @permission_required("core.pode_acessar_informativos")
 def balancos_patrimoniais(request):
     balancos_patrimoniais = BalancoPatrimonial.objects.all()
-    data_hoje = date.today();
+    data_hoje = date.today()
     return render(
         request,
         'balancos_patrimoniais_list.html',
@@ -32,10 +34,12 @@ def balancos_patrimoniais(request):
 @permission_required("core.pode_acessar_informativos")
 def documentacoes_obras(request):
     documentacoes_obras = DocumentacaoObra.objects.all()
+    data_hoje = date.today()
     return render(
         request,
         'documentacoes_obras_list.html',
         {
+            'data_hoje' : data_hoje,
             'documentacoes_obras': documentacoes_obras
         }
     )
@@ -43,10 +47,12 @@ def documentacoes_obras(request):
 @permission_required("core.pode_acessar_informativos")
 def atas_reunioes(request):
     atas_reunioes = AtaReuniao.objects.all()
+    data_hoje = date.today()
     return render(
         request,
         'atas_reunioes_list.html',
         {
+            'data_hoje': data_hoje,
             'atas_reunioes': atas_reunioes
         }
     )
