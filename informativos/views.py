@@ -59,9 +59,10 @@ def atas_reunioes(request):
         }
     )
 
+
+
 @permission_required("core.pode_acessar_informativos")
-def grupo_de_pais_representantes(request):
-    atas_reunioes = AtaReuniao.objects.all()
+def contato_representantes(request):
     alunos = Aluno.objects.all()
     responsaveis = []
     dados_responsaveis = []
@@ -85,10 +86,9 @@ def grupo_de_pais_representantes(request):
     data_hoje = date.today()
     return render(
         request,
-        'grupo_de_pais_representantes.html',
+        'contato_email.html',
         {
             'data_hoje': data_hoje,
-            'atas_reunioes': atas_reunioes,
             'dados_responsaveis' : dados_responsaveis
         }
     )
