@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from escolas.models.aluno import Aluno
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView
@@ -54,6 +56,40 @@ def atas_reunioes(request):
         {
             'data_hoje': data_hoje,
             'atas_reunioes': atas_reunioes
+        }
+    )
+
+@permission_required("core.pode_acessar_informativos")
+def grupo_de_pais_representantes(request):
+    atas_reunioes = AtaReuniao.objects.all()
+    alunos = Aluno.objects.all()
+    responsaveis = []
+    dados_responsaveis = []
+    for aluno in alunos:
+        if(aluno.responsavel1):
+            responsaveis.append(aluno.responsavel1)
+        if(aluno.responsavel2):
+            responsaveis.append(aluno.responsavel2)
+        if(aluno.responsavel3):
+            responsaveis.append(aluno.responsavel3)
+        if(aluno.responsavel4):
+            responsaveis.append(aluno.responsavel4)
+        if(aluno.responsavel5):
+            responsaveis.append(aluno.responsavel5)
+
+    for responsavel in responsaveis:
+        dados = User.objects.get(username=responsavel)
+        dados_responsaveis.append(dados)
+
+    dados_responsaveis = list(set(dados_responsaveis))
+    data_hoje = date.today()
+    return render(
+        request,
+        'grupo_de_pais_representantes.html',
+        {
+            'data_hoje': data_hoje,
+            'atas_reunioes': atas_reunioes,
+            'dados_responsaveis' : dados_responsaveis
         }
     )
 

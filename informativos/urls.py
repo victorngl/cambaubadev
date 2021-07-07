@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
-from .views import balancetes, balancos_patrimoniais, documentacoes_obras, atas_reunioes, BalancetesDetailView, BalancoPatrimonialDetailView, DocumentacaoObraDetailView, AtaReuniaoDetailView
+from .views import balancetes, balancos_patrimoniais, documentacoes_obras, atas_reunioes,grupo_de_pais_representantes, BalancetesDetailView, BalancoPatrimonialDetailView, DocumentacaoObraDetailView, AtaReuniaoDetailView
 
 urlpatterns = [
     path('balancetes/', balancetes, name="balancetes"),
@@ -10,6 +10,7 @@ urlpatterns = [
     # path('documentacoes_obras/', documentacoes_obras, name="documentacoes_obras"),
     path('aemc_noticias/', documentacoes_obras, name="documentacoes_obras"),
     path('atas_reunioes/', atas_reunioes, name="atas_reunioes"),
+    path('grupo_de_pais_representantes/', grupo_de_pais_representantes, name="grupo_de_pais_representantes"),
     path('balancetes/<int:pk>/', login_required(BalancetesDetailView.as_view(template_name="balancete_detail.html")), name="balancete_detail"),
     # path('balancos_patrimoniais/<int:pk>/', login_required(BalancoPatrimonialDetailView.as_view(template_name="balanco_patrimonial_detail.html")), name="balanco_patrimonial_detail"),
     path('relatorios_trimestrais/<int:pk>/', login_required(BalancoPatrimonialDetailView.as_view(template_name="balanco_patrimonial_detail.html")), name="balanco_patrimonial_detail"),

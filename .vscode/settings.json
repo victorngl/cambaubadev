@@ -28,5 +28,6 @@
 
     //nao mostra a barra || open output  ctrl+shift+u
     "liveSassCompile.settings.showOutputWindow": false,
+    "python.pythonPath": "/home/rafael/Documentos/estagio/estagio-django/projeto-cambauba/.venv_cambauba/bin/python",
 
 }
