@@ -1,3 +1,4 @@
+from core.models.profile import Profile
 from django.contrib.auth.models import User
 from escolas.models.aluno import Aluno
 from django.shortcuts import render, get_object_or_404
@@ -6,6 +7,8 @@ from django.views.generic import DetailView
 from .models import Balancete, BalancoPatrimonial, DocumentacaoObra, AtaReuniao
 from django.http import HttpResponseForbidden
 from datetime import date
+from django.db.models import Q
+import itertools
 
 @permission_required("core.pode_acessar_informativos")
 def balancetes(request):
@@ -63,33 +66,25 @@ def atas_reunioes(request):
 
 @permission_required("core.pode_acessar_informativos")
 def contato_representantes(request):
-    alunos = Aluno.objects.all()
-    responsaveis = []
-    dados_responsaveis = []
-    for aluno in alunos:
-        if(aluno.responsavel1):
-            responsaveis.append(aluno.responsavel1)
-        if(aluno.responsavel2):
-            responsaveis.append(aluno.responsavel2)
-        if(aluno.responsavel3):
-            responsaveis.append(aluno.responsavel3)
-        if(aluno.responsavel4):
-            responsaveis.append(aluno.responsavel4)
-        if(aluno.responsavel5):
-            responsaveis.append(aluno.responsavel5)
+    responsaveis = Aluno.objects.all().filter(
+        Q(responsavel1__email__isnull=False)|  
+        Q(responsavel2__email__isnull=False)|  
+        Q(responsavel3__email__isnull=False)|  
+        Q(responsavel4__email__isnull=False) 
+        ).values_list(
+            'responsavel1__email',
+            'responsavel2__email',
+            'responsavel3__email',
+            'responsavel4__email'
+        ).distinct()
 
-    for responsavel in responsaveis:
-        dados = User.objects.get(username=responsavel)
-        dados_responsaveis.append(dados)
-
-    dados_responsaveis = list(set(dados_responsaveis))
-    data_hoje = date.today()
+    list_responsaveis = list(itertools.chain(*responsaveis))
+    list_responsaveis = set(list_responsaveis)
     return render(
         request,
         'contato_email.html',
         {
-            'data_hoje': data_hoje,
-            'dados_responsaveis' : dados_responsaveis
+            'dados_responsaveis' : list_responsaveis
         }
     )
 
