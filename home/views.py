@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from datetime import datetime, date
 from materiais_didaticos.models import CalendarioAtividade
 from atividades_escolares.models import AtividadeEscolar
+from calendario.models import Evento
 
 @login_required
 def home(request):
@@ -93,21 +94,42 @@ def get_calendario(request):
             turmas__in=request.user.profile.turmas,    
         )
         turma = request.GET.get('turma')
+
+        eventos = Evento.objects.all()
+
         if turma:
             calendarios_atividades = calendarios_atividades.filter(turmas__in=turma).distinct()
+    
+        list_eventos = [
+            {
+                'id': evento.id, 
+                'title': evento.titulo,
+                'start': evento.data_inicial,
+                'end': evento.data_final,
+                'materia': evento.materia.titulo,
+                'descricao': evento.descricao
+            } for evento in calendarios_atividades
+        ]
+
+        listas_eventos = [
+            {
+                'id': evento.id, 
+                'title': evento.nome,
+                'start': evento.data,
+                'end': evento.data,
+                'materia': '',
+                'descricao': evento.descricao
+            } for evento in eventos
+        ]
+
+        for lista_evento in listas_eventos:
+            list_eventos.append(lista_evento)
+
+        
+        
+        return JsonResponse(list_eventos, safe=False)
         
     except:
         calendarios_atividades = CalendarioAtividade.objects.all()
     
-    list_eventos = [
-        {
-            'id': evento.id, 
-            'title': evento.titulo,
-            'start': evento.data_inicial,
-            'end': evento.data_final,
-            'materia': evento.materia.titulo,
-            'descricao': evento.descricao
-        } for evento in calendarios_atividades
-    ]
-    
-    return JsonResponse(list_eventos, safe=False)
+  
