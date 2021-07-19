@@ -27,6 +27,12 @@ class Turma(models.Model):
         blank=True
     )
 
+    email_pai_responsavel = models.CharField(
+        max_length=500,
+        verbose_name="Email do Pai Responsável",
+        null=True, blank=True
+    )
+
     data_alteracao = models.DateTimeField(
         verbose_name="Data de Alteração",
         auto_now=True

@@ -1,3 +1,4 @@
+from escolas.models.turma import Turma
 from core.models.profile import Profile
 from django.contrib.auth.models import User
 from escolas.models.aluno import Aluno
@@ -77,14 +78,33 @@ def contato_representantes(request):
             'responsavel3__email',
             'responsavel4__email'
         ).distinct()
+    usuarios = User.objects.all()
+    nome_completo = []
+    dados = [{
 
+    }]
+    email_responsaveis = Turma.objects.all()
     list_responsaveis = list(itertools.chain(*responsaveis))
     list_responsaveis = set(list_responsaveis)
+    lista_dos_responsaveis = []
+
+    for email_responsavel in email_responsaveis:
+        for email in list_responsaveis:
+            if(email != None):
+                if(email_responsavel.email_pai_responsavel == email):
+                    lista_dos_responsaveis.append(email_responsavel)
+                    dados.append(
+                         {'turma' : email_responsavel.nome,
+                          'nome' : User.objects.all().get(email=email),
+                          'email' : email,
+                         }
+                    )
+
     return render(
         request,
         'contato_email.html',
         {
-            'dados_responsaveis' : list_responsaveis
+            'dados_responsaveis' : dados,
         }
     )
 

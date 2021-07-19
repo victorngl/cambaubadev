@@ -5,7 +5,7 @@ from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia, Professor, 
 
 @admin.register(Turma)
 class TurmaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nome', 'serie']
+    list_display = ['id', 'nome', 'serie', 'email_pai_responsavel']
     autocomplete_fields = ['serie']
     filter_horizontal = ['professores']
     search_fields = ['nome']
