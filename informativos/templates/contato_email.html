@@ -14,14 +14,20 @@
                 <thead>
                     <tr>
                         {% comment %} <th>Nome</th> {% endcomment %}
-                        <th>Email</th>
+                        <th>Turma</th>
+                        <th>Nome</th>
+                        <th>Assinatura</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for responsavel in dados_responsaveis %}
                         {% if responsavel != None %}
                             <tr>
-                                <td>{{responsavel}}</td>
+                                <td>{{responsavel.turma}}</td>
+
+                                <td>{{responsavel.nome.first_name}} {{responsavel.nome.last_name}}</td>
+
+                                <td>{{responsavel.email}}</td>
                             </tr>
                         {% endif %}
                     {% endfor %}
