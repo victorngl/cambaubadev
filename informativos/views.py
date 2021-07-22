@@ -1,8 +1,7 @@
-from escolas.models.turma import Turma
-from core.models.profile import Profile
+from escolas.models import RepresentanteTurma, Turma
 from django.contrib.auth.models import User
 from escolas.models.aluno import Aluno
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required
 from django.views.generic import DetailView
 from .models import Balancete, BalancoPatrimonial, DocumentacaoObra, AtaReuniao
@@ -106,6 +105,20 @@ def contato_representantes(request):
         {
             'dados_responsaveis' : dados,
         }
+    )
+
+
+@permission_required("core.pode_acessar_informativos")
+def representantes_turma(request):
+    representantes_turma = RepresentanteTurma.objects.all()
+    context = {
+        'representantes_turma': representantes_turma,
+    }
+
+    return render(
+        request,
+        'representante_turma.html',
+        context
     )
 
 class BalancetesDetailView(DetailView):
