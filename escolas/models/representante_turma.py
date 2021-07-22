@@ -38,8 +38,8 @@ class RepresentanteTurma(models.Model):
     )
 
     assinatura = models.EmailField(
-        verbose_name='Assinatura',
-        null=True
+        verbose_name='E-mail',
+        null=True, blank=True
     )
 
     def __str__(self):
