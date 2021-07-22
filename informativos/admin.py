@@ -82,21 +82,21 @@ class DocumentacaoObraAdmin(admin.ModelAdmin):
 
     readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
 
-# @admin.register(AtaReuniao)
-# class AtaReuniaoAdmin(admin.ModelAdmin):
-#     list_display = [
-#         'id',
-#         'titulo',
-#         'data',
-#     ]
+@admin.register(AtaReuniao)
+class AtaReuniaoAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'titulo',
+        'data',
+    ]
 
-#     search_fields = [
-#         'titulo',
-#         'data',
-#     ]
+    search_fields = [
+        'titulo',
+        'data',
+    ]
     
-#     filter_horizontal = [
-#         'turmas',
-#     ]
+    filter_horizontal = [
+        'turmas',
+    ]
 
-#     readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
+    readonly_fields = ['usuario_criacao', 'usuario_atualizacao']
