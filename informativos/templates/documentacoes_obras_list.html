@@ -24,7 +24,7 @@
                         {% if documentacao_obra.data <= data_hoje  or not documentacao_obra.data%}
                             <tr>
                                 <td>{{documentacao_obra.titulo}}</td>
-                                <td>{{documentacao_obra.data|default_if_none:'-'}}</td>
+                                <td data-sort="{{documentacao_obra.data|date:'Y-m-d'}}">{{documentacao_obra.data|date:"d/m/Y"|default_if_none:'-'}}</td>
                                 <td>{{documentacao_obra.escola}}</td>
                                 <td><a class="detalhes" href="{% url 'documentacao_obra_detail' documentacao_obra.id %}"><i class="fas fa-search-plus"></i>Detalhes</a></td>
                             </tr>
@@ -40,6 +40,8 @@
     <script>
         $(document).ready(function () {
             $('#documentacoes_obras').DataTable({
+                //"ordering": false,
+                "order": [[ 1, "desc" ]],
                 "language": {
                     "show": "Visualizar",
                     "lengthMenu": "Mostrar _MENU_ linhas por página",

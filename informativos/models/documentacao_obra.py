@@ -97,3 +97,4 @@ class DocumentacaoObra(models.Model):
         app_label = "informativos"
         verbose_name = "AEMC Notícia"
         verbose_name_plural = "AEMC Notícias"
+        ordering = ['-data']

@@ -38,7 +38,7 @@ def balancos_patrimoniais(request):
 
 @permission_required("core.pode_acessar_informativos")
 def documentacoes_obras(request):
-    documentacoes_obras = DocumentacaoObra.objects.all()
+    documentacoes_obras = DocumentacaoObra.objects.all().order_by('-data')
     data_hoje = date.today()
     return render(
         request,
