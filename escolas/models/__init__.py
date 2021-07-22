@@ -6,6 +6,7 @@ from .turma import Turma
 from .materia import Materia
 from .professor import Professor
 from .responsavel import Responsavel
+from .representante_turma import RepresentanteTurma
 
 __all__ = [
     Aluno,
@@ -15,5 +16,6 @@ __all__ = [
     Turma,
     Materia,
     Professor,
-    Responsavel
+    Responsavel,
+    RepresentanteTurma,
 ]

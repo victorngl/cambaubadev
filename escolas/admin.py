@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia, Professor, Responsavel
+from .models import Aluno, Escola, Serie, TipoSerie, Turma, Materia, Professor, Responsavel, RepresentanteTurma
 
 
 @admin.register(Turma)
@@ -124,3 +124,29 @@ class responsavelAdmin(ImportExportModelAdmin):
 			'senha',
 		)})
     )
+
+@admin.register(RepresentanteTurma)
+class RepresentanteTurmaAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'turma',
+        'pai_representante',
+        'aluno',
+        'assinatura',
+    ]
+
+    list_filter = [
+        'turma',
+    ]
+
+    autocomplete_fields = [
+        'turma',
+    ]
+
+    search_fields = [
+        'id',
+        'turma__nome',
+        'pai_representante',
+        'aluno',
+        'assinatura',
+    ]
