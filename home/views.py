@@ -28,14 +28,14 @@ def home(request):
         comunicados = []
         aemc_noticias = []
         paginacao_comunicados = None
-        aemc_noticias = DocumentacaoObra.objects.all().order_by('-id')
+        aemc_noticias = DocumentacaoObra.objects.all().order_by('-data')
         if request.user.profile:
             perfil = request.user.profile.perfil
             if perfil == 'Aluno':
                 aluno=Aluno.objects.get(usuario=request.user)
                 template_name = 'home_aluno.html'
 
-                comunicados = aluno.turma.comunicado_set.all().order_by('-id')
+                comunicados = aluno.turma.comunicado_set.all().order_by('-data')
                 paginacao_comunicados = Paginator(comunicados, 2)
                 pagina_atual = paginacao_comunicados.page(pagina_atual)
             elif perfil == 'Responsável' or perfil == 'Professor/Responsavel':
