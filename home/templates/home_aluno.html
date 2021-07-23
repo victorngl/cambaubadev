@@ -108,38 +108,39 @@
 <main class="page_home page_aluno">
 
     <!-- Atividade escolar -->
-    <div class="atividade__escolar-container">
+    <div class="atividade__escolar-container" style="display: block !important;">
+        {% comment %}
+            <div class="atividade-container">
+                <div class="card__atividades js-gsap">
+                    <div class="atividades">
+                        <div class="card-header">
+                            <h1 class="titulosecoes"> <i></i> Atividades</h1>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                {% for atividade in aluno.turma.atividadeescolar_set.all %}
+                                <div>
+                                    <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
+                                    <li class="list-group-item">
+                                        <a href="{% url 'atividade_escolar_detail' atividade.id %}">
+                                            {{atividade}} </a>- {{aluno.nome}}
+                                    </li>
+                                </div>
+                                
+                                {% endfor %}
 
-        <div class="atividade-container">
-            <div class="card__atividades js-gsap">
-                <div class="atividades">
-                    <div class="card-header">
-                        <h1 class="titulosecoes"> <i></i> Atividades</h1>
+                            </ul>
+                        </div>
+
                     </div>
-                    <div class="card-body">
-                        <ul class="list-group">
-                            {% for atividade in aluno.turma.atividadeescolar_set.all %}
-                            <div>
-                                <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
-                                <li class="list-group-item">
-                                    <a href="{% url 'atividade_escolar_detail' atividade.id %}">
-                                        {{atividade}} </a>- {{aluno.nome}}
-                                </li>
-                            </div>
-                            
-                            {% endfor %}
+                </div>
 
-                        </ul>
-                    </div>
-
+                <div class="ver__container">
+                    <a href="{% url 'atividades_escolares' %}" class="ver-mais text-16 text-center">Ver todos <ion-icon
+                            name="arrow-forward-outline"></ion-icon></a>
                 </div>
             </div>
-
-            <div class="ver__container">
-                <a href="{% url 'atividades_escolares' %}" class="ver-mais text-16 text-center">Ver todos <ion-icon
-                        name="arrow-forward-outline"></ion-icon></a>
-            </div>
-        </div>
+        {% endcomment %}
 
 
         <!--Atividades extras-->

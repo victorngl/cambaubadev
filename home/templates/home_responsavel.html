@@ -142,57 +142,72 @@
     </div>
     <!-- Atividades e ultimas enquetes -->
     <div class="atividades__container">
+        <div class="card__atividades">
+            {% comment %}
+              <div class="atividades">
+                  <div class="card-header">
+                    <h1 class="titulosecoes"> <i></i> Atividades</h1>
+                  </div>
+                  <div class="card-body">
+                    <ul class="list-group">
+                      {% for aluno in alunos %}
+                      {% for atividade in aluno.turma.atividadeescolar_set.all|dictsort:"data_final" %}
 
-      <div class="card__atividades">
-        <div class="atividades">
-          <div class="card-header">
-            <h1 class="titulosecoes"> <i></i> Atividades</h1>
-          </div>
-          <div class="card-body">
-            <ul class="list-group">
-              {% for aluno in alunos %}
-              {% for atividade in aluno.turma.atividadeescolar_set.all|dictsort:"data_final" %}
-
-                  {% if atividade.data_final >= data_hoje %}
-                    <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
-                      <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
-                          <a href="{% url 'atividade_escolar_detail' atividade.id %}" class="link-area"></a>
-                          <div style="display: flex;justify-content: space-between;padding-inline-start: 5px;">
-                            <h5 class="sidebar-titulo mt-0">{{atividade.titulo}}</h5>
-                            <p>{{aluno.nome}}</p>
-                          </div>
-                          <div class="sidebar__wrapper" style="display: flex;justify-content: space-between;">
-                              <span class="sidebar-materia">{{atividade.materia}}</span>
-                              <span class="sidebar-data">{{atividade.data_final}}</span>
-                          </div>
-                      </div>
+                          {% if atividade.data_final >= data_hoje %}
+                            <div style="border-left: 10px solid {{atividade.materia.hexadecimal}}">
+                              <li class="list-group-item aluno-{% index_aluno alunos aluno %}">
+                                  <a href="{% url 'atividade_escolar_detail' atividade.id %}" class="link-area"></a>
+                                  <div style="display: flex;justify-content: space-between;padding-inline-start: 5px;">
+                                    <h5 class="sidebar-titulo mt-0">{{atividade.titulo}}</h5>
+                                    <p>{{aluno.nome}}</p>
+                                  </div>
+                                  <div class="sidebar__wrapper" style="display: flex;justify-content: space-between;">
+                                      <span class="sidebar-materia">{{atividade.materia}}</span>
+                                      <span class="sidebar-data">{{atividade.data_final}}</span>
+                                  </div>
+                              </div>
+                            </li>
+                          {% endif %}
+                          
+                      {% endfor %}
+                      {% endfor %}
+                    </ul>
+                </div>
+              </div>
+            {% endcomment %}
+            <div class="card-header">
+              <h1 class="titulosecoes"><ion-icon name="newspaper-outline"></ion-icon> AEMC Notícias</h1>
+            </div>
+            <div class="card-body">
+              <ul class="list-group">
+                {% for aemc in aemc_noticias %}
+                  {% if aemc.data <= hoje or not aemc.data %}
+                    <li class="list-group-item">
+                      <a href="{% url 'documentacao_obra_detail' aemc.id %}">{{aemc.titulo}}</a>
                     </li>
                   {% endif %}
-                  
-              {% endfor %}
-              {% endfor %}
-            </ul>
-          </div>
+                {% endfor %}
+            </div>
         </div>
-      </div>
       
       
-      
+      {% comment %}
         <div class="card__enquetes">
-          <div class="card-header">
-            <h1 class="titulosecoes"><ion-icon name="newspaper-outline"></ion-icon> AEMC Notícias</h1>
-          </div>
-          <div class="card-body">
-            <ul class="list-group">
-              {% for aemc in aemc_noticias %}
-                {% if aemc.data <= hoje or not aemc.data %}
-                  <li class="list-group-item">
-                    <a href="{% url 'documentacao_obra_detail' aemc.id %}">{{aemc.titulo}}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-          </div>
-      </div>
+            <div class="card-header">
+              <h1 class="titulosecoes"><ion-icon name="newspaper-outline"></ion-icon> AEMC Notícias</h1>
+            </div>
+            <div class="card-body">
+              <ul class="list-group">
+                {% for aemc in aemc_noticias %}
+                  {% if aemc.data <= hoje or not aemc.data %}
+                    <li class="list-group-item">
+                      <a href="{% url 'documentacao_obra_detail' aemc.id %}">{{aemc.titulo}}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+      {% endcomment %}
       
        
 
