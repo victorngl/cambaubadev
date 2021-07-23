@@ -64,16 +64,18 @@ teste::-webkit-scrollbar-thumb:hover {
                 <div class="triangle"></div>
             </li>
             {% endif %}
-            {% if perms.core.pode_acessar_atividades %}
-            <li class="nav-item" data-item="atividades">
-                <a class="nav-item-hold" href="#">
-                    <ion-icon src="{% static 'assets/images/icons/extra.svg' %}"></ion-icon>
+            {% comment %}
+                {% if perms.core.pode_acessar_atividades %}
+                <li class="nav-item" data-item="atividades">
+                    <a class="nav-item-hold" href="#">
+                        <ion-icon src="{% static 'assets/images/icons/extra.svg' %}"></ion-icon>
 
-                    <span class="nav-text">Atividades Extras</span>
-                </a>
-                <div class="triangle"></div>
-            </li>
-            {% endif %}
+                        <span class="nav-text">Atividades Extras</span>
+                    </a>
+                    <div class="triangle"></div>
+                </li>
+                {% endif %}
+            {% endcomment %}
             {% if perms.core.pode_acessar_informativos %}
             <li class="nav-item" data-item="informativos">
                 <a class="nav-item-hold" href="#">

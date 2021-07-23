@@ -30,16 +30,18 @@
                 <div class="triangle"></div>
             </li>
             {% endif %} -->
-            {% if perms.core.pode_acessar_atividades %}
-            <li class="nav-item">
-                <a class="nav-item-hold" href="{% url 'atividades_extras' %}">
-                    <ion-icon src="{% static 'assets/images/icons/extra.svg' %}"></ion-icon>
+            {% comment %}
+                {% if perms.core.pode_acessar_atividades %}
+                <li class="nav-item">
+                    <a class="nav-item-hold" href="{% url 'atividades_extras' %}">
+                        <ion-icon src="{% static 'assets/images/icons/extra.svg' %}"></ion-icon>
 
-                    <span class="nav-text">Atividades Extras</span>
-                </a>
-                <div class="triangle"></div>
-            </li>
-            {% endif %}
+                        <span class="nav-text">Atividades Extras</span>
+                    </a>
+                    <div class="triangle"></div>
+                </li>
+                {% endif %}
+            {% endcomment %}
         </ul>
     </div>
     <div class="sidebar-overlay"></div>
