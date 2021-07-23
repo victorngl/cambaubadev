@@ -110,7 +110,7 @@
 
 
 
-    <div class="materias__wrapper">
+    <div class="materias__wrapper" style="display: block !important;">
         <section class="materiais-didaticos js-gsap">
             <h1 class="titulosecoes">Material Didático <i></i></h1>
             <div class="conteudo-materialdidatico">
@@ -127,23 +127,24 @@
 
             </div>
         </section>
+        {% comment %}
+            <section class="ativ-escolares js-gsap">
+                <h1 class="titulosecoes">Atividades Escolares <i></i></h1>
+                <div class="conteudo-ativ-escolares">
+                    {% for atividade_escolar in atividades_escolares|dictsort:"data_final" %}
+                    <div class="sidebar" style="border-left: 10px solid {{atividade_escolar.materia.hexadecimal}}">
+                        <a href="{% url 'atividade_escolar_detail' atividade_escolar.id %}" class="link-area"></a>
+                        <h3 class="sidebar-titulo mt-0">{{atividade_escolar.titulo}}</h3>
 
-        <section class="ativ-escolares js-gsap">
-            <h1 class="titulosecoes">Atividades Escolares <i></i></h1>
-            <div class="conteudo-ativ-escolares">
-                {% for atividade_escolar in atividades_escolares|dictsort:"data_final" %}
-                <div class="sidebar" style="border-left: 10px solid {{atividade_escolar.materia.hexadecimal}}">
-                    <a href="{% url 'atividade_escolar_detail' atividade_escolar.id %}" class="link-area"></a>
-                    <h3 class="sidebar-titulo mt-0">{{atividade_escolar.titulo}}</h3>
-
-                    <div class="sidebar__wrapper">
-                        <span class="sidebar-materia">{{atividade_escolar.materia}}</span>
-                        <span class="sidebar-data">{{atividade_escolar.data_final}}</span>
+                        <div class="sidebar__wrapper">
+                            <span class="sidebar-materia">{{atividade_escolar.materia}}</span>
+                            <span class="sidebar-data">{{atividade_escolar.data_final}}</span>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        </section>
+            </section>
+        {% endcomment %}
 
 
     </div>
