@@ -35,6 +35,7 @@ urlpatterns = [
     path('turmas/', include('escolas.urls')),
     path('avatar/', include('avatar.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls')),
+    
     path('password_reset/', include('password_reset.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
