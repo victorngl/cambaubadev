@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from escolas.models import Turma
 from crum import get_current_user
+from django.utils import timezone
 
 class AtividadeNoturna(models.Model):
 	"""
@@ -33,6 +34,16 @@ class AtividadeNoturna(models.Model):
 	data_final = models.DateField(
 		verbose_name="Data Final",
 		blank=True, null=True
+	)
+	
+	inicio_inscricoes = models.DateTimeField(
+		verbose_name="Início das Inscrições",
+		blank=False, null=True
+	)
+	
+	fim_inscricoes = models.DateTimeField(
+		verbose_name="Fim das Inscrições",
+		blank=False, null=True
 	)
 
 	descricao = models.TextField(
@@ -89,7 +100,7 @@ class AtividadeNoturna(models.Model):
 	@property
 	def inscricoes_abertas(self):
 		try:
-			if self.data_inicial <= datetime.now().date() <= self.data_final:
+			if self.inicio_inscricoes <= timezone.now() <= self.fim_inscricoes:
 				return True
 			else: 
 				return False

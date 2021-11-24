@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from escolas.models import Turma
 from crum import get_current_user
+from django.utils import timezone
 
 class Oficina(models.Model):
 	"""
@@ -55,6 +56,16 @@ class Oficina(models.Model):
 		verbose_name='Foto de Capa',  
 		null=True, blank=True
 	)
+	
+	inicio_inscricoes = models.DateTimeField(
+		verbose_name="Início das Inscrições",
+		blank=False, null=True
+	)
+	
+	fim_inscricoes = models.DateTimeField(
+		verbose_name="Fim das Inscrições",
+		blank=False, null=True
+	)
 
 	data_alteracao = models.DateTimeField(
 		verbose_name="Data de Alteração",
@@ -89,8 +100,11 @@ class Oficina(models.Model):
 	@property
 	def inscricoes_abertas(self):
 		try:
-			if self.data_inicial <= datetime.now().date() <= self.data_final:
-				return True
+			if self.inicio_inscricoes <= timezone.now() <= self.fim_inscricoes:
+				if self.quantidade_inscritos >= self.vagas:
+					return False
+				else:
+					return True
 			else: 
 				return False
 		except:

@@ -30,12 +30,12 @@ def atividades_extras(request):
 		atividades_extras = list(AtividadeExtra.objects.filter(turmas=aluno.turma))
 	elif perfil == 'Responsável' or perfil == 'Professor/Responsavel':
 		alunos=Aluno.objects.filter(
-                Q(responsavel1=request.user) | 
-                Q(responsavel2=request.user) | 
-                Q(responsavel3=request.user) | 
-                Q(responsavel4=request.user) | 
-                Q(responsavel5=request.user)
-                ) 
+				Q(responsavel1=request.user) | 
+				Q(responsavel2=request.user) | 
+				Q(responsavel3=request.user) | 
+				Q(responsavel4=request.user) | 
+				Q(responsavel5=request.user)
+				) 
 		atividades_extras_completo = AtividadeExtra.objects.all() 
 		for aluno in alunos:
 			atividades_extras_filtro.append(AtividadeExtra.objects.filter(turmas=aluno.turma))
@@ -98,7 +98,8 @@ class InscricaoOficinaCreateView(CreateView):
 		return context
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('core.pode_acessar_atividades'):
+		oficina = Oficina.objects.get(id=self.kwargs['id'])
+		if request.user.has_perm('core.pode_acessar_atividades') and oficina.inscricoes_abertas:
 			return super(InscricaoOficinaCreateView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
@@ -179,7 +180,8 @@ class InscricaoAtividadeNoturnaCreateView(CreateView):
 		return context
 	
 	def dispatch(self, request, *args, **kwargs):
-		if request.user.has_perm('core.pode_acessar_atividades'):
+		atividade_noturna = AtividadeNoturna.objects.get(id=self.kwargs['id'])
+		if request.user.has_perm('core.pode_acessar_atividades') and atividade_noturna.inscricoes_abertas:
 			return super(InscricaoAtividadeNoturnaCreateView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
