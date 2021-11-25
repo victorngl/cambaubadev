@@ -2,7 +2,7 @@ from datetime import datetime
 from escolas.models.aluno import Aluno
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic import CreateView, ListView, DetailView
 from atividades.models import Oficina, AtividadeExtra, AtividadeNoturna, InscricaoOficina, InscricaoAtividadeExtra, InscricaoAtividadeNoturna
 from .forms import InscricaoOficinaForm, InscricaoAtividadeExtraForm, InscricaoAtividadeNoturnaForm
@@ -102,7 +102,7 @@ class InscricaoOficinaCreateView(CreateView):
 		if request.user.has_perm('core.pode_acessar_atividades') and oficina.inscricoes_abertas:
 			return super(InscricaoOficinaCreateView, self).dispatch(request, *args, **kwargs)
 		else:
-			return HttpResponseForbidden()
+			return inscricoes_encerradas(request)
 	
 
 class InscricaoAtividadeExtraCreateView(CreateView):
@@ -144,7 +144,7 @@ class InscricaoAtividadeExtraCreateView(CreateView):
 		if request.user.has_perm('core.pode_acessar_atividades') and atividade_extra.inscricoes_abertas:
 			return super(InscricaoAtividadeExtraCreateView, self).dispatch(request, *args, **kwargs)
 		else:
-			return HttpResponseForbidden()
+			return inscricoes_encerradas(request)
 
 class InscricaoAtividadeNoturnaCreateView(CreateView):
 	model = InscricaoAtividadeNoturna
@@ -184,7 +184,7 @@ class InscricaoAtividadeNoturnaCreateView(CreateView):
 		if request.user.has_perm('core.pode_acessar_atividades') and atividade_noturna.inscricoes_abertas:
 			return super(InscricaoAtividadeNoturnaCreateView, self).dispatch(request, *args, **kwargs)
 		else:
-			return HttpResponseForbidden()
+			return inscricoes_encerradas(request)
 
 class OficinaDetailView(DetailView):
 	model = Oficina
@@ -212,3 +212,11 @@ class AtividadeExtraDetailView(DetailView):
 			return super(AtividadeExtraDetailView, self).dispatch(request, *args, **kwargs)
 		else:
 			return HttpResponseForbidden()
+
+@login_required
+def inscricoes_encerradas(request):
+    return render(
+		request,
+    	'inscricoes_encerradas.html',
+		{}
+	)

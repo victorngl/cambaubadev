@@ -57,11 +57,27 @@
                         <span>{{object.horario}}</span>
                     </div>
                 </div>
+                <div class="col-md-4 col-6">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1"><ion-icon name="alarm-outline"></ion-icon>Início Inscrições</p>
+                        <span>{{object.inicio_inscricoes}}</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6">
+                    <div class="mb-4">
+                        <p class="text-primary mb-1"><ion-icon name="alarm-outline"></ion-icon>Fim Inscrições</p>
+                        <span>{{object.fim_inscricoes}}</span>
+                    </div>
+                </div>
             </div>
             {% if object.inscricoes_abertas %}
                 <div class="footer__atividade">
                     <a class="" href="{% url 'inscricao_atividade_extra_create' object.id %}">
                         Inscrever-se <ion-icon name="arrow-forward-outline"></ion-icon></a>
+                </div>
+            {% else %}
+                <div class="footer__atividade">
+                    <a class="" href="#"> Inscrições não disponíveis  <ion-icon name="close-outline"></ion-icon></a>
                 </div>
             {% endif %}
         </div>
