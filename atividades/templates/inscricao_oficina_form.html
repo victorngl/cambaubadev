@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">
                 <h2>Título: {{ oficina.titulo }}</h2>
-                <p>{{ oficina.descricao }}</p>
+                <p>{{ oficina.descricao|linebreaks }}</p>
                 <small>De {{ oficina.data_inicial }} a {{ oficina.data_final }}</small>
             </div>
             <div class="card-body">

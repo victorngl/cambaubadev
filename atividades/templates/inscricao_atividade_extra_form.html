@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">
                 <h2>Título: {{ atividade_extra.titulo }}</h2>
-                <p>{{ atividade_extra.descricao }}</p>
+                <p>{{ atividade_extra.descricao|linebreaks }}</p>
                 <small>De {{ atividade_extra.data_inicial }} a {{ atividade_extra.data_final }}</small>
             </div>
             <div class="card-body">
