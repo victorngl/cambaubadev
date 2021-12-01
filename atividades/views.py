@@ -68,7 +68,7 @@ class InscricaoOficinaCreateView(CreateView):
 	model = InscricaoOficina
 	form_class = InscricaoOficinaForm
 	template_name = 'inscricao_oficina_form.html'
-	success_url = reverse_lazy('oficinas')
+	success_url = reverse_lazy('inscricoes_confirmadas')
 
 	def get_initial(self):
 		oficina = Oficina.objects.get(id=self.kwargs['id'])
@@ -109,7 +109,7 @@ class InscricaoAtividadeExtraCreateView(CreateView):
 	model = InscricaoAtividadeExtra
 	form_class = InscricaoAtividadeExtraForm
 	template_name = 'inscricao_atividade_extra_form.html'
-	success_url = reverse_lazy('atividades_extras')
+	success_url = reverse_lazy('inscricoes_confirmadas')
 
 	def get_initial(self):
 		atividade_extra = AtividadeExtra.objects.get(id=self.kwargs['id'])
@@ -150,7 +150,7 @@ class InscricaoAtividadeNoturnaCreateView(CreateView):
 	model = InscricaoAtividadeNoturna
 	form_class = InscricaoAtividadeNoturnaForm
 	template_name = 'inscricao_atividade_noturna_form.html'
-	success_url = reverse_lazy('atividades_noturnas')
+	success_url = reverse_lazy('inscricoes_confirmadas')
 
 	def get_initial(self):
 		atividade_noturna = AtividadeNoturna.objects.get(id=self.kwargs['id'])
@@ -218,5 +218,13 @@ def inscricoes_encerradas(request):
     return render(
 		request,
     	'inscricoes_encerradas.html',
+		{}
+	)
+
+@login_required
+def inscricoes_confirmadas(request):
+    return render(
+		request,
+    	'inscricoes_confirmadas.html',
 		{}
 	)
