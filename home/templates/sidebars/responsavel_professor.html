@@ -64,8 +64,7 @@ teste::-webkit-scrollbar-thumb:hover {
                 <div class="triangle"></div>
             </li>
             {% endif %}
-            {% comment %}
-                {% if perms.core.pode_acessar_atividades %}
+            {% if perms.core.pode_acessar_atividades_escolares %}
                 <li class="nav-item" data-item="atividades">
                     <a class="nav-item-hold" href="#">
                         <ion-icon src="{% static 'assets/images/icons/extra.svg' %}"></ion-icon>
@@ -74,8 +73,7 @@ teste::-webkit-scrollbar-thumb:hover {
                     </a>
                     <div class="triangle"></div>
                 </li>
-                {% endif %}
-            {% endcomment %}
+            {% endif %}
             {% if perms.core.pode_acessar_informativos %}
             <li class="nav-item" data-item="informativos">
                 <a class="nav-item-hold" href="#">
