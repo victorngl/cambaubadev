@@ -24,15 +24,15 @@ Rode os seguintes comandos:
 ```shell
 cd /root/
 cd cambauba/
-source env_cambauba/bin/activate # No linux (ubuntu quando o tutorial foi feito)
+source env_cambauba/bin/activate
 cd cambauba/
 git pull origin master
 ```
 
 Adicione o username e o token:
 ```shell
-datacartes # Username
-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 # token
+datacartes
+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
 ```
 
 Faça os seguintes comandos (CASO NECESSÁRIO)
