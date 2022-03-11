@@ -1,0 +1,61 @@
+#Como acessar o servidor e fazer deploy
+Acesse o servidor com o seguinte comando:
+
+``` shell
+ssh -p 2250 datacartes@200.218.242.101
+```
+
+Insira a seguinte senha:
+
+```shell
+D@t@C@rt3s
+```
+
+Entre como super usuário com o seguinte comando:
+
+```shell
+D@t@C@rt3s
+```
+
+Insira novamente a senha caso necessário
+
+Rode os seguintes comandos:
+
+```shell
+cd /root/
+cd cambauba/
+source env_cambauba/bin/activate # No linux (ubuntu quando o tutorial foi feito)
+cd cambauba/
+git pull origin master
+```
+
+Adicione o username e o token:
+```shell
+datacartes # Username
+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 # token
+```
+
+Faça os seguintes comandos (CASO NECESSÁRIO)
+```shell
+python manage.py migrate
+python manage.py collectstatic
+```
+
+Reinicie o servidor com o seguinte comando:
+```shell
+service gunicorn restart
+```
+
+Saia do modo super usuário com
+```shell
+exit
+```
+
+Saia do modo servidor com
+```shell
+exit
+```
+
+Acesse o servidor e veja se tudo está como você espera
+
+Deploy feito! Parabéns!
