@@ -14,7 +14,7 @@ D@t@C@rt3s
 Entre como super usuário com o seguinte comando:
 
 ```shell
-D@t@C@rt3s
+sudo su
 ```
 
 Insira novamente a senha caso necessário
