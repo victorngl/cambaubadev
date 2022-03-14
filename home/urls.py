@@ -5,6 +5,6 @@ from .views import get_calendario
 
 urlpatterns = [
     path('', home, name="home"),
-    path('boletos_boletins/', gerar_boletos_boletins, name='boletos_boletins'),
+    # path('boletos_boletins/', gerar_boletos_boletins, name='boletos_boletins'),
     path('get_calendario/', get_calendario, name='get_calendario'),
 ]
