@@ -46,6 +46,11 @@ Reinicie o servidor com o seguinte comando:
 service gunicorn restart
 ```
 
+Acesse o servidor e veja se tudo está como você espera
+Link: https://intranet.cambauba.com.br/
+Usuário: flavio
+Senha: Novadata123
+
 Saia do modo super usuário com
 ```shell
 exit
@@ -55,7 +60,5 @@ Saia do modo servidor com
 ```shell
 exit
 ```
-
-Acesse o servidor e veja se tudo está como você espera
 
 Deploy feito! Parabéns!
