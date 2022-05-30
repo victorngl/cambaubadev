@@ -96,5 +96,5 @@ class Balancete(models.Model):
 
     class Meta:
         app_label = "informativos"
-        verbose_name = "Balancete"
-        verbose_name_plural = "Balancetes"
+        verbose_name = "Balancete & Demonstração Financeira"
+        verbose_name_plural = "Balancetes & Demonstrações Financeiras"
