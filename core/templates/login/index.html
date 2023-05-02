@@ -37,15 +37,17 @@
                     <div class="campos">
                         <h1 class="pl-2"></h1>
                         <section class="imagem__logo">
-                            <img src="https://cambauba.datacartes.com.br/wp-content/themes/cambauba/img/logo-color.png"
+                            <img src="{% static 'assets/images/favicon_cambauba.png' %}"
                                 alt="capa">
                         </section>
+                        <!--
                         <p style="font-size: 1em; color: #6c757d;">O Site mudou e o seu login também!</p>
                         <p style="font-size: 1em; color: #6c757d; text-align: justify;">
                             Veja no comunicado enviado pelo IsCool e por e-mail, no dia 29/07, com o assunto:
                             Atualização do Site da Escola e Acesso à Intranet, o passo a passo para acessar e trocar a
                             sua senha!
                         </p>
+                        -->
                         <form method="post">
                             {% csrf_token %}
                             {{ form|bootstrap }}
